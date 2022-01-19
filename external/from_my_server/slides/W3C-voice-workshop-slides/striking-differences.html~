@@ -1,0 +1,30 @@
+
+<html>
+<head>
+<title> Requirements for a markup language--striking differences
+</title>
+<link href="nils.css" rel=stylesheet type="text/css">
+</head>
+<body>
+
+<h1>
+Voice and Visual: strikingly different
+</h1>
+<hr class=top>
+
+ 
+<table>
+ <COLGROUP align="left" span="1" width="40%">
+ <COLGROUP align="left" span="2" width="30%">
+<tr> <th> <th><h2> Voice </h2><th><h2> Visual</h2>
+<tr><th>layout <td>temporal <td> two-dimensional
+<tr><th>contents &amp; presentation <td> inseparable <td> separable
+<tr> <th> input <td> ambiguous <td>  certain
+</table>
+
+<hr class=bottom>
+<a href="overview.html">Index</a>
+<a href="HTML-and-VB-what-is-deal.html">Previous slide </a>
+<a href="augmentation.html">Next slide</a>
+</body>
+</html>

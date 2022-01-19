@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html [
+  <!ENTITY spacer '&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;'>
+  <!ENTITY homepath '.' >
+  <!ENTITY shorttalk_ad SYSTEM "ads/ShortTalk.xml" >
+  <!ENTITY foot_ad SYSTEM "ads/footad.xml" >
+  <!ENTITY mouse_ad SYSTEM "ads/mousead.xml" >
+]>
+<html>
+  <head>
+    <title>Nils Klarlund CTD (RSI) musing</title>
+    <meta name="author" content="Nils Klarlund"/>
+    <meta name="copyright" content="Nils Klarlund, 2002"/>
+    <meta name="description" content="Nils Klarlund CTD (RSI) musings"/>
+    <meta name="keywords" content="Nils Klarlund, RSI, CTD, repetitive
+    stress injury, cumulative trauma disorder, personal experience,
+    tendinopathy, tendinitis"/>
+
+    <link rel="stylesheet" href="klarlund-netscape4.css" type="text/css"/> 
+    <style type="text/css"> 
+      @import url(klarlund.css);  <!-- non-netscape 4-->
+    </style>
+
+    <ads>
+        &shorttalk_ad;
+	&foot_ad;
+	&mouse_ad;
+    </ads>
+
+
+  </head>
+
+  <body column_format="one">
+
+    <tabs>
+
+      <tab name="CTD-RSI" title="Cumulative Trauma Disorder (a.k.a. RSI)"
+	   column_format="two" horizontal_contents="yes"  ads="no">
+	<related>
+	  <item href="http://bmj.com/cgi/content/full/324/7338/626"
+		title="Tendinitis: were you misdiagnosed?  (external)" > CTD or
+	    RSI is often diagnosed and treated as tendinitis.  This
+	    editorial in the British Medical Journal states that
+	    overuse injuries are not tendinitis and are not associated
+	    with inflammation.  Moreover, the <a
+						 href="http://bmj.com/cgi/eletters/324/7338/626#20629">
+	      tendinopathy</a> paradigm advocates strength training, not
+	    rest as the primary treatment.
+	  </item>
+	  <item href="http://www.tendinosis.org" title="Chronic
+		tendon injuries (external)">The web site <a
+							    href="http://www.tendinosis.org">tendinosis.org</a> gives an
+	    excellent overview of the social and medical aspects of tendon
+	    injuries, a very common manifestation of CTD.
+	  </item>
+	  <item href="http://www.engr.unl.edu/ee/eeshop/rsi.html" title="Computer
+		Related Repetitive Strain Injury (external)">Paul Marxhausen's site
+	    contains a very good collection of advice and useful
+	    links.
+	  </item>
+	  <item href="http://www.mousewatch.com" title="Mousewatch.com
+		(external)">
+	    This site is well-organized and up-to-date.
+	  </item>
+	  <item href="http://www.ctdrn.org/" title="CTD Resource
+		Network (external)"> This organization provides information and
+	    assistance in the area CTD.  It maintains the <a
+							     href="http://www.tifaq.org">Typing Injury FAQ</a>
+	    site.
+	  </item>
+	  <item
+		href="http://xenia.media.mit.edu/~cahn/rsi/meditations"
+		title="RSI reflections (external)" >Humorously and
+	    seriously, Janet Cahn explains what she
+	    learned at MIT about RSI.
+	  </item>
+	</related>
+	<em>Cumulative Trauma Disorder</em> (<em>CTD</em>) and
+	<em>Repetitive Stress Injury</em> (<em>RSI</em>) cover an
+	array of poorly understood soft tissue problems.
+
+	<a name="Personalstory"><h3>Personal story</h3></a> I am
+	recovering from a such a problem, a typing injury sustained in
+	December of 1992 (tendinitis in forearms).  In the beginning,
+	I went through multiple cortisone injections, heat and cold
+	treatments, massage, physiotherapy, muscle release therapy,
+	arm braces, casts, and long periods with minimum typing.  For
+	several years, I let my wife drive; I pushed typing work onto
+	my co-authors or secretaries; and I experimented relentlessly
+	with alternative treatments and input devices.  The first four
+	years, nothing helped---except not typing.  Then,
+	DragonDictate, an early speech recognition program, together
+	with foot switches, slowly allowed me to use my arms less.
+	<p>
+	  I have tried most kinds of ``ergonomic'' aids available:
+	  dozens of pointing devices, several keyboards, and various
+	  instruments for stabilizing upper extremities.  I have
+	  concluded that most are ineffective and that some are
+	  harmful.  Initial positive impressions almost always turned
+	  out to be wrong.  There is some commercially available
+	  equipment that I prefer, see <a
+					  href="input_devices/index_setup.html">my setup</a>.
+	</p>
+	<p>
+	  Additionally, I have vigorously pursued ideas of my own.  I
+	  have constructed three kinds of keyboards, several foot
+	  switch arrangements, and a dozen mouse designs.  They have
+	  generally failed my own trials. The exceptions are the ideas
+	  I put forward in <a href="input_devices/index.html">Input devices,
+	    a usage-driven approach</a>.  
+	</p>
+	<p>Speech recognition plays a very important role in my daily
+	  work.  I have found dictation system user interfaces rather
+	  unusable because of their slowness and incompleteness.  For
+	  six years, I have researched alternatives.  Out of these
+	  frustrating efforts has emerged an editing language I call
+	  <a href="ShortTalk/index.html">ShortTalk</a>.  Measurements
+	  indicate that ShortTalk combined with limited pointing on
+	  the average may be much faster than conventional means of
+	  editing.
+	</p>
+	<p>Lately, I can easily type for an hour or so, and finally my
+	  arms are well enough that I can travel with a normal load of
+	  luggage.  But half a day at the keyboard still produces
+	  flare-ups lasting a couple of days.  With my workspace setup
+	  explained in <a href="index_uisummary.html">User interface
+	    summary</a>, I can work all day with no adverse affects.
+	</p>
+	<h3>Added August, 2002</h3> <p> In the spring of this year,
+	  around the time I wrote the description above, I started
+	  old-fashioned strength training with handweights.  I tried
+	  that before but gave up because of pain.  When I started
+	  again, my dominant arm (which had been hurting me the most)
+	  was markedly weaker than the non-dominant one.  After
+	  six-months of training, I am handling 30 lbs. weights (along
+	  with smaller ones depending on the exercise), and pain
+	  levels have subsided further.  Then, interestingly, I just
+	  found out, see sidebar, that strength training according to
+	  a new tendinopathy paradigm is the primary treatment, not
+	  rest, heat, massage, or stretching.  However, I wonder
+	  whether not the drastic reduction of the offensive ways of
+	  working that led to the injury should still be a primary
+	  intervention as well.  Also, I find it difficult to gauge
+	  how much pain should be endured during exercise; sometimes,
+	  I find myself hurting for several days after, but in the
+	  end, the effect seems to be positive.  
+
+	    <h3>Added September, 2003.</h3> <p>This will be the last
+	      update because there has been slow but tremendous
+	      progress over the last year.  I'm still using both foot
+	      keyboard and speech recognition to distribute the load
+	      of working on computers.</p>
+	</p>
+      </tab>
+    </tabs>
+  </body>
+</html>
+

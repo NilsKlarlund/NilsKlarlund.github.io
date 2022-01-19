@@ -1,0 +1,80 @@
+<?dsd URI="dsd.dsd"?>
+
+<DSD IDRef="person" DSDVersion="1.0">
+
+  <?include URI="generic-list.dsd"?>
+
+  <!-- A person consists of three elements: forenames,
+  surname, and webbs in any order -->
+
+  <ElementDef ID="person">    
+
+    <Element IDRef="forenames"/>
+    <Element IDRef="surname"/>
+    <Element IDRef="webbs"/>
+  </ElementDef> 
+
+  <!-- forenames elements consist of an oList element -->
+  
+  <ElementDef ID="forenames">
+    <Element IDRef="oList"/>
+  </ElementDef>
+  
+  <!-- We augment the definition of what's inside listItem elements
+  inside oList elements: the new use is that listItem elements inside
+  oList elements inside forenames elements contain a name
+  element -->
+
+  <ConstraintDef RenewID="listItem-constraint">
+    <!-- Preserve old constraint  -->
+    <Constraint CurrIDRef="listItem-constraint"/>
+    <!-- Add additional use -->
+    <If>
+      <Context>
+	<Element Name="forenames"/>
+	<Element Name="oList"/>
+	<Element Name="listItem"/>
+      </Context>
+      <Then><Element IDRef="name"/></Then>
+    </If>
+  </ConstraintDef>
+
+  <!-- name elements contain character data -->
+
+  <ElementDef ID="name">
+    <StringType/>
+  </ElementDef>
+
+  <!-- surname elements contain character data -->
+  
+  <ElementDef ID="surname">
+    <StringType/>
+  </ElementDef>
+
+  <!-- webbs elements contain oList elements -->
+
+  <ElementDef ID="webbs">
+    <Element IDRef="oList"/>
+  </ElementDef>
+
+  <!-- and these elements in turn contain listItem elements that
+  contain a qualification element -->
+  <ConstraintDef RenewID="listItem-constraint">
+    <Constraint CurrIDRef="listItem-constraint"/>
+    <If>
+      <Context>
+	<Element IDRef="webbs"/>
+	<Element IDRef="oList"/>
+	<Element IDRef="listItem"/>
+      </Context>
+      <Then><Element IDRef="qualification"/></Then>
+    </If>
+  </ConstraintDef>
+
+  <!-- qualification elements contains character data -->
+  <ElementDef ID="qualification">
+    <StringType/>
+  </ElementDef>
+
+</DSD>
+

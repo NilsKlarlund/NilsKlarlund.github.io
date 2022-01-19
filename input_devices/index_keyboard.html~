@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xml:lang='en' lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title xmlns=''>Input devices: a usage-driven approach</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' xmlns=''/>
+    <meta name='author' content='Nils Klarlund' xmlns=''/>
+    <meta name='copyright' content='Nils Klarlund, 2002' xmlns=''/>
+    <meta name='keywords' content='Nils Klarlund, input devices, RSI,      CTD, mouse design, keyboard design, foot keyboard, foot switches,      scroll wheel' xmlns=''/>
+    <link rel='stylesheet' type='text/css' href='../klarlund.css' xmlns=''/>
+    <link rel='stylesheet' type='text/css' href='index.css' xmlns=''/>
+    
+    
+  </head>
+  <body>
+    <table class='columntwo'>
+      <tr>
+        <td valign='top' class='firstcolumn'>
+          <div class='contents'>
+            <h2>Contents</h2>
+            <ul>
+              <li>
+                <h3>
+                  <a title='Introduction' class='tabnotselected' href='index.html' xmlns=''>Introduction</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a title='Mouse' class='tabnotselected' href='index_mouse.html' xmlns=''>Mouse</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <span title='Keyboard' class='tabselected' xmlns=''>Keyboard</span>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a title='Foot Pedals' class='tabnotselected' href='index_footpedals.html' xmlns=''>Foot Pedals</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a title='Skeptical Remarks' class='tabnotselected' href='index_skepticalremarks.html' xmlns=''>Skeptical Remarks</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a title='My Own Setup' class='tabnotselected' href='index_myownsetup.html' xmlns=''>My Own Setup</a>
+                </h3>
+              </li>
+            </ul>
+          </div>
+          <div class='related'>
+            <h2>Related</h2>
+            <h3>
+              <a href='../index_uisummary.html'>A Low-Impact Workspace</a>
+            </h3>
+            <div>
+	A description of how a low-impact workspace can be put
+	together using speech recognition and techniques in this essay.
+      </div>
+            <h3>
+              <a href='../ShortTalk'>Voice: a Misunderstood     Resource</a>
+            </h3>
+            <div>
+         A
+    billion people use keyboards.  That is an extraordinary proof of
+    how the human brain effectively meets the computer: through a set
+    of symbols that are unconsciously combined.  ShortTalk is designed
+    according to the same philosophy, making it several times more
+    efficient than current speech user interfaces.
+</div>
+            <h3>
+              <a href='../index_ctd-rsi.html'>Background</a>
+            </h3>
+            <div>My
+	motivation for researching user interfaces is a long-standing
+	typing injury.
+      </div>
+          </div>
+        </td>
+        <td valign='top' class='secondcolumn'>
+    <h1>Input devices: a usage-driven approach</h1>
+    <h2 class='sectionheader'>Keyboard</h2>
+          <div/>
+      <table class='quotebox'>
+        <tr>
+          <td/>
+          <td/>
+          <td>
+            <blockquote>
+              <em>Pointers—self taught typists who hunt and peck
+		  instead of touch-type—...are the least likely to be hurt
+		  from their style.
+		</em>
+              <div>Pascarelli &amp; Quilter  in <em>Repetitive stress injury</em>
+              </div>
+            </blockquote>
+          </td>
+        </tr>
+      </table>
+      <p>From bitter experience, I don't believe that the keyboard
+	  can be improved much.  Three times, and without success, I
+	  have built whole keyboards from scratch.  Nevertheless,
+	  there are a few changes I would like to see done to the
+	  keyboard:
+	  <ul>
+              <li>A smaller footprint allowing more rest areas for hands
+	    and a mousing area closer to the center of the body.</li>
+          <li>Widely spaced modifier keys so they can be pressed by
+	    the side of your hand instead of requiring pinky
+	    contortions.</li>
+          <li>Mouse buttons on the side so as to allow a buttonless
+	    <a href='index_mouse.html'>mouse</a>.
+	    </li>
+          <li>A scroll tread or belt on the side of keyboard to make
+	    browsing possible without dependence on finger-skills.  A
+	    large scroll wheel might also be sufficient instead of the
+	    more complicated thread mechanism.</li>
+          <li>A numeric keypad that does not make the keyboard as
+	    wide as normal 101-key models.</li>
+          <li>A flat design, akin to that of a laptop keyboard, but
+	      with 3mm key travel and good mechanical feed-back.
+	    </li>
+        </ul>
+      </p>
+      <h3>Why keyboards have gotten less ergonomic</h3>
+      <p>
+	  For modifier keys, such as <tt>Ctrl</tt> and <tt>Shft</tt>,
+	  ergonomicity has declined.  When they are widely spaced
+	  apart <img width='100' align='right' src='../photos/spacing-left-modifier.jpg' alt='Widely spaced    Ctrl and Alt keys'/> as on keyboards made in the mid '90s,
+	  these keys can be depressed easily with the side of the hand
+	  or with the outer side of the curled-up little finger, all
+	  while the thumb is facing upwards<img width='100' align='left' alt='Pressing modifier    keys without strained uses of fingers' src='../photos/good-modifier-use.jpg'/>.  In
+	  this way, the strenuous finger work usually associated with
+	  chording is avoided.  Unfortunately, modern keyboards suffer
+	  from extraneous OS-specific keys that prevent this technique
+	  from being used.  (Except if these keys are uprooted or
+	  lowered.)  On a flat keyboard, such as on a notebook
+	  computer, fingers are even further restrained by the
+	  flatness from hitting keys in a variety of ways—something
+	  that is likely an ergonomic drawback.
+	</p>
+      <h3>A keyboard layout proposal</h3>
+      <p>A keyboard  
+	layout following these ideas mentioned above is suggested in 
+	<a href='#fig1'>Figure 1</a>.  Below it's shown (left) how a
+	large, comfortable belt may be placed on the left side of the
+	keyboard, along with mouse buttons; the side of the hand
+	(right), not the fingers, securely moves the belt.
+	</p>
+      <div class='picture'>
+        <img src='../photos/scroll-keyboard1.jpg'/>
+        <img src='../photos/scroll-keyboard2.jpg'/>
+      </div>
+      <p>These ideas and the figure below are from AT&amp;T
+          Technical Disclosure <a href='../keyboard/keyboard.html'>A keyboard design</a> by Nils Klarlund.
+	<hr/>
+        <a name='fig1'>
+          <div style='text-align: center; position: absolute; left: 0;' class='picture'>
+            <img alt='Keyboard layout' src='../gifs/scroll-keyboard.gif'/>
+            <br/>
+            <a href='../keyboard/keyboard.html'>Click for bigger picture</a>
+          </div>
+        </a>
+      </p>
+      
+      <div style='height: 520;'>
+      </div>
+    
+  </td>
+      </tr>
+    </table>
+    <div class='footer'>
+      <hr/>
+      <br/>
+      <div>
+        <span class='printableversion'>
+          <a href='index_print.html'>
+            <img style='margin: 3;' align='center' src='../photos/printsymbol.gif' alt='printer symbol'/>printer-friendly version</a>
+        </span>
+        <span class='klarlundhome'>
+          <a href='http://www.research.att.com/~klarlund'>
+            <img style='margin: 3;' align='center' src='../photos/homesymbol.gif' alt='home symbol'/>Nils
+		Klarlund home</a>
+        </span>
+        <span class='prevnext'>
+          <a href='index_mouse.html' class='mylink'>previous</a>     <a href='index_footpedals.html' class='mylink'>next</a>
+        </span>
+      </div>
+      <br/>
+      <br/>
+      <hr/>
+      <table>
+        <tr>
+          <td align='left' width='70%'>
+	By Nils Klarlund.
+      
+	Copyright ©Nils Klarlund, 2002.
+       
+	This Web page is designed for UTF-8,
+	XHTML-compliant browsers, like Netscape 6, Mozilla, Opera, and IE
+	5.</td>
+          <td valign='top' align='right' width='30%'>
+            <a href='http:www.w3.org/Style/XSL' style='font-family:  sans-serif; font-size: 12pt; font-weight: bold; color:  black; text-decoration: none;'>XSLT &amp;</a>
+            <a href='http://www.python.org'>
+              <img border='0' align='right' vspace='10' alt='PythonPowered' src='../gifs/PythonPowered.gif'/>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+</html>

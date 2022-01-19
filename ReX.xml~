@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Nils Klarlund -- ReX, towards a foundation for multimodal,
+    multimedia applications</title>
+    <meta name="keywords" content="Nils Klarlund, progress measures"/>
+    <link rel="stylesheet" type="text/css" href="klarlund.css"/>
+  </head>
+
+  <body>
+
+    <h1>ReX---towards a foundation for multimodal,
+    multimedia applications</h1>
+
+	<p>It is a fascinating fact that automated, interactive
+	telephone systems, often called IVR-systems (IVR=Interactive
+	Voice Response), remain frustratingly difficult to use.  In
+	large part, the reason is that their programming is so
+	difficult.  So here is an area where programming language
+	research must be of importance?  Unfortunately, no convincing
+	solution ever emerged, and now something an order of magnitude
+	more complicated is becoming commonplace: interactive,
+	multimedia content!
+	</p>
+
+	<p>Fortunately, interesting proposals have been formulated.
+	For example, the W3C has proposed SMIL, a declarative notation
+	for synchronizing media streams.  But on the input side, which
+	may include handwriting recognition and speech recognition on
+	small devices, progress has been limited.  Notations like
+	VoiceXML lack a solid programming language foundation, and
+	also do not take into account the fickleness of speech input.
+	In particular, programmers must manually construct support for
+	error correction.
+	</p>
+
+	<p>We have tried to address these issues in our work on ReX, a
+	reactive language for interactive, multimedia presentations.
+	You can see our ideas in <a
+	href="papers/Rex-Eurospeech01.pdf">our paper</a>.
+	</p>
+
+  </body>
+</html>
+

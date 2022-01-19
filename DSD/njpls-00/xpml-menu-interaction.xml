@@ -1,0 +1,86 @@
+<?dsd URI="../dsd.dsd"?>
+  
+<DSD IDRef="XPML" DSDVersion="1.0">
+
+<Title>XPML: menu interactions</Title>
+  <Version>.001</Version>
+
+  <?include URI="xpml-core.dsd"?>
+  
+  <!-- define some variations on how a menu is interpreted -->	
+  <StringTypeDef ID="Menu-interaction-name">	
+    <Union> 
+      <String Value="basic"/>
+      <String Value="optional"/>
+      <String Value="confirmation"/>
+      <String Value="timeoutconfirmation"/>
+    </Union>
+  </StringTypeDef>  
+
+  <!-- Add an interaction attribute to menu-constraint -->
+  <ConstraintDef RenewID="menu-constraint">
+
+    <Constraint CurrIDRef="menu-constraint"/>  
+    
+    <AttributeDecl Name="interaction" Optional="yes">
+      <StringType IDRef="Menu-interaction-name"/>
+    </AttributeDecl>
+
+    <!-- Some values of the interaction attribute entail that
+    more message elements are possible -->
+    <If>
+      <Or> <Attribute Name="interaction" Value="basic"/>
+	<Attribute Name="interaction" Value="optional"/>
+      </Or>
+      <Then>
+	<Element Name="counttimeout" Defaultable="yes">
+	  <Constraint IDRef="message-attributes"/>
+	  <Content IDRef="menu-message-content"/> 
+	</Element>
+	<Element Name="pause" Defaultable="yes">
+	  <Constraint IDRef="message-attributes"/>
+	  <Content IDRef="menu-message-content"/> 
+	</Element>
+      </Then>
+    </If>
+  </ConstraintDef>
+
+  <!-- Here are the defaults for the new messages -->
+  <Default>
+    <Or><Context><Element Name="select"/></Context><Context><Element Name="menu"/></Context>
+ </Or>
+    <DefaultContent>
+      <help>No help is available.</help>
+    </DefaultContent>
+    <DefaultContent>
+      <initial> <enumerate><option/> Press <emph><dtmf/></emph>.</enumerate>
+      </initial>
+    </DefaultContent>
+    <DefaultContent>
+      <toomanyerrors>Sorry, too many errors.</toomanyerrors>
+    </DefaultContent>
+    <DefaultContent>
+      <timeout>You have exceeded the time limit.</timeout>
+    </DefaultContent>
+    <DefaultContent>
+      <toomanyerrors>Sorry, too many errors.</toomanyerrors>
+    </DefaultContent>
+    <DefaultContent>
+      <counttimeout>Sorry, too many timeouts.</counttimeout>
+    </DefaultContent>
+    <DefaultContent>
+      <pause>	
+	Pausing.  Press pound sign to continue.
+      </pause>  
+    </DefaultContent> 
+  </Default>
+  
+  <!-- Also, there's a default for the interaction attribute itself -->
+  <Default>
+    <Or><Context><Element Name="select"/></Context><Context><Element Name="menu"/></Context></Or>
+    <DefaultAttribute Name="interaction" Value="basic"/>
+  </Default>
+   
+</DSD>
+
+

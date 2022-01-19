@@ -1,0 +1,186 @@
+<myhtml xmlns:myxml="xxx" xmlns:DSD="yyy">
+<head>
+<title>Issues</title>
+</head>
+  
+  <body>
+    This is a list of issues that we would like address in the future.
+    Some are constructive wishes, others are just criticisms.
+
+    (The DSD home page is 
+    <a href="http://www.brics.dk/DSD/">http://www.brics.dk/DSD/</a>.)
+
+    <sub>Organizational</sub>
+    
+    <subsubsub>Work within the W3C</subsubsub> 
+
+    We would like to see our work folded into the W3C; currently, we
+    are in a holding pattern.  We hope to contribute later.
+
+    <sub>DSD language</sub>
+    
+    <subsub>General</subsub> 
+    
+    <subsubsub>Backtracking, breadth-first, incremental
+      rendering</subsubsub>
+  
+    The current element default insertion mechanism involves
+    backtracking; without some analysis, a DSD processor cannot output
+    the children of an element before all of them have been analyzed.
+    This is not quite as bad as it sounds when it comes to incremental
+    rendering, since the DSD processor essentially works in a
+    breadth-first manner.  But it might be a problem for say a root
+    element that contains 2000 children.  The issue is: should the
+    parsing of elements be arranged so that a DFS DSD processor can be
+    guaranteed to work in an algorithmic online fashion.  XSLT aims at
+    doing that (but without guarantees as well).
+
+
+    <subsubsub>Idempotency of default insertion</subsubsub> Is it a
+    goal that default insertion should be idempotent?  DSDs 
+    defaults currently are not.
+    
+    <subsubsub>Element insertion to complicated?</subsubsub> The two
+    previous issues could be addressed by making the motion of content
+    defaults less ambitious.  However, we have found it difficult to
+    prune the element insertion notion without losing the ability to
+    cope with a lot of common cases (such as defaults for elements in
+    sequences).
+
+    <subsubsub>DSD fragments in application documents</subsubsub>
+    Apart from default definitions, we currently do not support
+    anything similar to the document type definitions that are allowed
+    in DTDs.
+
+    <subsubsub>Restricted DSD defaults in application documents
+    </subsubsub>
+    Currently, document processing time is quadratic in the total size
+    of the DSD defaults and the rest of the document.  Should there be
+    a restricted set of defaults that would guarantee a total linear
+    time?
+
+    <subsubsub>Name spaces</subsubsub>
+    To be done.  The current XML Schema proposal has some interesting ideas.
+    
+    <subsubsub>ID spaces</subsubsub> When composing DSDs using the
+    include mechanism, one runs the risk of ID collisions.  It looks
+    like there is an obvious mechanism analogous to the namespace
+    mechanism for qualifying IDs with namespace abbreviations.  This
+    solution would be substantially simpler than current XML Schema
+    considerations.
+
+    <subsubsub>A copy calculus with substitutions</subsubsub> 
+
+    There are some practical grammar situations that defeat the
+    current mechanism.  Assume that a fundamental concept in an XML
+    language is the <tt>inline</tt> content:
+    <example>
+      <myxml>
+	<ContentDef ID="inline">
+	  <Union>
+	    <Element Name="emph">
+	      <Content IDRef="inline"/>  
+	    </Element>   
+	    <StringType/>
+	  </Union>
+	</ContentDef>
+      </myxml>
+    </example>
+    Now we define a variation called <tt>inline-with-dtmf</tt>.  It's
+    purpose is to allow an element called <tt>dtmf</tt> whereever
+    <tt>inline</tt> may occur:
+    <example>
+      <myxml>
+	<ContentDef ID="inline-with-dtmf">
+	  <Union>
+	    <Element Name="dtmf"/>
+	    <Content IDRef="inline"/>  
+	  </Union>
+	</ContentDef>
+      </myxml>
+    </example>
+    Unfortunately, this definition is not quite right: an
+    <tt>emph</tt> element inside <tt>inline-with-dtmf</tt> content may
+    not itself contain <tt>dtmf</tt> elements!  Instead, what we need
+    is a copy of the <tt>inline</tt> definition when it is used inside
+    the definition of <tt>inline-with-dtmf</tt>; in this copy,
+    however, IDRefs to <tt>inline</tt> should be replaced by
+    IDRefs to <tt>inline-with-dtmf</tt>.  A possible construct would be:
+    <example>
+      <myxml>
+	<ContentDef ID="inline-with-dtmf">
+	  <Union>
+	    <Element Name="dtmf"/>
+	    <Copy IDRef="inline">
+	      <Content LetId="inline">  
+		<Content IDRef="inline-with-dtmf"/>
+	      </Content>
+	    </Copy>
+	  </Union>
+	</ContentDef>
+      </myxml>
+    </example>
+    Admittedly, this is getting complicated!  Alternatives may be based
+    on let-calculi found in functional programming languages.
+
+    <subsub>Content</subsub> 
+
+    <subsubsub>Content declarations</subsubsub>Consider treating
+    content expressions in a constraint in a way that more explicitly
+    points to their declarative nature.  For example, introduce a
+    <tt>ContentDecl</tt> wrapper reminiscent of what DSDs do for
+    attributes.
+  
+  
+    <subsub>Context</subsub>
+
+    <subsubsub>CSS conformance</subsubsub>
+    Consider an even closer relationship to CSS.
+
+    <subsubsub>CSS syntax</subsubsub> Design a readable, concrete
+    syntax that extends CSS for our contexts.  It would be very
+    similar to the one produced by our <tt>dsd2html</tt> XSLT
+    stylesheet.
+
+    <subsubsub>XSLT patterns</subsubsub> As an alternative, provide
+    XPath syntax for contexts.  Xpath is considerably more expressive
+    than CSS.  But it is a problem if contexts may probe descendants
+    (as in XPath): the set of descendants is only determined after
+    inserting defaults, so that looks like an inconsistent semantics.
+
+    <subsubsub>Test on constraint IDs</subsubsub> Currently, contexts
+    made depend on the assigned Element IDs only.  Consider tests on
+    constraint and other IDs.
+
+     <subsub>Redefinitions</subsub>
+
+    <subsubsub>Monotone redefinitions</subsubsub> Consider restricted
+    ways of doing redefinitions so that it may be insured that a
+    redefined DSD expresses a superset of the original class of
+    documents.
+
+    <subsubsub>Assertions</subsubsub> Consider abbreviations that
+    stand for assertions proposed in
+    <ref>http://www.w3.org/People/Raggett/dtdgen/Docs/</ref>.  For
+    example, an operator <tt>AddToConstraint</tt> may take three
+    arguments: an old constraint, a new constraint, and a Boolean
+    expression.  Its meaning is to extend the old constraint with the
+    new constraint, conditioned by the Boolean expression,
+
+
+
+    <sub>DSD processor</sub>
+
+    <subsubsub>Optimize</subsubsub> We're confident that the DSD
+    processor could be sped up quite significantly.
+
+   <subsubsub>Mona</subsubsub>
+    Use the <ref href="http://www.brics.dk/Mona">Mona automaton package</ref>
+    to speed the processing of regular expressions.
+
+    <img src="http://www.brics.dk/cgi-amoeller/DSD/count?issues" border="0"
+	 height="1" width="1" />
+  </body>
+</myhtml>
+
+

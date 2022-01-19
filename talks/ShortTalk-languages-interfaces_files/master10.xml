@@ -1,0 +1,120 @@
+<xml xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:p="urn:schemas-microsoft-com:office:powerpoint"
+ xmlns:oa="urn:schemas-microsoft-com:office:activation">
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="10"/>
+ </o:shapelayout><p:colorscheme
+  colors="#003399,#FFFFFF,#000514,#E5E5FF,#0099CC,#A886E0,#FFCC00,#FFFFCC"/>
+ <v:background id="_x0000_s10241" o:bwmode="white" fillcolor="#039 [0]"/>
+ <p:shaperange id="_x0000_s10242">
+  <v:shapetype id="_x0000_s10242" style='position:absolute;left:36pt;top:492.25pt;
+   width:168pt;height:37.5pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m,l,21600r21600,l21600,xe" filled="f"
+   fillcolor="#09c [4]" stroked="f" strokecolor="white [1]">
+   <v:fill color2="#039 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000514 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="dateTime" position="2" size="half"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s10243">
+  <v:shapetype id="_x0000_s10243" style='position:absolute;left:516pt;top:492pt;
+   width:168pt;height:37.5pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m,l,21600r21600,l21600,xe" filled="f"
+   fillcolor="#09c [4]" stroked="f" strokecolor="white [1]">
+   <v:fill color2="#039 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000514 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="slideNumber" position="4" size="quarter"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s10244">
+  <v:group id="_x0000_s10244" style='position:absolute;left:0;top:0;width:719.75pt;
+   height:539.375pt' coordsize="5758,4315">
+   <v:group id="_x0000_s10245" style='position:absolute;left:1728;top:2230;
+    width:4027;height:2085' coordorigin="1728,2230" coordsize="4027,2085"
+    o:userdrawn="t">
+    <v:shape id="_x0000_s10246" style='position:absolute;left:1728;top:2644;
+     width:2882;height:1671' coordsize="2882,1671" o:bwmode="undrawn" path="m2773,544r-33,-16l2692,506r-60,-22l2561,457r-81,-33l2388,397,2203,343,2078,310,1970,277r-92,-32l1807,212r-65,-33l1693,152r-38,-27l1628,103,1606,81,1590,60r-5,-17l1579,27r6,-22l1585,r-17,27l1557,49r,27l1568,98r22,22l1617,141r33,22l1688,185r49,22l1791,228r114,39l2040,310r142,38l2285,381r97,27l2464,435r76,27l2605,484r54,22l2708,528r32,16l2768,560r16,17l2795,593r5,22l2795,642r-11,22l2762,691r-32,22l2692,735r-49,21l2589,778r-60,22l2458,822r-76,21l2301,865r-87,22l2030,930r-207,49l1606,1034r-228,60l1145,1164r-233,77l673,1328,440,1431,217,1545,,1671r353,l554,1567r200,-98l955,1388r190,-77l1335,1241r184,-55l1693,1132r168,-49l2019,1045r146,-38l2301,974r125,-27l2534,914r92,-22l2702,865r60,-27l2800,816r27,-22l2849,767r16,-22l2876,724r6,-22l2876,658r-22,-38l2833,588r-33,-28l2773,544r,xe"
+     fillcolor="#039 [0]" stroked="f">
+     <v:fill color2="fill darken(232)" angle="-90" method="linear sigma"
+      focus="100%" type="gradient"/>
+     <v:path arrowok="t"/>
+    </v:shape><v:shape id="_x0000_s10247" style='position:absolute;left:4170;
+     top:2671;width:1259;height:811' coordsize="1259,811" o:bwmode="undrawn"
+     path="m1259,615r-11,-27l1237,566r-21,-27l1188,517r-65,-38l1042,441,944,408,841,381,727,348,613,321,499,294,391,261,288,229,195,196,119,152,54,109,33,87,16,60,5,33,,,,6r,5l,38,5,60,16,87r17,27l54,142r33,32l125,207r54,33l244,278r82,32l418,348r108,33l657,414r92,21l830,463r71,27l966,512r49,27l1053,566r27,27l1102,620r10,28l1118,675r-6,22l1096,724r-16,22l1053,767r-38,22l977,811r70,-22l1107,767r49,-21l1199,724r27,-22l1248,675r11,-27l1259,615r,xe"
+     fillcolor="#039 [0]" stroked="f">
+     <v:fill color2="fill darken(232)" angle="-135" method="linear sigma"
+      focus="100%" type="gradient"/>
+     <v:path arrowok="t"/>
+    </v:shape><v:shape id="_x0000_s10248" style='position:absolute;left:2900;
+     top:3346;width:2849;height:969' coordsize="2849,969" o:bwmode="undrawn"
+     path="m92,958l,969r391,l434,947r49,-33l554,876r81,-38l727,794,836,745,961,696r141,-54l1259,582r174,-60l1623,462r206,-59l2057,343r244,-60l2567,223r282,-60l2849,r-32,16l2773,33r-54,21l2648,76r-76,22l2491,120r-92,27l2301,169r-206,54l1889,277r-201,49l1590,354r-87,27l1107,506,912,577,727,647,548,718,380,794,228,876,92,958r,xe"
+     fillcolor="#039 [0]" stroked="f">
+     <v:fill color2="fill darken(209)" method="linear sigma" type="gradient"/>
+     <v:path arrowok="t"/>
+    </v:shape><v:shape id="_x0000_s10249" style='position:absolute;left:2748;
+     top:2230;width:3007;height:2085' coordsize="3007,2085" o:bwmode="undrawn"
+     path="m1427,441r6,33l1444,501r16,27l1482,550r59,43l1623,637r92,33l1818,702r109,33l2041,762r114,27l2269,822r103,27l2464,882r87,38l2616,958r22,22l2659,1007r17,22l2681,1056r,27l2676,1105r-11,22l2643,1149r-27,21l2583,1187r-38,21l2502,1225r-54,16l2388,1257r-60,17l2258,1290r-152,38l1932,1372r-190,49l1531,1475r-223,65l1069,1617r-249,92l554,1818,282,1943,,2085r152,l244,2074r142,-82l537,1910r163,-76l879,1763r185,-70l1259,1622r402,-125l1748,1470r97,-28l2046,1393r206,-54l2458,1285r93,-22l2643,1236r87,-22l2806,1192r70,-22l2931,1149r43,-17l3007,1116r,-245l2941,860r-81,-16l2773,827,2670,806,2567,784,2458,757,2241,702,2138,670r-92,-33l1959,604r-76,-38l1824,534r-44,-39l1769,474r-11,-17l1753,436r5,-17l1780,381r33,-38l1862,316r59,-27l1986,267r76,-22l2149,229r87,-16l2431,180r196,-22l2827,125r93,-16l3007,87r,-87l2909,22,2795,44,2676,66,2551,82r-266,38l2155,136r-125,22l1905,174r-114,28l1688,229r-87,32l1525,300r-54,38l1455,359r-17,28l1427,414r,27l1427,441xe"
+     fillcolor="#039 [0]" stroked="f">
+     <v:path arrowok="t"/>
+    </v:shape><v:shape id="_x0000_s10250" style='position:absolute;left:4501;
+     top:2317;width:1248;height:539' coordsize="1248,539" o:bwmode="undrawn"
+     path="m,332r,28l5,387r22,27l54,436r38,27l141,490r54,22l255,539,212,517,179,490,157,468,141,447r-5,-22l136,403r5,-22l157,365r22,-22l201,327r65,-33l353,262r92,-28l554,213,662,191,890,153,993,136r98,-16l1178,115r70,-11l1248,r-87,22l1069,38,874,71,673,93,483,126r-92,16l309,158r-81,22l163,202r-60,27l54,256,22,294,,332r,xe"
+     fillcolor="#039 [0]" stroked="f">
+     <v:fill color2="fill darken(224)" angle="-135" method="linear sigma"
+      type="gradient"/>
+     <v:path arrowok="t"/>
+    </v:shape></v:group><v:shape id="_x0000_s10251" style='position:absolute;
+    left:3322;top:1341;width:1825;height:1537' coordsize="2296,1469" o:bwmode="undrawn"
+    path="m771,1088r211,-27l1178,1034r179,-22l1520,985r146,-28l1796,930r120,-33l2013,870r87,-38l2171,800r49,-44l2263,712r22,-43l2296,614r-6,-54l2269,500r-28,-43l2198,408r-54,-44l2079,321r-71,-44l1927,234,1769,157r-81,-32l1612,92,1536,65,1476,43,1422,27,1384,10,1357,5,1346,r152,54l1655,119r152,66l1948,255r65,33l2068,326r54,38l2171,402r38,38l2236,478r16,44l2263,560r-5,38l2241,636r-27,33l2171,702r-49,27l2062,756r-65,22l1921,800r-87,21l1748,843r-196,33l1351,908r-217,33l923,968,716,995r-195,33l434,1044r-81,22l277,1082r-71,22l147,1126r-55,22l54,1175r-32,27l6,1229,,1262r11,33l27,1327r27,28l98,1382r43,22l196,1425r65,22l326,1469r-60,-27l217,1414r-43,-27l147,1360r-22,-27l120,1306r5,-28l141,1257r33,-28l212,1208r60,-22l342,1164r81,-22l527,1121r114,-17l771,1088r,xe"
+    fillcolor="#039 [0]" stroked="f">
+    <v:fill color2="fill darken(216)" angle="-135" method="linear sigma"
+     type="gradient"/>
+    <v:path arrowok="t"/>
+   </v:shape><v:shape id="_x0000_s10252" style='position:absolute;width:5758;
+    height:1776' coordsize="5740,1906" o:bwmode="undrawn" path="m,l,1906r5740,l5740,,,,,xe"
+    fillcolor="#000514 [2]" stroked="f">
+    <v:fill color2="#039 [0]" focus="100%" type="gradient"/>
+    <v:path arrowok="t"/>
+   </v:shape></v:group></p:shaperange>
+ <p:shaperange id="_x0000_m10253">
+  <v:shapetype id="_x0000_m10253" style='position:absolute;left:36pt;top:21.625pt;
+   width:9in;height:90pt;v-text-anchor:middle' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m,l,21600r21600,l21600,xe" filled="f"
+   fillcolor="#09c [4]" stroked="f" strokecolor="white [1]">
+   <v:fill color2="#039 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000514 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" rotation="t" grouping="t"/>
+   <p:placeholder type="title"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_s10254">
+  <v:shapetype id="_x0000_s10254" style='position:absolute;left:246pt;top:492pt;
+   width:228pt;height:37.5pt;v-text-anchor:bottom' coordsize="21600,21600"
+   o:master="" o:spt="1" path="m,l,21600r21600,l21600,xe" filled="f"
+   fillcolor="#09c [4]" stroked="f" strokecolor="white [1]">
+   <v:fill color2="#039 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000514 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="footer" position="3" size="quarter"/>
+  </v:shapetype></p:shaperange>
+ <p:shaperange id="_x0000_m10255">
+  <v:shapetype id="_x0000_m10255" style='position:absolute;left:36pt;top:126pt;
+   width:9in;height:356.375pt' coordsize="21600,21600" o:master="" o:spt="1"
+   path="m,l,21600r21600,l21600,xe" filled="f" fillcolor="#09c [4]" stroked="f"
+   strokecolor="white [1]">
+   <v:fill color2="#039 [0]" o:detectmouseclick="t"/>
+   <v:stroke joinstyle="miter" o:forcedash="t"/>
+   <v:shadow color="#000514 [2]"/>
+   <v:path gradientshapeok="t" o:connecttype="rect"/>
+   <o:lock v:ext="edit" grouping="t"/>
+   <p:placeholder type="body" position="1"/>
+  </v:shapetype></p:shaperange>
+</xml>

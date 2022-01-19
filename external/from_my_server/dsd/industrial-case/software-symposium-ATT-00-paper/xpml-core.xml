@@ -1,0 +1,614 @@
+<?dsd URI="http://www.brics.dk/DSD/dsd.dsd"?>
+
+<DSD IDRef="XPML" DSDVersion="1.0">
+ 
+  <Title>XPML</Title>
+  <Version>.001</Version>
+
+  <!-- This document describes the tentative syntax of XPML,
+       the XMLized version of AT&T's PML language.  The specification
+       is not yet complete. -->
+  
+  <BriefDoc>An XPML program consists of a head and a body section.</BriefDoc>
+  
+  <ElementDef ID="XPML">
+    <Sequence>
+      <BriefDoc>The head element may be omitted.</BriefDoc>
+      <Element Name="head" Defaultable="yes">
+	<Constraint IDRef="head-constraint"/>
+      </Element>
+      <BriefDoc>The body element is mandatory.</BriefDoc>
+      <Element Name="body"> 
+	<Constraint IDRef="body-constraint"/>
+      </Element>
+    </Sequence>
+  </ElementDef>
+
+  <!-- HEAD CONSTRAINT -->
+
+  <ConstraintDef ID="head-constraint">
+    <BriefDoc>The title element is a string with no markup.</BriefDoc>
+    <Optional>
+      <Element Name="title">
+	<StringType/>
+      </Element>
+    </Optional>
+    <ZeroOrMore>
+      <BriefDoc>A meta element is used as in HTML 4.0, for example, for indexing purposes.</BriefDoc>
+      <Element Name="meta">
+	<AttributeDecl Name="name"/>
+	<AttributeDecl Name="content"/>
+      </Element>
+    </ZeroOrMore>
+    <ZeroOrMore>
+      <Content IDRef="pragma"/>
+    </ZeroOrMore>
+  </ConstraintDef>
+  
+  <!-- PRAGMAS -->
+
+  <ContentDef ID="pragma">
+    <Union>
+      <Element IDRef="timeout"/>
+      <Element IDRef="version"/>
+      <Element IDRef="maintainer"/>
+    </Union>
+  </ContentDef>
+
+  <BriefDoc>The timeout element specifies an upper bound on the amount of time that may be spent on the document.</BriefDoc>
+  <ElementDef ID ="timeout">
+    <AttributeDecl Name="time">
+      <StringType IDRef="Interval"/>
+    </AttributeDecl>
+    <BriefDoc>When the time limit is reached, this URL is retrieved and interpreted.</BriefDoc>
+    <AttributeDecl Name="href">
+      <StringType IDRef="Url"/>
+    </AttributeDecl>
+    <BriefDoc>This optional attribute specifies how long to wait for the URL to be retrieved.</BriefDoc>
+    <AttributeDecl Name="urltimeout" Optional="yes">
+      <StringType IDRef="Interval"/>
+    </AttributeDecl>
+  </ElementDef>
+
+  <ElementDef ID="version">
+    <AttributeDecl Name="number">
+      <String Value="1.0"/>
+    </AttributeDecl>
+  </ElementDef>
+
+  <ElementDef ID="maintainer">
+    <AttributeDecl Name="address"/>
+    <AttributeDecl Name="loglevel" Optional="yes">
+      <StringType IDRef="Digits"/>
+    </AttributeDecl>
+  </ElementDef>
+
+  <!-- MAIN CONTENT TYPES -->
+
+  <ConstraintDef ID="body-constraint">
+    <Content IDRef="statements-in-context"/>
+  </ConstraintDef>
+
+  <ContentDef ID="statements-in-context">
+    <!-- This context sensitivity is not expressible in most schema proposals -->
+    <ZeroOrMore>
+      <BriefDoc>A statement or either an inside-form-statement (if inside a form) or a form element (if not already inside a form)</BriefDoc>
+      <Union>
+	<Content IDRef="statement"/>
+	<If>
+	  <Context><Element Name="form"/><SomeElements/></Context>
+	  <Then><Content IDRef="inside-form-statement"/></Then>
+	  <Else><Element IDRef="form"/></Else>
+	</If>
+      </Union>
+    </ZeroOrMore>
+  </ContentDef>
+
+  <ContentDef ID="statement">
+    <Union>
+      <Element IDRef="select"/>
+      <Element IDRef="a"/>
+      <Element IDRef="menu"/>
+      <Element IDRef="if"/>
+      <Element IDRef="transfer"/>
+      <Element IDRef="hangup"/>
+      <Content IDRef="inline"/>
+    </Union>
+  </ContentDef>
+
+  <ContentDef ID="inside-form-statement">
+    <Union>
+      <Element IDRef="input"/>
+      <Element IDRef="submit"/> 
+      <Element IDRef="reset"/>
+    </Union>
+  </ContentDef>
+  
+  <StringTypeDef ID="Expression">
+    <StringType/>
+  </StringTypeDef>
+  
+
+  <!-- SELECT -->
+
+  <ElementDef ID="select">
+ 
+    <OneOrMore>
+      <Element IDRef="menu-option"/>
+    </OneOrMore>
+
+    <Constraint IDRef="menu-constraint"/>
+    <Constraint IDRef="menu-dtmf-constraint"/>
+   
+  </ElementDef>
+
+  <!-- FORM -->
+
+  <ElementDef ID="form">
+    <AttributeDecl Name="action">
+      <StringType IDRef="Url"/>
+    </AttributeDecl>
+    <Content IDRef="statements-in-context"/>
+  </ElementDef>
+
+  <ElementDef ID="submit">
+  </ElementDef>
+
+  <ElementDef ID="reset">
+  </ElementDef>
+  
+  <!-- INPUT -->
+
+  <ElementDef ID="input">
+<!-- As in HTML, the type attribute determines what the input element really is  -->
+    <AttributeDecl Name="type">
+      <Union>
+	<String Value="submit"/>
+	  <String Value="text"/>
+	  <String Value="hidden"/>
+      </Union>
+    </AttributeDecl>
+    <If>
+      <Attribute Name="type" Value="submit"/>
+      <Then>
+	<AttributeDecl Name="name" Optional="yes">
+	  <StringType IDRef="Name"/>
+	</AttributeDecl>
+	<AttributeDecl Name="value" Optional="yes"/>
+	<BriefDoc>A value attribute must occur only if a name attribute also occurs.</BriefDoc>
+	<Imply>
+	  <Attribute Name="value"/>
+	  <Attribute Name="name"/>
+	</Imply>
+      </Then>
+    </If>
+    <If>
+      <Attribute Name="type" Value="text"/>
+      <Then>
+	<AttributeDecl Name="name">
+	  <StringType IDRef="Name"/>
+	</AttributeDecl>
+	<AttributeDecl Name="size" Optional="yes">
+	  <StringType IDRef="Digits"/>
+	</AttributeDecl>
+	<AttributeDecl Name="maxlength" Optional="yes">
+	  <StringType IDRef="Digits"/>
+	</AttributeDecl>  
+	<AttributeDecl Name="interdigittimeout" Optional="yes">
+	  <StringType IDRef="Interval"/>
+	</AttributeDecl>
+	<AttributeDecl Name="finaltimeout" Optional="yes">
+	  <StringType IDRef="Interval"/>
+	</AttributeDecl>
+	<AttributeDecl Name="timeout" Optional="yes">
+	  <StringType IDRef="Interval"/>
+	</AttributeDecl>
+
+	<Element Name="help" Defaultable="yes">
+	  <Constraint IDRef="message-attributes"/>
+	  <Content IDRef="menu-message-content"/> 
+	</Element>
+
+	<Element Name="initial" Defaultable="yes">
+	  <Constraint IDRef="message-attributes"/>
+	  <Content IDRef="menu-message-content"/> 
+	</Element>	
+
+	<Element Name="timeout" Defaultable="yes">
+	  <Constraint IDRef="message-attributes"/>
+	  <Content IDRef="menu-message-content"/> 
+	</Element>
+
+	<Element Name="toomanyerrors" Defaultable="yes">
+	  <Constraint IDRef="message-attributes"/>
+	  <Content IDRef="menu-message-content"/> 
+	</Element>
+      </Then>
+    </If>
+    <If>
+      <Attribute Name="type" Value="hidden"/>
+      <Then>
+	<AttributeDecl Name="name">
+	  <StringType IDRef="Name"/>
+	</AttributeDecl>
+	<AttributeDecl Name="value"/>
+      </Then>
+    </If>
+  </ElementDef>
+ 
+  <!-- A -->
+
+  <ElementDef ID="a">
+    <AttributeDecl Name="name" Optional="yes"/>
+    <AttributeDecl Name="href" Optional="yes"/>
+    <!-- This constraint is not describable by other schema mechanisms,
+    but it's an important one -->
+    <BriefDoc>One (and only one) of name and href attributes must be present</BriefDoc>
+    <OneOf><Attribute Name="name"/><Attribute Name="href"/></OneOf>
+  </ElementDef>
+
+  <!-- MENU -->
+
+  <ElementDef ID="menu">
+    <OneOrMore>
+      <Sequence>  
+	<Element IDRef="menu-option"/>
+	<Optional><Element IDRef="menu-do"/></Optional>
+      </Sequence>
+    </OneOrMore>
+
+    <Constraint IDRef="menu-constraint"/>
+    <Constraint IDRef="menu-dtmf-constraint"/>
+ 
+  </ElementDef>
+ 
+
+  <ElementDef ID="menu-option" Name="option">
+    <AttributeDecl Name="value" Optional="yes"/>
+    <AttributeDecl Name="dtmf" Optional="yes">
+      <OneOrMore><StringType IDRef="Touchtone"/></OneOrMore>
+    </AttributeDecl>
+    <AttributeDecl Name="asr" Optional="yes"/>
+    <AttributeDecl Name="url" Optional="yes">
+      <StringType IDRef="Url"/>
+    </AttributeDecl>
+    <BriefDoc>The quiet attribute specifies that the option is not advertised.</BriefDoc>
+    <AttributeDecl Name="quiet" Optional="yes">
+      <StringType IDRef="YesOrNo"/>	
+    </AttributeDecl>
+    <Content IDRef="inline"/>
+    <Constraint IDRef="menu-option-constraint"/>
+
+  </ElementDef>
+  
+  <ElementDef ID="menu-do" Name="do">
+    <Content IDRef="statements-in-context"/>
+  </ElementDef>
+
+  <ConstraintDef ID="menu-constraint">
+ 
+    <AttributeDecl Name="name">
+      <StringType IDRef="Name"/>
+    </AttributeDecl>
+
+    <AttributeDecl Name="class" Optional="yes">
+      <StringType IDRef="Name"/>
+    </AttributeDecl>
+
+    <AttributeDecl Name="maxmisselected">
+      <StringType IDRef="Digits"/>
+    </AttributeDecl>
+
+    <AttributeDecl Name="maxtimeout">
+      <StringType IDRef="Digits"/>
+    </AttributeDecl>
+
+    <AttributeDecl Name="finaltimeout">
+      <StringType IDRef="Interval"/>
+    </AttributeDecl>
+
+   <AttributeDecl Name="timeout">
+      <StringType IDRef="Interval"/>
+    </AttributeDecl>
+
+    <Element Name="help" Defaultable="yes">
+      <Constraint IDRef="message-attributes"/>
+      <Content IDRef="menu-message-content"/> 
+    </Element>
+
+    <Element Name="initial" Defaultable="yes">
+      <Constraint IDRef="message-attributes"/>
+      <Content IDRef="menu-message-content"/> 
+    </Element>	
+
+    <Element Name="timeout" Defaultable="yes">
+      <Constraint IDRef="message-attributes"/>
+      <Content IDRef="menu-message-content"/> 
+    </Element>
+
+    <Element Name="toomanyerrors" Defaultable="yes">
+      <Constraint IDRef="message-attributes"/>
+      <Content IDRef="menu-message-content"/> 
+    </Element>
+
+  </ConstraintDef>
+
+  <ConstraintDef ID="menu-dtmf-constraint">
+    <AttributeDecl Name="termname" Optional="yes">
+      <ZeroOrMore><StringType IDRef="Touchtone"/></ZeroOrMore>
+    </AttributeDecl> 
+
+   <AttributeDecl Name="endchars" Optional="yes">
+      <ZeroOrMore><StringType IDRef="Touchtone"/></ZeroOrMore>
+    </AttributeDecl> 
+
+    <AttributeDecl Name="maxtterrs">
+      <StringType IDRef="Digits"/>
+    </AttributeDecl>
+
+    <AttributeDecl Name="interdigittimeout">
+      <StringType IDRef="TimeBetweenDigits"/>
+    </AttributeDecl>
+  </ConstraintDef>
+
+  <ConstraintDef ID="menu-option-constraint">
+  </ConstraintDef>
+
+
+  <!-- MESSAGE ATTRIBUTES -->
+  
+  <ConstraintDef ID="message-attributes">
+    <AttributeDecl Name="nointerrupt" Optional="yes">
+      <StringType IDRef="YesOrNo"/>
+    </AttributeDecl>
+  </ConstraintDef>
+
+  <ContentDef ID="menu-message-content">
+    <ZeroOrMore>
+      <Union>
+	<Content IDRef="inline"/>
+	<Element Name="enumerate">
+	  <ZeroOrMore>
+	    <Union>
+	      <Content IDRef="inline-with-option-dtmf"/>
+	    </Union>
+	  </ZeroOrMore>
+	</Element>
+      </Union>
+    </ZeroOrMore>
+  </ContentDef>
+  
+  <ContentDef ID="inline-with-option-dtmf">
+    <Union>
+      <Element Name="option"/>
+      <Element Name="dtmf"/>
+      <Element Name="emph">
+	<Content IDRef="inline-with-option-dtmf"/>  
+      </Element>   
+      <Content IDRef="inline"/>  
+    </Union>
+  </ContentDef>
+
+  <!-- IF -->
+  <ElementDef ID="if">
+    <AttributeDecl Name="Expr">
+      <StringType IDRef="Expression"/>
+    </AttributeDecl>
+    <Content IDRef="statements-in-context"/>
+    <Optional><Sequence>
+	<Element Name="else"/><Content IDRef="statements-in-context"/>
+      </Sequence></Optional>
+  </ElementDef>
+
+  <!-- TRANSFER -->
+
+  <!-- not included -->
+  <ElementDef ID="transfer">
+  </ElementDef> 
+
+  <!-- HANGUP --> 
+  <!-- not included -->
+  <ElementDef ID="hangup">
+  </ElementDef>
+
+  <!-- COMMENT -->
+  <ElementDef ID="comment">
+      <StringType/> 
+  </ElementDef>
+
+  <!-- INLINE -->
+  <ContentDef ID="inline">
+    <Union>
+      <StringType/> 
+      <Element Name="emph">
+	<Content IDRef="inline"/>  
+      </Element>
+      <Element IDRef="comment"/>
+      <Element IDRef="audio"/>
+      <Element IDRef="span"/>
+    </Union>
+  </ContentDef>
+
+
+  <ElementDef ID="audio">
+    <AttributeDecl Name="url">
+      <StringType IDRef="Url"/>
+    </AttributeDecl>
+    <BriefDoc>This optional attribute specifies how long to wait for the URL to be retrieved.</BriefDoc>
+    <AttributeDecl Name="urltimeout" Optional="yes">
+      <StringType IDRef="Interval"/>
+    </AttributeDecl>
+    <AttributeDecl Name="volume" Optional="yes">
+      <StringType IDRef="Vol"/>
+    </AttributeDecl>
+    <AttributeDecl Name="cache" Optional="yes">
+      <StringType IDRef="YesOrNo"/>
+    </AttributeDecl>
+  </ElementDef>
+
+  <ElementDef ID="span">
+    <AttributeDecl Name="silent" Optional="yes">
+      <StringType IDRef="YesOrNo"/>
+    </AttributeDecl>
+    <AttributeDecl Name="nointerrupt" Optional="yes">
+      <StringType IDRef="YesOrNo"/>
+    </AttributeDecl>
+    <Content IDRef="inline"/>
+  </ElementDef>
+
+  <StringTypeDef ID="Url">
+    <ZeroOrMore>
+      <Union>
+	<CharRange Start="a" End="z"/>
+	<CharRange Start="A" End="Z"/>
+	<CharRange Start="0" End="9"/>
+	<CharSet Value="_:/~.-"/>
+      </Union>
+    </ZeroOrMore>
+  </StringTypeDef>
+  
+  <StringTypeDef ID="Name">
+    <Sequence>
+      <Union>
+	<CharRange Start="a" End="z"/>
+	<CharRange Start="A" End="Z"/>
+	<CharRange Start="0" End="9"/>
+      </Union>
+      <ZeroOrMore>
+	<Union>
+	  <CharRange Start="a" End="z"/>
+	  <CharRange Start="A" End="Z"/>
+	  <CharRange Start="0" End="9"/>
+	  <CharSet Value="_-:"/>
+	</Union>
+      </ZeroOrMore>
+    </Sequence>
+  </StringTypeDef>
+
+  <StringTypeDef ID="Digits">
+    <ZeroOrMore><CharRange Start="0" End="9"/></ZeroOrMore>
+  </StringTypeDef>
+
+  <StringTypeDef ID="Interval">
+    <Sequence>
+      <StringType IDRef="Digits"/>
+      <ZeroOrMore><String Value=" "/></ZeroOrMore>
+      <Union>
+	<String Value="s"/>
+	<String Value="ms"/>
+      </Union>
+    </Sequence>
+  </StringTypeDef>
+  
+  <StringTypeDef ID="TimeBetweenDigits">
+    <BriefDoc>Unknown</BriefDoc>
+    <Sequence>
+      <StringType IDRef="Digits"/>
+      <ZeroOrMore><String Value=" "/></ZeroOrMore>
+      <Union>
+	<String Value="s"/>
+	<String Value="ms"/>
+      </Union>
+    </Sequence>
+  </StringTypeDef>
+  
+  <StringTypeDef ID="Vol">
+    <Sequence>
+      <Optional>
+	<Union>	
+	  <String Value="+"/>
+	  <String Value="-"/>
+	</Union>     
+      </Optional>
+      <Union>
+	<CharRange Start="0" End="9"/>
+	<String Value="10"/>
+      </Union>
+    </Sequence>
+  </StringTypeDef>
+  
+  <StringTypeDef ID="Touchtone">
+    <Sequence>
+      <Union>
+	<CharRange Start="0" End="9"/>
+	<CharSet Value="*#"/>
+      </Union>
+    </Sequence>
+  </StringTypeDef>
+  
+  <StringTypeDef ID="YesOrNo">
+    <Union>
+     <String Value="yes"/><String Value="Yes"/><String Value="no"/><String Value="No"/>
+    </Union>
+  </StringTypeDef>
+
+  <StringTypeDef ID="NorthAmericanPhoneNumber">
+    <Sequence>
+      <Repeat Value="3">
+	<CharRange Start="0" End="9"/>
+      </Repeat>
+      <String Value="-"/>
+      <Repeat Value="7">
+	<CharRange Start="0" End="9"/>
+      </Repeat>
+    </Sequence>
+  </StringTypeDef>
+
+  <!-- DEFAULTS -->
+ 
+  <!-- Make head element optional -->
+  <Default>
+    <Context><Element Name="XPML"/></Context>
+    <DefaultContent>
+      <head>
+	<title>no title</title>
+      </head>
+    </DefaultContent>
+  </Default>
+
+  <!-- For select, menu, and input elements, always
+  fill in lots of attributes with default UI decisions -->
+  <Default>
+    <Or><Context><Element Name="select"/></Context>
+      <Context><Element Name="menu"/></Context><Context><Element Name="input"/></Context></Or>
+    <DefaultAttribute Name="maxtterrs" Value="3"/>
+    <DefaultAttribute Name="maxmisselected" Value="3"/>
+    <DefaultAttribute Name="maxtimeout" Value="2"/>
+    <DefaultAttribute Name="endchars" Value="#"/>
+    <DefaultAttribute Name="interdigittimeout" Value="4000ms"/>
+    <DefaultAttribute Name="finaltimeout" Value="5000ms"/>
+    <DefaultAttribute Name="timeout" Value="0ms"/>
+  </Default>
+
+
+  <!-- Modify the default value for interdigittimeout in input elements
+  of type text -->
+  <Default>
+    <Context><Element Name="input"><Attribute Name="type" Value="text"></Attribute></Element></Context>
+    <DefaultAttribute Name="interdigittimeout" Value="2s"/>
+  </Default>
+
+  <!-- Here are the defaults messages for select, menu, and input elements -->
+  <Default>
+    <Or><Context><Element Name="select"/></Context><Context><Element Name="menu"/></Context><Context><Element Name="input"/></Context>
+ </Or>
+    <DefaultContent>
+      <help>No help is available.</help>
+    </DefaultContent>
+    <DefaultContent>
+      <initial> <enumerate><option/> Press <emph><dtmf/></emph>.</enumerate>
+      </initial>
+    </DefaultContent>
+    <DefaultContent>
+      <toomanyerrors>Sorry, too many errors.</toomanyerrors>
+    </DefaultContent>
+    <DefaultContent>
+      <timeout>You have exceeded the time limit.</timeout>
+    </DefaultContent>
+    <DefaultContent>
+      <toomanyerrors>Sorry, too many errors.</toomanyerrors>
+    </DefaultContent>
+  </Default>
+  
+</DSD>
+

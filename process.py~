@@ -1,0 +1,213 @@
+#!/cygdrive/c/Python22/python
+
+
+# Requires PYXML (http://pyxml.sourceforge.net/)
+# and 4Suite (http://4suite.org/?xslt=downloads.xslt)
+
+from __future__ import nested_scopes
+import string
+import re
+import sys
+
+from Ft.Xml import Domlette
+from Ft.Xml.Xslt.Processor import Processor
+from Ft.Xml.InputSource import DefaultFactory
+
+from Ft.Xml import XPath
+from Ft.Xml.Domlette import NonvalidatingReader
+
+from xml.dom import Node
+from xml.dom.ext import PrettyPrint
+
+from xml.xpath import Evaluate
+#from Ft.Xml.XPath import Evaluate
+
+from xml.dom import implementation
+from xml.dom.ext.reader import Sax2
+from xml.dom.NodeFilter import NodeFilter
+from Ft.Lib import Uri 
+
+def renameElement(node, localName):
+    parent = node.parentNode
+    if not parent: raise StandardError('"node" must not be document node."')
+    newNode = xml_dom.createElement(localName)
+    for nodeChild in tuple(node.childNodes):
+        newNode.appendChild(nodeChild) 
+    parent.replaceChild(newNode, node)
+    return newNode
+
+def process(xml_source, homepath="."):
+
+    def fileName(i, name):
+        if i==0: return xml_source + ".html"
+        else: return xml_source + '_' + \
+              string.lower(string.replace(name, " ", "")) + ".html"
+
+    processor = Processor()
+    
+    processor.appendStylesheetNode(Sax2.Reader().fromUri('make_screen.xsl'),
+                                   ".") 
+
+#      filepath = Uri.OsPathToUri('make_screen.xsl', attemptAbsolute=1)
+#      print "file URI %s" % filepath
+#      processor.appendStylesheetNode(
+#          DefaultFactory.fromUri(filepath))
+
+    processor_printable = Processor()
+    
+    processor_printable.appendStylesheetNode(
+        Sax2.Reader().fromUri('make_printable.xsl'), ".")
+
+    printable_version = xml_source + "_print.html"
+    printable_version_short =  re.split("/", xml_source)[-1] + "_print.html"
+ 
+    global xml_dom
+#    xml_dom = NonvalidatingReader.parseUri("file:" + xml_source +
+#    ".xml")
+
+
+    xml_dom  = Sax2.Reader().fromUri("file:" + xml_source + ".xml")
+    
+  
+
+    #
+    if Evaluate('/html/body/tabs', xml_dom.documentElement):
+        tabs_node = Evaluate('/html/body/tabs', xml_dom.documentElement)[0]
+        tabs_parent = tabs_node.parentNode
+        tab_nodes = Evaluate('tab', tabs_node)
+        tab_names = [ Evaluate('string(@name)', t) for t in tab_nodes]
+        tab_titles = [ Evaluate('string(@title)', t) for t in tab_nodes]
+        # the placeholder node is the tabs_node on the first
+        #  iteration; later, it is the last contents node
+        placeholder = tabs_node
+        head_node = Evaluate('/html/head', xml_dom.documentElement)[0]
+        contents_placeholder =  0
+
+
+        for t in tab_nodes:
+            #
+            # change
+            #
+            #   <tabs>
+            #      <tab>tab_1</tab>
+            #      ...
+            #      t:<tab>...</tab>
+            #      ...
+            #      <tab>tab_n</tab> 
+            #     </tab>
+            #
+            # where "tab" elements have an optional title attribute
+            # into
+            # 
+            #     <contents>
+            #        <a title="...">tab_1</a>
+            #        ... 
+            #        <span title="...">tab_t</span>
+            #        ... 
+            #        <a title="...">tab_n</a>
+            #     </contents>
+
+            i = tab_nodes.index(t)
+            print "Making %s" % fileName(i, tab_names[i])
+            sys.stdout.flush() 
+            tabs_parent.replaceChild(t, placeholder)
+            placeholder = t
+
+            ads = "no"
+#            if (i == 0): ads="yes"
+
+            contents_node = xml_dom.createElement("contents")
+            if contents_placeholder:
+                head_node.replaceChild(contents_node, contents_placeholder)
+            else:
+                head_node.appendChild(contents_node)
+            contents_placeholder = contents_node
+            
+            for name in tab_names:
+                if i == tab_names.index(name):
+                    # this is the index for the tab t
+                    selected_node= xml_dom.createElement("span")
+                    selected_node.setAttribute("class", "tabselected")
+                    selected_node.appendChild(xml_dom.createTextNode(name))
+                    current = selected_node
+                else:
+                    # this is the contents for another tab, create hyperlink
+                    a_node= xml_dom.createElement("a")
+                    a_node.setAttribute("href",
+                                        re.split("/", fileName(tab_names.index(name),
+                                                            name))[-1])
+                    a_node.setAttribute("class", "tabnotselected")
+                    a_node.appendChild(xml_dom.createTextNode(name))
+                    current = a_node
+                title = tab_titles[tab_names.index(name)]
+                if title=="": title = name
+                current.setAttribute("title", title)
+                contents_node.appendChild(current)
+
+            f=open(fileName(i, tab_names[i]), 'w')
+            PrettyPrint(xml_dom.documentElement, stream=f)
+            f.close()
+ 
+            previous_name = ""
+            if i>0:
+                previous_name = re.split("/", fileName(i-1, tab_names[i-1]))[-1]
+            next_name = ""
+            if i<len(tab_names)-1:
+                next_name = re.split("/", fileName(i+1, tab_names[i+1]))[-1]
+
+            print "Start Making %s" % fileName(i, tab_names[i])
+
+            iSrc = DefaultFactory.fromUri(fileName(i, tab_names[i]))
+            xml_new = processor.run(iSrc,
+                                    topLevelParams =
+                                    {'homepath': homepath,
+                                     "previous":  previous_name,
+                                     "next": next_name,
+                                     "printable_version": printable_version_short,
+                                     "ads": ads})
+            iSrc.close()
+            f = open(fileName(i, tab_names[i]), 'w')
+            f.write(xml_new)
+            f.close()
+ 
+    else:
+        # no "tabs" node
+        iSrc = DefaultFactory.fromUri(xml_source+".xml")
+        xml_new = processor.run(iSrc,
+                                topLevelParams=
+                                {'homepath': homepath,
+                                 "previous":  "",
+                                 "next": "",
+                                 "printable_version": printable_version_short,
+                                 "ads": "no"})
+        iSrc.close()
+        f = open(xml_source+".html", 'w')
+        f.write(xml_new)
+        f.close()
+
+
+    print "Making %s" % printable_version
+
+    # expand external general entities
+    xml_dom  = Sax2.Reader().fromUri(xml_source + ".xml")
+    f=open(printable_version, 'w')
+    PrettyPrint(xml_dom.documentElement, stream=f)
+    f.close()
+    
+    xml_printable =  processor_printable.run(
+        DefaultFactory.fromUri(printable_version))
+    f = open(printable_version, 'w')
+    f.write(xml_printable)
+    f.close()
+    
+
+
+process("index", ".")
+process("input_devices/index", "..")
+process("progress")
+process ("ReaX")
+#process("ShortTalk/index", "..")
+#process("ShortStep/index", "..")
+process("keyboard/keyboard", "..")
+#  process("ShortTalk/short")
+

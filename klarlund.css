@@ -1,0 +1,104 @@
+body {background-color: #ffffff; }
+
+body,
+div, p, blockquote, ol, ul, dl, li, dt, dd, td , span, pre
+ {font-family: sans-serif;  font-size: 100%;}
+
+a:link {color: #077; font-family: sans-serif; }
+a:visited {color: #055; font-family: sans-serif;}
+
+.inactive {color: #099;}
+.tabnotselected:visited {color: #0aa;}
+.tabnotselected:link {color: #099;}
+.tabnotselected {color: #0aa;}
+.tabselected {color: #077;}
+.tabs .tabselected {font-size: 230%;}
+.tabs  { font-size: 100%; text-align: center;}
+.tabs a  {font-family: sans-serif;  font-size: 200%; text-align: center;
+margin-bottom: .3ex;}
+
+.sublinks, div.sublinks a {font-family: sans-serif; font-size: 120%;
+color: #077;}
+.abstract {font-family: sans-serif;  font-size: 100%; font-weight:bold;}
+
+h1 {font-family: sans-serif; font-size: 250%; color: #077; text-align:
+center;}
+table.columntwo h1 {font-family: times; text-align: left; font-size: 180%; margin-bottom: 0.5ex;}
+
+h2 {font-family: sans-serif; font-size: 180%; color: #077;}
+h2.sectionheader {font-family: sans-serif; font-size: 150%; color: #077;
+margin-top: 0ex;}
+
+h3 {font-family: sans-serif; font-size: 130%; color: #077;}
+
+h4 {font-family: sans-serif; font-size: 100%; color: #077;}
+
+
+table.quotebox {margin-top: 2ex; margin-bottom: 2ex; }
+
+table.quotebox blockquote {margin: 0ex; border-style: outset; border-width: thin; } 
+
+table img {border: none; margin: 2px;}
+
+div.picture {margin: 2ex; text-align: center;}
+
+table.pictures {margin-top: 2ex; margin-bottom: 2ex; }
+table.pictures td {text-align: left;}
+
+table td.firstcolumn {width: 30ex;}
+table td.secondcolumn {padding-left: 2ex;}
+
+div.note {margin-top: 3ex; font-family: courier; font-size: 60%;}
+
+
+p.author {text-align: center; font-weight: bold; margin-top: 0ex; }
+
+h1.paper {font-family: sans-serif; font-size: 250%; color: #077; 
+          margin-bottom: .3ex; text-align: center;}
+
+div.footer {}
+
+table div.contents, table div.related, table div.ads
+   {background: #bbffa0; margin-top: 0ex; margin-bottom: .3ex;}
+
+table div.related div, table div.ads div
+   {margin-top:0; margin-bottom:0; margin-left: .2ex; font-size:100%;
+    font-family: sans-serif; }
+table div.contents ul
+   {margin-top:0; margin-bottom:0; margin-left: 0ex;}
+table div.contents li
+   {margin-left: 0ex; text-indent: 0ex;}
+table div.contents ul {margin-left: 0ex; padding-left: 2ex; text-indent: 0ex;}
+
+table div.contents h2, table div.related h2, table div.ads h2
+   {font-family: sans-serif; font-size: 140%;  margin-top:1.0ex;
+margin-bottom: .8ex;}
+
+table div.contents h3, table div.related h3, table div.ads h3 
+   {font-size: 100%; margin-top:.4ex; margin-bottom:.3ex; }
+table div.contents h3 a, table div.related h3 a, table div.ads h3 a 
+   {font-size: 100%; margin-top:.4ex; margin-bottom:.3ex; }
+
+
+
+table.quotebox td.quotebox {width: 50%;}
+
+div.contents .tabselected {font-family: sans-serif; font-size: 120%;}
+div.contents .tabnotselected {font-family: sans-serif; font-size: 110%;}
+
+table div.contents, table div.related, table div.ads
+   {font-size: 100%;  margin-top:0; margin-bottom:0; margin-left: 0; }
+table div.contents img, table div.related img, table div.ads img
+   {float: left; margin-top: .5ex;  margin-bottom: 0; margin-right:
+.5ex;}
+
+
+.klarlundhome {font-size: 120%;}
+.prevnext {font-size: 120%;}
+
+.papertitle {font-style: italic;}
+.papertitle:link {color: #099; font-style: italic; }
+.papertitle:visited {color: #055; font-style: italic; }
+
+
+

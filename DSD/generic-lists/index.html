@@ -1,0 +1,59 @@
+<HTML><HEAD><TITLE>DSD - generic list example</TITLE>
+</HEAD>
+<BODY
+style="BACKGROUND: white;">
+<h2>Generic list example</h2>
+
+Hugh S. Field-Richards (hsfr@hydra.dra.hmg.gb)
+kindly provided the following example as a
+challenge to a schema language:
+<ul>
+
+<li>model a generic ordered list as an element oList that contains a
+sequence of listItem elements, and</li> <li>allow the description of
+useages of such ordered lists, where a usage is
+determined by the allowed content an listItem element in a oList element has in
+a specific
+context.</li>
+</ul>
+
+As an example, we find below two different usages of oList, namely
+<ul>
+<li>inside a forenames element, list items contain a name
+element, and</li>
+<li>inside a webbs element,
+list items contain
+a qualification element:
+</li>
+</ul> 
+<pre>
+ &lt;?dsd URI="persons.dsd"?&gt;
+ &lt;person&gt;
+  &lt;surname&gt;Klarlund&lt;/surname&gt;
+  &lt;forenames&gt;
+    &lt;oList&gt;
+      &lt;listItem&gt;&lt;name&gt;Nils&lt;/name&gt;&lt;/listItem&gt;
+    &lt;/oList&gt;
+  &lt;/forenames&gt;
+  &lt;webbs&gt;
+    &lt;oList&gt;
+      &lt;listItem&gt;&lt;qualification&gt;C++&lt;/qualification&gt;&lt;/listItem&gt;
+      &lt;listItem&gt;&lt;qualification&gt;XML&lt;/qualification&gt;&lt;/listItem&gt;
+    &lt;/oList&gt;
+  &lt;/webbs&gt;
+&lt;/person&gt;
+</pre>
+
+This situation can easily be handled using DSDs.  We define general
+ordered lists in <a href="generic-list.html">generic-list.dsd
+(pretty-printed)</a> (<a href="generic-list.dsd">generic-list.dsd
+(dsd)</a>); in this DSD, the ordered list item element is specified as
+empty, but a constraint listItem-constraint is defined for amending
+the definition.
+
+And, the person elements and their usages of ordered lists are then
+explained by context-sensitive additions to the meaning of a
+listItem-constraint <a href="persons.html">generic-list.dsd
+(pretty-printed)</a> (<a href="persons.dsd">persons.dsd (dsd)</a>)
+</body>
+</html>

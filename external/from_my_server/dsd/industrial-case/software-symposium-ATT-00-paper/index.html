@@ -1,0 +1,649 @@
+<html xmlns:myxml="xxx"><head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>From the programmer's point of view: XML for IVR and how DSD
+      Schemas may help</title><style type="text/css">
+
+BODY { 
+  link: black; 
+  vlink: black; 
+  background: white; 
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+
+p, ul, body { 
+	  
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal; font-size: 10pt;
+}
+	
+
+
+H1, H2, H3, .section {   
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;
+  color: #900;
+}
+
+
+
+h1 {font-size: 180%;}
+h2 {font-size: 160%;}
+h3 {font-size: 120%;}
+
+HR { 
+  size: 1pt;
+}
+
+TABLE,TD,TR { 
+  font-family: sans-serif; 
+  font-size: 100%;
+}
+
+SPAN.FOOTER { 
+  font-family: sans-serif; 
+  font-style: italic; 
+  font-size: 100%; 
+  text-align: center; 
+}
+
+A:link { 
+  color: #c00 
+}
+A:visited { 
+  color: #800;
+}
+A:active { 
+  color: #f00; 
+}
+A.navigation:link { 
+  color: gray; font-size:50%;
+}
+A.navigation:visited { 
+  color:gray; font-size:50%;
+}
+A.navigation:active { 
+  color:gray; font-size:50%;
+}
+.hide { 
+  display: none; 
+  color: white;
+}
+
+DIV.map {
+  padding-top: 70px;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+ 
+#p1 {
+  color: #DDD; 
+  font: 85px/1 "Impact", sans-serif;
+  text-align: left;  
+  margin: -70px 0 30px 5%;
+}     
+#p2 {
+  color: #008; 
+  font: bold 35px/1 "Verdana", sans-serif;
+  text-align: left;   
+  margin: -50px 0 30px 12%;
+} 
+#p3 { 
+  margin-top: 0%;
+  margin-bottom: 10px;
+  margin-left: -1%;
+  color: #900;
+  clear: both;
+  font-size: 20pt;
+}
+#p5 { 
+  margin-left: 3%;
+}
+
+TT { 
+  font-family: monospace; 
+  font-weight: bold;
+}
+EM { 
+  font-weight: normal;
+  font-style: italic;
+  color: red;
+}
+	  
+	  .e  {margin-left:1em; text-indent:-1em; margin-right:1em}
+	  
+	  .k  {color:green; margin-left:1em;}
+	  
+	  .t  {font-size:90%; font:Courier; color:#990000}
+	  
+	  .xt {color:#990099}
+	  
+	  .ns {color:red}
+	  
+	  .dt {color:green;}
+	  
+	  .m  {color:blue}
+	  
+	  .tx {font-weight:bold}
+	  
+	  .db {text-indent:0px; margin-left:1em; margin-top:0px; margin-bottom:0px;
+	  padding-left:.3em; border-left:1px solid #CCCCCC; font:small Courier}
+	  
+	  .di {font:small Courier}
+	  
+	  .d  {color:blue}
+	  
+	  .pi {color:blue}
+	  
+	  .cb {text-indent:0px; margin-left:1em; margin-top:0px; margin-bottom:0px;
+	  padding-left:.3em; font:small Courier; color:#888888}
+	  
+	  pre {margin-left:0ex; display:inline}  
+	  .key {font-weight:bold; color: purple}
+	  
+	  .e  {margin-left:1em; text-indent:-1em;}
+	  .enoindent  {margin-left:1em;}
+	  .noindent  {margin-left:0em; text-indent: 0em;}
+	  .h {font-weight:bold; color: red}
+	  .user {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .user:link {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .user:visited {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;color: purple;}
+	  .tt {font-family:Prestige, MS Courier New, Courier; color:blue; font-weight:bold; }
+	  .cd {font: Courier; color:#888888; font-weight:bold;}
+
+
+
+
+div.dsdpretty {margin-bottom:0em; margin-top:0em; margin-left:0em; font-size: 90%;}
+
+	  div.dsdpretty div {margin-bottom:0em; margin-top:0em; margin-left:1em;
+	       font-weight:bold; font-family:  Courier; }
+
+	  .example   {margin-bottom:1em; margin-top:1em; margin-left:2em; margin-right:2em; font-size:90%; background-color:beige;  padding-left:1em;}
+
+
+
+	  div.dsdpretty span {color: black;}
+	  div.dsdpretty div.rootchild {margin-bottom:2ex; margin-top:1ex; 
+              border-style: solid; border-width: 2px;  border-color:pink; }
+	  div.dsdpretty .key, div.dsdpretty .special-key {font-weight:bold; color: purple;}
+	  div.dsdpretty .doc {font-family: Arial, Helvetica, Sans-serif; font-style:normal; font-weight: normal; color: grey;}
+	  div.dsdpretty .user {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  div.dsdpretty .user-bold {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black; font-weight:bold;}
+	  div.dsdpretty .user:link {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  div.dsdpretty .user:visited {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  div.dsdpretty .concrete, .string {font-family: Courier; color: blue; font-weight:bold; }
+	  div.dsdpretty .tt {font-family: Courier; color: blue; font-weight:bold; }
+	  div.dsdpretty .comment {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  div.dsdpretty font-weight:normal; color: brown;}
+	  div.dsdpretty *.header {font-size:140%;  color: purple; font-family: Arial, Helvetica, Sans-serif;}
+	  
+	</style></head><body><h1 style="font-weight:bold;">From the programmer's point of view: XML for IVR and how DSD
+      Schemas may help</h1>
+	..  <h2>Nils Klarlund <a style="font-size:70%;" href="http://www.research.att.com/~klarlund" xmlns:DSD="yyy">http://www.research.att.com/~klarlund</a></h2>
+	 ..	<p style="font-size:120%;">September 11, 2000, Copyright, AT&amp;T.  This document is
+	best viewed through Netscape 6, Mozilla, and IE 4 or 5.</p><h3 style="font-weight:bold;">Index</h3><ul><li><a href="#IDATAAZ">Abstract</a></li><li><a href="#IDAXAAZ">Introduction</a></li><li><a href="#IDAMBAZ">The IVR scenario</a></li><li><a href="#IDARBAZ">DSDs -- a schema notation for XML</a></li><li><a href="#IDAACAZ">DSDs for syntax explanations</a></li><li><a href="#IDACGAZ">DSDs for debugging</a></li><li><a href="#IDAH1AZ">DSDs for myriads of defaults</a></li><li><a href="#IDAQ5AZ">DSDs for evolving languages</a></li><li><a href="#IDASNBZ">DSDs for simplifying semantic processing</a></li><li><a href="#IDA2NBZ">How to read the XPML DSD</a></li><li><a href="#IDAWSBZ">Conclusion</a></li></ul><p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDATAAZ"><span style="font-weight:bold;">Abstract</span></a></h2></div><p><div style="font-weight: bold;" xmlns:DSD="yyy">
+      IVR applications are notoriously difficult to construct.  To
+      simplify the task, many layers of abstractions are introduced.  At
+      the highest level, an application programmer is then mainly
+      concerned about choosing pre-canned dialogues, which are filled in
+      with a variety of parameters, such as prompts and timeout
+      durations.  In this article, we will study how XML and the DSD
+      Schema notation may alleviate the burden of understanding a
+      specialized notation with many interdependent parameters and
+      defaults.
+    </div><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDAXAAZ"><span style="font-weight:bold;">Introduction</span></a></h2></div><p><p xmlns:DSD="yyy">
+      Notwithstanding the XML hype, there is at least one fascinating
+      and fundamental quantity that sets XML-based notations apart
+      from ad hoc syntax: they encourage tree transformations---a
+      technique that application programmers usually do not take
+      advantage of.  It is a hassle even to define a set of parse trees
+      and a procedure by which they are constructed!  XML completely
+      circumvents this problem just by directly and simply being a
+      notation for trees.  Of course, mappings of trees into trees are
+      a main ingredient of computer science; for example, such
+      mappings are essential to building compilers, where the
+      compilation process is partioned into several phases, most of
+      which simply massage one intermediate tree format into another
+      one.
+    </p><p xmlns:DSD="yyy">The exciting development is that tree technology has already
+      crept into everyday Web programming: CSS (Cascading Style
+      Sheets) is a declarative notation for tree transformations that
+      turn HTML into a visual formatting (page layout) model.  For
+      example, it's easy to specify a rule that makes H1 headers be
+      typeset in a font that is 120% of the size of the base font.
+      CSS also allows HTML elements to be categorized according to
+      <em>classes</em>, which are programmer-defined labels such as in
+
+      <p><div style="font-size: 90%;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;ul<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>class="<SPAN>myclass</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;li&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex">This is my point.</div><div style=""><SPAN class="tt">&lt;/li&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/ul&gt;</SPAN></div></DIV></div></p>  
+      Moreover, such classifications can be used to specify the
+      formatting properties as in a CSS rule that forces all text in
+      places like where "This is my point" is to be shown in red.
+      More precisely, the rule specifies that text must be shown in
+      red if it is contained in a <tt>li</tt> element that in turn is
+      contained in an <tt>ul</tt> element with class attribute
+      "myclass".</p><p xmlns:DSD="yyy">
+      Unfortunately, CSS cannot accomplish tree transformations
+      into any other domains than the non-XML formatting model.  The
+      W3C instead envisages that XSLT (eXtensible Stylesheet Language
+      Transformations) together with the built-in default insertion
+      mechanism of DTDs and XML schemas will cover transformational
+      needs in general.  However, XSLT likely is too complicated and
+      too programmatic (in the sense of being a Turing-compete
+      programming language) to be adopted by the majority of
+      programmers---and even if it were to be well-known, there are
+      many situations where its explicit programming model competes
+      unfavorable with CSS.  For example, it is becoming a common
+      paradigm to use XSLT and CSS in conjunction for visual
+      formatting applications, since they complement each other
+      nicely.
+    </p><p xmlns:DSD="yyy">In this article, we will study the benefits of XML for the
+    problem of building IVR applications, especially with respect to
+    default insertions.  In particular, we will argue that DSDs
+    (Document Structure Descriptions), see <a href="http://www.brics.dk/DSD/">http://www.brics.dk/DSD/</a>,
+    offer special advantages for this problem when compared to other
+    schema notations, like DTDs or XML Schema.</p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDAMBAZ"><span style="font-weight:bold;">The IVR scenario</span></a></h2></div><p><p xmlns:DSD="yyy">
+      Our scenario calls for an application programmer to develop a
+      little whimsical, interactive voice application that probes the
+      mood of a customer.  The programmer will use an XML notation
+      called XPML (for Extensible Phone Markup Language), which is
+      similar to HTML.  The XPML notation is based on PML, the Phone
+      Markup Language, as developed at AT&amp;T Labs-Research.  The
+      main idea of PML is that simple HTML pages describe a
+      finite-state machine, where intra-page hyperlinks become goto
+      statements and text becomes synthesized speech; input fields
+      corresponds to subdialogues for obtaining numbers and select
+      elements become dialogues a la "for sales, choose 1; for
+      customer service, choose 2,...".  Naturally, each subdialogue
+      construct provides numerals parameters for specifying prompts,
+      timeout durations, and help messages in various error
+      situations.  As a further complication, that are several
+      interdependencies among these parameters.  For example, it was
+      discovered during the development of PML that it is not
+      sufficient to associate one dialogue style to each HTML element;
+      rather, a set of interaction styles must be provided to through
+      an <tt>interaction</tt> attribute to accommodate situations
+      where there are many choices in a menu, the input of certain
+      kinds of numbers, etc. Naturally, the kinds of prompts, along
+      with many other parameters, are dependent on the value of this
+      attribute.
+    </p><p xmlns:DSD="yyy">
+      The XPML notation as outlined here is preliminary
+      and incomplete. It is similar to VoiceXML (a new dialogue
+      markup language developed by AT&amp;T, IBM, Lucent and
+      Motorola); rather, we are interested in explaining some general
+      issues surrounding the use of XML for interactive voice
+      applications.  
+    </p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDARBAZ"><span style="font-weight:bold;">DSDs -- a schema notation for XML</span></a></h2></div><p><p xmlns:DSD="yyy">
+      DSDs are grammars for describing classes of XML documents, see
+      <a href="http://www.brics.dk/DSD/">http://www.brics.dk/DSD/</a>.
+      Thus, a DSD renders a judgment on every XML document: either it
+      is <em>valid</em> or it is invalid.  In this way, a DSD defines
+      a class of XML documents, just like the more familar DTD concept
+      of the XML 1.0 specification.  A DSD processor takes as input an
+      application document and a DSD; if it determines that the
+      application document is that it according to the DSD, then it
+      outputs the application document augmented with inserted
+      defaults.
+    </p><p xmlns:DSD="yyy">
+      An effort is underway at the W3C to define XML Schema, a
+      successor for DTDs, which are not very expressive.  Judging from
+      the size of the current specification, one may say that XML
+      Schema is an order of magnitude more complicated than DTDs or
+      DSDs.  There are, however, many desirable properties that XML
+      Schema cannot describe such as disallowed attribute
+      combinations, or element content that depend on attributes.
+      More importantly for the focus of this article, DSDs define
+      generic, CSS-like default mechanisms that allow an application
+      programmer to specify defaults in a declarative way.  The DSD
+      processor ensures that only meaningful defaults are inserted,
+      according to the DSD.  This technique is a logical and practical
+      extension of the default mechanisms that are already part of
+      DTDs and XML Schema.
+    </p><p xmlns:DSD="yyy">
+      In this document, we will explain how XML and DSDs help both the
+      application programmer and the platform programmer:
+    </p><ul><li style="color:red;"><span style="color:black;">DSDs aid the XPML programmer to choose the right syntactic
+	constructs.  DSDs are by themselves not easy too read
+	because of the XML syntax, so we indicate how to present
+	them in a more conventional BNF-like way that closely
+	resembles the concrete syntax of the XPML notation.</span></li><li style="color:red;"><span style="color:black;">
+	XPML programmers can easily check their documents for most
+	errors using the DSD processor alone.
+      </span></li><li style="color:red;"><span style="color:black;">
+	XPML programmers can use the CSS-like default mechanism
+	that comes with DSDs.  Thus, XPML programs can be "styled"
+	in a declarative and modular fashion.
+      </span></li><li style="color:red;"><span style="color:black;">
+	DSD descriptions significantly simplify the programming
+	of an interpreter for XPML.</span></li></ul><p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDAACAZ"><span style="font-weight:bold;">DSDs for syntax explanations</span></a></h2></div><p><p xmlns:DSD="yyy">
+      Let's suppose an application programmer is working on a program
+      for demonstrating voice interaction.  He wants to use XPML, but
+      he doesn't know what XPML is except for some examples he has
+      seen.  Naturally, he'll use these examples for guidance, but the
+      DSD may provide a readable, concise syntactic summary.  We don't
+      envisage that the programmer will read the DSD as an XML file.
+      Instead, a hyperlinked HTML document may be produced by an XSLT
+      stylesheet transformation.  For example, the DSD definition of
+      the element <tt>XPML</tt>, the top element of an XPML document,
+      is shown below (left) through an XSLT stylesheet transformation
+      in a way that strongly suggests the concrete syntax of an
+      application document; the original DSD definition (right) will
+      not be shown to the application programmer:
+    </p><p xmlns:DSD="yyy"><table><tr valign="top"><td><div class="example" style="padding:.5ex;"><div class=""><div class="dsdpretty"><div style="margin-bottom:2ex; margin-top:1ex;  "><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; "><span class="concrete">&lt;XPML&gt;</span><span class="special-key">ID=</span><a Name="N1398659446" class="user-bold">XPML</a><span>: </span><span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span title="The head element may be omitted."><span>( </span><span class="concrete">&lt;head&gt;</span><span><div style=" font-family: Courier; font-weight:bold;   margin-left: 5.4ex;  text-indent: -2.7ex; "><span class="key">Constraint</span><span></span><a class="user" href="#N1398659446">head-constraint</a></div></span><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="concrete">&lt;/head&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>, </div></span><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="The body element is mandatory."><span class="concrete">&lt;body&gt;</span><span><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="key">Constraint</span><span></span><a class="user" href="#N1398659446">body-constraint</a></div></span><div style="font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; "><span class="concrete">&lt;/body&gt;</span>)</div></div></div></span><div style="font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; "><span class="concrete">&lt;/XPML&gt;</span></div></div></div></div></div></div><p></td><td><div class="example" style="padding:.5ex;"><div class=""><div style="font-size: 90%;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;ElementDef<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>ID="<SPAN>XPML</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;Sequence&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em; text-indent:-2em;"><SPAN class="tt">&lt;BriefDoc&gt;</SPAN></div><div style="margin-left:1em;"><span class="cd">The head element may be omitted.</span></div><div><SPAN class="tt">&lt;/BriefDoc&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em; text-indent:-2em;"><SPAN class="tt">&lt;Element<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Name="<SPAN>head</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Defaultable="<SPAN>yes</SPAN>"</SPAN>&gt;</SPAN></div><div style="margin-left:1em;"><SPAN class="tt">&lt;Constraint<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>IDRef="<SPAN>head-constraint</SPAN>"</SPAN>/&gt;</SPAN></div><div><SPAN class="tt">&lt;/Element&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em; text-indent:-2em;"><SPAN class="tt">&lt;BriefDoc&gt;</SPAN></div><div style="margin-left:1em;"><span class="cd">The body element is mandatory.</span></div><div><SPAN class="tt">&lt;/BriefDoc&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em; text-indent:-2em;"><SPAN class="tt">&lt;Element<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Name="<SPAN>body</SPAN>"</SPAN>&gt;</SPAN></div><div style="margin-left:1em;"><SPAN class="tt">&lt;Constraint<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>IDRef="<SPAN>body-constraint</SPAN>"</SPAN>/&gt;</SPAN></div><div><SPAN class="tt">&lt;/Element&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/Sequence&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/ElementDef&gt;</SPAN></div></DIV></div></div></div><p></td></tr></table></p><p xmlns:DSD="yyy">(In the HTML version shown here, the <tt>BriefDoc</tt>
+      documentation strings are used as HTML <tt>title</tt>
+      attributes, which produce a pop-up explanation when the mouse
+      pointer is over the corresponding definition (try it if you are
+      viewing this document in a 5th generation browser).)  This
+      particular snippet of a DSD specifies that the <tt>XPML</tt>
+      element consists of a <tt>head</tt> element followed by a
+      <tt>body</tt> element.  The <tt>head</tt> is defaultable (which
+      means that it may be omitted if a default for it has been
+      specified) and its attributes and content are specified by the
+      constraint named <tt>head-constraint</tt>.  Similarly, the
+      <tt>body</tt> element is specified by the constraint
+      <tt>body-constraint</tt>.  We will not go into any details about
+      DSDs here---we hope that the informal explanations are
+      sufficient.  The XSLT stylesheet can be found at the DSD Web
+      site; it is rather complicated, approximately 25 pages.
+    </p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDACGAZ"><span style="font-weight:bold;">DSDs for debugging</span></a></h2></div><p><p xmlns:DSD="yyy">
+      Now, we will explore how schemas may help debug XML documents.
+      Let's assume that the application programmer's first attempt at
+      the mood-probing XPML program is:
+    </p><div class="example" style="padding:.5ex;"><div class=""><div style="font-size: 90%;"><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex; color:maroon">&lt;?dsd<xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>URI="xpml-att.dsd"?&gt;</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;XPML&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;head&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;application<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>name="<SPAN>HELLOWORLD</SPAN>"</SPAN>/&gt;
+          </DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;maintainer<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>address="<SPAN>karam@research.att.com</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>loglevel="<SPAN>2</SPAN>"</SPAN>/&gt;
+          </DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;title&gt;</SPAN><span class="cd">The Greeting Application</span><SPAN class="tt">&lt;/title&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/head&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;body&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	    
+    Welcome to greetings are us.
+    </div><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;span<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>nointerrupt="<SPAN>y</SPAN>"</SPAN>&gt;</SPAN><SPAN class="tt">&lt;audio<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>url="<SPAN>/audioclips/greeting.vox</SPAN>"</SPAN>/&gt;</SPAN><SPAN class="tt">&lt;/span&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;a<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>name="<SPAN>repeat</SPAN>"</SPAN>/&gt;
+          </DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;menu<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>name="<SPAN>feelings</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;option<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>dtmf="<SPAN>0</SPAN>"</SPAN>&gt;</SPAN><span class="cd">To end</span><SPAN class="tt">&lt;/option&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;do&gt;</SPAN><SPAN class="tt">&lt;a<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>href="<SPAN>#endit</SPAN>"</SPAN>/&gt;</SPAN><SPAN class="tt">&lt;comment&gt;</SPAN><span class="cd">go to end point</span><SPAN class="tt">&lt;/comment&gt;</SPAN><SPAN class="tt">&lt;/do&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;option&gt;</SPAN><span class="cd"> If you are feeling like a cowboy. </span><SPAN class="tt">&lt;/option&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;do&gt;</SPAN><span class="cd"> Howdy world! </span><SPAN class="tt">&lt;/do&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;option&gt;</SPAN><span class="cd"> If you are feeling like a Canadian. </span><SPAN class="tt">&lt;/option&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;do&gt;</SPAN><span class="cd"> Gid'day world, how's it going eh? </span><SPAN class="tt">&lt;/do&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/menu&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;a<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>href="<SPAN>#repeat</SPAN>"</SPAN>/&gt;
+          </DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;a<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>name="<SPAN>endit</SPAN>"</SPAN>/&gt;
+          </DIV><div style=""><SPAN class="tt">&lt;/body&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/XPML&gt;</SPAN></div></DIV></div></div></div><p><p xmlns:DSD="yyy">
+The programmer has inserted a <tt>&lt;?dsd URI="xpml-att.dsd"?&gt;</tt>
+processing instruction to denote that the document must conform to the
+DSD named <tt>xpml-att.dsd</tt>.  He can now use the DSD processor to
+check the syntax of the document.  It'll tell him:
+</p><p xmlns:DSD="yyy"><pre>
+Error in 'greetings-first-attempt.pml' 
+line 10: attribute 'nointerrupt' has illegal value 'y'
+while checking attribute in constraint 
+"message-attributes", 'xpml-core.dsd' line 377
+</pre></p><p xmlns:DSD="yyy">
+The DSD  describes this constraint as follows:
+</p><div class="example" style="padding:.5ex;"><div class="dsdpretty"><div style="margin-bottom:2ex; margin-top:1ex;" xmlns:DSD="yyy"><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; "><span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1379542679" class="user-bold">message-attributes</a><span>: </span><span><span></span><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="concrete">nointerrupt=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1379542679">YesOrNo</a><span class="concrete">"</span><span></span><span class="key">[<span class="special-key">Optional</span>]</span></span></div></span></div></div></div></div><p>
+Thus, the constraint declares the attribute
+    <tt xmlns:DSD="yyy">nointerrupt</tt> whose string type is <tt xmlns:DSD="yyy">YesOrNo</tt>.
+In turn, the DSD details that
+<div class="example" style="padding:.5ex;"><div class="dsdpretty"><div style="margin-bottom:2ex; margin-top:1ex; " xmlns:DSD="yyy"><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; "><span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1388455575" class="user-bold">YesOrNo</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold; margin-left: 2.7ex;
+text-indent: -2.7ex; "><span><span>(</span><span>"</span><span class="tt">yes</span><span>"</span> | </span><span><span>"</span><span class="tt">Yes</span><span>"</span> | </span><span><span>"</span><span class="tt">no</span><span>"</span> | </span><span><span>"</span><span class="tt">No</span><span>"</span>)</span></div></span></div></div></div></div><p>
+So, the programmer must write <tt xmlns:DSD="yyy">"yes" </tt>, not <tt xmlns:DSD="yyy">"y"</tt>.  This
+example illustrates our belief that DSDs  provide concise and
+useful error messages that do not necessitate a complete understanding
+of the DSD itself.
+
+<div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDAH1AZ"><span style="font-weight:bold;">DSDs for myriads of defaults</span></a></h2></div><p> 
+
+Once the above error is corrected, the DSD processor will accept the
+document and it'll insert all the default attributes and default
+elements specified by the XPML DSD.  The resulting document 
+is
+<div class="example" style="padding:.5ex;"><div class=""><div style="font-size: 90%;"><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex; color:maroon">&lt;?dsd<xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>URI="xpml-att.dsd"?&gt;</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;XPML&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;head&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;application<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>name="<SPAN>HELLOWORLD</SPAN>"</SPAN>/&gt;
+          </DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;maintainer<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>address="<SPAN>karam@research.att.com</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>loglevel="<SPAN>2</SPAN>"</SPAN>/&gt;
+          </DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;title&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex">The Greeting Application</div><div style=""><SPAN class="tt">&lt;/title&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/head&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;body&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex">
+
+    Welcome to greetings are us.
+    </div><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;span<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>nointerrupt="<SPAN>yes</SPAN>"</SPAN>&gt;</SPAN><SPAN class="tt">&lt;audio<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>url="<SPAN>/audioclips/greeting.vox</SPAN>"</SPAN>/&gt;</SPAN><SPAN class="tt">&lt;/span&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;a<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>name="<SPAN>repeat</SPAN>"</SPAN>/&gt;
+          </DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;menu<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>asrmode="<SPAN>none</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>endchars="<SPAN>#</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>finaltimeout="<SPAN>5000ms</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>interaction="<SPAN>basic</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>interdigittimeout="<SPAN>4000ms</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>maxmisselected="<SPAN>3</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>maxtimeout="<SPAN>2</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>maxtterrs="<SPAN>3</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>name="<SPAN>feelings</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>timeout="<SPAN>0ms</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;option<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>dtmf="<SPAN>0</SPAN>"</SPAN>&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex">To end</div><div style=""><SPAN class="tt">&lt;/option&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;do&gt;</SPAN><SPAN class="tt">&lt;a<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>href="<SPAN>#endit</SPAN>"</SPAN>/&gt;</SPAN><SPAN class="tt">&lt;comment&gt;</SPAN><span class="cd">go to end point</span><SPAN class="tt">&lt;/comment&gt;</SPAN><SPAN class="tt">&lt;/do&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;option&gt;</SPAN><span class="cd"> If you are feeling like a cowboy. </span><SPAN class="tt">&lt;/option&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;do&gt;</SPAN><span class="cd"> Howdy world! </span><SPAN class="tt">&lt;/do&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;option&gt;</SPAN><span class="cd"> If you are feeling like a canadian. </span><SPAN class="tt">&lt;/option&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;do&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex"> Gid'day world, how's it going eh? </div><div style=""><SPAN class="tt">&lt;/do&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;help&gt;</SPAN><span class="cd">No help is available.</span><SPAN class="tt">&lt;/help&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;initial&gt;</SPAN><SPAN class="tt">&lt;enumerate&gt;</SPAN><SPAN class="tt">&lt;option/&gt;</SPAN><span class="cd"> Press </span><SPAN class="tt">&lt;emph&gt;</SPAN><SPAN class="tt">&lt;dtmf/&gt;</SPAN><SPAN class="tt">&lt;/emph&gt;</SPAN><span class="cd">.</span><SPAN class="tt">&lt;/enumerate&gt;</SPAN><SPAN class="tt">&lt;/initial&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;timeout&gt;</SPAN><span class="cd">You have exceeded the time limit.</span><SPAN class="tt">&lt;/timeout&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;toomanyerrors&gt;</SPAN><span class="cd">Sorry, too many errors.</span><SPAN class="tt">&lt;/toomanyerrors&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;counttimeout&gt;</SPAN><span class="cd">Sorry, too many timeouts.</span><SPAN class="tt">&lt;/counttimeout&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;pause&gt;</SPAN><span class="cd"> Pausing.  Press pound sign to continue.
+      </span><SPAN class="tt">&lt;/pause&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/menu&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;a<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>href="<SPAN>#repeat</SPAN>"</SPAN>/&gt;
+          </DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;a<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>name="<SPAN>endit</SPAN>"</SPAN>/&gt;
+          </DIV><div style=""><SPAN class="tt">&lt;/body&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/XPML&gt;</SPAN></div></DIV></div></div></div><p><p xmlns:DSD="yyy">
+	
+	It is similar to the original document except that a variety
+	of timing and counting parameters, like
+	<tt>interdigittimeout="4000ms"</tt> have been inserted.  Also,
+	various default messages used in error and help situations,
+	like <div style="font-size: 90%;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;help&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex">No help is available.</div><div style=""><SPAN class="tt">&lt;/help&gt;</SPAN></div></DIV></div> have
+	been inserted.  Voice programming is dependent on a great
+	number of parameters whose tuning is often essential to
+	obtaining the right performance.  But they are not usually
+	something that the programmer wants to explain in exquisite
+	detail for every part of the PML document.
+      </p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h3><span style="font-weight:bold;">DSD defaults for customization</span></h3></div><p>
+
+The XPML programmer may easily override defaults of his choosing.  For
+example, he may change the <tt xmlns:DSD="yyy">interdigittimeout</tt> value whenever
+it's inserted by putting a DSD default declaration into the
+application document like:
+
+      <div class="example" style="padding:.5ex;"><div class=""><div style="font-size: 90%;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;DSD:Default&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;DefaultAttribute<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Name="<SPAN>interdigittimeout</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Value="<SPAN>1000ms</SPAN>"</SPAN>/&gt;
+          </DIV><div style=""><SPAN class="tt">&lt;/DSD:Default&gt;</SPAN></div></DIV></div></div></div><p>
+
+Such a declaration can occur anywhere in the application document; its
+scope consists of all its siblings and their descendants.  So in this
+case, the programmer may insert the DSD default declaration as a child
+of the <tt xmlns:DSD="yyy">body</tt> element; the effect is that the
+<tt xmlns:DSD="yyy">interdigittimeout</tt> attribute for the <tt xmlns:DSD="yyy">menu</tt> event will
+be inserted with value <tt xmlns:DSD="yyy">1000ms</tt>.
+
+<div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h3><span style="font-weight:bold;">DSD stylesheets</span></h3></div><p> 
+
+The DSD defaults may be gathered in XML external parsed entities,
+which are just like XML documents except that multiple root elements
+are allowed.  Below, we define a DSD stylesheet that overrides the
+default <tt xmlns:DSD="yyy">help</tt> element for the <tt xmlns:DSD="yyy">menu</tt> construct in two
+ways: for a <tt xmlns:DSD="yyy">menu</tt> without a <tt xmlns:DSD="yyy">class</tt> attribute, the
+message "We're sorry, can't help you more right now, but please call
+us at 1-800-greetings" is specified; for a <tt xmlns:DSD="yyy">menu</tt> with a
+<tt xmlns:DSD="yyy">class</tt> attribute of value <tt xmlns:DSD="yyy">moody</tt>, the default content
+of <tt xmlns:DSD="yyy">help</tt> becomes "How are you feeling, dud? press 1 to get
+relief",
+
+<div class="example" style="padding:.5ex;"><div class=""><div style="font-size: 90%;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;DSD:Default&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;Context&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;Element<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Name="<SPAN>menu</SPAN>"</SPAN>/&gt;
+          </DIV><div style=""><SPAN class="tt">&lt;/Context&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;DefaultContent&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;help&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex">We're sorry, can't help you more right now, but please
+	  call us at 1-800-greetings</div><div style=""><SPAN class="tt">&lt;/help&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/DefaultContent&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/DSD:Default&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;DSD:Default&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;Context&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;Element<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Name="<SPAN>menu</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+            &lt;Attribute<SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Name="<SPAN>class</SPAN>"</SPAN><SPAN><xsl:text xmlns:xsl="http://www.w3.org/XSL/Transform/1.0"> </xsl:text>Value="<SPAN>moody</SPAN>"</SPAN>/&gt;
+          </DIV><div style=""><SPAN class="tt">&lt;/Element&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/Context&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;DefaultContent&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;help&gt;</SPAN></div><div class="cd" STYLE="margin-left:1em;  margin-bottom:.8ex">How are you feeling, dud? press 1 to get relief</div><div style=""><SPAN class="tt">&lt;/help&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/DefaultContent&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/DSD:Default&gt;</SPAN></div></DIV></div></div></div><p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDAQ5AZ"><span style="font-weight:bold;">DSDs for evolving languages</span></a></h2></div><p>
+
+    In practice, it's rather impractical to describe a DSD as a single
+    document.  It's better to describe the main structure in a base
+    document, while extensions---which can be platform specific
+    additions or convenient abstractions--can be documented in
+    follow-up documents.
+
+    <p><span class="section" style="font-weight:bold;">The core of XPML</span> XPML in essence is
+    described in <a href="xpml-core.html" xmlns:DSD="yyy">xpml-core.dsd</a>.
+    (For a more detailed explanation of this DSD, see below.)  This
+    language introduces an HTML-like structure and touchtone-based
+    input modalities, including a number of specialized parameters.
+    Also, defaults are provided for all parameters that a beginning
+    XPML programmer should not need to worry about.
+
+    <p><span class="section" style="font-weight:bold;">Adding speech markup to XPML</span>
+
+
+
+Separately, in <a href="xpml-speech.html" xmlns:DSD="yyy">speech recognition
+extensions</a>, it is described how the high-level construct
+<tt xmlns:DSD="yyy">menu</tt> may be further refined by speech recognition parameters.
+Specifically, the constraint that describes <tt xmlns:DSD="yyy">menu</tt> attributes
+and content is extended with a declaration of an attribute
+<tt xmlns:DSD="yyy">asrmode</tt> that has the value '<tt xmlns:DSD="yyy">none</tt>', '<tt xmlns:DSD="yyy">only</tt>', or
+'<tt xmlns:DSD="yyy">plus</tt>':
+    <div class="example" style="padding:.5ex;"><div class="dsdpretty"><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " xmlns:DSD="yyy"><span class="concrete">asrmode=</span><span class="concrete">"</span><span><span></span><span><span>(</span><span>'</span><span class="concrete">none</span><span>'</span> | </span><span><span>'</span><span class="concrete">only</span><span>'</span> | </span><span><span>'</span><span class="concrete">plus</span><span>'</span>)<span class="concrete">"</span><span></span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></span></div></div></div><p>
+Also,  if the <tt xmlns:DSD="yyy">asrmode</tt> is
+different from <tt xmlns:DSD="yyy">none</tt>, then the constraint
+<tt xmlns:DSD="yyy">menu-asr-constraint</tt> applies:
+<div class="example" style="padding:.5ex;"><div class="dsdpretty"><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " xmlns:DSD="yyy"><span class="key">If </span><span><span></span><span><span>{</span><span class="key">Attribute</span><span></span><span class="tt">asrmode</span><span>=</span><span>"only"</span><span class="key"> Or</span></span><span><span class="key">Attribute</span><span></span><span class="tt">asrmode</span><span>=</span><span>"plus"</span>} </span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="key">Then</span><span></span>{<span><span></span><span class="key">Constraint</span><span></span><a class="user" href="#N-1167094805">menu-asr-constraint</a>}</span></div></div></div></div><p>
+The <tt xmlns:DSD="yyy">menu-asr-constraint</tt> declares various other attributes
+such as <tt xmlns:DSD="yyy">asrengine</tt>, <tt xmlns:DSD="yyy">asrurl</tt>, etc.: 
+<div class="example" style="padding:.5ex;"><div class="dsdpretty"><div style=" font-family: Courier; font-weight:bold;
+margin-left: 2.7ex; text-indent: -2.7ex; " xmlns:DSD="yyy"><span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1167094805" class="user-bold">menu-asr-constraint</a><span>:
+</span><span><span></span><div style=" font-family: Courier;
+font-weight:bold; margin-left: 2.7ex; text-indent: -2.7ex; "><span class="concrete">asrengine=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1168143381">Asr-engine-types</a><span class="concrete">"</span><span></span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold; margin-left: 2.7ex;
+text-indent: -2.7ex; "><span class="concrete">asrurl=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">Url</a><span class="concrete">"</span><span></span><span class="key">[<span class="special-key">Optional</span>]</span>;
+</span></div><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="concrete">asrspotting=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span></span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="concrete">bargein=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span></span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="concrete">asrgrammarlib=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span></span><span class="key">[<span class="special-key">Optional</span>]</span></span></div></div></div></div><p><p><span class="section" style="font-weight:bold;">Adding interaction types to XPML</span> In <a href="xpml-menu-interaction.html" xmlns:DSD="yyy">interaction extensions</a>, a
+    variety of additional ways of interpreting the <tt xmlns:DSD="yyy">menu</tt>
+    element is provided.  Each way is known as an
+    <em xmlns:DSD="yyy">interaction</em>.  The <tt xmlns:DSD="yyy">interaction</tt> attribute is
+    declared below along with a conditional constraint that declares
+    additional elements when the <tt xmlns:DSD="yyy">attribute</tt> has value
+    <tt xmlns:DSD="yyy">basic</tt> or <tt xmlns:DSD="yyy">optional</tt>:
+<div class="example" style="padding:.5ex;"><div class="dsdpretty"><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " xmlns:DSD="yyy"><span class="key">If </span><span><span></span><span><span>{</span><span class="key">Attribute</span><span></span><span class="tt">interaction</span><span>=</span><span>"basic"</span><span class="key"> Or</span></span><span><span class="key">Attribute</span><span></span><span class="tt">interaction</span><span>=</span><span>"optional"</span>} </span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="key">Then</span><span></span>{<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="concrete">&lt;counttimeout&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="key">Constraint</span><span></span><a class="user" href="#">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="key">Content</span><span></span><a class="user" href="#">menu-message-content</a></div><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; "><span class="concrete">&lt;/counttimeout&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>; </div></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="concrete">&lt;pause&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="key">Constraint</span><span></span><a class="user" href="#">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "><span class="key">Content</span><span></span><a class="user" href="#">menu-message-content</a></div><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; "><span class="concrete">&lt;/pause&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>}</div></div></div></div></div></div><p>
+These declarations are part of a redefinition of a constraint
+    <tt xmlns:DSD="yyy">menu-constraint</tt> that governs the attributes and content
+    of <tt xmlns:DSD="yyy">menu</tt>s. 
+
+    <p><span class="section" style="font-weight:bold;">Combining it all</span>
+DSDs may include other DSDs, so XPML is put together from 
+the three parts just described in
+<a href="xpml.html" xmlns:DSD="yyy">xpml.dsd</a>. 
+
+ <p><span class="section" style="font-weight:bold;">Extending XPML with AT&amp;T specific
+additions</span> It's now possible to round off the description
+of XPML with properties, like metrics, that are specific to the
+AT&amp;T platform.  That's done by further extending the XPML DSD, see
+<a href="xpml-att.html" xmlns:DSD="yyy">xpml-att.dsd</a>.
+
+<div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDASNBZ"><span style="font-weight:bold;">DSDs for simplifying semantic processing</span></a></h2></div><p>
+
+    With a DSD processor, an XML document can be <em xmlns:DSD="yyy">normalized</em>
+by default insertion: since defaults cannot be removed by defaults in
+an application document, only overridden, the defaults given with the
+DSD itself provide a set of assumptions about the shape of the
+document that results from running the DSD processor on a valid
+document.  For example, the XPML interpreter can assume <tt xmlns:DSD="yyy">menu</tt>
+elements that are fully filled in with timing attributes and content
+such as <tt xmlns:DSD="yyy">help</tt> and <tt xmlns:DSD="yyy">error</tt> messages.
+
+<div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDA2NBZ"><span style="font-weight:bold;">How to read the XPML DSD</span></a></h2></div><p>
+
+A DSD is itself an XML document, and as such barely readable.  So the
+DSD is presented through a transformation that yields an HTML document
+that can be displayed by any browser.  The displayed notation that
+we've chosen here is one that emphasizes the concrete syntax of the
+XML documents specified by the DSD. 
+The essential structure of XPML is described
+in the DSD <a href="xpml-core.html" xmlns:DSD="yyy">xpml-core.dsd (html)</a> (compare
+to <a href="xpml-core.txt" xmlns:DSD="yyy">xpml-core.xml (raw XML)</a>).  The
+first box framed in pink is an element definition that describes the
+<tt xmlns:DSD="yyy">XPML</tt> element itself.  This element must be the root of any
+XML document conforming to the xpml-core DSD as specified in the
+second line of the header. The <tt xmlns:DSD="yyy">XPML</tt> element definition is
+named by a nonterminal ID, which happens also to be <tt xmlns:DSD="yyy">XPML</tt>.
+(When there are different uses of an element with the same name, the
+nonterminals allow us to distinguish their descriptions.) According to
+the element definition, the <tt xmlns:DSD="yyy">XPML</tt> element consists of two
+things in sequence:
+<ul><li style="color:red;"><span style="color:black;">
+A <tt xmlns:DSD="yyy">head</tt> element, whose attributes and 
+	content are specified as the constraint <em xmlns:DSD="yyy">head-constraint</em>; and
+</span></li><li style="color:red;"><span style="color:black;">
+	a <tt xmlns:DSD="yyy">body</tt> element, which has attributes and content
+specified as the constraint
+<em xmlns:DSD="yyy">body-constraint</em></span></li></ul><p>
+    The    <em xmlns:DSD="yyy">head-constraint</em> specifies
+    <ul><li style="color:red;"><span style="color:black;">
+	a <tt xmlns:DSD="yyy">title</tt> element (the question mark after it means that it is
+optional),
+      </span></li><li style="color:red;"><span style="color:black;"><tt xmlns:DSD="yyy">meta</tt> elements (zero or more as indicated by the star),
+	each having a required <tt xmlns:DSD="yyy">name</tt> and <tt xmlns:DSD="yyy">content</tt> attribute, and
+      </span></li><li style="color:red;"><span style="color:black;"><em xmlns:DSD="yyy">pragma</em> elements.</span></li></ul><p><p xmlns:DSD="yyy">The order of these
+various elements is not important.</p><p xmlns:DSD="yyy">A note about syntax for content: parentheses containing a
+comma-separated list of content descriptions mean the same thing as in
+DTDs, namely all content that is a sequence of what's inside the
+parentheses; similarly, a |-separated list denotes a union.</p><p xmlns:DSD="yyy">The content known as <em>pragma</em> is defined in the third box.
+This content definition and element that is one of three different
+kinds.
+</p><p xmlns:DSD="yyy">In a DSD description, content and attribute declarations may be
+lumped together in constraints.  This abstraction technique is
+illustrated in the constraint definition of <a href="xpml-core.html#N-1215144099">menu-constraint</a>.  This is the
+constraint that is redefined twice to accommodate speech
+parameters and additional markup related to interaction types.
+</p><p xmlns:DSD="yyy">The remainder of this DSD description of the core of XPML should be
+rather self-explanatory.  We use string types to characterize the
+allowed attribute values (unless a "?"  indicates that there are no
+restrictions).  When the introduction of additional attributes or
+content depend on the context, we use if statements that are
+conditioned on context expressions similar to those of CSS.
+</p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h3><span style="font-weight:bold;">The components of the DSD for XPML</span></h3></div><p><ul><li style="color:red;"><span style="color:black;">The core: <a href="xpml-core.html" xmlns:DSD="yyy">xpml-core.dsd (html)</a>,
+ <a href="xpml-core.txt" xmlns:DSD="yyy">xpml-core.dsd (xml as .txt)</a>,
+ <a href="xpml-core.xml" xmlns:DSD="yyy">xpml-core.dsd (xml)</a>;</span></li><li style="color:red;"><span style="color:black;">The speech extensions: 
+<a href="xpml-speech.html" xmlns:DSD="yyy">xpml-speech.dsd (html)</a>,
+ <a href="xpml-speech.txt" xmlns:DSD="yyy">xpml-speech.dsd (xml as .txt)</a>,
+ <a href="xpml-speech.xml" xmlns:DSD="yyy">xpml-speech.dsd (xml)</a>;</span></li><li style="color:red;"><span style="color:black;">The menu interaction extensions: 
+<a href="xpml-menu-interaction.html" xmlns:DSD="yyy">xpml-menu-interaction.dsd (html)</a>,
+ <a href="xpml-menu-interaction.txt" xmlns:DSD="yyy">xpml-menu-interaction.dsd (xml as .txt)</a>,
+ <a href="xpml-menu-interaction.xml" xmlns:DSD="yyy">xpml-menu-interaction.dsd (xml)</a>;</span></li><li style="color:red;"><span style="color:black;">The AT&amp;T extensions: 
+<a href="xpml-att.html" xmlns:DSD="yyy">xpml-att.dsd (html)</a>,
+ <a href="xpml-att.txt" xmlns:DSD="yyy">xpml-att.dsd (xml as .txt)</a>,
+ <a href="xpml-att.xml" xmlns:DSD="yyy">xpml-att.dsd (xml)</a>;</span></li></ul><p><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h3><span style="font-weight:bold;">Another HTML-like example</span></h3></div><p> Here are links to an XPML
+example that contains form and input elements; note that lots of
+errors in such a form will not be caught by most other schema
+notations: <tt xmlns:DSD="yyy">form</tt> elements inside <tt xmlns:DSD="yyy">form</tt> elements,
+<tt xmlns:DSD="yyy">input</tt> elements not inside <tt xmlns:DSD="yyy">form</tt> elements,
+<tt xmlns:DSD="yyy">input</tt> elements of type <tt xmlns:DSD="yyy">submit</tt> with other attributes
+than <tt xmlns:DSD="yyy">name</tt> and <tt xmlns:DSD="yyy">value</tt>, <tt xmlns:DSD="yyy">input</tt> of type
+<tt xmlns:DSD="yyy">submit</tt> with a <tt xmlns:DSD="yyy">value</tt> attribute but without a
+<tt xmlns:DSD="yyy">name</tt> attribute, and so on.
+<ul><li style="color:red;"><span style="color:black;">The form example: 
+ <a href="blue-widgets.txt" xmlns:DSD="yyy">blue-widgets.pml (xml as .txt)</a>,
+ <a href="blue-widgets.xml" xmlns:DSD="yyy">blue-widgets.pml (xml)</a>;</span></li></ul><p><img src="http://www.brics.dk/cgi-amoeller/DSD/count?industrial-case" border="0" height="1" width="1" xmlns:DSD="yyy"><div style="
+font-family: Arial, helvetica,
+	    sans-serif; font-weight: normal;"><h2><a name="IDAWSBZ"><span style="font-weight:bold;">Conclusion</span></a></h2></div><p>
+
+    We have shown through our IVR examples that schemas play an
+    important role for the practical handling of domain specific
+    languages expressed in XML.  In particular, we have demonstrated
+    that the CSS-like default mechanism provided by DSDs may be an
+    easily graspable alternative to XSLT transformations.
+</p></body></html>

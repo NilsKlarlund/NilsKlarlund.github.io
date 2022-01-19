@@ -1,0 +1,1207 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=PowerPoint.Slide>
+<meta name=Generator content="Microsoft PowerPoint 10">
+<link id=Main-File rel=Main-File href="../ShortTalk-languages-interfaces.htm">
+<link rel=Preview href=preview.wmf>
+<meta name=Robots content=NoIndex>
+<script src=script.js></script><script><!--
+if( !(IsWin("PPTOtl")||IsWin("PPTNav")||IsWin("PPTOtlNav")) )
+{
+	obj = GetObj("Main-File")
+	parent.location.href=obj.href
+}
+var gOtlHiliteClr="#ffffff",gOtlNormalClr="#000000",gOtlActiveClr="#ffff00",gSelected="",gTxtState=false,gChildEntryTable=new Array()
+function Load()
+{
+	if( IsWin("PPTOtl" ) ){ LoadOtl(); parent.gOtlLoaded=true; return }
+	if( g_supportsPPTHTML ) {
+		if( IsWin("PPTNav" ) ){ LoadNav("NavObj",UpdNav); parent.gNavLoaded=true; return }
+		if( IsWin("PPTOtlNav" ) ){ LoadNav("OtlNavObj",UpdOtlNav); parent.gOtlNavLoaded=true; return }
+	}
+}
+function Upd(){ if( IsWin("PPTNav") ) LoadNav("NavObj",UpdNav) }
+function LoadNav( oId,UpdFunc )
+{
+	document.ondragstart=CancelDrag
+	document.onselectstart=CancelDrag
+	document.body.style.margin=2
+	UpdFunc()
+	obj=document.all.item(oId)
+	obj.style.display="block"
+	obj.style.visibility="visible"
+	document.bgColor="threedface"
+	if( parent.frames["PPTNts"] )
+		notesBtn.style.display = ""
+	if( parent.gHasNarration )
+		nb_voiceBorder.style.display = ""
+}
+function LoadOtl()
+{
+	var otl=GetObj("OtlObj")
+	otl.style.display="block"
+	otl.style.visibility="visible"
+	if( gOtlActiveClr == "" ) gOtlActiveClr=document.linkColor
+	if( gOtlHiliteClr == "" ) gOtlHiliteClr=document.fgColor
+	if( gOtlNormalClr == "" )
+		gOtlNormalClr=document.bgColor
+	else
+		document.bgColor=gOtlNormalClr
+	InitArray()
+	if( ObjExists( parent.gCurSld ) ) {
+		ChangeState( parent.gCurSld,gOtlNormalClr,gOtlHiliteClr )
+		gSelected=parent.gCurSld
+	}
+	else gSelected = -1
+	UpdOtl()
+}
+function UpdOtl(){ UpdIdx(parent.gCurSld) }
+function UpdIdx( idx )
+{
+	if( gSelected != idx ) {
+		if( gSelected > 0 )
+			ChangeState( gSelected,gOtlHiliteClr,gOtlNormalClr )
+		if( ObjExists( idx ) ) {
+			gSelected = idx
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+		}
+		else gSelected = -1
+	}
+	if( gTxtState != parent.gOtlTxtExp ) {
+		state = "block"
+		if( !parent.gOtlTxtExp )
+			state="none"
+		for(ii=0; ii<gChildEntryTable.length; ii++) {
+			obj=gChildEntryTable[ii];
+			if( obj.id == null ) continue;
+			if( obj.id.indexOf("PPTC") >= 0 )
+				obj.style.display=state;
+		}
+		gTxtState=parent.gOtlTxtExp
+		if( ObjExists( gSelected ) )
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+	}
+}
+function InitArray()
+{
+	count=0
+	var list=GetTags(document,"DIV");
+	for(ii=0; ii<list.length; ii++) {
+		obj=list.item(ii)
+		if( obj.id == null ) continue
+		if( obj.id.indexOf("PPTC") >= 0 )
+			gChildEntryTable[count++]=obj
+	}
+}
+function ChangeState( idx,fgColor,bgColor )
+{
+	obj=GetObj("PPTL"+idx)
+	obj.style.color=fgColor
+	obj=GetObj("PPTP"+idx)
+	obj.style.backgroundColor=bgColor
+}
+function ChgClr( o,clr ){ if( o.id != "PPTL"+gSelected ) o.style.color=clr }
+function Over( src ){ ChgClr(GetLink(src),gOtlActiveClr) }
+function Out( src ){ ChgClr(GetLink(src),gOtlHiliteClr) }
+function Follow(src){ window.location.href = GetLink(src).href; }
+function ObjExists( ii ) { obj=GetObj("PPTP"+ii ); return( obj ) }
+function GoToSld( href ){ UpdIdx(parent.GetSldNum(href)); parent.GoToSld( href ) }
+function CancelDrag(){ window.event.cancelBubble=true;window.event.returnValue=false}
+function GetLink(src)
+{
+   if(src.tagName=="A") return src
+   else return GetTags(src,"A").item(0)
+}
+function UpdNav()
+{
+	txt = "<center>";
+	if( parent.GetHrefObj( parent.gCurSld ).mOrigVis == 1 )
+		txt += "Slide " + parent.GetCurSldNum() + " of " + parent.GetNumSlds()
+	else
+		txt += "Hidden Slide"
+	txt += "</center>";
+	nav_text.innerHTML = txt;
+	if( !parent.HasPrevSld() )
+		gBtnArr["nb_prev"].Enabled(0)
+	else
+		gBtnArr["nb_prev"].Enabled(1)
+	if( !parent.HasNextSld() )
+		gBtnArr["nb_next"].Enabled(0)
+	else
+		gBtnArr["nb_next"].Enabled(1)
+	gBtnArr["nb_nts"].SetEnabled()
+	gBtnArr["nb_nts"].SetFlag( parent.gHasNts )
+	gBtnArr["nb_sldshw"].Enabled(1)
+	gBtnArr["nb_voice"].Enabled(1)
+}
+function UpdOtlNav()
+{
+	gBtnArr["nb_otl"].SetEnabled();
+	if( parent.gOtlOpen )
+		gBtnArr["nb_otlTxt"].Enabled( true );
+	else
+		document.all.item("nb_otlTxtBorder").style.visibility = "hidden";
+}
+
+//--></script>
+<style>
+<!--.PTxt
+	{position:relative;
+	width:100%;
+	margin-top:5px;
+	padding-left:2px;
+	font-weight:bold;}
+.CTxt
+	{position:relative;
+	width:100%;
+	margin-top:5px;}
+a
+	{color:white;
+	text-decoration:none;}
+ul
+	{color:white;
+	margin-bottom:0px;
+	margin-left:20px;}
+.sldNum
+	{margin-top:5px;
+	color:white;}
+.button
+	{position:absolute;
+	width:32px;
+	height:20px;
+	border-style:solid;
+	border-width:1px;
+	border-color:threedface;}
+-->
+</style>
+</head>
+
+<body onload="Load()" style='margin:2px'>
+
+<div id=NavObj onload="Load()" onmouseover="BtnOnOver()"
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+<table id="notesBtn" style='position:absolute;display:none;width:70px' align=left cellpadding=0
+ cellspacing=0>
+ <td nowrap>
+ <div id="nb_ntsElem" align=center style='position:relative;padding:3px;
+ font-family:Arial;color:buttontext;font-size:9pt'><img src="notes_flag.gif"
+ border=0 id="notes_flag" style='display:none'><span
+style='mso-spacerun:yes'>  </span>Notes</div>
+ <div title="Show/Hide Notes" id="nb_nts" style='position:absolute;top:0%;
+ left:0%;width:100%;height:100%'></div>
+ </td>
+</table>
+
+<table style='position:relative;width:70px' align=right cellpadding=0 cellspacing=0>
+ <td nowrap>
+ <div id="nb_sldshwText" title="Full
+Screen Slide Show" align=center style='position:relative;margin-left:20px;padding:3px;
+ font-family:Arial;color:buttontext;font-size:9pt;cursor:default'>Slide
+Show</div>
+ <div id="nb_sldshwBorder" title="Full Screen Slide Show" style='position:absolute;top:0%;left:0%;width:100%;height:20px'>
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+ src="buttons.gif" id="nb_sldshw" style='position:relative;left:-254px'></div>
+ </div>
+ </td>
+ <td>
+ <div id="nb_voiceBorder" style='display:none;position:absolute;top:0;left:-40px;
+ width:20px;height:20px'>
+ <div style='position:absolute;clip:rect(0px, 18px, 18px, 0px)'><img
+ src="buttons.gif" id="nb_voice" title="Pause/Play Narration" style='position:
+ relative;left:-290px'></div>
+ </div>
+ </td>
+</table>
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+ <td nowrap>
+ <div id="nb_prevBorder" class=button style='left:-30px'>
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+ src="buttons.gif" id="nb_prev" title="Previous Slide" style='position:relative;
+ left:0px'></div>
+ </div>
+ <span id="nav_text" style='position:relative;top:3px;width:100px;font-family:
+ Arial;color:buttontext;font-size:9pt'></span>
+ <div id="nb_nextBorder" class=button>
+ <div style='position:absolute;clip:rect(0px, 30px, 18px, 0px)'><img
+ src="buttons.gif" id="nb_next" title="Next Slide" style='position:relative;
+ left:-90px'></div>
+ </div>
+ </td>
+</table>
+</div>
+
+<div id=OtlNavObj onload="Load()" onmouseover="BtnOnOver()"
+onmousedown="BtnOnDown()" onmouseout="BtnOnOut()" onmouseup="BtnOnUp()"
+onkeypress="_KPH()" style='display:none;visibility:hidden'>
+
+<table style='position:relative;width:70px' align=left cellpadding=0 cellspacing=0>
+ <td nowrap><div title="Show/Hide
+Outline" id="nb_otl"
+ style='position:absolute;top:0%;left:0%;width:100%;height:100%;cursor:default'>
+ <div id="nb_otlElem" align=center style='position:relative;padding:3px;font-family:Arial;
+ color:buttontext;font-size:9pt'>Outline</div></div>
+ </td>
+</table>
+
+<table style='position:relative' align=center cellpadding=0 cellspacing=0>
+ <td>
+ <div style='position:absolute;left:-18px;width:24px;height:20px;border-style:
+ solid;border-width:1px;border-color:threedface' id="nb_otlTxtBorder">
+ <div style='position:absolute;clip:rect(0px, 22px, 18px, 0px)'><img
+ src=buttons.gif id="nb_otlTxt" title="Expand/Collapse Outline"
+ style='position:relative;left:-157px'></div>
+ </div>
+ </td>
+</table>
+
+</div>
+
+<div id=OtlObj style='display:none;visibility:hidden;'>
+
+
+<table width="100%" style='font-family:Arial;font-size:9pt'>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>1</font></div>
+  </td>
+  <td width="100%">
+  <div id=PPTP1 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0001.htm');" id=PPTL1>The ShortTalk editing
+  language --- and its relevance to languages in human computer interfaces</a></font></div>
+  <div id=PPTC1 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Nils Klarlund</li>
+   <li>Clairgrove, LLC</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>2</font></div>
+  </td>
+  <td>
+  <div id=PPTP2 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0003.htm');" id=PPTL2>Goals</a></font></div>
+  <div id=PPTC2 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Provoke reflection on spoken language for operating machinery</li>
+   <li>Were we deluded by</li>
+   <ul>
+    <li>HAL and Startrek?</li>
+    <li>The idea that speech input would be inherently natural when working on
+        the computer (a la “NaturallySpeaking)”?</li>
+   </ul>
+   <li>Even if yes, there is a fascinating opportunity to make speech
+       recognition viable as a tool with no assumptions about the presence of
+       intelligence outside the brain</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>3</font></div>
+  </td>
+  <td>
+  <div id=PPTP3 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0065.htm');" id=PPTL3>Context</a></font></div>
+  <div id=PPTC3 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Typing injury (&gt; 10 years)</li>
+   <li>The question “Did humans evolve so that they could operate complex
+       machinery only through their fingers?” becomes of interest</li>
+   <li>The answer is “no” already by virtue of our feet</li>
+   <ul>
+    <li>Cars</li>
+    <li>Excavators</li>
+    <li>Organ</li>
+   </ul>
+   <li>Pedal control has limited bandwidth, so the overriding question is:</li>
+   <ul>
+    <li>“What about speech?”</li>
+    <br>
+    <br>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>4</font></div>
+  </td>
+  <td>
+  <div id=PPTP4 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0124.htm');" id=PPTL4>Imagine: with your hands
+  tied</a></font></div>
+  <div id=PPTC4 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Do the following tasks</li>
+   <ul>
+    <li>Capitalize the next three words</li>
+    <li>Move to the beginning of the line and replace two words there with “A
+        new”</li>
+    <li>Insert two new lines and backup to the place between the new lines</li>
+    <li>Delete what is inside the parenthesis that enclose text where the mouse
+        pointer is and insert “practically speaking”</li>
+    <li>Place cursor at last “l” in the preceding word “travelling”</li>
+    <li>Split the current window to show the file “newtrace”</li>
+    <br>
+    <br>
+    <br>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>5</font></div>
+  </td>
+  <td>
+  <div id=PPTP5 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0126.htm');" id=PPTL5>The frustration of joint
+  editing</a></font></div>
+  <div id=PPTC5 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>You are editing a paper with a colleague</li>
+   <li>Your colleague has the mouse and the keyboard</li>
+   <li>You have an editing intention in mind</li>
+   <li>What happens:</li>
+   <ul>
+    <li>“Uh, move this word over here, no, no, one line down, and then insert
+        ‘the’, which you should capitalize, oh no, but not that ‘the’, the next
+        ‘the’…”</li>
+    <li>At which point you physically take position of the mouse while you’re
+        both yanking at the keyboard</li>
+    <br>
+    <br>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>6</font></div>
+  </td>
+  <td>
+  <div id=PPTP6 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0125.htm');" id=PPTL6>Natural language doesn’t
+  work</a></font></div>
+  <div id=PPTC6 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>NL has no meaning!</li>
+   <ul>
+    <li>No communicative context</li>
+   </ul>
+   <li>NL is verbose!</li>
+   <ul>
+    <li>“Move to the beginning of the line and replace two words there with ‘A
+        new’”</li>
+   </ul>
+   <li>NL is not a tool!</li>
+   <ul>
+    <li>Since tools allow concise sequencing of atomic actions</li>
+   </ul>
+   <li>NL commands are confusable with NL dictation!</li>
+   <ul>
+    <li>Current dictation system are most unnatural to use as a result (because
+        pauses must be inserted by user</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>7</font></div>
+  </td>
+  <td>
+  <div id=PPTP7 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0127.htm');" id=PPTL7>The natural language
+  fallacy</a></font></div>
+  <div id=PPTC7 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>The belief that natural language is a feasible substitution for tools
+       whose use is characterized by the unconscious sequencing of well-defined
+       atomic operations</li>
+   <li>The four reasons natural language doesn’t work</li>
+   <ul>
+    <li>No meaning issue</li>
+    <li>Verbosity</li>
+    <li>Syntax too complicated</li>
+    <li>Mode problem (for dictation systems)</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>8</font></div>
+  </td>
+  <td>
+  <div id=PPTP8 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0128.htm');" id=PPTL8>A billion people can’t
+  be wrong!<br>
+    Keyboards work</a></font></div>
+  <div id=PPTC8 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Precise, specific concepts (instead of no meaning)</li>
+   <ul>
+    <li>“copy selection,” “move cursor to beginning of line”,…</li>
+   </ul>
+   <li>Concise symbolization as keys (instead of verbosity)</li>
+   <ul>
+    <li>Ctrl-C, Home Key,…</li>
+   </ul>
+   <li>Sequences of keys can be arbitrarily composed (instead of complicated
+       syntax)</li>
+   <li>No confusion as what are commands (instead of mode problem)</li>
+   <ul>
+    <li>But Shift, Ctrl, Alt keys are slow and results in chaotic naming of
+        concepts</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>9</font></div>
+  </td>
+  <td>
+  <div id=PPTP9 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0133.htm');" id=PPTL9>What is a keyboard
+  language</a></font></div>
+  <div id=PPTC9 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>These languages can be written but not read, some “sentences” or
+       “paragraphs” perhaps are</li>
+   <ul>
+    <li>C-x C-b M-x v i tab w e q RET C-e (Emacs)</li>
+    <li>j j j a the RET ESC (vi)</li>
+    <li>C-left C-S-left C-x C-right right C-v (Windows)</li>
+   </ul>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>10</font></div>
+  </td>
+  <td>
+  <div id=PPTP10 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0129.htm');" id=PPTL10>Time trip to period
+  immediately following WWII</a></font></div>
+  <div id=PPTC10 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Director of the Office of Scientific Research and Development, Dr.
+       Vannevar Bush</li>
+   <li>In July of 1945, Bush published a remarkably prescient outline of
+       research directions “As we may think”</li>
+   <li>A universal language is one that should be understood and spoken by
+       every one</li>
+   <li>Next, the excerpt. ..</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>11</font></div>
+  </td>
+  <td>
+  <div id=PPTP11 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0130.htm');" id=PPTL11>&quot;Predicts
+  speech-to-text apparatus,&quot;</a></font></div>
+  <div id=PPTC11 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Predicts speech-to-text apparatus, inspired by theVocoder, a Bell Labs
+       invention</li>
+   <li><span style='mso-spacerun:yes'> </span>“Our present languages are not
+       especially adapted to this sort of mechanization, it is true. It is
+       strange that the inventors of universal languages have not seized upon
+       the idea of producing one which better fitted the technique for
+       transmitting and recording speech.”</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>12</font></div>
+  </td>
+  <td>
+  <div id=PPTP12 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0131.htm');" id=PPTL12>In fact…</a></font></div>
+  <div id=PPTC12 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Speech recognition for natural language works really quite well
+       (especially if user trained)</li>
+   <li>No need for universal constructed language at least on phonetic grounds
+       (most of us will be relieved!)</li>
+   <li>Instead, we need specialized languages for controlling the computer
+       itself. Such languages are simple and semi-universal for their domain
+       (each is known by many people).</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>13</font></div>
+  </td>
+  <td>
+  <div id=PPTP13 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0132.htm');" id=PPTL13>From 1949: A perfect
+  language</a></font></div>
+  <div id=PPTC13 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Robert A. Heinlein, a sci-fi author</li>
+   <ul>
+    <ul>
+     <li>Reference thanks to Jeffrey Bilmes</li>
+    </ul>
+   </ul>
+   <li>A perfect language is one that mirror the true nature of objects, the
+       precise nature of ideas (Umberto Eco: “The search for a perfect
+       language”)</li>
+   <li>A perfect language need not to be universal (and vice versa)</li>
+   <li>Next, the ideas in the novel “Gulf”…</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>14</font></div>
+  </td>
+  <td>
+  <div id=PPTP14 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0134.htm');" id=PPTL14>Speedtalk premises</a></font></div>
+  <div id=PPTC14 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>850 words sufficient to express anything that could be expressed by
+       &quot;normal&quot; human vocabularies: Ogden’s Basic English (not
+       sci-fi)</li>
+   <li>&quot;Blood, toil, tears and sweat&quot; becomes &quot;Blood, hard work,
+       eyewash and body water”</li>
+   <li>Phoneticians analyzed all human tongues into about 100-odd sounds,
+       represented by the letters of a general phonetic alphabet</li>
+   <li>Each capable of variation: length, pitch, …</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>15</font></div>
+  </td>
+  <td>
+  <div id=PPTP15 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0135.htm');" id=PPTL15>Efficient represenation</a></font></div>
+  <div id=PPTC15 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>“Without much refinement of accepted phonetic practice, it was possible
+       to establish a one-to-one relationship with Basic English so that</li>
+   <ul>
+    <li>one phonetic symbol was equivalent to an entire word in a “normal”
+        language,</li>
+    <li>one word was equal to an entire sentence”</li>
+   </ul>
+   <li>“Speedtalk was not shorthand basic English…other languages made
+       scientific, multi-valued logic almost impossible to achieve;<span
+       style='mso-spacerun:yes'>  </span>in Speedtalk it was difficult not to
+       be logical.”</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>16</font></div>
+  </td>
+  <td>
+  <div id=PPTP16 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0136.htm');" id=PPTL16>On paradoxes</a></font></div>
+  <div id=PPTC16 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>“In the syntax of speech talk the paradox of the Spanish barber could
+       not even be expressed, safe as a self-evident error”</li>
+   <li>Paradoxes are verbal, they do not exist in the real world.</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>17</font></div>
+  </td>
+  <td>
+  <div id=PPTP17 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0137.htm');" id=PPTL17>Speedtalk: key to
+  thinking efficiently</a></font></div>
+  <div id=PPTC17 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>A pool of 215,999 words (60<sup>3</sup>-1) available for specialized
+       meaning, most of them monosyllabic</li>
+   <li>“The ability to learn Speedtalk at all is proof of supernormal
+       intelligence” (and your “association speed” is 3x that of normal humans)</li>
+   <li>“Speedtalk enabled him to manipulate symbols approximately seven times
+       as fast as English symbols could be manipulated”</li>
+   <li>So, total gain is 7 x 3 = 21!!</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>18</font></div>
+  </td>
+  <td>
+  <div id=PPTP18 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0138.htm');" id=PPTL18>What do with such
+  outrageous cognitive theories?</a></font></div>
+  <div id=PPTC18 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <br>
+   <li>Well, nothing really, but principles of sentence formation apply them to
+       verbalize keyboard languages!</li>
+   <li>1 billion users of such non-verbalized languages</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>19</font></div>
+  </td>
+  <td>
+  <div id=PPTP19 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0139.htm');" id=PPTL19>To get an editing
+  language</a></font></div>
+  <div id=PPTC19 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Verbalize the symbols of keyboard languages?</li>
+   <ul>
+    <li>Yes but keyboard languages are much too poor</li>
+   </ul>
+   <li>Instead, start over, make a constructed, perfect language</li>
+   <ul>
+    <li>Phonemes must carry units of editing meaning</li>
+    <li>Syllables are words</li>
+    <li>Words are command phrases</li>
+   </ul>
+   <li>That is what ShortTalk is (although not quite as perfect as Speedtalk)</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>20</font></div>
+  </td>
+  <td>
+  <div id=PPTP20 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0141.htm');" id=PPTL20>ShortTalk phonetics</a></font></div>
+  <div id=PPTC20 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>ai</li>
+   <ul>
+    <li>Go forward from cursor as in syllable nairx (next)</li>
+    <li>The word nairx-rye means “go to next ‘)’ after the cursor”</li>
+    <li>gnaith “go neither”, i.e. “down arrow”</li>
+   </ul>
+   <li>oo</li>
+   <ul>
+    <li>Go backward from cursor</li>
+    <li>noorx-rye means “go to the nearest ‘)’ before the cursor”</li>
+    <li>goop “go up”</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>21</font></div>
+  </td>
+  <td>
+  <div id=PPTP21 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0142.htm');" id=PPTL21>More phonetics (about
+  syllables)</a></font></div>
+  <div id=PPTC21 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>..ft</li>
+   <ul>
+    <li>The end of what is found</li>
+    <li>“chaiw-aift the most”: chew up (delete forward) one character after the
+        first occurrence of “the most” after the cursor</li>
+   </ul>
+   <li>b..f</li>
+   <ul>
+    <li>The beginning of what is found</li>
+    <li>“chaiw-baif the most”: chew up (delete forward) one character before
+        the first occurrence of “the most” after the cursor</li>
+   </ul>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>22</font></div>
+  </td>
+  <td>
+  <div id=PPTP22 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0140.htm');" id=PPTL22>ShortTalk syllables
+  <br>
+    (which would be words in NT)</a></font></div>
+  <div id=PPTC22 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>ghin, ex,…</li>
+   <ul>
+    <li>Beginning, end,…</li>
+   </ul>
+   <li>chaiw, choock</li>
+   <ul>
+    <li>Delete a character (forward direction, backward direction)</li>
+   </ul>
+   <li>hare, tair</li>
+   <ul>
+    <li>Here (cursor), there (mouse)</li>
+   </ul>
+   <li>ane, twain, traio,..<span style='mso-spacerun:yes'>  </span>(strictly
+       speaking traio is not a syllable)</li>
+   <ul>
+    <li>One, two, three,…</li>
+   </ul>
+   <li>smack, grab,…</li>
+   <ul>
+    <li>Delete, make a copy at cursor,…</li>
+   </ul>
+   <li>line, senten, inner,…</li>
+   <ul>
+    <li>Line, sentence, inside of parenthesis or quotes</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>23</font></div>
+  </td>
+  <td>
+  <div id=PPTP23 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0143.htm');" id=PPTL23>ShortTalk word<br>
+    (sentence in NT)</a></font></div>
+  <div id=PPTC23 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Capitalize the next three words</li>
+   <ul>
+    <li>caip-traio</li>
+   </ul>
+   <li>Go to the “l” in the preceding word “travelling”</li>
+   <ul>
+    <li>noorx-lima</li>
+   </ul>
+   <li>Split the current window to show the file “new trace”</li>
+   <ul>
+    <li>sploot-menu new trace</li>
+    <li>Note: this ShortTalk word that has an English sentence fragment as an
+        argument</li>
+    <br>
+    <br>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>24</font></div>
+  </td>
+  <td>
+  <div id=PPTP24 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0145.htm');" id=PPTL24>Sequencing sentences</a></font></div>
+  <div id=PPTC24 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Move to the beginning of the line and replace two words there with ‘a
+       new’”</li>
+   <ul>
+    <li>ghin-line, smack-twain, a new</li>
+   </ul>
+   <li>Insert two new lines and backup to the place between the new lines</li>
+   <ul>
+    <li>loon-twain, gloof</li>
+   </ul>
+   <li>Delete what is inside the parenthesis that enclose text where the mouse
+       pointer is and insert “practically speaking”</li>
+   <ul>
+    <li>smack-inner-gook, practically speaking</li>
+   </ul>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>25</font></div>
+  </td>
+  <td>
+  <div id=PPTP25 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0146.htm');" id=PPTL25>Speaking funny for a
+  reason</a></font></div>
+  <div id=PPTC25 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>ShortTalk constructed so that none of the command words is confusable
+       with a common fragment of English</li>
+   <li>Without this property, the mode problem would reappear and destroy any
+       hope of fluency</li>
+   <li>Demo:</li>
+   <ul>
+    <li>letter.wmv (Windows), letter.rm (Real Networks)</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>26</font></div>
+  </td>
+  <td>
+  <div id=PPTP26 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0157.htm');" id=PPTL26>Keyboard level
+  analysis: ShortTalk + pointing v. keyboard + mouse</a></font></div>
+  <div id=PPTC26 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Estimate time for various actions and sum them to provide indication of
+       how long specific edit tasks take</li>
+   <li>Combining mouse and keyboard is very expensive due to need to home hands</li>
+   <ul>
+    <li>ShortTalk + pointing for many tasks several times faster because homing
+        is eliminated and because of much more succinct expression of editing
+        intention</li>
+    <li>But analysis does not include cognition effort</li>
+   </ul>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>27</font></div>
+  </td>
+  <td>
+  <div id=PPTP27 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0158.htm');" id=PPTL27>Experimental results</a></font></div>
+  <div id=PPTC27 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>From data collected over a couple of months</li>
+   <ul>
+    <li>n log n estimate of information rate is about 16 bits/second for
+        ShortTalk commands (assuming four syllables/second speech output)</li>
+    <li>About 1000 different commands used</li>
+   </ul>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>28</font></div>
+  </td>
+  <td>
+  <div id=PPTP28 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0147.htm');" id=PPTL28>Complementing ShortTalk</a></font></div>
+  <div id=PPTC28 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Repetitive work is often unfeasible by voice:</li>
+   <ul>
+    <li>“page down, page down, page up, page down”</li>
+   </ul>
+   <li>Clearly feet are underutilized when sitting at the computer</li>
+   <ul>
+    <li>State of the art: at most one or two pedals offered for control of say
+        voice recorder or for delete key or mouse button</li>
+    <li>Loose pedals, not combined with foot rests, and completely insufficient
+        coverage of repetitive functions</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>29</font></div>
+  </td>
+  <td>
+  <div id=PPTP29 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0148.htm');" id=PPTL29>Introducing ShortStep</a></font></div>
+  <div id=PPTC29 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>ShortStep is my 7<sup>th</sup> or so attempt at producing a foot
+       keyboard that</li>
+   <ul>
+    <li>Covers virtually all control functions</li>
+    <ul>
+     <li>Shft-tab, Alt-tab, Alt-Shft-Tab, left, Ctrl-b, Shft-left, PgUp,
+         Ctrl-Alt-s, Ctrl-Esc, Backspace, …</li>
+    </ul>
+    <li>Doesn’t hurt</li>
+    <li>Is fast (foot pedals on an organ are spaced far apart)</li>
+    <li>Doesn’t require you to take your socks off</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>30</font></div>
+  </td>
+  <td>
+  <div id=PPTP30 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0149.htm');" id=PPTL30>Sales talk: imagine
+  leaning back</a></font></div>
+  <div id=PPTC30 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Browsing, reading</li>
+   <li>Process your email</li>
+   <ul>
+    <li>Next email</li>
+    <li>Delete or not</li>
+   </ul>
+   <li>Process your photos</li>
+   <ul>
+    <li>Some need to be rotated others not</li>
+   </ul>
+   <li>Edit your text</li>
+   <ul>
+    <li>Just pressing the return key and the backspace key by feet saves time
+        and effort (because they’re a little out of the way)</li>
+   </ul>
+   <li>CAD applications</li>
+   <li>Programming</li>
+   <br>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>31</font></div>
+  </td>
+  <td>
+  <div id=PPTP31 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0150.htm');" id=PPTL31>Photo</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>32</font></div>
+  </td>
+  <td>
+  <div id=PPTP32 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0151.htm');" id=PPTL32>Key layout</a></font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>33</font></div>
+  </td>
+  <td>
+  <div id=PPTP33 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0152.htm');" id=PPTL33>Pointing</a></font></div>
+  <div id=PPTC33 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Pointing (and hence the mouse) cannot be replaced in general</li>
+   <li>Fortunately, a foot keyboard offers a very significant advantage:</li>
+   <ul>
+    <li>The mouse buttons can be eliminated</li>
+    <li>Why important: think of a graphic pen and the bothersome button on the
+        side</li>
+    <li>Similar problem with mouse…</li>
+   </ul>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>34</font></div>
+  </td>
+  <td>
+  <div id=PPTP34 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0153.htm');" id=PPTL34>A friendly mouse</a></font></div>
+  <div id=PPTC34 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <ul>
+    <li>Problem: ever-present tension because fingers must be constantly lifted
+        in order not to press the buttons</li>
+    <li>Consequently, the more “ergonomic” the mouse is (in terms of large
+        button and light pressure) the more injurious it may be</li>
+    <li>Without buttons the mouse can be made small, which makes it possible
+        for the whole hand to rest on the table, again significantly reducing
+        static tension</li>
+    <li>These theories are medically unproven (so far…)</li>
+   </ul>
+   <br>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>35</font></div>
+  </td>
+  <td>
+  <div id=PPTP35 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0154.htm');" id=PPTL35>Conclusion I</a></font></div>
+  <div id=PPTC35 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>There is so much to be done for computer users who are disabled, even
+       for those who have just sores and pains</li>
+   <li>Questions raised about whether natural language is really necessary---at
+       what level of user sophistication or need does natural language offer
+       any advantages?</li>
+   <li>The USI (Universal Speech Interface research at CMU) is less radical
+       than ShortTalk but also advocates simple keywords for controlling
+       interactive voice response systems</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>36</font></div>
+  </td>
+  <td>
+  <div id=PPTP36 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0155.htm');" id=PPTL36>Conclusion II: Some
+  unsolicited user comments on ShortTalk…</a></font></div>
+  <div id=PPTC36 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Hallelujah &amp; Congratulations!... I have been thinking along these
+       lines for years now</li>
+   <li>Very exciting video using ShortTalk inside of Emacs...</li>
+   <li>I would really like to try your ShortTalk product.</li>
+   <li>I am very impressed with your work...I have to warn you,<span
+       style='mso-spacerun:yes'>  </span>I'm really really really hoping I can
+       motivate you to find a way so that I can try ShortTalk</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+ <tr onmouseover="Over(this)" onmouseout="Out(this)" onclick="Follow(this)"
+  style='cursor:hand'>
+  <td align=right valign=top>
+  <div class=sldNum><font size=2>37</font></div>
+  </td>
+  <td>
+  <div id=PPTP37 class=PTxt><font size=2><a
+  href="javascript:GoToSld('slide0156.htm');" id=PPTL37>Conclusion III</a></font></div>
+  <div id=PPTC37 class=CTxt style='display:none'><font size=2>
+  <ul>
+   <li>Were we deluded by HAL? Yes and no.</li>
+   <li>Certainly, in my opinion yes, when it comes to operating text
+       editors.<span style='mso-spacerun:yes'>  </span>Natural language makes
+       no sense.</li>
+   <li>The human mind must be trained and efficiency is the very best
+       motivation</li>
+   <li>Research question: Is there something in the brains or conditioning of
+       humans that makes our hands inherently better suited over voice for
+       editing and similar very complex sequencing of operations?</li>
+  </ul>
+  </font></div>
+  </td>
+ </tr>
+</table>
+
+
+
+</div>
+
+<div style='display:none'><a href=master10.htm></a><a href=master10.xml></a><a
+href=preview.wmf></a><a href=master11.htm></a><a href=master11.xml></a><a
+href=master02.htm></a><a href=pres.xml></a><a href=slide0001.htm></a><a
+href="master11_image001.gif"></a><a href=slide0003.htm></a><a
+href="master10_image002.gif"></a><a href=slide0065.htm></a><a
+href=slide0124.htm></a><a href=slide0126.htm></a><a href=slide0125.htm></a><a
+href=slide0127.htm></a><a href=slide0128.htm></a><a href=slide0133.htm></a><a
+href=slide0129.htm></a><a href=slide0130.htm></a><a href=slide0131.htm></a><a
+href=slide0132.htm></a><a href=slide0134.htm></a><a href=slide0135.htm></a><a
+href=slide0136.htm></a><a href=slide0137.htm></a><a href=slide0138.htm></a><a
+href=slide0139.htm></a><a href=slide0141.htm></a><a href=slide0142.htm></a><a
+href=slide0140.htm></a><a href=slide0143.htm></a><a href=slide0145.htm></a><a
+href=slide0146.htm></a><a href=slide0157.htm></a><a href=slide0158.htm></a><a
+href="slide0158_image003.png"></a><a href="slide0158_image004.jpg"></a><a
+href=slide0147.htm></a><a href=slide0148.htm></a><a href=slide0149.htm></a><a
+href=slide0150.htm></a><a href="slide0150_image005.jpg"></a><a
+href="slide0150_image006.jpg"></a><a href=slide0151.htm></a><a
+href="slide0151_image007.jpg"></a><a href="slide0151_image008.jpg"></a><a
+href=slide0152.htm></a><a href=slide0153.htm></a><a href=slide0154.htm></a><a
+href=slide0155.htm></a><a href=slide0156.htm></a><a
+href="master10_stylesheet.css"></a><a href=script.js></a><a
+href="../ShortTalk-languages-interfaces.htm"></a><a href=fullscreen.htm></a><a
+href=buttons.gif></a><a href=frame.htm></a><a href=outline.htm></a></div>
+
+</body>
+
+</html>

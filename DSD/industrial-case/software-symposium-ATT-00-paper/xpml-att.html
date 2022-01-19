@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="0" http-equiv="Expires">
+<title>XPML: AT&amp;T extensions</title>
+<style type="text/css">
+	  div {margin-bottom:0em; margin-top:0em; margin-left:0em;
+	       font-weight:bold; font-family:  Courier; }
+	  span {color: black;}
+	  div.rootchild {margin-bottom:2ex; margin-top:.8ex; 
+              border-style: solid; border-width: 2px;  border-color:pink; }
+	  .key, .special-key {font-weight:bold; color: purple;}
+	  .doc {font-family: Arial, Helvetica, Sans-serif; font-style:normal; font-weight: normal; color: brown;}
+	  .user {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .user-bold {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black; font-weight:bold;}
+	  .user:link {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .user:visited {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .concrete, .string {font-family: Courier; color: blue; font-weight:bold; }
+	  .tt {font-family: Courier; color: blue; font-weight:bold; }
+	  .comment {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: brown;}
+	  h1.header {font-size:18pt;  color: purple; font-family: Arial, Helvetica, Sans-serif;}
+	  body {font-size:10pt; background-color:beige;}
+	</style></head>
+<body>
+<h1 class="header">XPML: AT&amp;T extensions<div style="font-weight:bold; font-size:14pt">Root Element: 
+	      <span style="font-size:12pt;"><a class="user" href="#">XPML</a><br></span>
+	    
+	       
+	    DSD version: 
+	    <span style="font-size:12pt;">1.0</span></div></h1>
+<table style="border-width:0pt;">
+<tr>
+<th align="left">
+<span style="width:8em;height:1.5ex;" class="special-key">Title:</span></th><td><span style="font-weight:bold;height:1.5ex;" class="user;">XPML: AT&amp;T extensions</span></td></tr>
+<tr>
+<th align="left">
+<span style="width:8em;height:1.5ex;" class="special-key">Version:</span></th><td><span style="font-weight:bold;height:1.5ex;" class="user;">.001</span></td></tr></table><hr><br>
+<DIV STYLE="margin-bottom:.8ex;" class="user">
+<span class="user">&lt;?include<span> </span><a href="xpml.html">"xpml.dsd"</a>
+	
+	  
+	?&gt;</span></DIV>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> AT&amp;T ASR  </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> AT&amp;T provides two speech recognition engines </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">RenewID=</span><a Name="N-1251781641" class="user-bold">Asr-engine-types</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><a class="user" href="#">Asr-engine-types<span class="key">[Current]</span></a> | </span><span><span>"</span><span class="tt">Watson</span><span>"</span> | </span><span><span>"</span><span class="tt">Watson-nt</span><span>"</span>)</span></div></span></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN>  A default that is both dependent on an abstraction 
+  and a platform characteristics </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">Default </span><span><span></span><span class="tt">select</span>[<span><span></span><span class="tt">interaction</span><span>=</span><span>"optional"</span>; </span><span><span class="tt">asrengine</span><span>=</span><span>"Watson-nt"</span>]<span> {</span></span></span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asrspotting</span><span>:"</span><span class="concrete">No"</span>}</div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> AT&amp;T METRICS </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> Add the application to the pragma content  </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ContentDef </span><span class="special-key">RenewID=</span><a Name="N-1248111625" class="user-bold">pragma</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span> </span><span class="key">Content</span><span> </span><a class="user" href="#">pragma<span class="key">[Current]</span></a> | </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="The application element is used for collection of service statistics.">
+<span class="key">Element </span><a class="user" href="#N-1248635913">application</a>)</div></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;application&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1248635913" class="user-bold">application</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">name</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">AttributeDecl </span><a class="user" href="#N-1244965897">local</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/application&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1247063049" class="user-bold">metrics-attributes</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">AttributeDecl </span><a class="user" href="#N-1253354505">mlevel</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">AttributeDecl </span><a class="user" href="#N-1244965897">local</a></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;" title="The metric level is a digit between 0 and 3.">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">AttributeDeclDef</span><span class="special-key">ID=</span><a class="user-bold" Name="N-1253354505">mlevel</a><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">mlevel=</span><span class="concrete">"</span><span><span></span><span>[</span><span class="string">0</span><span>-</span><span class="string">3</span><span>]</span><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;" title="Attribute local is used to qualify the metric level so that it applies to the current page only.">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">AttributeDeclDef</span><span class="special-key">ID=</span><a class="user-bold" Name="N-1244965897">local</a><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">local=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> Add the metric constraint to menus  </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">RenewID=</span><a Name="N-1243917321" class="user-bold">menu-constraint</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#">menu-constraint<span class="key">[Current]</span></a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1247063049">metrics-attributes<span class="key">[Current]</span></a></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">Default </span><span><span></span><span class="tt">metrics</span><span> {</span></span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">mlevel</span><span>:"</span><span class="concrete">0"</span>}</div></div></div></body></html>

@@ -1,0 +1,76 @@
+<myhtml xmlns:myxml="xxx" xmlns:DSD="yyy">
+<head>
+<title>Announcement</title>
+</head>
+  
+  <body>
+
+    <p>
+A Document Structure Description (DSD) is a new and very effective way
+of describing XML documents.  This new schema language is result of a
+research collaboration between AT&amp;T Labs, NJ and BRICS at the
+University of Aarhus, Denmark.  The DSD language has arisen out of a
+need to describe XML documents to Web programmers with an elementary
+background in computer science.  DSDs have also been expressively
+designed to further W3C sponsored XML technologies such as Cascading
+Style Sheets (CSS) and XSL Transformations (XSLT).
+</p>
+
+<p>
+CSS is an essential part of modern HTML, but has so far not been
+formulated as a general style sheet mechanism for XML that works with
+any semantic domain.  DSDs provide both a generalized semantics for a
+CSS-like style sheet mechanism and document processing instructions
+that provide the abstraction benefits of CSS in any XML document.
+</p>
+
+<p>
+XSLT 1.0 is a programming notation that allows transformations of
+classes of XML documents into semantic domains like HTML.  XSLT
+programs are easy to write, especially if assumptions can be made
+about the input documents.  The expressive power of DSDs allow
+declarative and readable specifications of XML documents that are to
+be subjected to XSLT processing.
+</p>
+
+<p>
+DSDs require no specialized XML/SGML insights.  The technology is
+based on general and familiar concepts that allow much stronger
+document descriptions than possible with DTDs or the current XML
+Schema proposal.  
+</p>
+
+<p>
+For more information, please go to the DSD Web site:
+
+  http://www.brics.dk/DSD
+
+We already offer
+
+<ul>
+<li>a detailed, complete, and tested DSD 1.0 language description</li>
+<li>
+an introductory article</li>
+<li>free source code</li>
+<li>a meta-DSD that completely accounts for the syntax of DSDs</li>
+<li>an XSLT pretty-printer that converts DSDs into hyper-link HTML</li>
+<li>a preliminary industrial case report, where we discuss the use of
+DSD to describe XPML, a variation on HTML for interactive voice
+services</li>
+      </ul>
+
+</p>
+
+<p>
+We are encouraging comments and suggestions for further development!
+</p>
+
+<p>
+Nils Klarlund, AT&amp;T Research<br/>
+Anders Moeller, BRICS<br/>
+Michael I. Schwartzbach, BRICS<br/>
+</p>
+</body>
+</myhtml>
+
+

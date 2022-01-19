@@ -1,0 +1,38 @@
+
+<html>
+<head>
+<title> Requirements for a markup language--the other world
+</title>
+<link href="nils.css" rel=stylesheet type="text/css">
+</head>
+<body>
+
+<h1 class=slide>
+The other world: IVR systems 
+</h1>
+<hr class=top>
+
+IVR&nbsp;=&nbsp;Interactive Voice Response <br>
+<br> <ul>
+<li>  The telephone already supported for a long time
+<li>  Automated information  and  transaction systems 
+</ul>
+
+<br>
+Idea: merge the worlds...
+  <br>
+    <br>
+<blockquote>
+ HTML a basis for IVR!!
+ </blockquote>
+     <br>
+<ul>
+<li> IVR services as Web applications 
+<li>  Web supports voice  browsing 
+</ul>
+<hr class=bottom>
+<a href="overview.html">Index</a>
+<a href="voice-browsing.html"> Previous slide </a>
+<a href="our-experience.html">Next slide</a>
+</body>
+</html>

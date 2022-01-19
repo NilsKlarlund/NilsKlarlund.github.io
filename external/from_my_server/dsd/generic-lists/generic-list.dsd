@@ -1,0 +1,28 @@
+<?dsd URI="dsd.dsd"?>
+
+<DSD DSDVersion="1.0">
+
+  <!-- Generic list definition -->
+
+  <ElementDef ID="listItem">
+    <Constraint IDRef="listItem-constraint"/>
+  </ElementDef>
+
+  <ConstraintDef ID="listItem-constraint">
+    <!-- This is the constraint that describes the listItem element;
+    each new use of listItems is added to this constraint -->
+  </ConstraintDef>
+
+  <ElementDef ID="oList">
+    <OneOrMore>
+      <Element IDRef="listItem"/>
+    </OneOrMore>
+  </ElementDef>
+
+ <ElementDef ID="uList">
+    <OneOrMore>
+      <Element IDRef="listItem"/>
+    </OneOrMore>
+  </ElementDef>
+
+</DSD>

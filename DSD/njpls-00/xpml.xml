@@ -1,0 +1,16 @@
+<?dsd URI="http://www.brics.dk/DSD/dsd.dsd"?>
+ 
+<DSD IDRef="XPML" DSDVersion="1.0">
+     
+  <Title>XPML</Title>  
+  <Version>.001</Version> 
+ 
+  <?include URI="xpml-core.dsd"?>
+  
+  <?include URI="xpml-menu-interaction.dsd"?>
+   
+  <?include URI="xpml-speech.dsd"?>
+   
+</DSD>
+
+  		

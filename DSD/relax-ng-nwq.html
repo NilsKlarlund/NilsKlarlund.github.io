@@ -1,0 +1,265 @@
+<HTML><HEAD><TITLE>DSD - Document Structure Description</TITLE>
+    <LINK href="index_files/dsd.css" rel="stylesheet" title="DSD style sheet" type="text/css"/>
+  </HEAD>
+  <BODY>
+    <P class="hide">(This page uses CSS style sheets) 
+      <DIV class="map">
+	<P id="p1">DSD</P>
+	<P id="p2">Document Structure Description</P></DIV><BR>
+
+
+	<h1 style="text-align: left;">Comparison of RELAX-NG and DSD</h1>
+	<h2>Nils Klarlund</h2> 
+	<h3>August, 2002</h3> 
+
+	<p>We published DSD (Document Structure Description) 1.0 in
+1999, see <a
+href="http://www.brics.dk/DSD/announcements.html">announcement</a>, as
+a proposal for a general, expressive, and simple schema language.  At
+that time the <a href="http://www.w3.org/XML/SchemaXM">Schema
+notation</a> seemed to be sinking under the weight of self-generated
+complexity.  (In the end, it floated, but for a lot of people its
+design is still hard to appreciate; for a more cheery outlook, see <a
+href="http://www.xml.com/pub/a/2002/06/19/vdv-wxs.html">Can XML Be The
+Same After W3C XML Schema?</a>.)
+	</p>
+
+	<p>Spurred by motivations similar to ours, the <a
+	    href="http://www.oasis-open.org/committees/relax-ng/spec-20011203.html">RELAX
+	    NG NG schema language</a> was developed by James Clark and
+	    Makoto Murata, based on their respective work on <a
+	    href="http://www.thaiopensource.com/trex/">TREX</a> and
+	    the earlier RELAX notation, which appeared around the time
+	    of DSDs.  Both notations rely on the theory of tree
+	    automata for unranked trees (those whose nodes may have a
+	    varying number of children).  The same can be said about
+	    DSDs.  However, we chose a processing model that results
+	    in an unambiguous top-down parsing.  RELAX NG is
+	    officially sanctioned by OASIS, the Organization for the
+	    Advancement of Structured Information Standards, and
+	    published as a specification in 2001.  The RELAX NG
+	    notation is in some aspects very similar to DSDs.  
+	</p>
+
+	<p>But before we explain this, there is a crucial concept to
+	    be digested: that of an <em>element identifier</em>.  You
+	    might think that since XML is self-describing, the type of
+	    any element is determined directly by its name.  But this
+	    is often not the case: tag names are reused in different
+	    situations, where they denote different types of
+	    information.  Thus different uses are denoted by different
+	    identifiers, which is a concept known by many other names:
+	    a <em>type</em> (as in XML Schema or in XDuce), a
+	    <em>nonterminal</em> (as in parsing), or an <em>automaton
+	    state</em> (as in the theory of finite-state machines).
+	    For examle, we may have a type <em>l</em> of <tt>name</tt>
+	    element that contains simply a string and another type
+	    <em>m</em> that contains the children named
+	    <tt>forename</tt> and <tt>surname</tt>, which in turn
+	    contain strings.  Content expressions are not in general
+	    regular expressions over element names, but regular
+	    expressions over element identifiers (or type names,
+	    nonterminals or states).  For example,
+	    (<em>l</em>,<em>m</em>) would be a DTD-like syntax for
+	    content consisting of a <tt>name</tt> element of type
+	    <em>l</em> followed by one of type <em>m</em>.  (Both
+	    RELAX NG and DSD allow content expressions to work
+	    directly on element names as well through minor technical
+	    tricks.)  Each element identifier <em>l</em> is associated
+	    with a content expression <em>C<sub>l</sub></em>.  For
+	    example, the identifier <em>k</em> might be associated
+	    with the element name <tt>addressbook</tt> and a content
+	    expression of (<em>m</em>)*.  The usage of these content
+	    expressions is expected one: if a node in the tree is
+	    assigned identifier <em>l</em>, then the children of the
+	    node must be assigned a sequence of identifiers
+	    <em>l<sub>1</sub></em>, ...,<em>l<sub>n</sub></em> that is
+	    matched by the content expression <em>C<sub>l</sub></em>
+	    such that the identifier <em>l<sub>i</sub></em> is
+	    associated with the name of the <em>i</em>th child.
+	    Moreover, the root of the tree must be associated with an
+	    <em>initial identifier</em>.  This subset of identifiers
+	    corresponds to the start symbols of a grammar, or the set
+	    of initial state automaton.  If such an assignment of
+	    identifiers is possible to the tree of XML document, then
+	    the document is set to be <em>valid</em>.  Regarded as
+	    types, we can regard the initial identifiers as the set of
+	    possible types of the document.  Usually, the set will
+	    consist of a single identifier.
+	</p>
+	<p>Now back to RELAX NG and DSD: the RELAX NG notion of
+	  pattern, the ability to relate attribute occurrences and
+	  content, the combine mechanism (for patching grammars by
+	  enlarging them or restricting them), the ability to
+	  distinguish between elements that have the same name but
+	  different identifiers, and the use of content expressions on
+	  element identifiers are all very similar.  The notion of
+	  validity is the same.  But that is one labels element nodes
+	  with identifiers of element definitions are the same with
+	  one crucial difference.
+	</p>
+	
+	  <h3>Parsing or guessing</h3>
+
+	  <p>RELAX NG uses a parsing process that is inherently
+	    nondeterministic.  For this reason, schema languages can
+	    be defined with RELAX NG that cannot be defined by DSDs,
+	    such as the language of XHTML documents that contain at
+	    least one <tt>form</tt> element.  Intuitively, the problem
+	    is that a deterministic parser cannot guess where in the
+	    document the <tt>form</tt> element is if it works from the
+	    top towards the leaves.  </p> <p>On the other hand, RELAX
+	    NG in general does not enjoy a feature essential to many
+	    schema uses: for any tree of a valid XML document, the
+	    schema determines an unambiguously determined element
+	    identifier for each node. 
+	  </p>
+	  <p>
+	    In fact, it is natural in practice to specify only one
+	    possible type name for an element that occurs in a content
+	    specification of a parent element.  Although, it is often
+	    the case that an element, say <tt>name</tt>, may in fact
+	    correspond to two different types in the same document as
+	    we just saw, these different uses are usually marked by
+	    different ancestor elements that deterministically direct
+	    the parsing and type assignment.  So, we would not
+	    normally expect a content expression like (<em>l</em> |
+	    <em>m</em>).  But RELAX NG allows such expressions,
+	    together with multiple initial identifiers.  In this way,
+	    tree automata that represent a kind of global constraint
+	    satisfaction problem on the whole tree: a solution can be
+	    computed only by backtracking over the whole tree or by an
+	    automata-theoretic subset construction that is
+	    deterministic but works from the leaves towards the roots,
+	    tracking the subset of identifiers that of possible that
+	    each node.  This process can probably only be understood
+	    by someone who has a very good understanding of automata
+	    theory or formal semantics.  As a conceptual tool of
+	    modeling, tree automata---even as expressed as concisely
+	    as in RELAX NG---are a bold proposal indeed.
+	  </p>
+	  <p>Moreover, the tree automaton technique prevents the
+	    document from being processed in an on-line fashion: the
+	    whole document must be read before it can be processed.
+	  </p>
+	  <p>The variations on the degree of determinacy in schema
+	  languages for XML have been characterized in "<a
+	  href="http://citeseer.nj.nec.com/murata00taxonomy.html">Taxonomy
+	  of XML Schema Languages using Formal Language Theory</a>".
+	  In particular, DTDs are very restrictive since they
+	  correspond to <em>local grammars</em>, where an element name
+	  is associated to a unique identifier.  In other words, the
+	  type of the element is unique determined by the element
+	  name.  DSDs are more liberal.  All
+	  <em>restrained-competition tree grammars</em> can be
+	  expressed (and some more, but that is a technical point
+	  related to the greedy parsing strategy used in DSDs).
+	  Intuitively, such grammars assign unambiguously an
+	  identifier according to a content expression.  Actually, the
+	  technical condition is quite simple: whenever a content
+	  expression matches therefore,
+	  they can be understood in an operational and intuitive way:
+	  deterministic, top-down parsing.
+	  </p>
+
+	  <p>Importantly, it is possible to analyze a RELAX NG
+	    specification automatically to determine whether it is a
+	    restrained-competition grammar.  (This is a question of
+	    analyzing the finite-state automaton on identifiersthat
+	    correspond to the content expression.  The analysis is
+	    carried out for each expression.)  Thus, a very useful
+	    subset of RELAX NG exists: those schemas that enjoy
+	    restrained-competition are conceptually much more in line
+	    with the notion of types for trees
+	  </P>
+
+<h3>Defaulting</h3>
+	    RELAX NG is designed on the fundamental premise that
+	      <em>defaulting</em> and other changes to the document
+	      that is being described is undesirable. DSDs take the
+	      exact opposite stance.  The schema itself provides a
+	      useful harness for default insertion <em>a la</em> CSS
+	      (which is declarative notation much more succinct than
+	      programming languages such as XSLT).  Moreover,
+	      according to the DSD view (and that of say XML Schema),
+	      there is essential information in the schema, such as
+	      regarding white space, that should be passed on to the
+	      application.
+
+    <h3>Grammar calculus</h3>
+    RELAX NG contributes a mechanism
+    for <em>copying</em> grammars.  Whenever a grammar is
+	      included, it is represented not as itself, but as a
+	      copy.  Thus, a grammar may be refined in ways that do
+	      not interfere with each other.  We could not find a way
+	      of formulating such a mechanism that did not seem too
+	      complicated.  The RELAX NG solution is probably as
+	      simple as can be imagined in a grammar-based approach.
+	      The DSD solution to the problem is not as general, but
+	      often workable: it stipulates that variations of a
+	      grammar occur in different contexts (as understood by
+	      the position in the document explained by the path from
+	      the root).  The postings in xml-dev starting with this
+	      <a
+	      href="http://lists.xml.org/archives/xml-dev/200202/msg00155.html">example</a>
+	      explain some differences.
+	    </li>
+	    <li>DSDs provide a <em>validity mechanism</em> that imposes additional
+	      constraints on declared elements of attributes.  For example, various
+	      intricate relationships can be imposed on content that is declared in
+	      constraints extraneous to their declaration.  In this respect, DSDs
+	      resemble the <a href="http://www.ascc.net/xml/resource/schematron/schematron.html">Schematron approach</a>.
+
+<h3>Context expressions</h3>
+	      DSDs provide <em>context expressions</em> that characterize positions
+	      or elements in the document without the labeling process implicit in
+	      grammar approaches and XML schemas.  In this labeling process, a
+	      type, category, or nonterminal name is assigned to each element.
+	      DSDs represent very much a grammar approach as well, but the need to
+	      invent names for various uses of the same element name can sometimes
+	      be reduced drastically by instead characterizing their occurrences
+	      through context expressions.
+
+<h3>Other differences</h3>
+
+	    <br/> <p>There are some other differences as well: DSDs do not use the
+	      mathematical semantics for regular expressions describing content (as
+	      does almost no tool), whereas RELAX NG is strict in this regard (and
+	      better so for purposes of analysis).  DSDs use Boolean logic to
+	      connect attribute occurrences and content for greater expressive
+	      power, but the use of regular expressions also for attributes in RELAX NG
+	      simplifies the syntax.  The DSD mechanism for mending grammars is more
+	      primitive, but more expressive, than the combine mechanisms of RELAX NG;
+	      for example, in DSDs a constraint (pattern) may be generalized and
+	      later restricted.  It is also worth noticing that the need to
+	      distinguish between constraints and content expressions in DSDs result
+	      from the possibility of validation of declared content and attributes.
+	      The distinction between constraint and element identifiers
+	      (references), however, is conceptually important in both languages,
+	      but it has been syntactically eliminated in RELAX NG.  Finally, DSDs do
+	      not treat namespaces, because their meaning had not been determined
+	      when we published the DSD definition.</p>
+
+	    <p>In conclusion, RELAX NG represents in the main, and apart from the
+	      copy mechanism, DSD concepts in refined and simplified forms.  The
+	      simplifications have taken away some definitional and expressive
+	      power, but resulted in a notation that is an excellent compromise
+	      between usability and complexity.  With the support of OASIS and a
+	      growing number of tools, RELAX NG should be the first schema language
+	      considered for any application.
+	    </p>
+
+Eric van der Vlist of Dyomedea has graciously offered a <a href="schema-tutorial.zip">copy of his XML Europe 2002 Schema Tutorial</a> that utilizes terminology being adopted in DSDL.</p>
+	    <hr noShade SIZE="1">
+	      For more information on DSDs, click <a href="index.html">here</a>.
+	      <hr noShade SIZE="1">
+		<SPAN class="footer">Copyright&nbsp;©&nbsp;2002 <A 
+								   href="http://www.research.att.com/">AT&amp;T</A>.
+		  Maintained by <A 
+				   href="http://www.research.att.com/~klarlund">Nils Klarlund</A>.
+		</span>
+	  </p>
+
+
+	</body>
+	</html>

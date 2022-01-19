@@ -1,0 +1,17 @@
+SHELL	= /usr/common/bin/bash -i
+all:	xpml-core.html xpml-speech.html xpml-menu-interaction.html xpml.html greetings-are-us.txt xpml-att.html index.html
+
+index.html:	index.xml
+	ibmxsl index.xml index.xsl > index.html
+
+%.html:	%.dsd
+	DSD $*
+%.txt:	%.pml
+	(rm $*.txt; cp $*.pml $*.txt)
+
+MORE: 	FORCE
+	(cd demo-mid; $(MAKE))
+
+
+FORCE:
+

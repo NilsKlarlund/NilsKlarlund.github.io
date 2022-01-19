@@ -1,0 +1,3 @@
+.spacer {width: 10ex; }
+.tabs {font-size: 150%;}
+.sublinks, div.sublinks a, {font-size: 100%;}

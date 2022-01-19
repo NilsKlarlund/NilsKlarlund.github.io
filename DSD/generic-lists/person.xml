@@ -1,0 +1,19 @@
+ <?dsd URI="persons.dsd"?>
+ <person>
+  <surname>Klarlund</surname>
+  <forenames>
+    <oList>
+      <listItem><name>Nils</name></listItem>
+    </oList>
+  </forenames>
+  <webbs>
+    <oList>
+      <listItem><qualification>C++</qualification></listItem>
+      <listItem><qualification>XML</qualification></listItem>
+    </oList>
+  </webbs>
+</person>
+
+
+
+  

@@ -1,0 +1,74 @@
+<?dsd URI="http://www.brics.dk/DSD/dsd.dsd"?>
+
+<DSD IDRef="XPML" DSDVersion="1.0">
+  <Title>XPML: AT&amp;T extensions</Title>
+  <Version>.001</Version>
+ 
+  <?include URI="xpml.dsd"?>
+
+  <!-- AT&T ASR  -->
+ 
+  <!-- AT&T provides two speech recognition engines -->
+
+  <StringTypeDef RenewID="Asr-engine-types">
+    <Union>
+      <StringType CurrIDRef="Asr-engine-types"/>
+      <String Value="Watson"/>
+      <String Value="Watson-nt"/>
+    </Union>
+  </StringTypeDef>
+
+  <!--  A default that is both dependent on an abstraction 
+  and a platform characteristics -->
+  <Default>
+    <Context><Element Name="select">
+	<Attribute Name="interaction" Value="optional"/>
+	<Attribute Name="asrengine" Value="Watson-nt"/>
+      </Element></Context>
+    <DefaultAttribute Name="asrspotting" Value="No"/>
+  </Default>
+
+  <!-- AT&T METRICS -->
+
+  <!-- Add the application to the pragma content  --> 
+  <ContentDef RenewID="pragma">
+    <Union>
+      <Content CurrIDRef="pragma"/>
+      <BriefDoc>The application element is used for collection of service statistics.</BriefDoc>
+      <Element IDRef="application"/>
+    </Union>
+  </ContentDef>
+
+  <ElementDef ID="application">
+    <AttributeDecl Name="name"/> 
+    <AttributeDecl IDRef="local"/>
+  </ElementDef>
+
+  <ConstraintDef ID="metrics-attributes">
+    <AttributeDecl IDRef="mlevel"/>
+    <AttributeDecl IDRef="local"/>
+  </ConstraintDef>
+
+  <BriefDoc>The metric level is a digit between 0 and 3.</BriefDoc>
+  <AttributeDeclDef ID="mlevel" Name="mlevel"   Optional="yes">
+    <CharRange Start="0" End="3"/>
+  </AttributeDeclDef>
+
+  <BriefDoc>Attribute local is used to qualify the metric level so that it applies to the current page only.</BriefDoc>
+  <AttributeDeclDef ID="local" Name="local" Optional="yes">
+    <StringType IDRef="YesOrNo"/>
+  </AttributeDeclDef>
+
+  <!-- Add the metric constraint to menus  -->
+  <ConstraintDef RenewID="menu-constraint">
+    <Constraint CurrIDRef="menu-constraint"/>
+    <Constraint CurrIDRef="metrics-attributes"/>
+  </ConstraintDef>
+
+  <Default>
+    <Context><Element Name="metrics"/></Context>
+    <DefaultAttribute Name="mlevel" Value="0"/>
+  </Default>
+
+ 
+</DSD>

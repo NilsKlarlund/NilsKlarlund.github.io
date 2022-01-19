@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xml:lang='en' lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title xmlns=''>Nils Klarlund home page</title>
+    <meta name='author' content='Nils Klarlund' xmlns=''/>
+    <meta name='copyright' content='Nils Klarlund, 2002' xmlns=''/>
+    <meta name='description' content='Nils Klarlund home Page' xmlns=''/>
+    <meta name='keywords' content='Nils Klarlund, home page, Mona, DSD,    XML, dictation system, speech, user interfaces, ShortTalk' xmlns=''/>
+    <link rel='stylesheet' type='text/css' href='klarlund.css' xmlns=''/>
+    
+    
+  </head>
+  <body>
+    <div class='tabs'>
+      <a title='Research themes' class='tabnotselected' href='index.html' xmlns=''>Themes</a>
+	    |
+	  <span title='Publications' class='tabselected' xmlns=''>Papers</span>
+	    |
+	  <a title='User interface summary' class='tabnotselected' href='index_uisummary.html' xmlns=''>UI Summary</a>
+	    |
+	  <a title='Cumulative Trauma Disorder (a.k.a. RSI)' class='tabnotselected' href='index_ctd-rsi.html' xmlns=''>CTD-RSI</a>
+	    |
+	  <a title='Curriculum Vitae' class='tabnotselected' href='index_cv.html' xmlns=''>CV</a>
+    </div>
+      <div class='sublinks'>
+        <a href='#mona'>mona</a>  |
+	  <a href='#automata_theory'>automata theory</a> |
+	  <a href='#verification'>verification</a> |
+	  <a href='#programming_languages'>programming languages &amp; XML</a> |
+	  <a href='#progress_measures'>progress measures</a>
+        <a href='#user_interfaces'>user interfaces</a>
+      </div>
+      <p>For a full list of papers, see my <a href='CV/cv.pdf'>CV</a>
+	(PDF).
+	</p>
+      <a name='Mona'>
+        <h3>Mona</h3>
+      </a>
+      <p>
+	  The papers below are just a sample.  Please see <a href='http://www.brics.dk/mona/papers.html'>papers
+			 at the Mona web site</a> for a full list.
+	</p>
+      <ul>
+        <li>
+          <a href='http://www.brics.dk/mona/papers/implementation-secrets/journal.ps' class='papertitle'>MONA
+	    Implementation Secrets</a>. (IJFCS, to appear).  An overview of the techniques used in the MONA tool. The respective effects of the techniques are quantified by experiments on a number of benchmarks. 
+	    </li>
+        <li>
+          <a href='http://www.brics.dk/mona/download/mona14.pdf' class='papertitle'>MONA v1.4 User Manual (PDF)</a>
+        </li>
+        <li>
+          <a href='http://www.brics.dk/mona/papers/mona-fido-logic-aut-conn-in-pract/article.ps' class='papertitle'>Mona
+	    &amp; Fido: The Logic-Automaton Connection in Practice
+	    (PostScript)</a>. (Computer Science Logic '97, invited
+	    paper, 1997). An gentle introduction to the automata-logic
+	    connection.
+	    </li>
+        <li>
+          <a href='papers/Mona-tutorial.pdf' class='papertitle'>Mona tutorial,
+		automata-based symbolic imitation</a> (PDF).  (2001.)  (A <a href='papers/Mona-tutorial.ps'>PostScript</a> version is
+	    also available.).  Slides for a Mona tutorial.
+	    </li>
+      </ul>
+      <a name='automata_theory'>
+        <h3>Automata theory</h3>
+      </a>
+      <ul>
+        <li>
+          <img alt='new' src='gifs/new.gif'/>
+          <a href='relativizations.pdf' class='papertitle'>Relativizations for
+	    the logic-automaton connection</a>.  (Submitted.)  The
+	    mathematical framework Mona uses for handling first-order
+	    variables and relativizations.  This paper introduces 
+	    ternary and sexpartite valuations to capture relativized
+	    formulas under an automata-theoretic view.
+	    </li>
+        <li>
+          <span class='papertitle'>An n log n algorithm for
+	      online BDD refinement</span>.  (J. of Alg., 1999.)  A
+	      minimization construction for BDD-represented
+	      automata. The path compression of BDDs makes Hopcroft's
+	      algorithm unworkable, but some rather involved
+	      techniques make an n log n algorithm possible.
+	  </li>
+      </ul>
+      <a name='verification'>
+        <h3>Verification</h3>
+      </a>
+      <ul>
+        <li>
+          <a href='papers/ECLIPSE-feature-logic.pdf' class='papertitle'>ECLIPSE
+	      Feature Logic Analysis</a>.  (IP-telephony Workshop,
+	      2001.)  Verification applied to advanced IP-telephony
+	      services.
+	  </li>
+        <li>
+          <a href='papers/FORTE-2000.ps' class='papertitle'>Verification of a Sliding Window Protocol
+	  Using IOA and MONA</a>.  (With Mark Smith. <em>FORTE/PSTV</em>,
+	  2000.) Automatic verification of an unbounded, sliding
+	  window protocol.
+	  </li>
+        <li>
+          <a href='http://www.brics.dk/mona/papers.html#Applications' class='papertitle'>Automata
+based symbolic reasoning in hardware verification </a>.  (With David
+Basin. <em>FMSD</em>, 1998.)  Hardware verification based on
+formulating circuits and their specifications in M2L. We use Mona to
+verify parameterized circuits without induction, and we explain why it
+works.
+	  </li>
+      </ul>
+      <a name='programming_languages'>
+        <h3>Programming languages
+	&amp; XML</h3>
+      </a>
+      <ul>
+        <li>
+          <img alt='new' src='gifs/new.gif'/>
+          <a href='papers/DSD-journal.pdf' class='papertitle'>The DSD Schema Language</a>
+
+        (With Michael I. Schwartzbach and Anders Møller, <em>Automated
+        Software Engineering Journal</em>, to appear, 2002)  DSD
+        (Document Structure Description), an XML grammar formalism.
+	    DSDs are generally more expressive than XML
+        Schema, provide a useful CSS-like default mechanism, and are
+        defined in about 15 pages—as opposed to close to 200 for XML
+        Schema.
+	  </li>
+        <li>
+          <img alt='new' src='gifs/new.gif'/>
+          <a href='papers/Rex-Eurospeech01.pdf' class='papertitle'>Towards SMIL as a foundation
+		   for multimodal, multimedia applications</a>.  (With
+		   Jennifer Beckham and Gioseppe di Fabbrizio)
+	      <em>Eurospeech '01</em>, 2001.)  A basic
+		   programming-language framework is suggested to cope
+		   with difficult issues in design of advanced
+		   interactive content.
+	    </li>
+        <li>
+          <a href='http://www.brics.dk/mona/papers/domain-spec-lang-for-regular-sets/dsl.ps' class='papertitle'>A
+	    Domain-Specific Language for Regular Sets of Strings and
+	    Trees</a>. (With Michael I. Schwartzbach, IEEE TSE, 1999.)
+	    A high-level language based on a kind of predicate logic
+	    for expressing regular sets.  The notation extends Monadic
+	    Second-order Logic with types and other abstractions found
+	    in programming languages.
+	    </li>
+        <li>
+          <a href='http://www.brics.dk/mona/papers/yakyak/yakyak.ps' class='papertitle'>YakYak:
+	      Parsing with Logical Side Constraints </a>.  (With Niels
+	      Damgaard and Michael
+	      I. Schwartzbach, <em>Proc. Developments in Language
+	      Theory</em>, 1999.)  On extending Yacc with first-order
+	      logic for specifying constraints that are regular tree
+	      languages.
+	    </li>
+        <li>
+          <a href='http://www.brics.dk/mona/papers/auto-ver-pointer-prog-using-m2l/article.ps' class='papertitle'>Automatic
+	    Verification of Pointer Programs using Monadic
+	    Second-order Logic </a>. (With Michael I. Schwartzbach,
+	    <em>PLDI '97</em> 1997.)  A decidable Hoare logic for a
+	    fragment of Pascal that includes pointers and while
+	    loops. Using a decision procedure, we can answer detailed
+	    questions about pointer usage automatically.
+	    </li>
+        <li>
+          <a href='http://www.brics.dk/mona/papers/auto-logical-ver-trace-abs/article.ps' class='papertitle'>Automated
+	      logical verification based on trace abstractions
+	      </a>. (With Mogens Nielsen and Kim Sunesen,
+	      <em>PODC</em> '96.) A behavioral approach to the
+	      comparison of distributed systems. We formulate proof
+	      principles that can be expressed in M2L and that allow
+	      component-wise verification.
+	    </li>
+      </ul>
+      <a name='progress_measures'>
+        <h3>Progress measures</h3>
+      </a>
+      <ul>
+        <li>
+          <span class='papertitle'>Rabin Measures</span> (with
+	    Dexter Kozen. <em>CJTCS</em>), 1995.) Introduction of a
+	    concept for quantifying progress of transitions towards
+	    satisfaction of the Rabin (or pairs) condition.  Linked to
+	    the Kleene-Brouwer ordering of recursion theory, these
+	    measures eliminate the need for syntax-dependent,
+	    recursive proof rules for termination problems under
+	    fairness.
+	</li>
+        <li>
+          <a href='papers/concur94.pdf' class='papertitle'>The Limit View of Infinite
+	Computations</a>
+        </li>.  (<em>CONCUR '94.</em>)  Computations involving
+	very general liveness properties as limits of finite
+	approximations.  Our results allow us directly to relate
+	finite computations in order to infer properties about
+	infinite ones.  We relate our work to the Kleene-Suslin
+	Theorem and Martin's theorem about determinacy.  
+	<li>
+        <span class='papertitle'>Progress Measures for Complementation of
+	\omega-Automata with Applications to Temporal Logic
+	</span>.  (FOCS 1991.)
+	</li>
+        <li>
+          <span class='papertitle'>Progress Measures, Immediate
+	    Determinacy, and a Subset Construction For Tree Automata.
+	    </span>.  (J. Applied Logic, 1994) A proof based on
+	    progress measures of Rabin's fundamental result of closure
+	    of automata-defined languages of infinite, labeled trees.
+	    Earlier constructions yielded doubly-exponential blowups,
+	    but our construction is only exponential.</li>
+        <li>
+          <span class='papertitle'>Progress Measures for Fair
+	Termination.</span> (PODC 1992.)
+	</li>
+      </ul>
+      <a name='user_interfaces'>
+        <h3>User interfaces</h3>
+      </a>
+      <ul>
+        <li>
+          <img alt='new' src='gifs/new.gif'/>
+          <a href='papers/fallacy.pdf' class='papertitle'>Editing by voice: the natural language
+	  fallacy and the role of constructed spoken jargons</a>
+	  Arguments based on cognitive psychology, analyses of examples, and
+	  empirical measurements for the potential of constructed
+	  jargons as a solution to inefficacy of spoken command and
+	  control.
+	  </li>
+        <li>
+          <a href='ShortTalk/short.html' class='papertitle'>ShortTalk: a proposal for improving
+	  dictation systems</a>.  (2002.)  A manifesto arguing that
+	  current speech user interfaces for text composition offers
+	  enormous room for improvement, especially if a utilitarian,
+	  no-natural-language attitude is adopted.
+	  </li>
+        <li>
+          <span class='papertitle'>ShortTalk: an efficient spoken
+	      editing language</span>.  (In preparation.)  A complete
+	      description of ShortTalk, its philosophy, and
+	      experiments.</li>
+        <li>
+          <a href='input_devices/index.html' class='papertitle'>Input devices: a
+	      usage-driven approach</a>.  (2002.)  An essay on why
+	      almost every “ergonomic” input device does not work or
+	      is harmful—along with some ideas for devices that may
+	      actually work.
+	  </li>
+        <li>
+          <a href='keyboard/keyboard.html' class='papertitle'>A keyboard design</a>.
+(2001.)  Various minor suggestions for improving the keyboard.
+	  </li>
+      </ul>
+    
+  <div class='footer'>
+      <hr/>
+      <br/>
+      <table width='100%'>
+        <tr>
+          <td>
+            <a href='index_print.html'>
+              <img style='margin: 3;' align='top' src='./photos/printsymbol.gif' alt='printer           symbol'/>printer-friendly version</a>
+            <a href='mailto:klarlund@research.att.com'>
+              <img style='margin: 3;' align='top' src='./photos/mailsymbol.gif' alt='mail         symbol'/>e-mail Klarlund</a>
+          </td>
+          <td align='left' class='prevnext'>
+            <a href='index.html' class='mylink'>previous</a>     <a href='index_uisummary.html' class='mylink'>next</a>
+          </td>
+          <td align='right'>
+            <a href='http://www.research.att.com/~klarlund'>
+              <img style='margin: 3;' align='top' src='./photos/homesymbol.gif' alt='home symbol'/>Nils
+		  Klarlund home</a>
+          </td>
+        </tr>
+      </table>
+      <br/>
+      <br/>
+      <hr/>
+      <table>
+        <tr>
+          <td align='left' width='70%'>
+	By Nils Klarlund.
+      
+	Copyright ©Nils Klarlund, 2002.
+       
+	This Web page should not be viewed with Netscape 4. Please use
+        a modern browser, like Netscape 6, Mozilla,
+Opera 5, or IE
+	5.</td>
+          <td valign='top' align='right' width='30%'>
+            <a href='http://www.w3.org/Style/XSL' style='font-family:  sans-serif; font-size: 12pt; font-weight: bold; color:  black; text-decoration: none;'>XSLT &amp;</a>
+            <a href='http://www.python.org'>
+              <img border='0' align='right' vspace='10' alt='PythonPowered' src='./gifs/PythonPowered.gif'/>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+</html>

@@ -1,0 +1,134 @@
+#!/cygdrive/c/Python21/python
+from __future__ import nested_scopes
+import string
+import re
+from xml.xslt.Processor import Processor
+from xml import xpath
+from xml.dom import Node
+from xml.dom.ext import PrettyPrint
+from xml.xpath import Evaluate
+from xml.dom import ext, implementation
+from xml.dom.ext.reader import PyExpat
+from xml.dom.NodeFilter import NodeFilter
+
+def renameElement(node, localName):
+    parent = node.parentNode
+    if not parent: raise StandardError('"node" must not be document node."')
+    newNode = xml_dom.createElement(localName)
+    for nodeChild in tuple(node.childNodes):
+        newNode.appendChild(nodeChild) 
+    parent.replaceChild(newNode, node)
+    return newNode
+
+def process(xml_source):
+
+    def fileName(i, name):
+        if i==0: return xml_source + ".html"
+        else: return xml_source + '_' + string.replace(name, " ", "") + ".html"
+
+    reader = PyExpat.Reader()
+
+    processor = Processor()
+    processor.appendStylesheetUri('make_screen.xsl')
+
+    processor_printable = Processor()
+    processor_printable.appendStylesheetUri('make_printable.xsl')
+
+    global xml_dom
+    xml_dom = reader.fromUri(xml_source + ".xml")
+
+    printable_version = xml_source + "_print.html"
+    printable_version_short =  re.split("/", xml_source)[-1] + "_print.html"
+
+#      printable_version =  re.split("/", xml_source)[-1] + "_print.html"
+
+    if Evaluate('/html/body/tabs', xml_dom.documentElement):
+        tabs_node = Evaluate('/html/body/tabs', xml_dom.documentElement)[0]
+        tabs_parent = tabs_node.parentNode
+        tab_nodes = Evaluate('tab', tabs_node)
+        tab_names = [ Evaluate('string(@name)', t) for t in tab_nodes]
+        tab_titles = [ Evaluate('string(@title)', t) for t in tab_nodes]
+        placeholder = tabs_node
+
+        for t in tab_nodes:
+            i = tab_nodes.index(t)
+            print "Making %s" % fileName(i, tab_names[i])
+            tabs_parent.replaceChild(t, placeholder)
+            # turn the "tab" node into a "div" node
+            placeholder = renameElement(t, "div")
+            span_node = xml_dom.createElement("div")
+            span_node.setAttribute("class", "tabs")
+            if placeholder.firstChild:
+                placeholder.insertBefore(span_node,
+                                         placeholder.firstChild)
+            else:
+                placeholder.appendChild(span_node)
+            for name in tab_names:
+                if i == tab_names.index(name):
+                    selected_node= xml_dom.createElement("span")
+                    selected_node.setAttribute("class", "tabselected")
+                    selected_node.appendChild(xml_dom.createTextNode(name))
+                    current = selected_node
+                else:
+                    a_node= xml_dom.createElement("a")
+                    a_node.setAttribute("href",
+                                        re.split("/", fileName(tab_names.index(name),
+                                                            name))[-1])
+                    a_node.setAttribute("class", "tabnotselected")
+                    a_node.appendChild(xml_dom.createTextNode(name))
+                    current = a_node
+                title = tab_titles[tab_names.index(name)]
+                if title=="": title = name
+                current.setAttribute("title", title)
+                span_node.appendChild(current)
+                span_node.appendChild(
+                    xml_dom.createTextNode(
+                    ((tab_names.index(name) < len(tab_names) - 1 and " | ")
+                     or "")))
+
+            f=open(fileName(i, tab_names[i]), 'w')
+            PrettyPrint(xml_dom.documentElement, stream=f)
+            f.close()
+
+            previous_name = ""
+            if i>0:
+                previous_name = re.split("/", fileName(i-1, tab_names[i-1]))[-1]
+            next_name = ""
+            if i<len(tab_names)-1:
+                next_name = re.split("/", fileName(i+1, tab_names[i+1]))[-1]
+
+            xml_new = processor.runUri(fileName(i, tab_names[i]),
+                                       topLevelParams=
+                                       {("", "previous"):  previous_name,
+                                        ("", "next"): next_name,
+                                        ("", "printable_version"):
+                                        printable_version_short})
+            f = open(fileName(i, tab_names[i]), 'w')
+            f.write(xml_new)
+            f.close()
+
+    else:
+        # no "tabs" node
+        xml_new=processor.runUri(xml_source+".xml",
+                                   topLevelParams=
+                                   {("", "previous"): "",
+                                    ("", "next"): "",
+                                    ("", "printable_version"):
+                                    printable_version_short})
+        f = open(xml_source+".html", 'w')
+        f.write(xml_new)
+        f.close()
+
+    print "Making %s" % printable_version
+    xml_printable = processor_printable.runUri(xml_source+".xml")
+    f = open(printable_version, 'w')
+    f.write(xml_printable)
+    f.close()
+
+process("index")
+process("input_devices/index")
+process("progress")
+process ("ReX")
+process("ShortTalk/index")
+process("ShortTalk/short")
+

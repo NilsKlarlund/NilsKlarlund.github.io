@@ -1,0 +1,4 @@
+all:	FORCE
+	(cd dsd; $(MAKE))
+	(cd VoiceXML; $(MAKE))
+FORCE:

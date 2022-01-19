@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html [
+  <!ENTITY spacer '&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;'>
+  <!ENTITY homepath '..' >
+  <!ENTITY shorttalk_ad SYSTEM "../ads/ShortTalk.xml" >
+]>
+
+<!-- Ergonomic designs are critically examined. Use over design is -->
+<!-- emphasized. Fundamental problems, such as mouse buttons, as well -->
+<!-- as new ideas, such as foot pedals,  are discussed-->
+
+<html>
+  <head>
+    <title>Input devices: a usage-driven approach</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="author" content="Nils Klarlund"/>
+      <meta name="copyright" content="Nils Klarlund, 2002"/>
+      <meta name="keywords" content="Nils Klarlund, input devices, RSI,
+	    CTD, mouse design, keyboard design, foot keyboard, foot switches,
+	    scroll wheel"/>
+    
+    
+
+    <link rel="stylesheet" href="../klarlund-netscape4.css" type="text/css"/> 
+    <style type="text/css"> 
+      @import url(../klarlund.css);  <!-- non-Netscape 4-->
+    </style>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+
+    <related>
+      <item href="../index_uisummary.html" title= "A Low-Impact Workspace">
+	A description of how a low-impact workspace can be put
+	together using speech recognition and techniques in this essay.
+      </item>
+      &shorttalk_ad;
+      <item href="../index_ctd-rsi.html" title="Background">My
+	motivation for researching user interfaces is a long-standing
+	typing injury.
+      </item>
+    </related>
+
+  </head>
+
+  <body>
+
+    <h1>Input devices: a usage-driven approach</h1>
+
+    <tabs>
+      <tab name="Introduction">
+	<related>
+<item href="http://www.tendinosis.org" title="Chronic
+		       tendon injuries (external)">The web site <a
+							href="http://www.tendinosis.org">tendinosis.org</a> gives an
+	    excellent overview of the social and medical aspects of tendon
+	    injuries.
+	  </item>
+	  
+	</related>
+
+	<quote>
+	  Some of these accessories are valuable, but a lot of
+	  them are gimmicky, if not downright dangerous.
+	  <where>Pascarelli &amp; Quilter in <em>Repetitive stress
+	      injury</em>
+	  </where>
+	</quote>
+	<p>I am writing this essay to summarize my years of
+	  experiments with input device design.  My interest is born
+	  out of a long-lasting typing injury, but I have no formal
+	  training in ergonomics.  I hope to provide a critical and
+	  realistic view of what can be done to improve input devices.
+	  The goal of course is to fundamentally reduce the strain on
+	  hands and arms when using the computer.  It is actually
+	  possible, I believe, to work in a fashion that is
+	  dramatically easier on hands, arms, and shoulders.  There is
+	  no miracle: it involves (1) speech recognition and mastery
+	  of a system of voice commands (2) use of a reduced-impact
+	  pointing device that may be shoved around by one or two
+	  hands, and (3) a foot pedal arrangement.  
+	</p>
+	<p>
+	  Neither of these techniques are commercially available; nor
+	  have they been tested in long-term experiments by
+	  others---the expensive and only way of establishing claims
+	  of ergonomic superiority.  However, the proposals I present
+	  have been subjected to my own daily usage for several years.
+	  They represent but a fraction of ideas and commercial
+	  products that I have attempted to use long-term.
+	</p>
+	  <p>The main point of this essay is that input device design
+	  is very difficult, even though there are often simple
+	  explanations why a design is potentially injurious.  I will
+	  give several examples of input device designs that are
+	  superficially appealing, but seemingly devoid of functional
+	  qualities that make them usable in ways that fundamentally
+	  reduce physical stress.  Rather, by their very
+	  construction, some alternative designs hold the potential of
+	  being more harmful then the traditional designs they are
+	  intending to replace.
+	</p>
+
+	<p>The patent literature is brimming with input device ideas.
+	  Engineers, doctors, and lay people have investigated mouse
+	  surface curvatures, twistings of the keyboard, wearable
+	  gizmos, etc.  These initiatives apparently have had little
+	  impact in reducing pain and injury from computer use.</p>
+	
+	<p>Even the popular "ergonomic" split keyboards have not been
+	  shown to have any health benefits; a proof, if possible,
+	  would involve long-term studies involving thousands of
+	  individuals.  The theory that these keyboards are easier on
+	  body because they involve less ``deviation'' of the hands
+	  relative to the forearm is plausible.  But maybe more
+	  plausible is the opposite hypothesis: what matters is only
+	  how you use the keyboard.  Moreover, the opposite hypothesis
+	  argues that since the standard keyboard is smaller it better
+	  allows your hands to manipulate the mouse and to find a
+	  resting position.  So, it is already clear that the
+	  so-called ``ergonomic'' keyboards are ``ergonomic'' in name
+	  only; they represent another compromise among a host of
+	  competing design constraints.</p> <p>This kind of analytical
+	  thinking about various stresses on the body incurred by use
+	  of devices is important to anybody who is struggling with
+	  pain from computing, since it is one way of raising body
+	  awareness.  This is especially true since the innumerable
+	  negative experiences with ``ergonomic'' equipment go
+	  unreported.  Whether it be a speech recognition program or
+	  an especially ``ergonomic'' mouse design, the technology is
+	  usually disappointing. The defeat is not broadcast to
+	  colleagues and friends.
+	</p>
+	<p>Why do keyboards and mice hurt people?  Nobody seems to
+	  really know.  At a cellular level, the processes behind CTD
+	  remain a mystery, although it is believed that inflammation
+	  is not a necessary component, see <a
+	  href="http://www.tendinosis.org">tendinosis.org</a> for
+	  pointers to medical literature.  At the functional level, it
+	  remains unproven that repetitive motion is to blame.  For
+	  example, another functional culprit could be the constant
+	  stress the body is experiencing when near the devices.</p>
+	  <p>To understand this, think about replacing each key on the
+	  keyboard and each button on the mouse with a little hot
+	  plate glowing red.  If you were working next to such a
+	  monstrous instrument, then you would condition your limbs to
+	  be constantly adjusting themselves so as not to touch any of
+	  more than one hundred hot plates.  The point is, of course,
+	  that even when keyboard and mouse do not posses thermal
+	  properties, your body must be conditioned exactly the same
+	  way.</p>
+
+	<p>The mouse is particularly bad, since the hand tends to ride
+	  it.  Consequently, fingers must be forced upwards to not
+	  press the hot plates.<img align="right"
+	  src="../gifs/hand-on-mouse.gif" alt="Arrow showing static
+	  stress force when using mouse"/> Extensor muscles, the arms'
+	  weakest ones, are continuously struggling to keep this
+	  unnatural balance even if the brain thinks that the hand is
+	  at rest.  Interestingly, preschool kids struggle quite a bit
+	  with this likely injurious principle.  Whereas they may
+	  easily learn to type out their own name on the keyboard, it
+	  may take several more months for them to learn to hold the
+	  mouse without pressing the buttons---an indication that the
+	  mouse is anything but natural.</p>
+
+	<p>In my judgement, there are three areas where new thinking
+	  may lead to less pain when using a computer.  For the
+	  keyboard, there is only little room for improvement---still
+	  I have some modest ideas, see <a
+	  href="index_keyboard.html">keyboard</a>.  In contrast,
+	  the mouse may be an essentially harmful device that cannot
+	  be improved within its traditional design constraints---see
+	  my proposal in <a href="index_mouse.html">mouse</a> for a
+	  different concept.  Finally, I suggest how foot pedals can
+	  very effectively complement a keyboard or speech recognition
+	  for repetitive tasks in <a href="index_footpedals.html">foot pedals</a>.</p>
+	
+	<p>My opinions and proposals are the result of a decade of
+	  personal experimentation and observation.  That's why I call
+	  this overview a "usage-driven approach".  The information I
+	  offer here should not be construed as advice.  I do not know
+	  whether my observations are generally applicable.  If you
+	  have pain, then go see a doctor.  The only recommendation I
+	  offer to others with typing or mouse injuries is to look in
+	  the excellent book <em>Repetitive strain injury</em> by Emil
+	  Pascarelli and Deborah Quilter (John Wiley and Sons, 1994).
+	</p>
+      </tab>
+      <tab name="Mouse">
+	<quote>
+	  I doubt they were built for hand
+	  safety: mice inherently strain the hand...
+	  <where>
+	    Pascarelli &amp; Quilter in <em>Repetitive stress injury</em>
+	  </where>
+	</quote>
+	  <p>
+	    The mouse is a spoiler.  Whenever you put your hand on it,
+	    you stress your body.  If for a moment you forget to apply a
+	    lifting force to your fingers, then buttons are immediately
+	    activated.  Consequently, your body must work constantly with
+	    shoulder, limb, hand, and finger positions to not press
+	    buttons.  Unless, of course, you take your hand away from
+	    the device.  Something the size and shape of it discourage
+	    you from doing.  The lighter the mouse buttons are to
+	    depress, and the bigger they are, the more static force is
+	    needed to prevent accidental mouse clicks.  Thus, curiously,
+	    there may be a direct relationship between how "ergonomic"
+	    the mouse is and how harmful it is.
+	  </p>
+	  <p>
+	    The keyboard is much more forgiving in this regard.  It is
+	    natural to rest the hands in front of the keyboard as soon
+	    as they are not in use.  But given that the mouse inherently
+	    forces an unnatural, constant muscle response, I believe
+	    that researching mouse curvatures alone is an exercise in
+	    futility.
+	  </p>
+	  <h3>The buttonless mouse</h3>
+	  <p>
+	    Instead, mouse buttons must be entirely removed from the
+	    pointing device itself.  This is not a radical idea: on
+	    laptops, the pointing device (stick or pad) is separated
+	    from the buttons.  Also, the new mouse feature called a
+	    scroll-wheel should be moved to the keyboard.  The mouse is
+	    the last place another function should be placed.  Finally,
+	    the proper mouse size is less than the standard one.
+	  </p>
+
+	  <p>Now what are the consequences?  The series of pictures
+	    below illustrate five of numerous ways a small, buttonless
+	    mouse can be manipulated.  (The mouse shown has actually its
+	    buttons disabled.)  Most of these poses are not possible with
+	    a conventional mouse unless various fingers are
+	    counter-balanced to not depress the buttons.
+	    <table class="pictures">
+	      <tr>
+		<td><img src="../photos/Mouse-1hand-finger-ride.jpg"
+			 alt="One-handed finger ride"/><br/>
+		  One-handed finger ride
+		</td>
+
+		<td><img src="../photos/Mouse-1hand-side-grasp.jpg"
+			 alt="One-handed side grasp"/><br/>
+		  One-handed side grasp
+		</td>
+
+		<td><img src="../photos/Mouse-1hand-thumb-grasp.jpg"
+			 alt="One-handed thumb ride"/><br/>
+		  One-handed thumb ride
+		</td>
+	      </tr>
+	    </table>
+	    <table>
+	      <tr>
+		<td><img src="../photos/Mouse-2hand-shove.jpg"
+			 alt="Two-handed shove"/><br/>
+		  Two-handed shove
+		</td>
+		
+		<td><img src="../photos/Mouse-2hands.jpg"
+			 alt="Two-hands semi-ride"/><br/>
+		  Two-hands semi-ride
+		</td>
+	      </tr>
+	    </table>
+	  </p>
+	  <p>These pictures indicate how an appropriate shape allows the
+	    the mouse to be manipulated by just putting a part of the hand
+	    on top of it, while the side of the hand still rests on the
+	    table.  This easy-on-off principle encourages the hand to rest
+	    on the desk, not on top of the mouse.  It is still possible to
+	    have the hand ride on top of the mouse---while the hand gets
+	    gets a lot of support both from the desk, because the mouse
+	    fits in the palm of the hand, and from the mouse itself,
+	    because of the lack of buttons.  Note that to use the mouse in
+	    such varied ways, where hands are given plenty of resting
+	    areas, more space is needed than what is usually available on
+	    a keyboard tray.  That's why I believe that reducing keyboard
+	    size, or getting rid of it by combining speech recognition and
+	    foot pedals, is very important.</p>
+
+	  <h3>And where do the buttons
+	    go?</h3>
+	  <p>
+	    The buttons may go on either side of the keyboard or be foot
+	    activated.  In <a
+			      href="index_keyboard.html">keyboard</a>, I propose
+	    how scrolling functionality and mouse buttons can be
+	    conveniently combined on a keyboard.  This arrangement will
+	    not slow you down: as one hand is leaving the keyboard to
+	    locate the mouse, the other slides to the side where the
+	    buttons are easily found.  And, in <a
+						  href="index_footpedals.html">foot pedals</a> I
+	    consider available and future foot switches.
+	  </p>
+	  <h3>Trials</h3>
+	  <p>
+	    I believe that it would be interest to carry out controlled
+	    trials of simplified, buttonless mouse designs.  If the
+	    design of the mouse impacts its injury potential, then a
+	    study is more likely to demonstrate this effect the larger
+	    it is.  The removal of buttons may offer the best chance for
+	    obtaining such an effect.
+	  </p>
+      </tab>
+
+      <tab name="Keyboard">
+	<quote>Pointers---self taught typists who hunt and peck
+	  instead of touch-type---...are the least likely to be hurt
+	  from their style.
+	  
+	  <where>Pascarelli &amp; Quilter  in <em>Repetitive
+	      stress injury</em></where>
+	</quote>
+
+
+	<p>From bitter experience, I don't believe that the keyboard
+	  can be improved much.  Three times, and without success, I
+	  have built whole keyboards from scratch.  Nevertheless,
+	  there are a few changes I would like to see done to the
+	  keyboard:
+	  <ul>
+	    <li>A smaller footprint allowing more rest areas for hands
+	      and a mousing area closer to the center of the body.</li>
+
+	    <li>Widely spaced modifier keys so they can be pressed by
+	      the side of your hand instead of requiring pinky
+	      contortions.</li>
+
+	    <li>Mouse buttons on the side so as to allow a buttonless
+	      <a href="index_mouse.html">mouse</a>.
+	    </li>
+
+	    <li>A scroll tread or belt on the side of keyboard to make
+	      browsing possible without dependence on finger-skills.  A
+	      large scroll wheel might also be sufficient instead of the
+	      more complicated thread mechanism.</li>
+
+	    <li>A numeric keypad that does not make the keyboard as
+	      wide as normal 101-key models.</li>
+	    
+	    <li>A flat design, akin to that of a laptop keyboard, but
+	      with 3mm key travel and good mechanical feed-back.
+	    </li>
+	  </ul>
+	</p>
+
+	<h3>Why keyboards have gotten less ergonomic</h3> 
+	<p>
+	  For modifier keys, such as <tt>Ctrl</tt> and <tt>Shft</tt>,
+	  ergonomicity has declined.  When they are widely spaced
+	  apart <img align="right" width="100"
+		     src="../photos/spacing-left-modifier.jpg" alt="Widely spaced
+		     Ctrl and Alt keys"/> as on keyboards made in the mid '90s,
+	  these keys can be depressed easily with the side of the hand
+	  or with the outer side of the curled-up little finger, all
+	  while the thumb is facing upwards<img width="100"
+						src="../photos/good-modifier-use.jpg" alt="Pressing modifier
+						keys without strained uses of fingers" align="left"/>.  In
+	  this way, the strenuous finger work usually associated with
+	  chording is avoided.  Unfortunately, modern keyboards suffer
+	  from extraneous OS-specific keys that prevent this technique
+	  from being used.  (Except if these keys are uprooted or
+	  lowered.)  On a flat keyboard, such as on a notebook
+	  computer, fingers are even further restrained by the
+	  flatness from hitting keys in a variety of ways---something
+	  that is likely an ergonomic drawback.
+	</p>
+	<h3>A keyboard layout proposal</h3> 
+	<p>A keyboard  
+	  layout following these ideas mentioned above is suggested in 
+	  <a href="#fig1">Figure 1</a>.  Below it's shown (left) how a
+	  large, comfortable belt may be placed on the left side of the
+	  keyboard, along with mouse buttons; the side of the hand
+	  (right), not the fingers, securely moves the belt.
+	</p>
+	<div class="picture">
+	  <img src="../photos/scroll-keyboard1.jpg"/> 
+	  <img src="../photos/scroll-keyboard2.jpg"/>
+	</div>
+	<p>These ideas and the figure below are from AT&amp;T
+          Technical Disclosure <a href="../keyboard/keyboard.html">A keyboard design</a> by Nils Klarlund.
+	  <hr/>
+	  <a name='fig1' >
+	    <div style='text-align: center; position: absolute; left: 0;' class='picture'>
+	      <img src='../gifs/scroll-keyboard.gif' alt='Keyboard layout'/>
+	      <br/>
+	      <a href='../keyboard/keyboard.html'>Click for bigger picture</a>
+	    </div>
+	  </a>
+	</p>
+	<!-- create the vertical space -->
+	<div style="height: 530px;">&spacer;</div>
+      </tab>
+
+      <tab name="Foot Pedals">
+	<quote>One of the most popular misconceptions about
+	  computer work is that it is an ``easy'' activity, when in
+	  fact it is quite strenuous for your hands and arms.
+	  <where>Pascarelli &amp; Quilter in 
+	    <em>Repetitive
+	      stress injury
+	    </em></where>
+	</quote>
+	<p>Obviously, foot pedals cannot replace the keyboard.  But it is
+	  intriguing that many of us use our strongest limbs to control
+	  safety-critical pedals while going to or from work, while the
+	  same limbs stay underemployed under the desk all day.  The
+	  problem is that using just two a three pedals as in the car
+	  will not cover enough of repetitive work to make a difference.
+	  For example, even processing incoming e-mail requires at least
+	  five keys (next message, previous message, scroll down, scroll
+	  up, and delete message).  And, naturally, typing with our feet
+	  must be considered a hopeless task for most of us.
+	</p>
+	<p>Speech recognition offers an excellent alternative to
+	  typing, even as it seems hopeless at repetitive work.
+	  Saying "page up", "page up", "page down" to browse through a
+	  web page speaks for itself.  So, maybe the combination of
+	  speech recognition and foot pedals is the combination that
+	  will effectively offload the hands?
+	</p>
+	<p>This was my thinking when I started using speech
+	  recognition six years ago.  Initially, I used five or six
+	  foot switches glued to a wooden board.  Through several
+	  iterations of pedals arrangements, I arrived at a basic layout
+	  that can be seen in the photos below.
+	</p>
+	<div class="picture">
+	  <img src="../photos/footkeyboard1.jpg"/> 
+	  <img src="../photos/footkeyboard2.jpg"/>
+	  <img src="../photos/footkeyboard3.jpg"/>
+	</div>
+	(For a technical disclosure, see <a
+					    href="http://www.delphion.com/details?pn=US05889510__">US5889510
+	  Foot-operated keyboard device</a>) 
+
+	<p>In this design, each foot may operate seven front keys
+	  placed around the sides and front of the foot.  Most common
+	  keys are present: the arrow keys, enter, backspace, space, and
+	  tab. In addition, left and right mouse buttons are present
+	  (see <a href="index_mouse.html">mouse</a> why this is
+	  important).  Also, there are an undo key and three keys
+	  important to speech recognition: repeat last voice command,
+	  correction, and microphone on/off.  All of these keys are
+	  commonly used.  But 14 keys don't suffice.  So, other common
+	  functions such as "page up", "skip over left word", "change
+	  window focus", "go to the beginning of line" and "go to end of
+	  document" are activated through a combination of a front key
+	  and one of two modifier keys behind the foot.  The idea is to
+	  step forward on a front key with one foot while the heel of
+	  the other presses the modifier.  The modifier pedals are
+	  two-level switches, so altogether the keyboard offers 14 * 5 =
+	  70 foot-activated functions.  A <a
+					     href="../video/footkeyboard.wmv">video</a> (streaming Windows
+	  Media) (<a href="../video/footkeyboard.mpg">mpeg-1</a>
+	  (28Mb)) of a version of this keyboard is available.
+	</p>
+
+	<p>The design shown here is crude; it is possible to devise
+	  much better working key shapes.
+	</p>
+
+	<p>I have used this design for four years.  In my experience, the
+	  combination of speech recognition, based on the editing
+	  language <a href="ShortTalk.html">ShortTalk</a>, buttonless
+	  mouse, and foot pedals is significantly more efficient than
+	  the keyboard + mouse combination.  This efficiency is
+	  important: it is <em>the</em> driving force for using the
+	  combination.  It is extremely difficult not to work in one's
+	  old ways if the new ways are not superior.
+	</p>
+      </tab>
+
+      <tab name="Skeptical Remarks">
+	
+	<quote>The public should be skeptical about claims of
+	  ergonomic superiority...
+	  <where>
+	  Pascarelli  &amp; Quilter in <em>Repetitive stress
+	    injury</em></where>
+	</quote>
+	<p>Although some ``ergonomic'' accessories or devices may fit
+	  certain people, I believe that there are easily argued reasons
+	  why most of them may not work or may even be harmful.  These
+	  opinions are examples only, offered to stimulate critical
+	  thinking.</p>
+
+	<h4>Forearm rests</h4> 
+
+	These often elaborate mechanical contraptions support your
+	forearm even while in motion over the keyboard.  But a
+	fundamental misunderstanding may be a play here: the muscles
+	of the forearm lift a heavy object, the hand, that is not
+	supported by forearm rests.  So, the full weight of these
+	long, bony structures still have to be born by the forearms.
+	And, perversely, the forearm rests may make it cumbersome to
+	place the arms in a position where the hand and forearm can
+	truly rest, because it takes quite an effort to get in and out
+	of these devices.  As a result, the strain on the forearms may
+	be very significantly increased by using forearm rests.
+
+	<h4>Contoured keyboards</h4> 
+
+	In these keyboards, the majority of the keys are placed inside
+	a depression along a curvature.  There is one depression for
+	each hand, so that the keyboard may look like two bowls in a
+	frame.  By matching the movement patterns on the fingers---the
+	theory goes---these keyboard are easier on the body.  But
+	precisely thanks to this property, the keyboard will force the
+	hands into hovering in a specific position in space above it.
+	In contrast, a flatter layout gives superior flexibility for
+	striking the keys.
+	
+	<h4>Microswitch keyboards</h4> 
+	<p>This paradigm stipulates again
+	  that motion is at the heart of injury.  The keyboards
+	  accommodate each finger in an individual fixed area or well in
+	  close proximity to tiny switches.  Then minuscule movements of
+	  fingers active switches.  Phenomenal typing speeds are
+	  achievable.  I got the feeling when using a design of my own
+	  of getting a kind of direct feed from brain to computer.  But
+	  again, there is a fundamental misunderstanding at play if the
+	  aim is to reduce physical strain: the body must continuously
+	  adjust the position of all fingers so that they don't touch
+	  the switches.  This compensation includes maintaining
+	  positions of hands, forearms, not to say the whole body.
+	  Again, the conventional keyboard is superior.  With it, the
+	  hands are free all the time, except for the moment of strike,
+	  to rest or to hover over the keyboard.
+	</p>
+
+	<h4>Tablets</h4> <p>It has been suggested that using a pen on
+	  a tablet is more ergonomic than using a mouse.  Unfortunately,
+	  there is a condition called writer's cramp that has been known
+	  for hundreds, if not thousands of years, and it is likely to
+	  affect the tablet user as well.  Holding a pen puts static
+	  load on the whole upper body, so that the pen is not dropped
+	  and does not touch the tablet when not in use.
+	</p>
+
+	<h4>Touch pads</h4> <p>So what about not holding anything at
+	  all?  The touch pad offers such a solution, but as most people
+	  have experienced, this technology does not work to well
+	  either.  The cramped space is anything but natural for tracing
+	  the movement of the cursor by using the index finger.  Even if
+	  the touch pad was big enough that the whole hand could rest on
+	  it, it would still induce static stress: the hand must be
+	  turned so that the index finger does not touch the surface,
+	  whenever the cursor is not moved.
+	</p>
+
+	<h4>Trackballs</h4> <p>There are good things be said about
+	  trackballs: the hand may rest next to the device while the
+	  cursor is not being moved.  Moving the cursor can be done with
+	  the thumb or side of the hand.  Unfortunately, most trackballs
+	  that are on the market have large, easily depressed buttons
+	  surrounding the ball.  This "ergonomic" look probably have the
+	  opposite effect: the hand constantly must balance itself to
+	  not touch the buttons whenever near the device.  So, such
+	  trackballs may be as harmful as ordinary mice.
+	</p>
+
+	<h4>So, what helps?</h4> <p>I believe that no tinkering with
+	  keyboard or mouse design will lead to products that are
+	  radically less stressful on the body.  Marginal improvements,
+	  perhaps along the lines I've suggested, may be possible.
+	  Ergonomic manuals consistently state that there is one way
+	  only to effectively address severe cases of overuse syndromes:
+	  complete and total cessation of the physical activity that led
+	  to the problem.  Sometimes this cessation must be permanent,
+	  often implying a loss of ability to work.  Finger and hand
+	  work must be avoided in any form that resembles the
+	  injury-causing way of working.</p>
+	
+	<p>An approach to reduce physical impact might be: type
+	  with only the strongest fingers (thumb and index) and move a
+	  mouse by pushing it with two hands resting on the
+	  desk or keyboard tray.  Such behavioral techniques may offer
+	  far greater 	 potential for reducing injury than any
+	  changes 	 in device 	 design.  	 But their use
+	  may 	 also lead 	 to 	 further
+	  injury, given that 	 they represent a very different
+	  approach than that of 	 complete 	 rest.  For lesser
+	  injuries, 	 other 	 techniques are 	 possible as
+	  is discussed in 	 books 	 on 	 computer-induced
+	  injuries.
+	</p>
+	<p>In conclusion, I believe that avoidance and technique are
+	  more important than device design.  Avoidance can be achieved
+	  by a combination of speech recognition and foot pedals.  I
+	  doubt that there are any other ways that are comparable in
+	  efficiency.
+	</p>
+      </tab>
+      <tab name="My Own Setup">
+	<p>Here are some information about how I put my work
+	  environment together.  For a picture of my workspace, see <a
+	  href="../index_uisummary.html">User interface summary</a>.
+	</p>
+
+	<h3>Foot pedals</h3> 
+
+	<p>It is difficult, if not impossible, to buy appropriate foot
+	keyboards.  Foot switches that just float around on the floor
+	are a bad idea.  Your feet won't be able to find them---and
+	using them frequently may induce cramps in calf muscles.  Foot
+	switches should be mounted on a foot rest.  A Y-key dual
+	keyboard adaptor (from <a
+	href="http://www.ymouse.com/">http://www.ymouse.com</a>)
+	allows two keyboards to be used together.  Also, I believe
+	that USB keyboards can be used in parallel.  In any case,
+	individual foot switches can connected to the soldering points
+	under each key on a second keyboard.  It's easiest to work
+	with a keyboard equipped with mechanical switches, since
+	capacitive switches may require the addition of a capacitor
+	for each key.  The construction of a keyboard like the one
+	shown probably can be done in a couple of days by somebody
+	with electronic and woodworking skills.</p>
+
+	<h3>Buttonless mice</h3>  
+	<p>
+	  Under Windows 2000 and XP, it is easy to make several mice
+	  work together.  Personally, my favorite "ergonomic" mouse is
+	  a 10 dollar device from Sakar International (Model #77452,
+	  Iconcepts).  It is small so that the hand does not have to
+	  struggle mounting it, and it is not too rounded.  I have
+	  disabled the mouse buttons by sliding two thin slices of
+	  rubber in the gap between the button and the case.  A better
+	  alternative is to reshape an optical mouse, by peeling off
+	  the upper casing; a better surface for grasping the mouse
+	  can then be built out of epoxy or modeling clay.
+	  Electrically, an ordinary foot switch or an extra key
+	  mounted on the keyboard over a micro switch may be used to
+	  short-circuit the two contact points of the micro switch
+	  serving a button inside the mouse.  Thus, with relatively
+	  modest soldering skills, one can connect a mouse
+	  button switch via a second mouse (that is used solely for
+	  this purpose).  Under Windows 2000 and XP, it is possible to
+	  press the button of one mouse, while moving the other mouse,
+	  to achieve the effect of dragging.  This is not possible
+	  under some other operating systems, including Windows 98 and
+	  Me.
+	</p>
+	<p>There might be easier ways to obtain a buttonless
+	mouse---I have not investigated alternatives.
+	</p>
+
+	<h3>Wireless microphone</h3> <p>I like the design of the wired
+	Emkay D-loop microphone.  It is very comfortable to wear, and
+	the microphone stays in place.  Unfortunately, I have not been
+	too impressed with the wireless consumer solutions that I've
+	tested.  They do not provide a clean signal. Instead, I use a
+	Shure LX wireless system.  The microphones that Shure provides
+	come with elastic bands that wrap around your neck.  This a
+	great solution for aerobics instructors---but an unworkable
+	solution for speech recognition: you can't move your head
+	without the microphone moving in front of your mouth.
+	Instead, I have connected an Emkay D-loop microphone to the
+	mini-XLR connector.  The details are: connect shield to pin 1
+	and short-circuit pin 3 and pin 2 (which carries 5 V) and
+	connect the hot wire (red) or pair of hot wires (red and
+	white) to that short (inspiration for this operation is the
+	diagram found at <a
+	href="http://www.shure.com/pdf/userguides/guides_wiredmics/wcm16.pdf">http://www.shure.com/pdf/userguides/guides_wiredmics/wcm16.pdf</a>).
+	To accomplish this wiring, I had to open the female mini-XLR
+	connector.  To my knowledge, there is no mini-XLR to mini
+	phone plug connector on the market.  I hope Bluetooth
+	technology will be able to replace my LX system.
+	</p>
+
+	<h3>Keyboard</h3> 
+	<p>I used to use an IBM keyboard without
+	numeric keypad to gain space.  This excellent keyboard has
+	mechanical switches and widely spaced Shft, Ctrl and Alt keys
+	(IBM part no 1397681).  It is not made anymore.  My current
+	keyboard is different, but since finally I am able to largely
+	not use it, its design is not important.
+	</p> 
+
+	<h3>Computer </h3> <p>In my experience, Pentium III processors
+	under 1 GHz are inadequate for speech recognition based on the
+	NaturallySpeaking dictation system, now produced by Scansoft.
+	The last year I have been using a AMD-based processor (Athlon
+	1.4 GHz) with extremely nice results: response time for short
+	utterances is very quick and the system altogether has been
+	very stable. Half a Gb of RAM is required and sufficient.
+	</p>
+      </tab>
+    </tabs>
+  </body>
+</html>
+

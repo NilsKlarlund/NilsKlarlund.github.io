@@ -1,0 +1,479 @@
+<?dsd URI="http://www.brics.dk/DSD/dsd.dsd"?>
+
+<DSD IDRef="maindsd" DSDVersion="1.0">
+
+  <Title>DSD for DSDs</Title>
+  <Version>1.0</Version>
+  <Author>Nils Klarlund, Anders Moeller, and Michael I. Schwartzbach</Author>
+ 
+  <Doc>
+    This document is a valid DSD that describes DSD validity.
+
+    For more information about DSD, see the DSD home page at
+    <a href="http://www.brics.dk/DSD/">http://www.brics.dk/DSD/</a>.
+  </Doc>
+
+  <!-- GENERAL CONCEPTS -->
+
+  <ElementDef ID="maindsd" Name="DSD">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="no">
+      <PointsTo><Context><Element Name="ElementDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="DSDVersion"><String Value="1.0"/></AttributeDecl>
+    <Content IDRef="dsdcontent"/>
+  </ElementDef>
+
+  <ElementDef ID="subdsd" Name="DSD">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ElementDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="DSDVersion"><String Value="1.0"/></AttributeDecl>
+    <Content IDRef="dsdcontent"/>
+  </ElementDef>
+ 
+  <ContentDef ID="dsdcontent">
+    <Sequence>
+      <Optional><Element Name="Title"><Content IDRef="content"/></Element></Optional>
+      <Optional><Element Name="Version"><Content IDRef="content"/></Element></Optional>
+      <Optional><Element Name="Author"><Content IDRef="content"/></Element></Optional>
+      <ZeroOrMore>
+	<Sequence>
+	  <Content IDRef="doc"/>
+          <Union>
+            <Element IDRef="subdsd"/><Element IDRef="default"/><Content IDRef="structdef"/>
+          </Union>
+	</Sequence>
+      </ZeroOrMore>
+    </Sequence>
+  </ContentDef>
+
+  <ContentDef ID="structdef">
+    <Union>
+      <Element IDRef="elementdef"/>
+      <Element IDRef="constraintdef"/>
+      <Element IDRef="attributedecldef"/>
+      <Element IDRef="contentdef"/>
+      <Element IDRef="booldef"/>
+      <Element IDRef="contextdef"/>
+      <Element IDRef="stringtypedef"/>
+    </Union>
+  </ContentDef>
+  
+  <ContentDef ID="doc">
+    <Sequence>
+      <Optional><Element Name="Label"><Content IDRef="content"/></Element></Optional>
+      <Optional><Element Name="BriefDoc"><Content IDRef="content"/></Element></Optional>
+      <Optional><Element Name="Doc"><Content IDRef="content"/></Element></Optional>
+    </Sequence>
+  </ContentDef>
+
+  <!-- DEFAULTS -->
+
+  <ElementDef ID="default" Name="Default">
+    <Optional><Content IDRef="boolexp"/></Optional>
+    <ZeroOrMore>
+      <Union><Element IDRef="defattribute"/><Element IDRef="defcontent"/></Union>
+    </ZeroOrMore>
+  </ElementDef>
+
+  <ElementDef ID="defattribute" Name="DefaultAttribute">
+    <AttributeDecl Name="Name"/>
+    <AttributeDecl Name="Value"/>
+  </ElementDef>
+  
+  <ElementDef ID="defcontent" Name="DefaultContent">
+    <Union><Content IDRef="element"/><StringType/></Union>
+  </ElementDef>
+
+  <!-- ELEMENT DESCRIPTIONS -->
+  
+  <ElementDef ID="elementdescr" Name="Element">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ElementDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="Name" Optional="yes"/>
+    <OneOf><Attribute Name="IDRef"/><Attribute Name="Name"/></OneOf>
+    <If><Attribute Name="Name"/>
+      <Then>
+        <AttributeDecl Name="Defaultable" Optional="yes">
+          <StringType IDRef="YesOrNo"/>
+         </AttributeDecl>
+         <Content IDRef="constraintexp"/>
+      </Then>
+    </If>
+  </ElementDef>
+
+  <ElementDef ID="elementdef" Name="ElementDef">
+    <AttributeDecl Name="ID" IDType="ID"/>
+    <AttributeDecl Name="Name" Optional="yes"/>
+    <AttributeDecl Name="Defaultable" Optional="yes">
+      <StringType IDRef="YesOrNo"/>
+    </AttributeDecl>
+    <Content IDRef="constraintexp"/>
+  </ElementDef>
+
+  <!-- CONSTRAINTS -->
+  
+  <ElementDef ID="constraint" Name="Constraint">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ConstraintDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="CurrIDRef" IDType="CurrIDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ConstraintDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <Not><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Not>
+    <If>
+      <Not><Or><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Or></Not>
+      <Then><Content IDRef="constraintexp"/></Then>
+    </If>
+  </ElementDef>
+
+  <ElementDef ID="constraintdef" Name="ConstraintDef">
+    <AttributeDecl Name="ID" IDType="ID" Optional="yes"/>
+    <AttributeDecl Name="RenewID" IDType="RenewID" Optional="yes">
+      <PointsTo><Context><Element Name="ConstraintDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <OneOf><Attribute Name="ID"/><Attribute Name="RenewID"/></OneOf>
+    <Content IDRef="constraintexp"/>
+  </ElementDef>
+  
+  <ContentDef ID="constraintexp">
+    <ZeroOrMore>
+      <Sequence>
+	<Content IDRef="doc"/>
+	<Content IDRef="constraintterm"/>
+      </Sequence>
+    </ZeroOrMore>
+  </ContentDef>
+
+  <ContentDef ID="constraintterm">
+    <Union> 
+      <!-- NOTE: condconstraint must be before contentexp 
+           to resolve If ambiguity correctly -->
+      <Element IDRef="attributedecl"/>
+      <Content IDRef="condconstraint"/> 
+      <Content IDRef="contentexp"/>
+      <Content IDRef="boolexp"/>
+      <Element IDRef="constraint"/>
+    </Union>
+  </ContentDef>
+
+  <ContentDef ID="condconstraint">
+    <Element Name="If">
+      <Sequence>
+	<Content IDRef="boolexp"/>
+	<Element Name="Then"><Content IDRef="constraintexp"/></Element>
+	<Optional>
+          <Element Name="Else"><Content IDRef="constraintexp"/></Element>
+	</Optional>
+      </Sequence>
+    </Element>
+  </ContentDef>
+
+  <!-- ATTRIBUTE DECLARATIONS -->
+  
+  <ElementDef ID="attributedecl" Name="AttributeDecl">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="AttributeDeclDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="CurrIDRef" IDType="CurrIDRef" Optional="yes">
+      <PointsTo><Context><Element Name="AttributeDeclDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <Not><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Not>
+    <If>
+      <Not><Or><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Or></Not>
+      <Then>
+        <AttributeDecl Name="Name"/>
+        <Constraint IDRef="attrdeclattrs"/>
+        <Content IDRef="attrdeclcontent"/>
+      </Then>
+    </If>
+  </ElementDef>
+
+  <ElementDef ID="attributedecldef" Name="AttributeDeclDef">
+    <AttributeDecl Name="ID" IDType="ID" Optional="yes"/>
+    <AttributeDecl Name="RenewID" IDType="RenewID" Optional="yes">
+      <PointsTo><Context><Element Name="AttributeDeclDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <OneOf><Attribute Name="ID"/><Attribute Name="RenewID"/></OneOf>
+    <AttributeDecl Name="Name"/> 
+    <Constraint IDRef="attrdeclattrs"/>
+    <Content IDRef="attrdeclcontent"/>
+  </ElementDef>
+
+  <ConstraintDef ID="attrdeclattrs">
+    <AttributeDecl Name="Optional" Optional="yes">
+      <StringType IDRef="YesOrNo"/>
+    </AttributeDecl>
+    <AttributeDecl Name="IDType" Optional="yes">
+      <StringType IDRef="IDType"/>
+    </AttributeDecl>
+  </ConstraintDef>
+
+  <ContentDef ID="attrdeclcontent">
+    <Sequence>
+      <Optional><Content IDRef="stringtypeexp"/></Optional>
+      <If>
+	<Attribute Name="IDType">
+          <Union>
+	    <String Value="IDRef"/><String Value="CurrIDRef"/><String Value="RenewID"/>
+          </Union>
+	</Attribute>
+	<Then> 
+  	  <Optional>
+	    <Sequence><Content IDRef="doc"/><Element IDRef="pointsto"/></Sequence>
+	  </Optional>
+        </Then>
+      </If>
+    </Sequence>
+  </ContentDef>
+
+  <StringTypeDef ID="IDType">
+    <Union>
+      <String Value="ID"/><String Value="IDRef"/>
+      <String Value="RenewID"/><String Value="CurrIDRef"/>
+    </Union>
+  </StringTypeDef>
+
+  <ElementDef ID="pointsto" Name="PointsTo">
+    <Content IDRef="boolexp"/>
+  </ElementDef>
+
+  <!-- ATTRIBUTE DESCRIPTIONS -->
+  
+  <ElementDef ID="attributedescr" Name="Attribute">
+    <AttributeDecl Name="Name"/>
+    <AttributeDecl Name="Value" Optional="yes"/>
+    <If>
+      <Not><Attribute Name="Value"/></Not>
+      <Then><Optional><Content IDRef="stringtypeexp"/></Optional></Then>
+    </If>
+  </ElementDef>
+
+  <!-- CONTENT DESCRIPTIONS -->
+
+  <ElementDef ID="contentdescr" Name="Content">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ContentDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="CurrIDRef" IDType="CurrIDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ContentDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <Not><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Not>
+    <If>
+      <Not><Or><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Or></Not>
+      <Then><Content IDRef="contentexp"/></Then>
+    </If>
+  </ElementDef>
+
+  <ElementDef ID="contentdef" Name="ContentDef">
+    <AttributeDecl Name="ID" IDType="ID" Optional="yes"/>
+    <AttributeDecl Name="RenewID" IDType="RenewID" Optional="yes">
+      <PointsTo><Context><Element Name="ContentDef"/></Context></PointsTo>
+    </AttributeDecl>  
+    <OneOf><Attribute Name="ID"/><Attribute Name="RenewID"/></OneOf>
+    <Content IDRef="contentexp"/>
+  </ElementDef>
+
+  <ContentDef ID="contentexp">
+    <Sequence>
+      <Content IDRef="doc"/>
+      <Union>
+        <Element Name="Sequence">
+          <ZeroOrMore><Content IDRef="contentexp"/></ZeroOrMore>
+        </Element>
+        <Element Name="Optional"><Content IDRef="contentexp"/></Element>
+        <Element Name="ZeroOrMore"><Content IDRef="contentexp"/></Element>
+        <Element Name="OneOrMore"><Content IDRef="contentexp"/></Element>
+        <Element Name="Union">
+          <ZeroOrMore><Content IDRef="contentexp"/></ZeroOrMore>
+        </Element>
+        <Element Name="AnyElement"/>
+        <Element Name="Empty"/>
+        <Element Name="If">
+	  <Sequence>
+	    <Content IDRef="boolexp"/>
+	    <Element Name="Then"><Content IDRef="contentexp"/></Element>
+	    <Optional>
+	      <Element Name="Else"><Content IDRef="contentexp"/></Element>
+	    </Optional>
+	  </Sequence>
+        </Element>
+        <Element IDRef="stringtype"/>
+        <Element IDRef="elementdescr"/>
+        <Element IDRef="contentdescr"/>
+      </Union>
+    </Sequence>
+  </ContentDef>
+
+  <!-- BOOLEAN FORMULAS -->
+
+  <ElementDef ID="boolformula" Name="Bool">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="BoolDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="CurrIDRef" IDType="CurrIDRef" Optional="yes">
+      <PointsTo><Context><Element Name="BoolDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <Not><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Not>
+    <If>
+      <Not><Or><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Or></Not>
+      <Then><Content IDRef="boolexp"/></Then>
+    </If>
+  </ElementDef>
+
+  <ElementDef ID="booldef" Name="BoolDef">
+    <AttributeDecl Name="ID" IDType="ID" Optional="yes"/>
+    <AttributeDecl Name="RenewID" IDType="RenewID" Optional="yes">
+      <PointsTo><Context><Element Name="BoolDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <OneOf><Attribute Name="ID"/><Attribute Name="RenewID"/></OneOf>
+    <Content IDRef="boolexp"/>
+  </ElementDef>
+
+  <ContentDef ID="boolexp">
+    <Sequence>
+      <Content IDRef="doc"/>
+      <Union>
+        <Element Name="And"><ZeroOrMore><Content IDRef="boolexp"/></ZeroOrMore></Element>
+        <Element Name="Or"><ZeroOrMore><Content IDRef="boolexp"/></ZeroOrMore></Element>
+        <Element Name="OneOf"><ZeroOrMore><Content IDRef="boolexp"/></ZeroOrMore></Element>
+        <Element Name="Not"><ZeroOrMore><Content IDRef="boolexp"/></ZeroOrMore></Element>
+        <Element Name="Imply">
+          <Sequence><Content IDRef="boolexp"/><Content IDRef="boolexp"/></Sequence>
+        </Element>
+        <Element Name="Equiv"><ZeroOrMore><Content IDRef="boolexp"/></ZeroOrMore></Element>
+        <Element IDRef="attributedescr"/>
+        <Element IDRef="contextpattern"/>
+        <Element IDRef="boolformula"/>
+      </Union>
+    </Sequence>
+  </ContentDef>
+
+  <!-- CONTEXT PATTERNS -->
+
+  <ElementDef ID="contextpattern" Name="Context">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ContextDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="CurrIDRef" IDType="CurrIDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ContextDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <Not><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Not>
+    <If>
+      <Not><Or><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Or></Not>
+      <Then><Content IDRef="contextexp"/></Then>
+    </If>
+  </ElementDef>
+
+  <ElementDef ID="contextdef" Name="ContextDef">
+    <AttributeDecl Name="ID" IDType="ID" Optional="yes"/>
+    <AttributeDecl Name="RenewID" IDType="RenewID" Optional="yes">
+      <PointsTo><Context><Element Name="ContextDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <OneOf><Attribute Name="ID"/><Attribute Name="RenewID"/></OneOf>
+    <Content IDRef="contextexp"/>
+  </ElementDef>
+
+  <ContentDef ID="contextexp">
+    <Sequence>
+      <Content IDRef="doc"/>
+      <ZeroOrMore><Content IDRef="contextterm"/></ZeroOrMore>
+    </Sequence>
+  </ContentDef>
+
+  <ContentDef ID="contextterm">
+    <Union>
+      <Element IDRef="elementpattern"/>
+      <Element Name="SomeElements"/>
+      <Element IDRef="contextpattern"/>
+    </Union>
+  </ContentDef>
+
+  <ElementDef ID="elementpattern" Name="Element"> 
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="ElementDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="Name" Optional="yes"/>
+    <Not><Attribute Name="IDRef"/><Attribute Name="Name"/></Not>
+    <ZeroOrMore>
+      <Sequence><Content IDRef="doc"/><Element IDRef="attributedescr"/></Sequence>
+    </ZeroOrMore>
+  </ElementDef>
+
+  <!-- STRING TYPES -->
+
+  <ElementDef ID="stringtype" Name="StringType">
+    <AttributeDecl Name="IDRef" IDType="IDRef" Optional="yes">
+      <PointsTo><Context><Element Name="StringTypeDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <AttributeDecl Name="CurrIDRef" IDType="CurrIDRef" Optional="yes">
+      <PointsTo><Context><Element Name="StringTypeDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <Not><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Not>
+    <If>
+      <Not><Or><Attribute Name="IDRef"/><Attribute Name="CurrIDRef"/></Or></Not>
+      <Then><Optional><Content IDRef="stringtypeexp"/></Optional></Then>
+    </If>
+  </ElementDef>
+
+  <ElementDef ID="stringtypedef" Name="StringTypeDef">
+    <AttributeDecl Name="ID" IDType="ID" Optional="yes"/>
+    <AttributeDecl Name="RenewID" IDType="RenewID" Optional="yes">
+      <PointsTo><Context><Element Name="StringTypeDef"/></Context></PointsTo>
+    </AttributeDecl>
+    <OneOf><Attribute Name="ID"/><Attribute Name="RenewID"/></OneOf>
+    <Content IDRef="stringtypeexp"/>
+  </ElementDef>
+
+  <ContentDef ID="stringtypeexp">
+    <Sequence>
+      <Content IDRef="doc"/>
+      <Union>
+        <Element Name="Sequence">
+          <ZeroOrMore><Content IDRef="stringtypeexp"/></ZeroOrMore>
+        </Element>
+        <Element Name="Optional"><Content IDRef="stringtypeexp"/></Element>
+        <Element Name="ZeroOrMore"><Content IDRef="stringtypeexp"/></Element>
+        <Element Name="OneOrMore"><Content IDRef="stringtypeexp"/></Element>
+        <Element Name="Union">
+          <ZeroOrMore><Content IDRef="stringtypeexp"/></ZeroOrMore>
+        </Element>
+        <Element Name="Intersection">
+          <ZeroOrMore><Content IDRef="stringtypeexp"/></ZeroOrMore>
+        </Element>
+        <Element Name="Complement"><Content IDRef="stringtypeexp"/></Element>
+        <Element Name="AnyChar"/>
+        <Element Name="Empty"/>
+        <Element Name="String"><AttributeDecl Name="Value"/></Element>
+        <Element Name="CharSet"><AttributeDecl Name="Value"/></Element>
+        <Element Name="CharRange">
+          <AttributeDecl Name="Start"><StringType IDRef="Char"/></AttributeDecl>
+	  <AttributeDecl Name="End"> <StringType IDRef="Char"/></AttributeDecl>
+        </Element>
+        <Element IDRef="stringtype"/>
+      </Union>
+    </Sequence>
+  </ContentDef>
+
+  <!-- COMMON SYNTACTIC CONSTRUCTS -->
+  
+  <StringTypeDef ID="Char">
+    <AnyChar/>
+  </StringTypeDef>
+
+  <StringTypeDef ID="YesOrNo">
+    <Union>
+     <String Value="yes"/><String Value="Yes"/><String Value="no"/><String Value="No"/>
+    </Union>
+  </StringTypeDef>
+
+  <ContentDef ID="element">
+    <AnyElement/>
+  </ContentDef>
+
+  <ContentDef ID="content">
+    <ZeroOrMore><Union><AnyElement/><StringType/></Union></ZeroOrMore>
+  </ContentDef>
+
+</DSD>

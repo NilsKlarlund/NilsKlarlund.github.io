@@ -1,0 +1,351 @@
+<!-- EXTERNALLY PUBLISHED PAPER -->
+<!-- EXTERNALLY PUBLISHED PAPER -->
+<!-- EXTERNALLY PUBLISHED PAPER -->
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; U) [Netscape]">
+   <TITLE>Requirements for a Markup Language for HTTP-mediated Interactive Voice Services</TITLE>
+<STYLE type="text/css">
+
+     BLOCKQUOTE {font-style: normal}
+
+     DIV.title {text-align: center; color: purple}
+
+     DIV.abstract {text-align: left; margin-left: 4em; text-color: normal;
+     margin-right:4em; font-size: smaller; font-style: italic}
+     DIV.abstract EM {font-style: normal; text-color: black}
+     DIV.abstract H2 {text-align: center; font-size: 120%; font-style: normal}
+
+     DIV.title H2 {color: purple; font-style: normal}	
+
+     DIV.Nils, SPAN.Nils {font-style : italic; color: green}	
+
+     H2, H3 {color: blue}
+
+     DIV.requirement {margin-top:2ex;margin-bottom:2ex; margin-left: 4em;
+
+     padding-left: 5px; padding-right: 5px; 
+
+     border:solid; border-width: thin; width: 70%; color: red}
+
+     P {text-align:  left}
+
+     EM {color: normal}
+
+     IMG {align: center}
+
+     .whitebackground {background: white}
+
+     TABLE {border: thick}
+
+     CITE {color: green}
+
+     DT {font-weight: bold; color: red} 
+
+     DL SPAN {font-weight: bold; color: red }     <!-- netscape hack -->
+
+   </STYLE>
+</HEAD>
+<BODY>
+
+<DIV class=title>
+<DIV style="font-size: smaller">This document is best rendered using a
+CSS1 compliant browser.</DIV>
+
+<H1>
+Requirements for a markup language<BR>
+for HTTP-mediated<BR>
+interactive voice response services</H1>
+</DIV>
+
+<CENTER>
+<ADDRESS>
+<A HREF="mailto:wiscal@research.bell-labs.com">Peter Danielsen</A><SUP>&para;</SUP>,
+<A HREF="mailto:klarlund@research.att.com">Nils Klarlund</A><SUP>*</SUP>, 
+<A HREF="mailto:ladd@icsd.mot.com">David Ladd</A><SUP>&sect;</SUP>,
+<BR>
+<A HREF="mailto:mataga@bell-labs.com">Peter Mataga</A><SUP>&para;</SUP>,
+<A HREF="mailto:jcr@research.att.com">J. Christopher Ramming</A><SUP>*</SUP>, <A HREF="mailto:krehor@lucent.com">Kenneth Rehor</A><SUP>&para;</SUP>
+</ADDRESS>
+</CENTER>
+&nbsp;
+<CENTER>
+<ADDRESS>
+<SUP>*</SUP>) AT&amp;T Labs-Research,
+<SUP>&para;</SUP>) Lucent Technologies-Bell Laboratories,
+<SUP>&sect;</SUP>) Motorola ICSD
+</ADDRESS></CENTER>
+
+<DIV class=abstract>
+<H2>Abstract</H2> <em>Voice browsing</em> involves access to the Web
+via a device, such as a telephone, that has no display.  Our joint
+experience with markup languages for IVR (Interactive Voice Response)
+systems suggests that HTML cannot be easily extended in ways that
+would make voice browsing possible.  In fact, voice browsing suffers
+from many of the same obstacles that make so many IVR systems
+unpleasant and difficult to use.  Web contents should nonetheless be
+accessible to voice browsing communities.  This goal can be achieved
+by a structured markup language that is expressly designed for IVR
+services.  Such a language could be used to create voice browsers
+along with Web applications that parallel their visual counterparts.
+We offer some requirements for such a language.
+</DIV>
+
+<H2>
+Introduction</H2> It is possible to browse the Web even in the absence
+of a usable display device.&nbsp; The term <I>voice browsing</I> has
+been used to describe this form of Web access, which is
+characterized by the use of sound to render documents in an
+interactive fashion.&nbsp; Voice browsers offer Web access to the
+visually impaired, to those whose eyes must be focused on something
+other than a computer screen (automobile drivers), and to those using
+inherently limited terminal devices (payphone users).&nbsp; That is to
+say, an effective voice browser would be a valuable tool for many user
+communities.&nbsp; There have been several efforts to support the
+voice browsing of arbitrary Web documents;&nbsp;&nbsp; most approaches
+allow modifications to the underlying document for a more
+effective voice rendering.&nbsp;&nbsp; [<A
+HREF="#genMagic">1</A>,&nbsp;<A HREF="#prodWorks"> 2</A>, <A
+HREF="#Rutgers">3</A>].
+
+<P>A voice browser (or <I>voice user agent</I> in Web parlance) must
+perform audio rendering and must also provide user input mechanisms
+that control hyperlink selection, form field entry, and form
+submission.&nbsp; Perhaps the simplest known terminal device that
+supports audio browsing is the common analog telephone.&nbsp;&nbsp;
+Telephones have, in fact, long supported automated information and
+transaction systems, known in the telecommunications industry as
+<I>Interactive Voice Response</I> (IVR) systems.&nbsp; It is therefore
+natural to propose an architecture where IVR systems become voice
+browsers that are defined by Web applications.&nbsp; Indeed, a
+recently circulated note on voice browsing [<A HREF="#vbnote">4</A>]
+describes functionality that is applicable to IVR services as well as
+to browsing for the visually impaired.&nbsp; The idea that IVR systems
+and Web browsers are closely related suggests that HTML should form a
+basis for IVR systems.&nbsp; If the details of this idea can be worked
+out, IVR systems will be created as Web applications, and Web
+applications will be accessible to voice browsing communities.
+
+<P>In this paper, we examine the requirements for markup-language-based
+IVR service creation. The three groups represented by the authors of this
+paper have had extensive experience in providing HTTP-mediated IVR systems,
+and we believe this experience is relevant to the voice browsing community
+in two ways. We have found that an approach to voice browsing and IVR based
+on the extension of HTML has some important limitations.&nbsp; We have
+also found the insights derived from experience with IVR systems may be
+valuable in guiding the design of voice browsers.
+
+<P>It is easy to imagine that any structured document written in a
+markup language can be translated in a straightforward way to some
+state machine that correctly renders the output and gathers
+appropriate user input;&nbsp; indeed, such a translation is at the
+heart of several HTTP-mediated voice service languages developed at
+AT&amp;T [<A HREF="#att">5</A>], Lucent [<A HREF="#att">6</A>], and
+Motorola [<A HREF="#motorola">7</A>].&nbsp; From this perspective,
+voice browsing appears to be straightforward <span> a straightforward
+problem </span> .&nbsp; However, if voice browsing is seen as&nbsp;
+IVR, then it is hard to imagine how voice browsing will be any easier
+to achieve than it is to create IVR services .&nbsp;
+Indeed, most would agree that few IVR
+services are effective and pleasing.&nbsp;&nbsp; Even if one assumes
+that speech recognition and synthesis technology have become so
+reliable that they are no longer the limiting factors in designing
+effective IVR services, experience shows that the complexity of
+dialogs and interactions can overwhelm a programmer not skilled in
+both concurrent systems and human-computer interfaces.&nbsp; Any
+service creation environment, whether or not based on HTML, must
+reflect the fact that IVR service design is a complicated process that
+can be parameterized in countless ways.
+
+<P>
+We believe, however, that effective IVR service creation based on Web
+authoring is achievable. A structured markup language is a convenient
+way to hide hardware complexities, to abstract away the difficulties
+of concurrent programming, and to codify proven principles of IVR
+design.  Thus, a markup language allows the designer to concentrate on
+the essential matter: the contents, choice of pre-defined dialogs, and
+associated help menus and prompts. The details of all of these
+aspects, and the way in which they fit together, must be customizable
+by the service creator (or, perhaps, the style designer).
+
+<P>We believe it is unlikely that extensions to HTML such as those
+proposed in [<A HREF="#vbnote">4</A>] will satisfy all of the
+requirements for effective IVR services. The designer's intent with
+regard to voice interactions is simply not well supported by such an
+approach. We conclude that IVR service creation can best be achieved
+with a specific markup language for specifying interactive voice
+rendering. It seems to us that many of the same issues apply to the
+voice browsing problem, and that such a markup language can provide a
+useful substrate for voice interaction with existing Web content,
+especially as voice customization becomes more prevalent.
+<H2>
+Phones as Web terminals: some striking problems</H2>
+The starting point for this discussion is the assumption that a service
+is presented as a sequence of pages of some markup language (e.g., an XML
+dialect). We also assume that any activity that requires intensive computation
+or access to private data is executed on the HTTP server. However, each
+page may nonetheless represent complex user <I>interactions</I>, during
+which multiple pieces of information are presented to and collected from
+the user. These interactions take place via the limited interface provided
+by a telephone, and are are strikingly different from those of typical
+visual browser. This section covers some of the differences, and it discusses
+the consequences for service specification.
+<H3>
+Documents must be rendered along a temporal dimension</H3>
+In the visual world, a full screen of any document may be presented at
+a given moment. The two-dimensional layout of the document is determined
+through style sheets or flow-objects. The reader can instantaneously select
+the part of the information that he or she wants to read; in fact, the
+effort of intra-page navigating is so negligible that it is usually unconscious.
+In the voice world, information is rendered linearly, as a function of
+time. Thus the analog of layout is a description of the interactive, temporal
+process where the listener selects, through prompts and barge-ins, what
+linear fragments of the document to render.
+<H3>
+It is not possible to separate content from presentation</H3>
+In the visual world, the HTML + CSS combination convincingly separates
+structured contents (the HTML document) from the presentation details (the
+CSS specification). When we tried to adapt HTML to a voice setting, we
+found out early that there is no such strong separation between contents
+and presentation. Even with a library of pre-defined dialogues structures,
+a programmer must skillfully add more contents, much of which concerns
+presentation. For example: What is the initial prompt? What is the prompt
+the <I>n</I>th time that the browser has not been able to interpret the
+user's input? What is the speech recognition grammar? Is the grammar merged
+with grammars for outer elements that have navigational options? What if
+the user says "help"?
+
+<P>The "help" problem illustrates a point fundamental to voice rendering:
+that additional contents regarding the presentation itself must be added
+in many places. We say that contents alone, such as represented in an HTML
+document, must be <I>augmented </I>with additional <I>representational
+contents</I>. Representational contents cannot be calculated from an HTML
+document; such contents, as all other, require human insight.
+<H3>
+User input is often ambiguous</H3>
+In the visual world, user input is usually treated as certain.&nbsp; For
+example, there is no need to reconfirm the spelling of a city name. In
+the voice world, we assume that a full keyboard is not available (for if
+it were, a display would be nearby in most cases, and it would surely be
+the output medium of choice for most people). So typically, input is either
+by speech recognition or by keypads, such as the 12 keys on a usual phone
+keypad. Speech input is ambiguous, and so is telephone keypad input, at
+least when it comes to spelling (where one key denotes several letters).
+In any case, the interactions or dialogues necessarily become complicated
+if they are to deal well with the human factors involved.
+<H2>
+Requirements for a markup language for interactive voice rendering</H2>
+Our experience with markup languages for HTTP-mediated IVR is that they
+are very well-suited for the expression of contents, control flow, dialogues,
+and the handling of exceptional situations. We believe that these concepts,
+as a whole, are difficult to reconcile with HTML. This point of view, of
+course, does not conflict with extending HTML with markup to improve voice
+rendering, such as pronunciation clues or audio icons.&nbsp; In this section,
+we present requirements for a voice markup language. The requirements are
+intended to guide the development of a standard markup language, tentatively
+called VXML (Voice eXtensible Markup Language).
+<H3>
+Abstraction</H3>
+IVR services are typically written in general purpose languages that allow
+for the precise temporal control of all resources at a cost of high program
+complexity.&nbsp; Such resources include timers, speech recognizers, speech
+synthesizers, and tone detectors. In contrast, VXML should provide abstractions
+of platform capabilities that enable the author to focus on behavioral
+aspects of the service, freeing them from platform-specific APIs.&nbsp;
+VXML elements should encapsulate common IVR resource usage idioms, such
+as playing a phrase or collecting input. It is an explicit goal to keep
+the abstraction level high; in particular, most VXML documents should avoid
+the use of C++, Java, or EcmaScript-like code to control a speech or telephony
+API for reasons of safety, performance, and portability.
+
+<P>We expect that VXML would have a pre-defined set of higher-level abstractions.&nbsp;
+An author may use the higher-level abstraction capability to specify interaction
+behaviors to address human factors, compatibility, and performance issues.
+<H3>
+Control Flow</H3>
+Conventionally, IVR services are planned and designed in terms of flow
+diagrams. Typically, control flow in IVR systems is affected both by synchronous
+completion of an interaction and by asynchronous events.&nbsp; Often, control
+flow is determined by previous inputs. Therefore, conditional branching
+and other basic control flow, must be provided by the language.&nbsp; It
+must also be possible to specify the output and control flow behavior of
+a variety of asynchronous or exceptional events.
+<H3>
+HTML Reuse</H3>
+There are several concepts of HTML that apply in the voice world. For example,
+the document structure itself defines an implicit sequential flow of control.
+Also, the static scoping in HTML achieved through nesting of elements should
+be adopted by VXML. Many elements make sense as well: the LINK element
+in the header section provides information about how the document is related
+to others, and the information can be used for navigational purposes; the
+SELECT element may be interpreted as an IVR menu; the FORM element defines
+the name/value pairs that are to be returned to the server. By reusing
+HTML as much as possible, we make VXML easier to learn and easier to use.
+<H3>
+Speech Standards Reuse</H3>
+Converting text to audio output is a challenging problem.&nbsp; Most text-to-speech
+engines attempt to infer prosody and pronunciation from the text, but mistakes
+are common. In principle, we agree that specific speech markup is the correct
+solution to minimizing the ambiguity inherent in text.&nbsp; In particular,
+we recognize the efforts of the <A HREF="http://www.cstr.ed.ac.uk/projects/stml.html">Sable
+Consortium</A> in codifying the capabilities of current text-to-speech
+technology.&nbsp; Similar work is underway for other specialized markup
+such as Automatic Speech Recognition grammars.&nbsp; Such formalisms are
+outside the scope of the VXML definition, but a method for their incorporation
+should be identified.
+<H2>
+Conclusion</H2>
+Given the huge volume of information published through HTML, and the range
+of services that are evolving on the Web, it is attractive to offer a voice
+interpretation of HTML content. We believe that work can and will progress
+in this area, but that there will be a desire on the part of many content
+providers to target the voice medium precisely and directly, to create
+high-quality voice services. Since it seems to us that HTML, even with
+extensive style embellishment, is incapable of specifying the details of
+the necessary voice interactions, our preference would be to standardize
+on a fully explicit voice interaction language. This language could in
+turn be targeted by applications that form a continuum from voice browsing
+of existing HTML to hosting of IVR services. We think this approach would
+serve the purposes of the voice browsing community by bringing about a
+robust substrate relatively quickly. Once the mechanisms for voice browsing
+of HTML content emerge, VXML voice browsers could incorporate the HTML
+rules and style sheets. Even so, our experience suggests that it is likely
+that different pages will be developed for voice and graphical rendering.
+
+
+<BR>&nbsp;
+<H2>
+References</H2>
+
+<OL>
+<LI>
+<A NAME="genMagic"></A>General Magic <A HREF="http://www.genmagic.com/technology/weboncall.html">Web-on-Call</A></LI>
+
+<LI>
+<A NAME="prodWorks"></A>Productivity Works <A HREF="http://www.prodworks.com/pwtel.htm">pwTelephone</A></LI>
+
+<LI>
+<A NAME="Rutgers"></A>Rutgers University <A HREF="http://www.cs.rutgers.edu/Audio_Web">AudioWeb</A></LI>
+
+<LI>
+<A NAME="vbnote"></A><A HREF="http://www.w3.org/TR/NOTE-voice">Voice Browsers
+note</A></LI>
+
+<LI>
+<A NAME="att"></A>AT&amp;T&nbsp; <A HREF="http://www.math.luc.edu/iccl98/ipl-program.html">PML</A></LI>
+
+<LI>
+<A NAME="lucent"></A>Lucent Technologies <A HREF="http://www.lucent.com/ideas2/perspectives/bltj/winter_97/paper02/main.html">PML</A></LI>
+
+<LI>
+<A NAME="motorola"></A>Motorola's <A HREF="http://voxml.mot.com">VoxML<SUP>TM</SUP></A>
+Voice Markup Language</LI>
+</OL>
+
+</BODY>
+</HTML>
+
+<!-- EXTERNALLY PUBLISHED PAPER -->
+<!-- EXTERNALLY PUBLISHED PAPER -->
+<!-- EXTERNALLY PUBLISHED PAPER -->

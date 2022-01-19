@@ -1,0 +1,28 @@
+
+<html>
+<head>
+<title> Requirements for a markup language--speech-standards-reuse
+</title>
+<link href="nils.css" rel=stylesheet type="text/css">
+</head>
+<body>
+
+<h1>
+Speech standards reuse
+</h1>
+<hr class=top>
+VXML needs
+<ul>
+<li>
+Text-to-speech markup (by others, please, such as
+the Sable consortium)
+<li>
+Speech grammar markup (by others, please)
+</ul>
+
+<hr class=bottom>
+<a href="overview.html">Index</a>
+<a href="html-reuse.html">Previous slide </a>
+<a href="conclusion.html">Next slide</a>
+</body>
+</html>

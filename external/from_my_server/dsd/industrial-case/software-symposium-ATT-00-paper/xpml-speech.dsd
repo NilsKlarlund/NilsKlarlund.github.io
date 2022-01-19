@@ -1,0 +1,62 @@
+<?dsd URI="../dsd.dsd"?>
+
+<DSD IDRef="XPML" DSDVersion="1.0">
+
+  <Title>XPML: speech extensions</Title>
+  <Version>.001</Version>
+
+  <?include URI="xpml-core.dsd"?>
+ 
+  <StringTypeDef ID="Asr-engine-types">
+    <BriefDoc>This string type is platform dependent</BriefDoc>
+    <String Value=""/>
+  </StringTypeDef>
+
+ <ConstraintDef RenewID="menu-constraint">
+    <Constraint CurrIDRef="menu-constraint"/>
+    
+    <AttributeDecl Name="asrmode" Optional="yes">
+      <Union>
+	<String Value="none"/>
+	<String Value="only"/>
+	<String Value="plus"/>
+      </Union>
+    </AttributeDecl>
+    <If>
+      <Or>
+	<Attribute Name="asrmode" Value="only"/>
+	<Attribute Name="asrmode" Value="plus"/>
+      </Or>
+      <Then>
+	<Constraint IDRef="menu-asr-constraint"/>
+      </Then>
+    </If>
+  </ConstraintDef>
+
+  <ConstraintDef ID="menu-asr-constraint">
+    <AttributeDecl Name="asrengine" Optional="yes">
+      <StringType IDRef="Asr-engine-types"/>	
+     </AttributeDecl>
+    <AttributeDecl Name="asrurl" Optional="yes">
+      <StringType IDRef="Url"/>
+    </AttributeDecl>
+    <AttributeDecl Name="asrspotting" Optional="yes">
+      <StringType IDRef="YesOrNo"/>	
+    </AttributeDecl>
+    <AttributeDecl Name="bargein" Optional="yes">
+      <StringType IDRef="YesOrNo"/>	
+    </AttributeDecl>
+    <AttributeDecl Name="asrgrammarlib" Optional="yes">
+      <StringType IDRef="YesOrNo"/>	
+    </AttributeDecl>
+  </ConstraintDef>
+ 
+
+  <Default>
+    <Or><Context><Element Name="select"/></Context>
+      <Context><Element Name="menu"/></Context></Or>
+   <DefaultAttribute Name="asrmode" Value="none"/>
+  </Default>
+
+</DSD>
+

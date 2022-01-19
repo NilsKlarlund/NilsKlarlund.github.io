@@ -1,0 +1,184 @@
+<html>
+  <head>  
+
+    <link rel='stylesheet' type='text/css' href='../klarlund.css'/>
+  </head>
+
+  <body>
+    <h1 style="text-align: left;">A keyboard design</h1> 
+    <h2>Nils Klarlund</h2>
+    <h3>AT&amp;T Labs</h3>
+    <h3>December, 2001</h3>
+
+
+<h3>ALL RIGHTS RESERVED AT&amp;T.</h3>
+
+    <h2>Abstract</h2>
+    <p>
+      A keyboard design that better supports scrolling is presented.
+      A rubber belt, or similar traction mechanism, is placed along the
+      side of a keyboard so that it can be operated easily in a
+      multitude of ways, including being pushed by the hand, while it is
+      being supported by both the table and the belt, or being pushed by
+      fingers that grab protrusions on the belt.
+    </p>
+    <p>Moreover, it is proposed that the belt be placed in an angle of
+      say 20 degrees from the vertical so that it can be better
+      manipulated with the hand resting on the table next to the side
+      of the keyboard.  Also, it is proposed that mouse buttons and
+      common keys may be placed below or above the belt, perhaps at an
+      angle of say 20 degrees from the horizontal, so as to facilitate
+      common operations.
+    </p>
+    <p>Finally, a rearrangement of the keys of the usual keyboard
+      layout is suggested so that the total width of the keyboard design does
+      not exceed that of the already wide standard 101-key keyboard.
+      The rearrangement entails placing the numeric keypad above the
+      arrow keys, which are placed according to the traditional
+      arrangement.  The editing and window manipulation keys usually
+      found above the cursor keys are moved to the right side of the
+      keyboard, where they can better be manipulated by a hand resting
+      on the table, especially if placed at an angle of say 20 degrees
+      from the horizontal.
+    </p>
+    
+    <h2>Background</h2>
+    <p>
+      The recent popularity of the scroll wheel, invented by
+      Microsoft, is unfortunate from a computer ergonomics point of
+      view.  The scroll wheel is used to page up and down in a window
+      -- a common operation since more and more people are reading
+      information directly from the screen.  But many computer users
+      already suffer from injuries related to mouse use, so it is
+      worrisome that this function is now being standardized as
+      belonging on the mouse.
+    </p>
+    <p>In the present disclosure, it is suggested that the scroll
+      functionality be placed on the keyboard as a belt or continuous
+      tread, made out of rubber or plastic, which largely increases
+      the available surface for hands and fingers to grasp.
+    </p>
+  
+  
+    <h2>Overview
+    </h2>
+    <img src="scroll-keyboard.gif"/>
+    <p>
+      The new keyboard design is shown in Figure 1.  The main claim of
+      the invention is the existence and placement of a belt (which
+      could also be a continuous tread similar in shape to those found
+      on Caterpillar vehicles) along one or both sides of the keyboard
+      so that the movement of the belt, via a connection to a
+      computer, results in a proportional movement of some object
+      displayed on the screen (such as the part of the document shown
+      (scrolling) or cursor or sliding control (e.g. for volume)).</p>
+
+      <p>In figure 1, the placement of the belt is shown to the left
+      of the keyboard according to the top view indicated.  The belt
+      may also be placed to the right, or perhaps on both sides of the
+      keyboard.  The front view shows that the belt may be placed at
+      an angle so that it can be better operated when the hand rests
+      on the table beside the keyboard.  This side view shows how the
+      belt may be fastened to two wheels, labeled Wheel A and Wheel B.
+      In addition, a set of roller pins (not shown) may be used to
+      support the belt between the two wheels.  The belt may be made
+      out of a variety of materials, in rubber as one piece, or in
+      plastic or metal, where separate pieces of material are hinged
+      together to form a flexible band.  It is envisaged that the belt
+      be equipped with protrusions so that a finger may
+      easily grasp the belt.  A mechanism for measuring the rotation
+      of a wheel (or roller pin), like the one used in scroll mice
+      [roller-mouse], is used to communicate the movement of the belt
+      to a computer.
+    </p>
+
+    <p>The design also postulates a new arrangement of the right hand
+      side of the keyboard.  This arrangement is independent of the rest
+      of the innovation, and may be useful on its own.  A small number
+      of keys are suggested to be made "low-profile"; this means that
+      the key is not as high as surrounding keys and that its footprint
+      is smaller -- this is a common technique employed on laptop
+      computers.  </p>
+
+    <p> The purpose of the new arrangement of the keyboard is to make
+      it less wide.  It is proposed to keep the cursor keys to the
+      right of the main area of the keyboard that comprises the
+      alphabetic keys (along with modifiers and some special keys,
+      like the "insert" key).  But the usual six keys ("insert",
+      "delete", "home", "end", "page up", and "page down") above the
+      arrow keys ("left", "right", "up", and "down") are removed.
+      Instead -- and this is main claim of the keyboard arrangement
+      proposition of this invention -- the area above the arrow keys
+      is used for a numeric keypad, which is usually found all the way
+      to the right of the keyboard.  Moreover, the numeric keypad is
+      slightly changed from the usual layout in the preferred
+      embodiment so that the four keys corresponding to the usual
+      arithmetic operations are placed in a column next to the
+      standard 11 keys representing the 10 digits and the decimal
+      point.  It is proposed that a distance of the size of a standard
+      key separates the cluster of keys constituting the numeric
+      keypad and the "up arrow" of the arrow keys.  In that way, the
+      right hand may rest in the area around the arrow keys.
+    </p>
+
+    <p>It is further proposed that the "delete" key is moved to the
+      area above the "backspace" key and that the "insert" key is moved
+      to a place right above the "delete" key, perhaps in a low-profile
+      version.  Similarly, it is suggested to make the rarely used keys
+      "print screen", "scroll lock", "num lock", and "pause" into
+      low-profile keys.  The resulting space reduction will enable the
+      numeric keypad to be kept at the proposed distance from the arrow
+      keys without extending the depths of the keyboard.
+    </p>
+
+    <p>
+      Finally, it is proposed to move some or all of the keys
+      ("insert", "delete", "home", "end", "page up", and "page down")
+      to the far right hand side of the keyboard, so that they can be
+      placed in a column along the side.  That enables a user of the
+      keyboard to easily manipulate these commonly used keys while
+      resting part of the hand on the table.  Such arrangements are
+      already present on existing laptop computers.
+    </p>
+    <p>Note that the present proposition for rearranging some common
+    keyboard keys is entirely independent of the scroll belt idea.  It
+    is of independent interest is the purpose is to keep the
+    functionality of the common keyboard, which has slightly more than
+    100 keys, while making it is wide.
+    </p>
+    
+    <p>To make the mouse buttons operable with pointing devices that
+      possess no built-in buttons, it is suggested to place mouse
+      buttons along the sides of the keyboard.  In particular, we
+      claim that a placement next to the scrolling mechanism is new
+      and useful.
+    </p>
+
+    <p>
+      To make buttons and scrolling mechanisms more easily used with
+      hands resting on the table, it is suggested in this invention to
+      make the area next to the side of the keyboard slope down
+      towards the table as opposed to horizontal.  For example, the
+      slope may be 30 degrees from the horizontal.  In that way, the
+      scrolling mechanisms and the buttons close to the edge may
+      easily be depressed by a hand that is close to or resting on the
+      table.  Alternatively, buttons on the surface of the scrolling
+      mechanisms may be shaped with oblique angles to achieve a
+      similar effect.
+    </p>
+
+
+    <H2>References</H2>
+    <table>
+      <tr>
+	<th>[roller-mouse]
+	</th>
+	<TD>US Patent 5530455: Roller mouse for implementing scrolling
+	  in windows applications. 
+	</TD>
+      </tr>
+    </table>
+  </body>
+</html>
+
+

@@ -1,0 +1,25 @@
+
+
+Prompts such as "You have not entered any selection, please enter your
+selection now" should not be attribute values, since in-line markup is
+as necessary for such prompts as for contents
+
+<strong>Prompts and other representational contents must be markup
+</strong>
+
+So, this example would look better as
+
+<blockquote> 
+<pre> 
+&lt;MENU&gt; 
+  &lt;OPTION URL=Instructions.html&gt;Directions 
+  &lt;OPTION URL=Todo&gt;List of things to do 
+&lt;/MENU&gt;
+</pre> 
+</blockquote> 
+where the <tt>&lt;MENU&gt;</tt> element here
+explicitly marks the concept of a menu (the tag name
+is not important  by  itself; for example, we
+could   have  used the
+<tt>&lt;SELECT&gt;</tt> tag,
+

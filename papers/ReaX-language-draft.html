@@ -1,0 +1,1476 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html xmlns:myxml="xxx" xmlns:xnsfake="fake"><head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-16">
+<title>ReaX: an undoable, timed synchronization language</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">
+
+BODY { 
+link: black; 
+vlink: black; 
+background: white; 
+margin-left: 2%;
+margin-right: 2%;
+font-family: times;
+}
+
+
+p, ul, body { 
+
+font-family: Arial, helvetica,
+sans-serif; 
+}
+
+
+
+H1, H2, H3, .section {   
+font-family: Arial, helvetica,
+sans-serif;
+color: #900;
+}
+
+
+
+h1 {font-size: 180%;}
+h2 {font-size: 160%;}
+h3 {font-size: 120%;}
+
+HR { 
+size: 1pt;
+}
+
+TABLE,TD,TR { 
+font-size: 100%;
+}
+
+SPAN.FOOTER { 
+font-style: italic; 
+font-size: 100%; 
+text-align: center; 
+}
+
+A:link { 
+color: #c00 
+}
+A:visited { 
+color: #800;
+}
+A:active { 
+color: #f00; 
+}
+A.navigation:link { 
+color: gray; font-size:50%;
+}
+A.navigation:visited { 
+color:gray; font-size:50%;
+}
+A.navigation:active { 
+color:gray; font-size:50%;
+}
+.hide { 
+display: none; 
+color: white;
+}
+
+DIV.map {
+padding-top: 70px;
+margin-left: 0%;
+margin-right: 0%;
+margin-bottom: 0;
+margin-top: 0;
+}
+
+#p1 {
+color: #DDD; 
+font: 85px/1 "Impact", sans-serif;
+text-align: left;  
+margin: -70px 0 30px 5%;
+}     
+#p2 {
+color: #008; 
+font: bold 35px/1 "Verdana", sans-serif;
+text-align: left;   
+margin: -50px 0 30px 12%;
+} 
+#p3 { 
+margin-top: 0%;
+margin-bottom: 10px;
+margin-left: -1%;
+color: #900;
+clear: both;
+font-size: 20pt;
+}
+#p5 { 
+margin-left: 3%;
+}
+
+TT {font-size: 120%; 
+font-family: monospace; 
+font-weight: bold;
+color: blue;	
+}
+EM { 
+font-weight: normal;
+font-style: italic;
+color: purple;
+}
+
+.e  {margin-left:1em; text-indent:-1em; margin-right:1em}
+
+.k  {color:green; margin-left:1em;}
+
+.t  { color:#990000}
+
+.xt {color:#990099}
+
+.ns {color:red}
+
+.dt {color:green;}
+
+.m  {color:blue}
+
+.tx {font-weight:bold}
+
+.db {text-indent:0px; margin-left:1em; margin-top:0px; margin-bottom:0px;
+padding-left:.3em; border-left:1px solid #CCCCCC; }
+
+.di {font:small Courier}
+
+.d  {color:blue}
+
+.pi {color:blue}
+
+.cb {text-indent:0px; margin-left:1em; margin-top:0px; margin-bottom:0px;
+padding-left:.3em; font:small Courier; color:#888888}
+
+pre {margin-left:0ex; display:inline}  
+.key {font-weight:bold; color: purple}
+
+.e  {margin-left:1em; text-indent:-1em;}
+.enoindent  {margin-left:1em;}
+.noindent  {margin-left:0em; text-indent: 0em;}
+.h {font-weight:bold; color: red}
+.user {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+font-weight:normal; color: black;}
+.user:link {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+font-weight:normal; color: black;}
+.user:visited {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+font-weight:normal; color: black;color: purple;}
+.tt {color:blue; font-weight:bold; }
+.cd {color: purple; font-weight: normal; font-style: italic; }
+
+
+
+
+div.dsdpretty {margin-bottom:0em; margin-top:0em; margin-left:0em; font-size: 90%;}
+
+div.dsdpretty div {margin-bottom:0em; margin-top:0em; margin-left:1em;
+font-weight:bold; font-family:  Courier; }
+
+.example   {margin-bottom:1em; margin-top:1em; margin-left:2em; margin-right:2em; font-size:90%; background-color:beige;  padding-left:1em;}
+
+
+
+div.dsdpretty span {color: black;}
+div.dsdpretty div.rootchild {margin-bottom:2ex; margin-top:1ex; 
+border-style: solid; border-width: 2px;  border-color:pink; }
+div.dsdpretty .key, div.dsdpretty .special-key {font-weight:bold; color: purple;}
+div.dsdpretty .doc {font-family: Arial, Helvetica,
+Sans-serif; font-style: italic; font-weight: normal;}
+div.dsdpretty .user {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+font-weight:normal; color: black;}
+div.dsdpretty .user-bold {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+font-weight:normal; color: black; font-weight:bold;}
+div.dsdpretty .user:link {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+font-weight:normal; color: black;}
+div.dsdpretty .user:visited {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+font-weight:normal; color: black;}
+div.dsdpretty .concrete, .string {font-family: Courier; color: blue; font-weight:bold; }
+div.dsdpretty .tt {font-family: Courier; color: blue; font-weight:bold; }
+div.dsdpretty .comment {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+div.dsdpretty font-weight:normal; color: brown;}
+div.dsdpretty *.header {font-size:140%;  color: purple; font-family: Arial, Helvetica, Sans-serif;}
+
+</style></head><body><h1 style="font-weight:bold;">ReaX: an undoable, timed synchronization language</h1><h2>Nils Klarlund <a style="font-size:70%;" href="http://www.research.att.com/~klarlund" xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">http://www.research.att.com/~klarlund</a></h2><p style="font-size:120%;">June, 2002.  Revised June, 2003, Copyright, AT&amp;T.  This
+      document is not intended for display on Netscape 4 and other
+      older browsers.</p><h3 style="font-weight:bold; font-size:90%;">Index</h3><ul><li><a href="#IDAGCIZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">0</span> </span>Abstract</a></li><li><a href="#IDAQCIZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">1</span> </span>Introduction</a></li><li><a href="#IDAFEIZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">2</span> </span>Expressions</a></li><li><a href="#IDAYFIZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">3</span> </span>Constructors</a></li><li><a href="#IDA3GIZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">4</span> </span>Events</a></li><li><a href="#IDALYIZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">5</span> </span>Execution model</a></li><li><a href="#IDAK4IZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">6</span> </span>Declarations and statements</a></li><li><a href="#IDAQKJZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">7</span> </span>Checkpointing, seeking, and undoing</a></li><li><a href="#IDAFNJZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">8</span> </span>Example</a></li><li><a href="#IDA4RJZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">9</span> </span>Relation to SMIL</a></li><li><a href="#IDAVWJZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">10</span> </span>A button interface to the runtime of ReaX</a></li><li><a href="#IDA0XJZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">11</span> </span>Acknowledgments</a></li><li><a href="#IDA2XJZ"><span style="width:
+3ex; "><span style="text-align: right; width:
+2ex; ">12</span> </span>References</a></li></ul><p><div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDAGCIZ"><span style="font-weight:bold;">0 Abstract</span></a></h2></div><p><div style="margin-left: 2ex; margin-right: 2ex; font-size: 90%;
+	 font-weight: bold;" xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL"><p>We define a programming language for coordinating multimedia
+	and multimodal input in modern browser-based user interfaces.
+	Our language, ReaX, is a reactive notation that precisely
+	captures notions of events, event notifications, real-time
+	scheduling, and simultaneity in an XML-based framework.
+	Moreover, ReaX comes with built-in support for undoability and
+	time seek.  The main contributions of ReaX are threefold.
+      </p><p>First, ReaX contributes a new event semantics that subsume
+	existing mechanisms such as event notification, event
+	broadcast, event queuing, exception propagation, event
+	bubbling, and event capturing.  Our semantics is based on a
+	<em>event tree</em> constructed during a reaction.  The event
+	tree provides an explicit account of causality.  Explicit
+	causes, such as the raising of events, and implicit causes,
+	such as event notifications, are treated uniformly in this
+	data structure.  This allows us to explain the seemingly
+	contradictory requirements of simultaneity and temporally
+	ordered event dispatching that is common to reactive
+	programming notation such as Esterel (a hardware and
+	embedded systems programming language), Statecharts (a visual
+	notation for reactive systems), and SMIL (a multimedia
+	notation for content presentation proposed by the W3C).
+      </p><p>Second, ReaX is designed to be an intrinsically undoable
+      language.  This is possible because ReaX coordinates events, but
+      is otherwise meant to be free of computations.  Consequently,
+      user interfaces coordinated by a ReaX-program provide a uniform
+      and consistent solutions to (1) erroneous user input or (2)
+      delayed system response caused by recognizers of speech or
+      gestures.  The solution to (1) is: the user may always invoke
+      the "undo" button linked to the runtime system of ReaX.  The
+      solution to (2) is: a program under ReaX supervision that
+      recognizes speech or handwriting may always retract a
+      preliminary hypothesis of what the user intended.  The solution
+      to (1) frees the programmer from writing explicit code to undo
+      user input (code that is often not written because it is too
+      complicated).  The solution to (2) makes human interaction with
+      input recognizers more natural since system feedback can be
+      provided continuously, not only after a timeout that follows the
+      last user input, as is commonly the case in current practice.
+      </p><p>Third, the undo facility is combined with a time seek
+      mechanism, similar to that of SMIL.  This mechanism allows media
+      buttons, as found on a CD-player, to be linked to the ReaX
+      runtime system in addition to undo and redo buttons.</p><p>To illustrate our approach, we provide an example that
+      exhibits semantic deficiencies in SMIL as it is currently
+      defined.  We show how to mend the problems when SMIL is
+      explained in terms of ReaX. 
+      </p></div><div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDAQCIZ"><span style="font-weight:bold;">1 Introduction</span></a></h2></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The ReaX programming language is a simple, thread-based
+      scripting language for multimedia and telephony user interface
+      programming.  It is formulated as a model for how to simplify
+      and consolidate user interface programming techniques as
+      expressed in SMIL 2.0 <a href="#bibxml:SMIL20" xmlns:xt="http://www.jclark.com/xt" xmlns:bibxml="http://www.science.uva.nl/~zegerh/bibteXML/"><strong>[SMIL20]</strong></a>, VoiceXML and Dynamic
+      HTML.  ReaX borrows as much as possible from the general XML
+      programming notations <a href="#bibxml:XPATH20" xmlns:xt="http://www.jclark.com/xt" xmlns:bibxml="http://www.science.uva.nl/~zegerh/bibteXML/"><strong>[XPATH20]</strong></a> and XSLT 2.0
+      <a href="#bibxml:XSLT20" xmlns:xt="http://www.jclark.com/xt" xmlns:bibxml="http://www.science.uva.nl/~zegerh/bibteXML/"><strong>[XSLT20]</strong></a>.  In particular, ReaX provides a precise
+      framework for understanding and generalizing the Synchronous
+      Multimedia Interface Language (SMIL).  As it stands, SMIL
+      suffers from incomplete and complicated semantics; more
+      importantly, SMIL does not address the fundamental issue of
+      maintaining program state when going backwards and forward in
+      time according to seek and undo mechanisms.  In contrast, ReaX
+      offers a precise formulation of a general undo and seek
+      mechanism.  Consequently, ReaX-based browsers offer uniform
+      support for undo, redo, forward, and rewind functionalities.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The main features of ReaX are:
+
+      <ul><li style="color:red;"><span style="color:black;">values are simple values or documents---there is no
+	  declarative overhead of an object model; </span></li><li style="color:red;"><span style="color:black;">events, event notifications, and exceptions are variations
+	  on one mechanism; </span></li><li style="color:red;"><span style="color:black;">event notifications, called <em>co-events</em>, are
+	  declared statically---providing
+	  deterministic explanations of event observations that
+	  themselves are expressed as events; </span></li><li style="color:red;"><span style="color:black;">co-events may execute prior or subsequent to the
+	  execution of the observed event;
+	</span></li><li style="color:red;"><span style="color:black;">event values are documents, that is trees---allowing event
+	  handlers to use matching as in XSLT; </span></li><li style="color:red;"><span style="color:black;">an <em>event tree</em> constructed during the reaction to
+	an external event gives a complete account of temporal and
+	causal relationships among executed program fragments;
+	</span></li><li style="color:red;"><span style="color:black;">expressions and constructors are those of XPath and XSLT;
+	</span></li><li style="color:red;"><span style="color:black;">temporal mechanisms of SMIL real-time programming---allows
+	  easy real-time programming and synchronization among streams;
+	</span></li><li style="color:red;"><span style="color:black;">the undo mechanism mends the time seek functionality of
+	  SMIL and automatically makes user interfaces implement a
+	  consistent undo facility, something crucial to the usability
+	  of speech and handwriting recognition interfaces; and
+	</span></li><li style="color:red;"><span style="color:black;">ReaX semantics are simple, completely specified, and deterministic.
+	</span></li></ul><p></p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">In this document, we describe in Sections 2 to 7 the syntax and
+      semantics of ReaX.  Section 8 introduces an example of modeling
+      SMIL concepts.  Section 9 provides a road map to a sound reactive
+      programming notation based on the declarative concepts of time
+      intervals and synchronization in SMIL.  Section 10 outlines how
+      the user interface of  ReaX-enabled devices can be linked to the
+      undo and time seek mechanisms that are intrinsic to
+      ReaX-presented content.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">This report is preliminary.</p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Overall structure and namespaces</span></h3></div><p>
+    A ReaX program is an XML document of the form
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;ReaX<SPAN> xmlns:ReaX="www.ReaX.org/v1.0</SPAN>"
+  <SPAN> xmlns="www.ReaX.org/v1.0</SPAN>"
+  &gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Declarations
+	Statements
+      </div><div style=""><SPAN class="tt">&lt;/ReaX&gt;</SPAN></div></DIV></div>
+    We work with the syntactic categories of
+    <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Declarations</em>, <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Statements</em>, <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Expressions</em>,
+    and <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Constructors</em>.  Above, we have declared a default
+    namespace to be that of <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">www.ReaX.org/v1.0</tt> and we have
+    introduced the prefix <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">ReaX</tt>.  In general, events belong to
+    namespaces that are application dependent.  
+
+    <p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">In accordance with XML costumes, we use the syntactic category
+    <em>Name</em> defined as in <a href="#bibxml:XML" xmlns:xt="http://www.jclark.com/xt" xmlns:bibxml="http://www.science.uva.nl/~zegerh/bibteXML/"><strong>[XML]</strong></a> and we disallow colons.
+    This category is used for names of variables, which may be scoped.
+    For identifiers that must be defined in at most one place, we use
+    the category <em>ID</em>.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDAFEIZ"><span style="font-weight:bold;">2 Expressions</span></a></h2></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      All value manipulation in ReaX is based on the XML Path Language
+      (XPath).  We rely on XML Path 2.0, which is
+      still under development.  An <em>Expression</em> returns a value
+      that is either of a <em>simple data type</em>, such as a Boolean
+      or a string, or a <em>document node</em>, which denotes an XML
+      tree.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Certain operations in XPath may generate type exceptions.  The
+      type exception policy is strict: an exception is converted into
+      a ReaX event <span class="tt">&lt;ReaX:error type="<span class="cd">XPath"</span>
+/&gt;</span> raised at
+      the place of the expression.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Static context</span></h3></div><p> An XPath expression is evaluated
+    with respect to a static context, which defines the value of
+    declared variables and exception policy.  In contrast to XSLT,
+    ReaX uses imperative variables, but they are referenced in the
+    same way according to conventional mechanisms of static scoping.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Dynamic context</span></h3></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL"> The dynamic context specifies the focus of the expression,
+      that is, the information that specifies which nodes are to be
+      processed by the expression.  An XPath expression is evaluated
+      with respect to a context item and a context document.  As a
+      default in ReaX, the context document is the event tree and the
+      context node is that of the selected event (as defined in
+      section ).
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Boolean expressions </span></h3></div><p> 
+
+    A Boolean expression <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Bool-Expr</em> is an XPath expression that
+    evaluates to a Boolean value, that is to <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">true</tt> or
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">false</tt>.
+    
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Time-track expressions</span></h3></div><p>
+
+    A time-track expression <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">track-Expr</em> is an XPath expression
+    that evaluates to <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">"start"</tt>, <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">"pause"</tt>,
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">"resume"</tt>, <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">"seek"</tt>, or <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">"stop"</tt>.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Location expressions</span></h3></div><p> A location expression
+    <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Loc-Expr</em> is an XPath expression that is evaluated
+    statically in a context that consists of the program itself with
+    the context node being the element node that has the attribute
+    node where the expression is contained.  The value of the
+    location expression is a set of nodes in the ReaX program.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Floating point expressions</span></h3></div><p> A floating point
+    expression <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Float-Expr</em> expresses a real number.  Here, we
+    use such expressions only for time designations.  By default, the
+    unit used is seconds.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDAYFIZ"><span style="font-weight:bold;">3 Constructors</span></a></h2></div><p> As in the current XLST
+    2.0 proposal, and similar to the result tree fragments in the XLST
+    1.0, an XML tree constructor <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Constr</em> express XML
+    trees that can be put together from static parts, using XML
+    syntax, and dynamic parts, using XPath expressions.  For example,
+    the expression
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;asr:grammar&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;asr:rule<SPAN> name="<SPAN class="tt">S</SPAN>"
+   </SPAN><SPAN> weight="<SPAN class="tt">{$w}</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;ReaX:value-of<SPAN> select="<SPAN class="tt">$t</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;ReaX:copy-of<SPAN> select="<SPAN class="tt">$prd</SPAN>"
+   </SPAN>/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/asr:rule&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/asr:grammar&gt;</SPAN></div></DIV></div>
+    creates a document
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;asr:grammar&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;asr:rule<SPAN> name="<SPAN class="tt">S</SPAN>"
+   </SPAN><SPAN> weight="<SPAN class="tt">.5</SPAN>"
+   </SPAN>&gt;</SPAN></div><div class="
+	  tt
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	  help
+	  </div><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;asr:optional&gt;</SPAN><span class="
+	  tt
+	">me</span><SPAN class="tt">&lt;/asr:optional&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/asr:rule&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/asr:grammar&gt;</SPAN></div></DIV></div>
+    if it is evaluated in a context where the variable <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">w</tt> has
+    value ".5", the variable <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">t</tt> has value "help", and the
+    variable <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">prd</tt> has the value
+    <span class="tt">&lt;asr:optional&gt;</span><span class="
+	  tt
+	">me</span><span class="tt">&lt;/asr:optional&gt;</span><div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDA3GIZ"><span style="font-weight:bold;">4 Events</span></a></h2></div><p>
+
+    Events enjoy properties that allow them to emulate functions found
+    in a variety of programming languages.  For example, they may act
+    as exceptions, signals, and asynchronous messages.  Events are
+    <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">raised</em> either by the ReaX program itself, by the
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">raise</tt> statement, or by the environment as an external
+    event.  An event is an XML document.
+
+    There are three classes of events:
+    <ul><li style="color:red;"><span style="color:black;"><em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">ordinary events</em> are raised explicitly or by
+	environment;
+      </span></li><li style="color:red;"><span style="color:black;"><em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">co-events</em> are raised by the ReaX program as a
+	consequence of an event observation; and
+      </span></li><li style="color:red;"><span style="color:black;"><em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">execution events</em> are raised by the ReaX program to
+	signal events that relate to progress of the program counter
+	or to errors.
+      </span></li></ul><p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Consumption</span></h3></div><p> Events may either be consumable or
+    not.  A consumable event is handled if possible, but a
+    non-consumable event, called a <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">signal</em>, is never handled.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Forwarding</span></h3></div><p> Events either are raised exactly on the
+    target location specified or are <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">forwarded</em> to the location of the
+    program counter in the thread of the target location.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Immediate property</span></h3></div><p> 
+    An event that is raised is usually appended to the end of the
+    post-event queue.  But if it has the immediate property, then it is
+    appended to the front of the queue.  
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Delay property</span></h3></div><p> A co-event is normally raised
+    before the observed event.  Technically, the delay property is not
+    a property of the event, but rather of the way it is generated.
+    If the delay property is specified, then the co-event is raised
+    after the observed event.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Bubbling property</span></h3></div><p> An event may be automatically
+    raised to the next enclosing thread, but a cancel statement may
+    prevent this from happening.  
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Execution events</span></h3></div><p> 
+
+    In ReaX, a thread is suspended whenever it enters a block.  But at
+    the same time, <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">init</tt> is signaled on the block as an
+    immediate event.  Consequently, the thread is restarted if a
+    co-handler, typically a <span class="
+	  cd
+	">on-init</span> handler, exists for
+    the signal.  The <span class="tt">&lt;terminate
+/&gt;</span> statement does not
+    raise an event.  But, termination is usually accomplished through
+    the raising of the <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">exit</em> signal to a block, which by
+    default propagates to all blocks in all handlers, and by
+    transitivity, to all enclosed blocks.
+
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDALYIZ"><span style="font-weight:bold;">5 Execution model</span></a></h2></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">ReaX is a reactive programming language.  The statement syntax
+      is formulated in XML.  Hence, the syntax provides a convenient
+      abstract tree for the definition of scopes and program counters.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      The basic element, called a <em>handler</em>, describes an
+      event-initiated sequence of statements that all execute in the
+      same thread.  The <em>event expression</em> of a handler
+      characterizes the events that the handler may catch.  A
+      <em>thread</em> is a handler of a <em>thread block</em> or it is
+      the <em>main thread</em> of the program.  Each thread of a
+      thread block is called a subthread of a thread containing the
+      block.  A thread executes one statement at a time, in sequence.
+      Threads themselves are structured through the mechanism of a
+      <em>state block</em>, whose handlers are called <em>states</em>
+      and define an event-driven state-machine.  Both kinds of blocks
+      may contain local variable declarations; thus, blocks delineate
+      scope in the usual way.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      We assume that each element in the program is annotated with an
+      <tt>id</tt> attribute, which we regard as a <em>label</em>.  We
+      identify a position in the program with a label.  Given
+      positions <em>l</em> and <em>l'</em>, we say <em>l</em> is
+      within <em>l'</em> if the node indicated by <em>l</em> is a
+      descendent of the node indicated by <em>l'</em>.  In particular,
+      <em>l</em> is within <em>l'</em> if <em>l</em>= <em>l'</em>.
+      The <em>upward closure</em> of a position <em>l</em> consists of
+      all the state blocks <em>l'</em> that contain <em>l</em> and
+      that are in the same thread as <em>l</em>.</p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">During a reaction, a set of <em>protected positions</em>
+      prevents the execution of a handler, and code that contains a
+      handler, when the handler has already been selected for
+      execution for an event <em>e</em>, but is not yet executing due
+      to intervening pre-events, none of which are allowed to prevent
+      the handler from executing <em>e</em>.</p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      The <em>execution status</em> of a thread is either
+      <em>executing</em>, <em>invalid</em>, or <em>suspended</em>.  At
+      most one thread executes at a time, and the progress of the
+      execution is reflected by the threads's <em>program
+	counter</em>, which is either <em>invalid</em>, as is the thread
+      itself, or an ID of an element contained in the thread; in the
+      latter case the program counter, and the thread as well, is said
+      to be <em>valid</em>.  Execution is always in response to an
+      event.  The execution of a thread is considered to take almost
+      no time, and it must consist of a finite number of executions of
+      statements.  Normally, the execution lasts until the program
+      counter reaches a block or co-block, upon which the thread is
+      suspended.  Alternatively, the execution of a thread may lead to
+      its termination, upon which the thread becomes invalid.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The ReaX program itself is a thread block.  The notion of
+      execution status <em>validity</em> extends to all handlers.
+      Validity of an element means that the program counter of the
+      element's thread is defined and is within it.  A handler is
+      valid only if the block that contains it is.  Any subset of the
+      handlers of a thread block may be valid.  But, at most one of
+      the handlers of a state block may be valid.  A block is valid if
+      only if the handler that contains it is valid and the program
+      counter of the thread containing the block is inside the block.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      The global state is an account of the program counter of each
+      thread and the value of each variable that is declared in a
+      valid block.  
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The program contains by default an empty handler that matches
+      all events.  The main thread is always valid.  An event that is
+      not caught anywhere else is caught by the default handler;
+      consequently, such an event has no effect on the global
+      state.</p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Normally, all threads are in a non-executing state.  Only an
+      external event may initiate execution of a thread.  This thread
+      may in turn raise additional events which lead to further
+      executions of threads.  This process is called the
+      <em>reaction</em> to the external event.  The reaction
+      terminates in finite time (unless the program is faulty, in
+      which case either an infinite process of executions leads to
+      nontermination or some execution is infinite).  The reaction as
+      a whole is regarded as taking very little time.  Thus, in
+      between external events, the ReaX program has enough time to
+      complete the executions of the reactions.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">During the reaction, an event <em>e</em> is subjected to the
+      following calculations.  First, the <em>intended target</em> of
+      the event is defined as follows.  If the event is not forwarded
+      (Section 4 ),
+      then the intended target is the same as the target but only when
+      the program counter of the thread containing the target is at
+      the target or inside the target---when the latter condition is
+      not satisfied, the intended target is undefined.  Otherwise,
+      when the event is forwarded, the intended target is the location
+      of the program counter of the thread containing the target (but
+      if the program counter is not defined, the intended target is
+      not defined).
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      From the intended target, the <em>actual target</em> calculated
+      as follows.  The innermost block <em>l'</em> containing
+      <em>l</em> is located.  If <em>l'</em> is a protected program
+      position, then the actual target is undefined.  Note
+      that potentially <em>l=l'</em>.  The event expression of the
+      first handler of <em>l'</em> is evaluated with an XPath focus of
+      <em>e</em>.  If this expression evaluates to true, then the
+      handler is the actual handler and <em>l'</em> is the actual
+      target.  Otherwise, the remaining handlers are tested in
+      sequence until an accepting handler as found; but if no such
+      handler is found the same procedure is repeated for the
+      innermost enclosing block <em>l''</em> that contains <em>l'</em>
+      (and so on, recursively, but if any such block is a protected
+      position, the actual target is undefined).  The actual target is
+      now defined as the block or thread-block defining the accepting
+      handler.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      When the actual target <em>l</em> is defined, then the set of
+      co-events is calculated as consisting of all pairs
+      <em>(e,l)</em>, where <em>l</em> is the location of a co-handler
+      that matches <em>e</em>.  They are ordered in a sequence
+      according to their locations as per the document
+      ordering of the program.  Note that this definition is
+      independent of whether control is actually at the co-handler; it
+      is possible that it is not, but that the co-handler during the
+      reaction will become enabled.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">If the actual target is a state block and the program counter
+      is inside a handler <em>l_h</em> of the block, then this handler
+      must the terminated.  This is accomplished through the exit
+      event <em>(ReaX:exit, l_h)</em>, which is appended to sequence
+      of
+      co-events.  The location <em>l_h</em> is added to the set of
+      locked blocks.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">An event <em>e</em> whose actual target is a block <em>l_b</em>
+      is <em>executed</em> as follows.  For a state block, the program
+      counter will be at a handler of the block.  (This will be
+      the case thanks to the <em>(ReaX:exit, l_h)</em> event and the
+      fact that the position <em>l_b</em>, along with all blocks above
+      it in the same thread, cannot execute since they are protected
+      during the processing of the pre-events of <em>e</em>.)
+      Otherwise, the program counter is at the block itself, and it is
+      now changed to be at the handler.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The fundamental data structure that determines the order of
+      execution is the <em>event tree</em>.  It is a data structure
+      that grows monotonically during a reaction, eventually
+      containing all events and co-events.  The root of the event tree
+      is the external event.  At the beginning of the reaction, the
+      event tree consists of this root only and the set of protected
+      positions is empty.  Every event has two ordered sets of
+      children called the <em>pre-event queue</em> and <em>post-event
+      queue</em>.  If both are empty, then the event is called a
+      <em>leaf</em>.  The reaction follows a method, called the
+      <em>event principle</em>, that is defined relative to an event
+      <em>e</em> called the <em>selected event</em>:
+      <ul><li style="color:red;"><span style="color:black;">Determine the actual target <em>l</em> of <em>e</em> and
+	  calculate the sequence of pre-events of <em>e</em> and add
+	  those that do not have the delay property as children of
+	  <em>e</em>---these events are set to be raised to the
+	  pre-queue of <em>e</em>; the remainder are added in order to
+	  the front of the post-queue of <em>e</em> (thus, they will
+	  appear in reverse document order).
+	</span></li><li style="color:red;"><span style="color:black;">Apply the event principle to each pre-event of
+	  <em>e</em>, where the set of protected positions is
+	  augmented, for the duration of the processing of these pre-events,
+	  with the upward closure of <em>l</em>.
+	</span></li><li style="color:red;"><span style="color:black;">Execute
+	  <em>e</em> if the actual target is defined and the event is
+	  consumable; during execution of an event, the <em>current
+	    queue</em> is the  post-events queue of
+	  <em>e</em>---events may be added through raise statements to
+	  the current queue during execution of <em>e</em>.
+	</span></li><li style="color:red;"><span style="color:black;">Apply the event principle to each post-event of
+	  <em>e</em>.</span></li></ul><p></p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Memory model</span></h3></div><p> 
+
+    Since all threads are statically declared, the memory model is
+    very simple.  There is a fixed tree of activation records, each
+    corresponding to a block with allocated memory for the local
+    variables.  These variables are pointers into a heap, where XML
+    data is allocated.  In an XPath expression, a variable is referred
+    to using the $-syntax.  For example, a variable named <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">x</tt>
+    is referred to as <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">$x</tt>.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDAK4IZ"><span style="font-weight:bold;">6 Declarations and statements</span></a></h2></div><p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Variable declaration</span></h3></div><p>  
+    
+    Variables are declared in the usual way.  There are two forms:
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;var<SPAN> name="<SPAN class="cd">Name</SPAN>"</SPAN><SPAN> select="<SPAN class="cd">Expr</SPAN>"</SPAN>/&gt;
+</DIV></div><div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;var<SPAN> name="<SPAN class="cd">Name</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Constr</div><div style=""><SPAN class="tt">&lt;/var&gt;</SPAN></div></DIV></div> In the former, the
+    <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Expr</em> is an XPath expression that is evaluated with a
+    focus set to the current event.  In the latter, the
+    <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Constr</em> is an XML tree constructor.  <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Update
+      statement</span></h3></div><p><div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;update<SPAN> name="<SPAN class="cd">Name</SPAN>"</SPAN><SPAN> select="<SPAN class="cd">Expr</SPAN>"</SPAN>/&gt;
+</DIV></div><div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;update<SPAN> name="<SPAN class="cd">Name</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Constr</div><div style=""><SPAN class="tt">&lt;/update&gt;</SPAN></div></DIV></div><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">States block statement</span></h3></div><p>
+    The states block is the fundamental
+    intra-thread control structure.  Execution of a states block
+    suspends the containing thread after raising the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">init</tt>
+    signal on the block.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;states<SPAN> id="<SPAN class="cd">Name</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Declarations
+	Handlers
+      </div><div style=""><SPAN class="tt">&lt;/states&gt;</SPAN></div></DIV></div>
+    The <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">id</TT> attribute is optional.  The statements in the
+    block statement are executed in the same thread that the block
+    belongs to.  The handlers also belong to this thread.  Thus, if
+    that program counter is inside the state block, then it points to
+    a position either in a <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">handler</em> or it points to the block
+    itself.  If a handler contains the program counter, then this
+    handler is called the current handler.  When an event is handled
+    by a handler, the current handler, if it exists, is exited
+    according to the event principle.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Thread block statement</span></h3></div><p> The threads block creates a
+    subthread for each handler.  Execution of a thread block suspends
+    the thread after the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">init</tt> signal is raised on the block.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;threads&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Declarations
+	Handlers
+      </div><div style=""><SPAN class="tt">&lt;/threads&gt;</SPAN></div></DIV></div><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Terminate statement</span></h3></div><p>
+    The termination statement
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;terminate/&gt;
+</DIV></div>
+    terminates the closest enclosing block unless it is in the protected
+    set (in which case the execution of the statement has no effect).
+    Execution continues for the thread that contains the block that
+    was terminated; the program counter of that thread is placed after
+    the block.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Raise statement</span></h3></div><p>
+    The raise statement is the general method of raising an event.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;raise<SPAN> target="<SPAN class="cd">Location</SPAN>"</SPAN><SPAN> bubbles="<SPAN class="cd">Bool-Expr1</SPAN>"</SPAN><SPAN> forwarding="<SPAN class="cd">Bool-Expr2</SPAN>"</SPAN><SPAN> consumable="<SPAN class="cd">Bool-Expr3</SPAN>"</SPAN><SPAN> immediate="<SPAN class="cd">Bool-Expr4</SPAN>"</SPAN><SPAN> delay="<SPAN class="cd">Bool-Expr5</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Constructor
+      </div><div style=""><SPAN class="tt">&lt;/raise&gt;</SPAN></div></DIV></div>
+    The <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">target</TT> specifies the block or thread to which the
+    event is directed.  If the value of <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">forwarding</TT> is
+    <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">no</TT>, then the event is raised at the target, either at the
+    block designated or at the location of the program counter of the
+    thread if a thread is designated.  Otherwise, when the value of
+    the <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">forwarding</TT> attribute is <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">thread</TT>, it is raised
+    as if directed towards the thread.  If the attribute
+    <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">bubbles</TT> is yes, then the event is raised to each thread
+    containing the thread of the target as if the <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">forwarding</TT>
+    attribute is <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">thread</TT>; the event for the innermost thread
+    is raised first.  The <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">forwarding</TT> attribute is not allow
+    when the <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">bubbles</TT> attribute is <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">true</TT>.  The
+    <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">consumable</TT> attribute determines whether the event is
+    consumable or a signal.  Normally, the event is added to the end
+    of the current queue, but if the value of the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">immediate</tt>
+    attribute is <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">true</tt>, then the event is added to the
+    beginning instead.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Signal statement</span></h3></div><p><div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;signal<SPAN> target="<SPAN class="cd">Loc-Expr</SPAN>"</SPAN><SPAN> bubbles="<SPAN class="cd">Bool-Expr1</SPAN>"</SPAN><SPAN> forwarding="<SPAN class="cd">Bool-Expr2</SPAN>"</SPAN><SPAN> immediate="<SPAN class="cd">Bool-Expr3</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Constructor</div><div style=""><SPAN class="tt">&lt;/signal&gt;</SPAN></div></DIV></div>
+    is an abbreviation for 
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;raise<SPAN> target="<SPAN class="cd">Loc-Expr</SPAN>"</SPAN><SPAN> bubbles="<SPAN class="cd">Bool-Expr1</SPAN>"</SPAN><SPAN> forwarding="<SPAN class="cd">Bool-Expr2</SPAN>"</SPAN><SPAN> consumable="<SPAN class="cd">false</SPAN>"</SPAN><SPAN> immediate="<SPAN class="cd">Bool-Expr3</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Constructor</div><div style=""><SPAN class="tt">&lt;/raise&gt;</SPAN></div></DIV></div><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Handler and co-handler statement</span></h3></div><p>
+    The semantics of handler and co-handler statements are the same,
+    except for the role that co-handler statements play in
+    determining pre-events.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;handler<SPAN> match="<SPAN class="cd">Expr</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Statements
+      </div><div style=""><SPAN class="tt">&lt;/handler&gt;</SPAN></div></DIV></div><div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;co-handler<SPAN> match="<SPAN class="cd">Expr</SPAN>"</SPAN><SPAN> loc="<SPAN class="cd">Loc-Expr</SPAN>"</SPAN><SPAN> delay="<SPAN class="cd">Bool-Expr</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Statements
+      </div><div style=""><SPAN class="tt">&lt;/co-handler&gt;</SPAN></div></DIV></div><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Common Handlers</span></h3></div><p> The <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">on-init</em> handler is
+    used to resume execution immediately after the program counter has
+    reached a states block.  It is also used to start subthreads in a
+    thread block immediately after the program counter has reached the
+    thread block.  In both cases, it is still possible that other
+    threads suspended at prior locations, according to document order,
+    are resumed beforehand when they observe the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">init</tt> event
+    of the block.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;on-init<SPAN> match="<SPAN class="cd">Loc-Expr</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Statements</div><div style=""><SPAN class="tt">&lt;/on-init&gt;</SPAN></div></DIV></div>
+    The default value of <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Expr</tt> of is
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">ancestor::*/states|threads[1]</tt>; that is, the default value
+    selects the closest enclosing <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">states</tt> or <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">threads</tt>
+    element.  This handler is an abbreviation for:
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;co-handler<SPAN> match="<SPAN class="cd">ReaX:init</SPAN>"</SPAN><SPAN> loc="<SPAN class="cd">Loc-Expr</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Statements
+      </div><div style=""><SPAN class="tt">&lt;/co-handler&gt;</SPAN></div></DIV></div>
+
+    The construct
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;init<SPAN> loc="<SPAN class="cd">Loc-Expr</SPAN>"</SPAN>/&gt;
+</DIV></div>
+    raises the predefined <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">init</TT> event as a signal to
+    the locations in <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">loc-Expr</TT>.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;signal<SPAN> loc="<SPAN class="cd">Loc-Expr</SPAN>"</SPAN><SPAN> forwarding="<SPAN class="cd">none</SPAN>"</SPAN><SPAN> immediate="<SPAN class="cd">true</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">ReaX:init</div><div style=""><SPAN class="tt">&lt;/signal&gt;</SPAN></div></DIV></div>
+
+    
+    The construct
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;exit<SPAN> loc="<SPAN class="cd">Loc-Expr</SPAN>"</SPAN>/&gt;
+</DIV></div>
+    raises the predefined <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">exit</TT> event as a signal to
+    the <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">loc-Expr</TT>.  The default value of 
+    loc-Expr is <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">ancestor::*/states|threads[1]</tt>.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;signal<SPAN> loc="<SPAN class="cd">loc-Expr</SPAN>"</SPAN><SPAN> forwarding="<SPAN class="cd">none</SPAN>"</SPAN><SPAN> immediate="<SPAN class="cd">true</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">ReaX:exit</div><div style=""><SPAN class="tt">&lt;/signal&gt;</SPAN></div></DIV></div>
+
+    The <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">exit</TT> handler specifies the code that is to be
+    executed right before a block is exited.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;on-exit&gt;</SPAN><span class="
+	  cd
+	">Statements
+      </span><SPAN class="tt">&lt;/on-exit&gt;</SPAN></DIV></div>
+    If a block has no <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">exit</TT> handler, then such
+    a handler, containing no statements, is presumed present.
+    Consequently, the effect of signaling the <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">exit</TT> event to a
+    block or thread-block is to terminate it immediately unless the
+    exit handler contains statements that are suspended.  The
+    meaning of the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">on-exit</tt> handler is
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;co-handler<SPAN> match="<SPAN class="cd">ReaX:exit</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;handler&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Statements</div><div style=""><SPAN class="tt">&lt;/handler&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;terminate/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/co-handler&gt;</SPAN></div></DIV></div>
+    A timeout handler is specified as
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;timeout<SPAN> delay="<SPAN class="cd">t</SPAN>"</SPAN><SPAN> hard="<SPAN class="cd">Bool-Expr</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Statements</div><div style=""><SPAN class="tt">&lt;/timeout&gt;</SPAN></div></DIV></div>
+    This handler makes the ReaX program issue a
+    <span class="tt">&lt;timeout
+/&gt;</span> event, regarded as an external event,
+    <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">t</em> seconds after the block in which the handler is
+    declared starts executing.  In this interval, the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">timeout</tt>
+    handler is said to be <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">active</em> and it is said to be
+    associated with a <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">timer</em>.  If several
+    <span class="tt">&lt;timeout
+/&gt;</span> events are to be issued at the same time,
+    then one is issued at time and only after the reaction of the
+    preceding one has ended.  The ordering of the events is made to be
+    consistent with the document order of the program.  The attribute
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">hard</tt> is optional; it has a default value of <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">false</tt>.  If
+    the value of this attribute is <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">true</tt>, then the remaining
+    time is not affected by undo or seek operations.  Thus, in the
+    normal case of a soft timeout, the timer is decremented according
+    to the advancement of presentation time.  But in the case of a
+    hard timeout, the time is decremented according to the advancement
+    of wall-clock time.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">If statement</span></h3></div><p>
+    ReaX offers conventional sequential control structures.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;if<SPAN> test="<SPAN class="cd">Expr</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Statements
+      </div><div style=""><SPAN class="tt">&lt;/if&gt;</SPAN></div></DIV></div><div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;if<SPAN> test="<SPAN class="cd">Expr</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;then&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	  Statements
+	</div><div style=""><SPAN class="tt">&lt;/then&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;else&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	  Statements
+	</div><div style=""><SPAN class="tt">&lt;/else&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/if&gt;</SPAN></div></DIV></div>
+    The choose statement selects the first <TT xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">when</TT> element for
+    execution whose expression evaluates to true.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;choose&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;when<SPAN> test="<SPAN class="cd">Expr</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	  Statements
+	</div><div style=""><SPAN class="tt">&lt;/when&gt;</SPAN></div></DIV><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	...
+      </div><div style=""><SPAN class="tt">&lt;/choose&gt;</SPAN></div></DIV></div><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Objects</span></h3></div><p>
+    A mechanism for binding ReaX scripting to another programming
+    language is through the use of an <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">object</tt> element:
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;object<SPAN> id="<SPAN class="cd">Object-ID</SPAN>"</SPAN><SPAN> namespace="<SPAN class="cd">Nspace</SPAN>"</SPAN><SPAN> href="<SPAN class="cd">URL</SPAN>"</SPAN><SPAN> timed="<SPAN class="cd">Bool-Expr</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;param<SPAN> name="<SPAN class="cd">Pname1</SPAN>"</SPAN>&gt;</SPAN><span class="
+	  cd
+	">...
+	</span><SPAN class="tt">&lt;/param&gt;</SPAN></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;start<SPAN> method="<SPAN class="cd">Mname-start</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">start-Constr</div><div style=""><SPAN class="tt">&lt;/start&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;stop<SPAN> method="<SPAN class="cd">Mname-stop</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">stop-Constr</div><div style=""><SPAN class="tt">&lt;/stop&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;pause<SPAN> method="<SPAN class="cd">Mname-pause</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">pause-Constr</div><div style=""><SPAN class="tt">&lt;/pause&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;resume<SPAN> method="<SPAN class="cd">Mname-resume</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">resume-Constr</div><div style=""><SPAN class="tt">&lt;/resume&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;seek<SPAN> method="<SPAN class="cd">Mname-seek</SPAN>"</SPAN><SPAN> max="<SPAN class="cd">Float-Expr</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">seek-Constr</div><div style=""><SPAN class="tt">&lt;/seek&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/object&gt;</SPAN></div></DIV></div>
+    The use of this element is essentially similar to the way objects
+    are used in HTML.  The <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">href</tt> is the location of object
+    code.  The <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Nspace</em> is the name of the namespace that is
+    associated with values sent to the object by the ReaX program via
+    calls or values sent by the object to the ReaX program via
+    callbacks.  Additionally, there may be a number of parameters;
+    above, we have shown one parameter named <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Pname1</em>, which is
+    presented to the object went it is initialized.  The object is
+    initialized whenever it is executed.  It is removed as soon as the
+    program counter leaves the handler containing the object.
+
+    <p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">If the value of the optional attribute <tt>timed</tt> is
+       <tt>true</tt>, then ReaX regards the object as a media element
+       that is presented in real-time.  In particular, the object must
+       exhibit various methods for controlling the presentation.
+       These are specified by the elements <tt>start</tt>,
+       <tt>stop</tt>, <tt>pause</tt>, <tt>resume</tt>, and
+       <tt>seek</tt>.  These elements must all be present when the
+       <tt>timed</tt> attribute has the value <tt>true</tt>.  They
+       may not be present in any other the case.  When present, the
+       <em>Mname-seek</em> is a function that seeks the timeline of
+       the object, which is assumed to be a presentation or animation
+       or other time-dependent activity.  The function will be called
+       by the undo mechanism with an argument that is
+       <em>Seek-Constr</em> concatenated with an element
+       <span class="tt">&lt;time&gt;</span><span class="
+	  cd
+	">t</span><span class="tt">&lt;/time&gt;</span>, where <em>t</em> is a floating
+       point number that represents the presentation time in seconds
+       since the execution of the <tt>call</tt> statement.  The value
+       of <em>t</em> is at most <em>Float-Expr</em> if the optional
+       attribute <tt>max</tt> is provided.  Usually, <tt>max</tt> is
+       set to the length of the presentation.  The other control
+       elements are defined analogously.  They enable the ReaX program
+       to keep objects in synchronization with its own time tracking,
+       which is affected by undo and seek operations issued by the
+       user.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Call</span></h3></div><p>
+    A method of an object may be invoked through the following syntax:
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;call<SPAN> idref="<SPAN class="cd">Object-ID</SPAN>"</SPAN><SPAN> recover-category="<SPAN class="cd">Name</SPAN>"</SPAN><SPAN> time-track="<SPAN class="cd">Track-Expr</SPAN>"</SPAN><SPAN> seek-time="<SPAN class="cd">Float-Expr</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;do<SPAN> method="<SPAN class="cd">Mname-do</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">do-Constr</div><div style=""><SPAN class="tt">&lt;/do&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;undo<SPAN> method="<SPAN class="cd">Mname-undo</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">undo-Constr</div><div style=""><SPAN class="tt">&lt;/undo&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/call&gt;</SPAN></div></DIV></div>
+    The value <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">mname-do</em> is the name of the method to be invoked,
+    and <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">do-Constr</em> is a XML document that represents
+    the values of the arguments to the method.  The marshaling of the
+    XML document into values of the underlying scripting language is
+    not described here, since it will be dependent on the programming
+    language in which the object is implemented.  <p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The <tt>undo</tt>
+      element specifies in a similar way the method and arguments to be
+      used when the method call is undone.  
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The <tt>time-track</tt> attribute, if present, informs the ReaX
+      program that an operation affecting the presentation of the
+      object is carried out.  If the <tt>time-track</tt> attribute is
+      provided with value <tt>seek-time</tt>, then the
+      <tt>seek-time</tt> attribute must be present (and it is not
+      allowed in any other case).
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">If the value of the optional <tt>seek-time</tt> attribute is
+      provided, then the object is assumed to be rendering a
+      presentation and the call is assumed to change the presentation
+      time.  This attribute allows the ReaX program and the object to
+      maintain the same notion of time.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The use of the <tt>recover-category</tt> attribute is explained
+      below.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">The recover statement</span></h3></div><p>
+    As an alternative to providing explicit undo methods, the
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">recover</tt> statement stipulates that the way to
+    re-establish the effect of a category of method calls is to
+    simply re-execute the last such call.  For example, a method
+    that specifies a complete speech recognition grammar satisfies
+    this property.  During the undoing of program execution, there
+    is then no need to explicitly undo each specification and
+    retraction of a complete grammar.
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;recover<SPAN> recover-category="<SPAN class="cd">Name</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Statements
+      </div><div style=""><SPAN class="tt">&lt;/recover&gt;</SPAN></div></DIV></div><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Callback handler</span></h3></div><p>
+    An embedded object is able to issue calls to the ReaX program.  To
+    enable such callbacks, the ReaX program declares a special handler:
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;callback<SPAN> idref="<SPAN class="cd">Object-ID</SPAN>"</SPAN><SPAN> name="<SPAN class="cd">Name</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	Statements
+      </div><div style=""><SPAN class="tt">&lt;/callback&gt;</SPAN></div></DIV></div>
+    It specifies that callbacks to a method named <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Name</em> may
+    be issued by the object.  The arguments of the methods are
+    marshaled into XML, again by a method that is not described
+    here; this content becomes children of an XML document, whose
+    top-node is labeled <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Name</em> using the namespace of the
+    object.  The XML document is then raised as an external event at
+    the location of the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">callback</tt> element.  It is an error
+    if there is more than one such element for a given object and
+    <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Name</em>.
+
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Checkpoint</span></h3></div><p>
+    The checkpoint statement
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;checkpoint/&gt;
+</DIV></div>
+    has no other meaning than described in Section
+    7 .
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDAQKJZ"><span style="font-weight:bold;">7 Checkpointing, seeking, and undoing</span></a></h2></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      ReaX maintains a <em>wall-clock</em> that records the amount of
+      seconds that have passed since the beginning of the execution of
+      the program.  It is possible to skip forward and to skip backward
+      in a program through an operation called <em>seeking</em>.  For
+      example, if no events have taken place during the 10 seconds that have
+      passed since an audio recording was initiated, then it may be
+      possible to rewind the rendering by the amount of say eight
+      seconds, without changing the value of any program variables or
+      program counters.  In that case, we say that the <em>presentation
+	time</em> decremented by eight seconds.  Generally the
+      presentation time advances at the same rate as the wall-clock; the
+      only exceptions are when the program is seeked in a forwards or
+      backwards direction.  In those cases, the presentation time is
+      decremented or implemented by the <em>delta seek</em>, which is
+      the relative amount of time that the presentation, that is, the
+      program execution, is subjected to.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Moreover, some objects are <em>time-tracked</em>: when a call
+      containing a <tt>start</tt> attribute to that object is
+      executed, time-tracking is initiated and the delta time of the
+      object is set to 0.  The delta time then progresses at the same
+      rate as the wall-clock.  When a call containing the <tt>pause</tt>
+      attribute is executed, time-tracking is suspended for the
+      object.  When a call containing the <tt>resume</tt> attribute is
+      executed, time-tracking is resumed.  And, when a call containing
+      a <tt>seek-time</tt> attribute is executed, the delta time of
+      the object is set to the value of the attribute.  When a call a
+      containing the <tt>stop</tt> attribute is executed, the object
+      is no longer time-tracked.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">To enable recovering, ReaX maintains a log of the last
+      <em>n_max</em> external events and associated reactions that
+      occurred.  The number <em>n_max</em> is implementation
+      dependent.  Additionally, the global state of the program is
+      recorded for each recorded reaction.  The state is recorded
+      right before the reaction.  The presentation time at the time of
+      the reaction is recorded.  The global state is augmented with
+      information about the objects that are time-tracked at the time
+      of the reaction along with their delta times. Moreover, the
+      sequence of <tt>call</tt> statements executed during the
+      reaction is stored.  Finally, for each valid <tt>recover</tt>
+      statement at the beginning of the reaction, the last call
+      with the appropriate <em>recover-category</em> is memorized.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Undo</span></h3></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      Any statement in ReaX may disallow an undo operation through the
+      use of the optional <tt>undo</tt> attribute.  If it is false, then
+      the reaction in which the statement is executed is not
+      undoable.</p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Recovery by undo backs up the computation to the last reaction
+      for which a checkpoint statement was executed.  Recovery is not
+      possible if this reaction or a later reaction is not undoable.</p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">In general, the computation is backed up to a reaction
+      <em>r</em> by undoing one reaction at time, starting with the
+      last reaction that occurred and proceeding until and but not including
+      <em>r</em>.</p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">A reaction is undone as follows.  The sequence of <tt>call</tt>
+      statements executed is examined in reverse order.  For each such
+      statement that contains a <tt>undo</tt> element, the
+      corresponding method is invoked on the appropriate object.  Then,
+      the global state recorded is restored.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Moreover, for each object that is time-tracked after the
+      preceding reaction, a call of the provided seek method is issued
+      with the value of the delta time recorded for the reaction.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Finally, for each <tt>recover</tt> statement with category
+      <em>C</em> that contains a program counter, the last executed
+      <tt>call</tt> statement of category <em>C</em> as recorded by
+      the reaction is re-executed.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Redo</span></h3></div><p> According to the conventional script model
+    of undoing and redoing, it is possible to apply a <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">redo</em>
+    operation following an undo operation in order to cancel the effect of the
+    latter.  To accomplish this effect, the ReaX program re-executes
+    the reactions corresponding to the events that were undone.
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Local seek after last reaction</span></h3></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      A seek to a time before any scheduled timeouts, but to a time
+      after the last reaction, is called a <em>local seek</em>.  Let
+      the <em>seeked presentation time</em> be the current
+      presentation time plus the seek delta.  The program state is not
+      altered but the presentation time is altered, negatively or
+      positively, according to the seek delta.  The maximum seek delta
+      is the minimum of the remaining time of active timeout handlers.
+      The minimum seek delta is the difference between the
+      presentation time and the presentation time of the last
+      reaction.  This seek operation does not affect the global state.
+      All objects that are time-tracked are issued a call according to
+      their respective <tt>seek</tt> element with a time parameter
+      that is the sum of their delta time and the seek delta.  Also,
+      the remaining time of all soft timeout handlers is decremented
+      by the seek delta.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Global seek backwards</span></h3></div><p> If the seeked presentation
+    time is earlier than the presentation time of the last reaction,
+    then the seek operation is accompanied by undo operations up to
+    the last reaction <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">r</em> with a presentation time that is less
+    or equal to the seek time.  The seek operation is now performed
+    from <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">r</em> with a delta of the difference between the seeked
+    presentation time and the presentation time of <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">r</em>.  The
+    combined operation is called a <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">global backwards seek</em>.
+    
+    <div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Global seek forwards</span></h3></div><p> It is also possible to seek
+    forwards in time beyond the time of an active timeout handler.
+    This is accomplished by executing the timeout events that lie
+    between the current presentation time and the seeked presentation
+    time.  The difference between the seeked presentation time and the
+    last such time is then the delta of a local seek that is carried
+    out after the timeout reactions.  In this way, the effect of
+    redos and local seeks are combined to enable forward time seek.
+
+
+    <div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDAFNJZ"><span style="font-weight:bold;">8 Example</span></a></h2></div><p> We here show how to emulate the semantics of a
+    media element in SMIL.  The element to be emulated by a ReaX
+    block is
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;vtts&gt;</SPAN><span class="
+	  cd
+	">Hi!  I am Crystal.
+      </span><SPAN class="tt">&lt;/vtts&gt;</SPAN></DIV></div>
+    which must have the following properties:
+    <ul><li style="color:red;"><span style="color:black;">It allows a <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">beginElement</tt> method, which will be
+	expressed as an ability to handle a <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">beginElement</tt>
+	event delivered to the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">VTSS</tt>
+	ReaX block.
+	The <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">beginElement</tt> method begins the element in the
+	sense of initiating its playing.   If it is currently
+	being played, then it will be restarted.
+      </span></li><li style="color:red;"><span style="color:black;">Similarly, it allows a <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">endElement</tt> method that
+	ends the playing of the element.
+      </span></li><li style="color:red;"><span style="color:black;">Whenever the element is begun, the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">begin</tt> event is
+	signaled to the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">VTSS</tt> element.
+      </span></li><li style="color:red;"><span style="color:black;">Whenever the element is ended, the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">end</tt> event is
+	signaled to the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">VTSS</tt> element.
+      </span></li></ul><p><div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;threads<SPAN> ID="<SPAN class="tt">VTSS</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;var<SPAN> name="<SPAN class="tt">active</SPAN>"
+   </SPAN><SPAN> select="<SPAN class="tt">false</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;on-init&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;object<SPAN> id="<SPAN class="tt">vtss</SPAN>"
+   </SPAN><SPAN> namespace="<SPAN class="tt">v</SPAN>"
+   </SPAN><SPAN> href="<SPAN class="tt">...</SPAN>"
+   </SPAN><SPAN> timed="<SPAN class="tt">true</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;param<SPAN> name="<SPAN class="tt">text</SPAN>"
+   </SPAN>&gt;</SPAN></div><div class="
+	  tt
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Hi!  I am Crystal.</div><div style=""><SPAN class="tt">&lt;/param&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;start<SPAN> method="<SPAN class="tt">start</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;stop<SPAN> method="<SPAN class="tt">stop</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;pause<SPAN> method="<SPAN class="tt">pause</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;resume<SPAN> method="<SPAN class="tt">resume</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;seek<SPAN> method="<SPAN class="tt">seek</SPAN>"
+   </SPAN><SPAN> max="<SPAN class="tt">5</SPAN>"
+   </SPAN>/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/object&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/on-init&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;handler<SPAN> event="<SPAN class="tt">beginElement</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;if<SPAN> test="<SPAN class="tt">$active</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;then&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;call<SPAN> idref="<SPAN class="tt">vtss</SPAN>"
+   </SPAN><SPAN> method="<SPAN class="tt">pause</SPAN>"
+   </SPAN><SPAN> time-track="<SPAN class="tt">pause</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;call<SPAN> idref="<SPAN class="tt">vtss</SPAN>"
+   </SPAN><SPAN> method="<SPAN class="tt">seek_to</SPAN>"
+   </SPAN><SPAN> time-track="<SPAN class="tt">seek</SPAN>"
+   </SPAN><SPAN> seek-time="<SPAN class="tt">0</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;time&gt;</SPAN><span class="
+	  tt
+	">0</span><SPAN class="tt">&lt;/time&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/call&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;call<SPAN> idref="<SPAN class="tt">vtss</SPAN>"
+   </SPAN><SPAN> method="<SPAN class="tt">start</SPAN>"
+   </SPAN><SPAN> time-track="<SPAN class="tt">start</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;signal<SPAN> target="<SPAN class="tt">crystal</SPAN>"
+   </SPAN>&gt;</SPAN><span class="
+	  tt
+	">end</span><SPAN class="tt">&lt;/signal&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/then&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;else&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;call<SPAN> idref="<SPAN class="tt">vtss</SPAN>"
+   </SPAN><SPAN> method="<SPAN class="tt">start</SPAN>"
+   </SPAN><SPAN> time-track="<SPAN class="tt">start</SPAN>"
+   </SPAN>/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/else&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/if&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;update<SPAN> name="<SPAN class="tt">active</SPAN>"
+   </SPAN><SPAN> select="<SPAN class="tt">true</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;signal<SPAN> target="<SPAN class="tt">crystal</SPAN>"
+   </SPAN>&gt;</SPAN><span class="
+	  tt
+	">begin</span><SPAN class="tt">&lt;/signal&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/handler&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;handler<SPAN> event="<SPAN class="tt">end</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;if<SPAN> test="<SPAN class="tt">$active</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;then&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;call<SPAN> idref="<SPAN class="tt">vtss</SPAN>"
+   </SPAN><SPAN> method="<SPAN class="tt">pause</SPAN>"
+   </SPAN><SPAN> time-track="<SPAN class="tt">pause</SPAN>"
+   </SPAN>/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;signal<SPAN> target="<SPAN class="tt">crystal</SPAN>"
+   </SPAN>&gt;</SPAN><span class="
+	  tt
+	">end</span><SPAN class="tt">&lt;/signal&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/then&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/if&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;update<SPAN> name="<SPAN class="tt">active</SPAN>"
+   </SPAN><SPAN> select="<SPAN class="tt">false</SPAN>"
+   </SPAN>/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/handler&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;handler<SPAN> event="<SPAN class="tt">seek</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;call<SPAN> idref="<SPAN class="tt">vtss</SPAN>"
+   </SPAN><SPAN> method="<SPAN class="tt">seek</SPAN>"
+   </SPAN><SPAN> time-track="<SPAN class="tt">seek</SPAN>"
+   </SPAN><SPAN> seek-time="<SPAN class="tt">{time}</SPAN>"
+   </SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em; margin-bottom:.8ex"><SPAN class="tt">&lt;v:seek&gt;</SPAN><SPAN class="tt">&lt;value-of<SPAN> select="<SPAN class="tt">time</SPAN>"
+   </SPAN>/&gt;</SPAN><SPAN class="tt">&lt;/v:seek&gt;</SPAN></DIV><div style=""><SPAN class="tt">&lt;/call&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/handler&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/threads&gt;</SPAN></div></DIV></div>
+
+    We now note that the SMIL mechanism of event synchronization is
+    easily emulated in ReaX.  For example, we may in SMIL specify that a
+    audio recording is to begin whenever the <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">VTTS</tt> block is
+    begun:
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;audio<SPAN> id="<SPAN class="cd">AUDIO</SPAN>"</SPAN><SPAN> begin="<SPAN class="cd">VTTS.begin</SPAN>"</SPAN>/&gt;
+</DIV></div>
+    In ReaX, we add a handler to the representation of the
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">audio</tt> element that is notified of the beginning of the
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">VTTS</tt> element upon which it raises the
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">beginElement</tt> event to its own block:
+    <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;threads<SPAN> id="<SPAN class="cd">AUDIO</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;handler<SPAN> co="<SPAN class="cd">VTTS</SPAN>"</SPAN><SPAN> event="<SPAN class="cd">begin</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;raise<SPAN> target="<SPAN class="cd">AUDIO</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;beginElement/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/raise&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/handler&gt;</SPAN></div></DIV><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	...
+	</div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;handler<SPAN> event="<SPAN class="cd">beginElement</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">
+	  ...
+	</div><div style=""><SPAN class="tt">&lt;/handler&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/threads&gt;</SPAN></div></DIV></div><div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDA4RJZ"><span style="font-weight:bold;">9 Relation to SMIL</span></a></h2></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      SMIL offers a programming mechanism that substantially
+      simplifies synchronization: the ability to react to events
+      dispatched anywhere.  This kind of event response is well-known
+      from the class of <em>synchronous reactive</em> languages.  The
+      paradigm is that events are not directed towards any target and
+      are not consumed by event handlers.  Instead, events are
+      globally visible, at each instant a number of such events are
+      present in the "event ether."
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">
+      SMIL 2.0 has a traditional concept of event: an event is
+      dispatched by a thread on (to) a target, which is a block or
+      thread.  Events may be handled in the classical manner: by
+      listeners or handlers.  But SMIL 2.0 introduces a complementary
+      mechanism: an <em>event-value</em>, which is identified by the
+      <em>event type</em> and the ID of the target, where the event is
+      raised to.  The event-value provides a way for a thread to wake
+      up or to terminate.  The activation of this mechanism is called
+      "responding to an event" or "delivery of an event notification."
+      For example, the attribute <tt>begin='foo.begin'</tt> used on a
+      block delays its ativation until the
+      <tt>begin</tt> event has been dispatched on the block named
+      <tt>foo</tt>.  (The DOM concept that an event is dispatched is
+      called "is raised", "is fired", "has occurred", or "has
+      happened" in SMIL 2.0.)
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The mechanism of event-values, and the related mechanism of
+      <em>sync-values</em>, are treated semantically as part of the
+      building of a <em>time graph</em> constructed dynamically as the
+      programs is running.  Unfortunately, this mechanism is very
+      complicated and contains several seemingly ad hoc exceptions.
+      Moreover, the semantics are not tied precisely to that of the
+      dispatching of events; for example, in the same instant,
+      awakening by observation may trigger further events to be raised
+      through scripting, which in turn may awake further threads
+      through observation.  Thus, there seems to be some implicit
+      ordering of operational steps---but this phenomenon contradicts
+      the point-like nature of time and synchronization semantics.  It
+      is the this interaction between the activation of blocks
+      determined by the time graph and the general events that we
+      would like to elucidate with a ReaX-based semantics.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">We take the view that  event-values and sync-values should
+      be co-events.  These "inverse" events are
+      generated by need: a co-event is raised to a co-handler only
+      when an event is selected for execution that matches the event
+      specification of the co-handler.  In this way, we can
+      systematically describe temporal relationships along timed
+      threads.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Moreover, our event and history oriented view of the ReaX
+      language implies that a built-in recovery mechanism founded on
+      both traditional checkpointing and time seeking is possible
+      within one framework.  And, we have shown how this framework can
+      be integrated with a traditional scripting language, even
+      preserving undoability whenever the programmer provides explicit
+      recipes for recovery.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif;"><h3><span style="font-weight:bold;">Example of how ReaX overcomes deficiencies in
+      SMIL</span></h3></div><p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">In the program fragment:
+      <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;SMIL:seq<SPAN> repeatCount="<SPAN class="cd">indefinite</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;button<SPAN> id="<SPAN class="cd">c</SPAN>"</SPAN><SPAN> class="<SPAN class="cd">time</SPAN>"</SPAN><SPAN> end="<SPAN class="cd">c.click</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Click to launch!</div><div style=""><SPAN class="tt">&lt;/button&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;SMIL:par<SPAN> end="<SPAN class="cd">clip.click</SPAN>"</SPAN><SPAN> id="<SPAN class="cd">example</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;span<SPAN> class="<SPAN class="cd">time</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Launching!</div><div style=""><SPAN class="tt">&lt;/span&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;SMIL:video<SPAN> src="<SPAN class="cd">spaceshuttle.avi</SPAN>"</SPAN><SPAN> id="<SPAN class="cd">clip</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;SMIL:animate<SPAN> begin="<SPAN class="cd">10s</SPAN>"</SPAN><SPAN> attributeName="<SPAN class="cd">mute</SPAN>"</SPAN><SPAN> to="<SPAN class="cd">true</SPAN>"</SPAN><SPAN> dur="<SPAN class="cd">5</SPAN>"</SPAN>/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/SMIL:video&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;SMIL:seq<SPAN> begin="<SPAN class="cd">rewind.click</SPAN>"</SPAN><SPAN> dur="<SPAN class="cd">0</SPAN>"</SPAN><SPAN> onend="<SPAN class="cd">rewind(example);</SPAN>"</SPAN>/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/SMIL:par&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/SMIL:seq&gt;</SPAN></div></DIV></div>
+ SMIL is combined
+      with HTML to specify a simple multimedia presentation with user
+      controls.  This combination is done according to the
+      implementation of SMIL in Microsoft Internet Explorer 6 as
+      distributed from www.microsoft.com as of the spring of 2002.  The
+      SMIL elements are prefixed "<tt>SMIL:</tt>", whereas the HTML
+      elements <tt>button</tt> (which renders a button on the screen),
+      <tt>span</tt> (which renders text), and <tt>video</tt> (which
+      renders a video clip) do not have a prefix.  The <tt>SMIL:seq</tt>
+      element with a <tt>repeatCount</tt> attribute specifies that the
+      two containing elements, named <tt>button</tt> and
+      <tt>SMIL:par</tt>, are to be executed in sequence, and this
+      sequence is to be continued indefinitely.  The <tt>button</tt>
+      element is turned into a timed elements through the
+      <tt>class="time"</tt> declaration.  The element is specified to
+      end on the event <tt>c.click</tt>, which specifies a mouse click
+      on the element named <tt>c</tt>, the <tt>button</tt> element
+      itself.  Thus, while the button has not yet been pressed,
+      execution inside the <tt>SMIL:seq</tt> element is suspended in the
+      <tt>button</tt> element.  On a button press, execution continues
+      in the <tt>SMIL:par</tt> element.  This element, named
+      <tt>example</tt>, specifies that three parallel activities or
+      threads executed: the <tt>span</tt> element specifies that the
+      text "Launching!" is be rendered, the <tt>SMIL:video</tt> element
+      specifies that the video file "<tt>spaceshuttle.avi</tt>" is
+      rendered, and the <tt>SMIL:seq</tt> element specifies that a
+      control thread.  The control thread starts executing when the
+      <tt>rewind</tt> button (defined elsewhere) is clicked; as a result
+      the <tt>rewind</tt> function for seeking in the SMIL document is
+      called on the parallel element named <tt>example</tt>.  This
+      function, which is not shown here, invokes the built-in seek
+      semantics of SMIL, where the time seeked is the presentation time
+      minus three seconds.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">SMIL semantics are declarative and no history of events is
+      maintained.  The semantics stipulate that when an element seeked
+      the parent of the element is also seeked.  Unfortunately, since no
+      history about actually occurring events is recorded, the seek of
+      the parent element, which in this case is the outer
+      <tt>SMIL:seq</tt> element, results in the re-execution of the
+      <tt>button</tt> element.  The semantics of SMIL does not assume
+      that the <tt>c.click</tt> event ever happened.  Thus, the
+      resulting state after the seeked is inconsistent: both children of
+      the <tt>SMIL:seq</tt> element are executed at the same time,
+      something that should be impossible according to a sequential
+      semantics.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">In ReaX, the program could be written as follows:
+      <div style="font-size: 90%; padding-top: 1ex;"><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;ReaX:seq<SPAN> repeatCount="<SPAN class="cd">indefinite</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;checkpoint/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;button<SPAN> id="<SPAN class="cd">c</SPAN>"</SPAN><SPAN> class="<SPAN class="cd">time</SPAN>"</SPAN><SPAN> end="<SPAN class="cd">c.click</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Click to launch!</div><div style=""><SPAN class="tt">&lt;/button&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;checkpoint/&gt;
+</DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;ReaX:par<SPAN> end="<SPAN class="cd">clip.click</SPAN>"</SPAN><SPAN> id="<SPAN class="cd">example</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;span<SPAN> class="<SPAN class="cd">time</SPAN>"</SPAN>&gt;</SPAN></div><div class="
+	  cd
+	" STYLE="margin-left:1em;  margin-bottom:.8ex">Launching!</div><div style=""><SPAN class="tt">&lt;/span&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex"><div style="margin-left:2em;  margin-bottom:.8ex; text-indent:-2em;"><SPAN class="tt">&lt;ReaX:video<SPAN> src="<SPAN class="cd">spaceshuttle.avi</SPAN>"</SPAN><SPAN> id="<SPAN class="cd">clip</SPAN>"</SPAN>&gt;</SPAN></div><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;ReaX:animate<SPAN> begin="<SPAN class="cd">10s</SPAN>"</SPAN><SPAN> attributeName="<SPAN class="cd">mute</SPAN>"</SPAN><SPAN> to="<SPAN class="cd">true</SPAN>"</SPAN><SPAN> dur="<SPAN class="cd">5</SPAN>"</SPAN>/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/ReaX:video&gt;</SPAN></div></DIV><DIV class="tt" STYLE="margin-left:1em;  margin-bottom:.8ex">
+&lt;ReaX:seq<SPAN> begin="<SPAN class="cd">rewind.click</SPAN>"</SPAN><SPAN> dur="<SPAN class="cd">0</SPAN>"</SPAN><SPAN> onend="<SPAN class="cd">rewind(example);</SPAN>"</SPAN>/&gt;
+</DIV><div style=""><SPAN class="tt">&lt;/ReaX:par&gt;</SPAN></div></DIV><div style=""><SPAN class="tt">&lt;/ReaX:seq&gt;</SPAN></div></DIV></div></p>
+    Here, we have assumed that elements <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">ReaX:seq</tt>,
+    <tt xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">ReaX:par</tt>, etc.  have been formulated in terms of the ReaX
+    core language to mimic the semantics of the corresponding SMIL
+    elements.  We have already indicated in Section
+    8  how such emulations are possible.
+
+    <p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">Because ReaX semantics is based on recording the history of
+      events, the ReaX program above correctly rewinds the video without
+      re-executing the <tt>button</tt> element.  This functionality is
+      independent of the <span class="tt">&lt;checkpoint
+/&gt;</span> elements that have
+      been inserted.
+    </p><p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">But in addition to the seek mechanism, this ReaX program offers
+      an undo facility: if the undo button is pressed during a video
+      presentation, then the state of the ReaX program is made to be the
+      one existing right after the last checkpoint was encountered.  So,
+      the effect is that the video presentation is seeked to the
+      beginning.  If two undoes are presented in a row, then the
+      ReaX program is brought back to the state that existed after the
+      first checkpoint was encountered.  That is, the button will be
+      shown again, and the video will not be playing.
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDAVWJZ"><span style="font-weight:bold;">10 A button interface to the runtime of ReaX</span></a></h2></div><p>
+
+    The discussion of forward and backwards seek, along with the undo and
+    redo mechanisms, clearly points to a user interface for ReaX programs
+    that is almost identical to that of CD or tape players.  For
+    example, the interface could be arranged as:
+    <div style="text-align: center; margin:2ex;" xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL"><button>|&lt;</button><span>  </span><button>&lt;&lt;</button><span>  </span><button>&gt;&gt;</button><span>  </span><button>&gt;|</button><span>  </span><button>pause/play</button></div>
+    where the button marked "|&lt;" is the undo function, the button
+    marked "&lt;&lt;" is the rewind function, the button "&gt;&gt;" is the
+    forward function, and the button "&gt;|" is the redo function.  More
+    precisely, a press on the redo button not followed by another
+    press within a specified key timeout invokes the undo mechanism of
+    the ReaX language to the last checkpointed reaction.  A number
+    <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">n</em> of keypresses, each within the key timeout of the
+    previous one, invokes the undo mechanism to the <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">n</em>th last
+    checkpoint.  The redo button is provided with a similar semantics
+    according to the key timeout, and it is linked to the redo
+    semantics described earlier.  For the rewind and forward buttons,
+    each key press is associated with a fixed key delta time.  If the
+    button is pressed <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">n</em> times, then the presentation is
+    seeked to with a total delta of <em xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">n</em> times the key delta
+    time.  <p xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL">The pause button invokes the <tt>pause</tt> (or
+    <tt>resume</tt>) function specified in ReaX <tt>call</tt>s, while
+    the presentation time is paused (or resumed).
+    </p><div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDA0XJZ"><span style="font-weight:bold;">11 Acknowledgments</span></a></h2></div><p> The present ReaX language is yet
+    another proposal in a series of notations that colleagues and
+    visiting students have helped formulate.  Giuseppe di Fabbrizio
+    greatly influenced the language by formulating usage scenarios and
+    programming situations that ReaX was designed to tackle.  Jennifer
+    Beckham have defined an earlier version called ReX (REactive Xml)
+    that conceptually is quite similar.  Anders Moller defined and
+    implemented RSS (Reactive Style Sheets), a reactive scripting
+    language for interpreting XML documents.
+    
+    <div style="
+font-family: Arial, helvetica,
+sans-serif; page-break-before:  always;"><h2><a name="IDA2XJZ"><span style="font-weight:bold;">12 References</span></a></h2></div><p><dl compact xmlns:xt="http://www.jclark.com/xt" xmlns:bibxml="http://www.science.uva.nl/~zegerh/bibteXML/"><dt><a name="bibxml:XML"></a><strong>[XML]</strong></dt><dd><techreport xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL" xmlns="http://www.science.uva.nl/~zegerh/bibteXML/">Tim Bray, 
+Jean Paoli,
+C. M. Sperberg-McQueen, and
+Eve Maler
+      . <i xmlns="">Extensible Markup Language (XML) 1.0 (Second
+      Edition)</i>,  W3C,  2000,  <a href="http://www.w3.org/TR/REC-xml" xmlns="">http://www.w3.org/TR/REC-xml</a>,  </techreport>.<br><br></dd><dt><a name="bibxml:SMIL20"></a><strong>[SMIL20]</strong></dt><dd><techreport xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL" xmlns="http://www.science.uva.nl/~zegerh/bibteXML/">Jeff Ayars and others. <i xmlns="">Synchronized Multimedia Integration Language (SMIL 2.0)</i>,  W3C,  2001,  <a href="http://www.w3.org/TR/smil20/" xmlns="">http://www.w3.org/TR/smil20/</a>,  </techreport>.<br><br></dd><dt><a name="bibxml:XPath20"></a><strong>[XPath20]</strong></dt><dd><techreport xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL" xmlns="http://www.science.uva.nl/~zegerh/bibteXML/">Anders Berglund and others. <i xmlns="">XML Path Language (XPath) 2.0</i>,  W3C,  2002,  <a href="http://www.w3.org/TR/xpath" xmlns="">http://www.w3.org/TR/xpath</a>,  </techreport>.<br><br></dd><dt><a name="bibxml:XSLT20"></a><strong>[XSLT20]</strong></dt><dd><techreport xmlns:DSD="yyy" xmlns:asr="zz" xmlns:ReaX="vvv" xmlns:v="vvv1" xmlns:SMIL="SMIL" xmlns="http://www.science.uva.nl/~zegerh/bibteXML/">Michael Kay. <i xmlns="">XSL Transformations (XSLT) Version 2.0 took</i>,  W3C,  2002,  <a href="http://www.w3.org/TR/xslt20/" xmlns="">http://www.w3.org/TR/xslt20/</a>,  </techreport>.<br><br></dd></dl></p></body></html>

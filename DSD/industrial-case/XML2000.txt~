@@ -1,0 +1,72 @@
+To: xtech2000@gca.org 
+Subject: submission
+--text follows this line--
+Presentation title: DSDs in practice: how to make schemas work for you
+
+Presenter's name: Nils Klarlund
+
+Job title and affiliation:  Principal Technical Staff Member, AT&T Labs
+
+Address: AT&T, 180 Park Ave., Florham Park, NJ 07932
+
+Email/Phone/Fax: klarlund@research.att.com
+
+Biography: Nils Klarlund holds a Ph.D. from Cornell University; he
+studies and uses XML for publishing and multimedia.  He is a
+co-developer of the recent DSD schema notation.  Nils's background is
+in logics of computer science, automata theory, and verification.
+
+Abstract (not less than 500 words): 
+
+This talk suggests how to use DSDs (Document Structure Descriptions),
+see http://www.brics.dk/DSD, in an industrial setting from the
+programmer's point of view.  A DSD is a schema describing a class of
+XML documents and this talk will illustrate some general advantages of
+using schemas, but in particular we will explore the main features
+offered by DSDs: extensibility.  expressiveness, and CSS-like
+defaults.
+
+It is hoped that this talk will serve as a useful contribution to the
+discussion of what a schema notation should be.  In particular, we
+will explore some differences between DSDs and the proposed XML Schema
+notation.
+
+The application scenario calls for a programmer to develop a little
+whimsical, interactive voice application that probes the mood of a
+customer.  The programmer will use an XML notation called XPML (for
+Extensible Phone Markup Language), which is similar to HTML.  (The
+XPML notation is based on PML, the Phone Markup Language, as developed
+at AT&amp;T Labs-Research.  The XPML notation as outlined here is
+preliminary and incomplete. It is not related to VoiceXML; rather,
+this note explains some general principles behind DSDs in the area of
+markup for interactive voice applications.)
+ 
+Although XPML is superficially a simple notation based on familiar
+HTML syntax, it offers a large variety of default settings that
+control a complicated set of interactive behaviors.  Also, basic
+constructs like the select element familiar from HTML are present in a
+number of variations in XPML, designated by the value of an
+interaction attribute.  Each variation comes with a set of error
+messages, prompts and timeouts.
+
+In this talk, we will explain how DSDs help both the application
+programmer and the platform programmer:
+
+- DSDs aid the XPML programmer choose the right syntactic constructs.
+  DSDs are by themselves not easy too read because of the XML syntax,
+  so we indicate how to present them in a more conventional BNF-like
+  way that closely resembles the concrete syntax of the XPML
+  notation.
+
+- XPML programmers can easily check their documents for most errors
+  using the DSD processor alone.  
+
+- XPML programmers can use the CSS-like default mechanism that comes
+  with DSDs.  Thus, XPML programs can be "styled" in a declarative and
+  modular fashion.
+
+- DSD descriptions significantly simplify the programming of an
+  interpreter for XPML.
+
+
+Brief Description: 

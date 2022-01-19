@@ -1,0 +1,47 @@
+<html>
+<head>
+<title> Requirements for a markup language--Ben-Natan-Raggett-example-2
+</title>
+<link href="nils.css" rel=stylesheet type="text/css">
+</head>
+<body style="line-height:1.2">
+
+<h1>
+Raggett, Ben-Natan (cont')
+</h1>
+<hr class=top>
+ 
+Prompts such as "You have not entered any selection, please enter your
+selection now" should not be attribute values, since in-line markup is
+as necessary for such prompts as for contents
+<br>
+<br>
+<strong>Prompts and other representational contents must be markup
+</strong>
+<br>
+<br>
+So, this example would look better as
+
+<blockquote style="margin:3%; font-size:80%"> 
+<pre> 
+&lt;MENU&gt; 
+  &lt;OPTION URL=Instructions.html&gt;Directions 
+  &lt;OPTION URL=Todo&gt;List of things to do 
+&lt;/MENU&gt;
+</pre> 
+</blockquote> 
+where the <tt>&lt;MENU&gt;</tt> element here
+explicitly marks the concept of a menu 
+<br>
+(We could have used the <tt>&lt;SELECT&gt;</tt> tag)
+
+
+<hr class=bottom>
+<div class=browser>
+<a href="overview.html">Index</a>
+<a href="Ben-Natan-Raggett-example.html"> Previous slide</a>
+</div>
+
+</body>
+</html>
+

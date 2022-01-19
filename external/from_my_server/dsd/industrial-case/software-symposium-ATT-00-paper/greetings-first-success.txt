@@ -1,0 +1,57 @@
+<?dsd URI="xpml.dsd"?>
+<XPML>
+  <head>
+
+
+    <application name="HELLOWORLD"/>
+    
+    <maintainer address="karam@research.att.com" loglevel="2"/>
+
+    <title>The Greeting Application</title>
+
+  </head>
+
+  <body>
+
+    Welcome to greetings are us.
+    <span nointerrupt="yes"> <audio url="/audioclips/greeting.vox"/></span>
+
+    <a name="repeat"/> 
+
+    <menu asrmode="none" endchars="#" finaltimeout="5000ms" 
+          interaction="basic" interdigittimeout="4000ms" 
+          maxmisselected="3" maxtimeout="2" maxtterrs="3" 
+          name="feelings" timeout="0ms">
+      <option dtmf="0">To end</option>
+      <do><a href="#endit"/><comment>go to end point</comment></do>
+
+      <option> If you are feeling energized. </option>
+      <do> Hello world! </do> 
+
+      <option> If you are feeling like a cowboy. </option>
+      <do> Howdy world! </do> 
+
+      <option> If you are feeling like a canadian. </option>
+      <do> Gid'day world, how's it going eh? </do> 
+
+      <option> If you are feeling depressed. </option>
+      <do> The world sucks. </do> 
+	
+      <help>No help is available.</help>
+      <initial> <enumerate><option/> Press <emph><dtmf/></emph>.</enumerate>
+      </initial>
+      <timeout>You have exceeded the time limit.</timeout>
+      <toomanyerrors>Sorry, too many errors.</toomanyerrors>
+      <counttimeout>Sorry, too many timeouts.</counttimeout>
+      <pause> Pausing.  Press pound sign to continue.
+      </pause>
+   
+    </menu>
+  	  
+    <a href="#repeat"/> 
+	  
+    <a name="endit"/> 
+    
+  </body>
+
+</XPML>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>DSD - Document Structure Description</TITLE>
+<LINK href="index_files/dsd.css" rel=stylesheet title="DSD style sheet" type=text/css>
+</HEAD>
+<BODY>
+<P class=hide>(This page uses CSS style sheets) 
+<DIV class=map>
+<P id=p1>DSD</P>
+<P id=p2>Document Structure Description</P></DIV><BR>
+<TABLE width="99%">
+  <TBODY>
+  <TR>
+    <TD vAlign=top width="65%">
+<EM>Document Structure Description (DSD)</EM> 
+      is an XML schema language. A DSD document is a specification of a class of 
+      XML documents together with a default mechanism and documentation. 
+The DSD 
+      notation is defined in the <A 
+      href="http://www.brics.dk/DSD/specification.html">DSD 1.0 
+      specification</A>. The DSD project is being pursued at <A 
+      href="http://www.research.att.com/">AT&amp;T Labs Research</A> and at <A 
+      href="http://www.brics.dk/">BRICS, University of Aarhus</A> in a 
+      non-proprietary fashion. 
+      <P>
+      <CENTER><A href="http://www.research.att.com/"><IMG align=center 
+							  alt="AT&amp;T Labs Research" border=0 height=65 
+							  src="index_files/attlogo.gif"></A> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <A 
+																     href="http://www.brics.dk/"><IMG align=center alt=BRICS border=0 height=30 
+																				      src="index_files/bricslogo.gif"></A> </CENTER>
+      <P>Visit the DSD Web site main entry at <A href="http://www.brics.dk/DSD">http://www.brics.dk/DSD</A>
+ 
+   </TD>
+  <TD vAlign=top width="2%"></TD>
+    <TD vAlign=top width="32%">On this part of the DSD Web site you'll find: 
+      <UL>
+
+ <img
+	    src="../../~klarlund/gifs/new.gif" alt="new"/>
+
+<A
+        href="http://www.research.att.com/projects/DSD/relax-ng.html">
+
+
+        RELAX NG vs.  DSD</A>
+        <P></P>
+        <LI>
+        <img   src="../../~klarlund/gifs/new.gif" alt="new"/>
+<A
+        href="../../~klarlund/papers/DSD-journal.pdf">
+
+ DSD paper
+        with XML Schema comparison and RELAX NG (2002)</A>
+        <P></P>
+        
+        <LI><A href="http://www.research.att.com/projects/DSD/issues">Issues</A>
+        <P></P>
+        <LI><A href="http://www.research.att.com/projects/DSD/industrial-case">XMPL:
+        industrial case study</A>
+        <P></P>
+  <LI><A href="http://www.research.att.com/projects/DSD/njpls-00/njpls.html">NJ Programming Language Seminar Slides</A>
+	 <P></P>
+ <LI><A href="http://www.research.att.com/projects/DSD/generic-lists">Modeling polymorphic lists</A>
+	 <P></P>
+</UL></TD></TR></TBODY></TABLE><BR>
+<HR noShade SIZE=1>
+<SPAN class=footer>Copyright&nbsp;©&nbsp;2002 <A 
+href="http://www.research.att.com/">AT&amp;T</A> and <A 
+href="http://www.brics.dk/">BRICS</A>.  Maintained by <A 
+href="http://www.research.att.com/~klarlund">Nils Klarlund</A>.
+</span>
+ <hr/>
+  <a href="http://www.att.com/terms">Terms and Conditions</a>. <a
+  href="http://www.att.com/privacy/">Privacy Policy</a>. Copyright
+  &#x00A9; 2002 AT&amp;T. All rights reserved. Send comments to
+  webmaster@research.att.com.	
+</p>
+</body>
+</html>

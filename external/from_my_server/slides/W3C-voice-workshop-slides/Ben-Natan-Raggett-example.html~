@@ -1,0 +1,53 @@
+
+<html>
+<head>
+<title> Requirements for a markup language--Ben-Natan-Raggett-example
+</title>
+<link href="nils.css" rel=stylesheet type="text/css">
+</head>
+<body style="line-height:1.2">
+
+<h1>
+Voice augmentation
+</h1>
+<hr class=top>
+ 
+<h2> from W3C "Voice browsers" note </h2> Dave Raggett and Or
+Ben-Natan propose markup for navigational choice:
+<blockquote>
+<pre>
+    &lt;P onselecttimeout='document.speak("You have
+        not entered any selection, please enter your
+        selection now")'&gt;
+        &lt;A href=Instructions.html&gt;Directions&lt;/A&gt; 
+        &lt;A href=Todo&gt;List of things to do&lt;/A&gt;
+    &lt;/P&gt;
+</pre>
+</blockquote>
+
+This piece of markup looks like contents, since that is what a
+paragraph tag usually indicates.  But, in this case, judging from the
+text of the <tt>onselecttimeout</tt>, the hyperlinks are not to be
+construed as optional links that the user can choose to follow at any
+point while accessing the page.  Instead, this HTML snippet is
+intended as a kind of dialog, where the user is prompted for further
+input.  It seems quite contrary to the philosophy of markup languages
+that such functional use should not be expressed explicitly by named
+semantic markers.  That is, we would expect an element, like
+
+<blockquote> 
+<pre> 
+&lt;MENU&gt; 
+  &lt;OPTION URL=Instructions.html&gt;Directions 
+  &lt;OPTION URL=Todo&gt;List of things to do 
+&lt;/MENU&gt;
+</pre> 
+</blockquote> 
+
+where the <tt>&lt;MENU&gt;</tt> element here
+explicitly marks the concept of a menu (the tag name
+is not important  by  itself; for example, we
+could   have  used the
+<tt>&lt;SELECT&gt;</tt> tag, although it is not a usual select
+element in the HTML sense, since there is no value assigned to a
+name).

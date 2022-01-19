@@ -1,0 +1,115 @@
+/* this stylesheet was modified by Nils Klarlund from an original
+found at the W3C Web site */
+
+BODY {
+  line-height: 1.3;
+  margin-left: 2%;
+  margin-right: 2%;
+  color: #ffffff;
+  background: #003050;
+  font-size: 30 px;
+  font-family: arial, helvetica, sans-serif;
+}
+
+TABLE {font-size: 100%;}
+
+SMALL {
+  font-size: smaller;
+}
+
+DIV.browser {
+  display: none; 
+}
+
+
+STRONG {
+  color: red;
+}
+
+
+IMG {
+  border: 0;
+}
+
+CODE {
+  color: #FF9;
+  margin-left: 5%;
+  margin-right: 16px;
+  font-weight: bold;
+  font-family: "Courier New", courier, monospace;
+}
+
+A:link    { color: #ffffe8 } 
+A:visited { color: #eeffee }
+A:active  { color: red }
+A.offsite { color: #ffff00 }
+
+P.top { 
+  margin-top: 16px;
+}
+
+BLOCKQUOTE {
+  font-style: italic;
+  margin-left: 5%;
+  margin-right: 5%;
+  color: #eeffee;
+}
+
+BLOCKQUOTE SPAN.attribution {
+  font-style: normal;
+  font-weight: bold;
+}
+
+EM { 
+  color: #ff9;
+}
+
+UL, OL { 
+  color: #ffffff;
+  margin-left: 20px;
+}
+
+PRE, TT { 
+  color: #efe;
+  color: #FF9;
+  font-weight: bold;
+  font-family: "Courier New", courier, monospace;
+}
+
+HR { 
+  margin-top: 5px;
+  color: #ffffe8;
+}
+
+HR.top {
+  margin-bottom: 10px;
+}
+
+HR.bottom {
+  margin-top: 20px;
+}
+
+H1 {
+  color: lime;
+  font-size: 150%;
+  font-weight: bold;
+  font-family: arial, helvetica, sans-serif; 
+}
+
+H1.slide { 
+  margin-top: .5ex;
+}
+
+H1.slideList { 
+  font-size: 118%;
+}
+
+H2 {
+  color: lime;
+  font-size: 118%;
+  font-family: arial, helvetica, sans-serif;
+}
+
+
+
+

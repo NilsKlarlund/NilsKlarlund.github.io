@@ -1,0 +1,33 @@
+
+<html>
+<head>
+<title> Requirements for a markup language--requirements
+</title>
+<link href="nils.css" rel=stylesheet type="text/css">
+</head>
+<body>
+
+<h1>
+Requirements
+</h1>
+<hr class=top>
+
+Imagine a standard markup language called <em>VXML</em> (Voice
+eXtensible Markup Language)
+<br>
+<br>
+Emphasis on
+<ul>
+<li> contents
+<li> control flow 
+<li> dialogues
+<li> handling of exceptional situations 
+</ul>
+
+
+<hr class=bottom>
+<a href="overview.html">Index</a>
+<a href="augmentation.html">Previous slide </a>
+<a href="abstraction.html">Next slide</a>
+</body>
+</html>

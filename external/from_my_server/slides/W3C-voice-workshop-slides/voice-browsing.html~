@@ -1,0 +1,57 @@
+
+<html>
+<head>
+<title> Requirements for a markup language--voice browsing
+</title>
+<link href="nils.css" rel=stylesheet type="text/css">
+</head>
+<body>
+
+<h1 class=slide>
+Voice browsing: classic view
+</h1>
+<hr class=top>
+
+Access to WWW through an audio device<br>
+<br>
+HTML-centric <br>
+<br>
+Often:
+
+<ul>
+<li> User agent runs in a network
+<li> Input device: telephone 
+</ul>
+
+<br>
+Examples:
+
+
+<ul>
+<li> General Magic 
+<A HREF="http://www.genmagic.com/technology/weboncall.html">Web-on-Call</A>
+</li>
+
+<li> Productivity Works <A HREF="http://www.prodworks.com/pwtel.htm">pwTelephone</A> 
+</li>
+
+<li> Rutgers University <A HREF="http://www.cs.rutgers.edu/Audio_Web">AudioWeb</A> </li>
+
+<li>  IBM <a href="http://w3c.org/UI/Voice/workshop/PhilJenkins.html">
+Special Needs Self Voicing Browser</a> </li>
+
+<li> Texas Instruments
+<a href="http://w3c.org/UI/Voice/workshop/RajeevAgarwal.html">
+Voice Browsing the Web for Information Access</a>
+</li>
+ 
+<li> Lucent Technologies <a href="http://w3c.org/UI/Voice/workshop/Michael-Brown.html">PhoneBrowser</a>
+</li>
+</ul>
+
+<hr class=bottom>
+<a href="overview.html">Index</a>
+<a href="front.html">Previous slide</a>
+<a href="the-other-world.html">Next slide</a>
+</body>
+</html>

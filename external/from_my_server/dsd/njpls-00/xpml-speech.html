@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="0" http-equiv="Expires">
+<title>XPML: speech extensions</title>
+<style type="text/css">
+	  div {margin-bottom:0em; margin-top:0em; margin-left:0em;
+	       font-weight:bold; font-family:  Courier; }
+	  span {color: black;}
+	  div.rootchild {margin-bottom:2ex; margin-top:.8ex; 
+              border-style: solid; border-width: 2px;  border-color:pink; }
+	  .key, .special-key {font-weight:bold; color: purple;}
+	  .doc {font-family: Arial, Helvetica, Sans-serif; font-style:normal; font-weight: normal; color: brown;}
+	  .user {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .user-bold {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black; font-weight:bold;}
+	  .user:link {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .user:visited {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .concrete, .string {font-family: Courier; color: blue; font-weight:bold; }
+	  .tt {font-family: Courier; color: blue; font-weight:bold; }
+	  .comment {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: brown;}
+	  h1.header {font-size:18pt;  color: purple; font-family: Arial, Helvetica, Sans-serif;}
+	  body {font-size:10pt; background-color:beige;}
+	</style></head>
+<body>
+<h1 class="header">XPML: speech extensions<div style="font-weight:bold; font-size:14pt">Root Element: 
+	      <span style="font-size:12pt;"><a class="user" href="#">XPML</a><br></span>
+	    
+	       
+	    DSD version: 
+	    <span style="font-size:12pt;">1.0</span></div></h1>
+<table style="border-width:0pt;">
+<tr>
+<th align="left">
+<span style="width:8em;height:1.5ex;" class="special-key">Title:</span></th><td><span style="font-weight:bold;height:1.5ex;" class="user;">XPML: speech extensions</span></td></tr>
+<tr>
+<th align="left">
+<span style="width:8em;height:1.5ex;" class="special-key">Version:</span></th><td><span style="font-weight:bold;height:1.5ex;" class="user;">.001</span></td></tr></table><hr><br>
+<DIV STYLE="margin-bottom:.8ex;" class="user">
+<span class="user">&lt;?include<span> </span><a href="xpml-core.html">"xpml-core.dsd"</a>
+	
+	  
+	?&gt;</span></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1168143381" class="user-bold">Asr-engine-types</a><span>: </span><span title="This string type is platform dependent"><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span>"</span><span class="tt"></span><span>"</span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">RenewID=</span><a Name="N-1168667669" class="user-bold">menu-constraint</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#">menu-constraint<span class="key">[Current]</span></a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asrmode=</span><span class="concrete">"</span><span><span></span><span><span>(</span><span>'</span><span class="concrete">none</span><span>'</span> | </span><span><span>'</span><span class="concrete">only</span><span>'</span> | </span><span><span>'</span><span class="concrete">plus</span><span>'</span>)<span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">If </span><span><span></span><span><span>{</span><span class="key">Attribute</span><span> </span><span class="tt">asrmode</span><span>=</span><span>"only"</span><span class="key"> Or</span> </span><span><span class="key">Attribute</span><span> </span><span class="tt">asrmode</span><span>=</span><span>"plus"</span>} </span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Then</span><span> </span>{<span><span></span><span class="key">Constraint</span><span> </span><a class="user" href="#N-1167094805">menu-asr-constraint</a>}</span></div></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1167094805" class="user-bold">menu-asr-constraint</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asrengine=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1168143381">Asr-engine-types</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asrurl=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">Url</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asrspotting=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">bargein=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asrgrammarlib=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">Default </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="tt">select</span>, </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="tt">menu</span><span> {</span></span></div>
+<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asrmode</span><span>:"</span><span class="concrete">none"</span>}</div></div></div></body></html>

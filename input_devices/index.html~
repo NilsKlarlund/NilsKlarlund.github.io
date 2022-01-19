@@ -1,0 +1,265 @@
+<html xml:lang='en' lang='en'>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <title>Input devices: a usage-driven approach</title>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <meta name='author' content='Nils Klarlund'>
+    <meta name='copyright' content='Nils Klarlund, 2002'>
+    <meta name='keywords' content='Nils Klarlund, input devices, RSI,      CTD, mouse design, keyboard design, foot keyboard, foot switches,      scroll wheel'>
+    <link type='text/css' rel='stylesheet' href='../klarlund-netscape4.css'>
+    <style type='text/css'> 
+      @import url(../klarlund.css);  <!-- non-Netscape 4-->
+    </style>
+    <link type='text/css' rel='stylesheet' href='index.css'>
+  </head>
+  <body>
+    <table class='columntwo'>
+      <tr>
+        <td class='firstcolumn' valign='top'>
+          <div class='contents'>
+            <h2>Contents</h2>
+            <ul>
+              <li>
+                <h3>
+                  <span class='tabselected' title='Introduction'>Introduction</span>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a class='tabnotselected' title='Mouse' href='index_mouse.html'>Mouse</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a class='tabnotselected' title='Keyboard' href='index_keyboard.html'>Keyboard</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a class='tabnotselected' title='Foot Pedals' href='index_footpedals.html'>Foot Pedals</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a class='tabnotselected' title='Skeptical Remarks' href='index_skepticalremarks.html'>Skeptical Remarks</a>
+                </h3>
+              </li>
+              <li>
+                <h3>
+                  <a class='tabnotselected' title='My Own Setup' href='index_myownsetup.html'>My Own Setup</a>
+                </h3>
+              </li>
+            </ul>
+          </div>
+          <div class='related'>
+            <h2>Related</h2>
+            <h3>
+              <a href='../index_uisummary.html'>A Low-Impact Workspace</a>
+            </h3>
+            <div>
+	A description of how a low-impact workspace can be put
+	together using speech recognition and techniques in this essay.
+      </div>
+            <h3>
+              <a href='../ShortTalk'>Voice: a Misunderstood     Resource</a>
+            </h3>
+            <div> A
+    billion people use keyboards.  That is an extraordinary proof of
+    how the human brain effectively meets the computer: through a set
+    of symbols that are unconsciously combined.  ShortTalk is designed
+    according to the same philosophy, making it several times more
+    efficient than current speech user interfaces.
+</div>
+            <h3>
+              <a href='../index_ctd-rsi.html'>Background</a>
+            </h3>
+            <div>My
+	motivation for researching user interfaces is a long-standing
+	typing injury.
+      </div>
+          </div>
+          <div class='related'>
+            <h2>Related
+			
+			  (more)
+			</h2>
+            <h3>
+              <a href='http://www.tendinosis.org'>Chronic          tendon injuries (external)</a>
+            </h3>
+            <div>The web site <a href='http://www.tendinosis.org'>tendinosis.org</a> gives an
+	    excellent overview of the social and medical aspects of tendon
+	    injuries.
+	  </div>
+          </div>
+        </td>
+        <td class='secondcolumn' valign='top'>
+          <h1>Input devices: a usage-driven approach</h1>
+          <h2 class='sectionheader'>Introduction</h2>
+          <div></div>
+          <table class='quotebox'>
+            <tr>
+              <td></td>
+              <td class='quotebox'>
+                <blockquote>
+                  <em>
+	  Some of these accessories are valuable, but a lot of
+	  them are gimmicky, if not downright dangerous.
+	  <div style='font-style: normal;'>Pascarelli &amp; Quilter in <em>Repetitive stress
+	      injury</em>
+                    </div></em>
+                </blockquote>
+              </td>
+            </tr>
+          </table>
+          <p>I am writing this essay to summarize my years of
+	  experiments with input device design.  My interest is born
+	  out of a long-lasting typing injury, but I have no formal
+	  training in ergonomics.  I hope to provide a critical and
+	  realistic view of what can be done to improve input devices.
+	  The goal of course is to fundamentally reduce the strain on
+	  hands and arms when using the computer.  It is actually
+	  possible, I believe, to work in a fashion that is
+	  dramatically easier on hands, arms, and shoulders.  There is
+	  no miracle: it involves (1) speech recognition and mastery
+	  of a system of voice commands (2) use of a reduced-impact
+	  pointing device that may be shoved around by one or two
+	  hands, and (3) a foot pedal arrangement.  
+	</p>
+          <p>
+	  Neither of these techniques are commercially available; nor
+	  have they been tested in long-term experiments by
+	  others—the expensive and only way of establishing claims
+	  of ergonomic superiority.  However, the proposals I present
+	  have been subjected to my own daily usage for several years.
+	  They represent but a fraction of ideas and commercial
+	  products that I have attempted to use long-term.
+	</p>
+          <p>The main point of this essay is that input device design
+	  is very difficult, even though there are often simple
+	  explanations why a design is potentially injurious.  I will
+	  give several examples of input device designs that are
+	  superficially appealing, but seemingly devoid of functional
+	  qualities that make them usable in ways that fundamentally
+	  reduce physical stress.  Rather, by their very
+	  construction, some alternative designs hold the potential of
+	  being more harmful then the traditional designs they are
+	  intending to replace.
+	</p>
+          <p>The patent literature is brimming with input device ideas.
+	  Engineers, doctors, and lay people have investigated mouse
+	  surface curvatures, twistings of the keyboard, wearable
+	  gizmos, etc.  These initiatives apparently have had little
+	  impact in reducing pain and injury from computer use.</p>
+          <p>Even the popular "ergonomic" split keyboards have not been
+	  shown to have any health benefits; a proof, if possible,
+	  would involve long-term studies involving thousands of
+	  individuals.  The theory that these keyboards are easier on
+	  body because they involve less “deviation” of the hands
+	  relative to the forearm is plausible.  But maybe more
+	  plausible is the opposite hypothesis: what matters is only
+	  how you use the keyboard.  Moreover, the opposite hypothesis
+	  argues that since the standard keyboard is smaller it better
+	  allows your hands to manipulate the mouse and to find a
+	  resting position.  So, it is already clear that the
+	  so-called “ergonomic” keyboards are “ergonomic” in name
+	  only; they represent another compromise among a host of
+	  competing design constraints.</p>
+          <p>This kind of analytical
+	  thinking about various stresses on the body incurred by use
+	  of devices is important to anybody who is struggling with
+	  pain from computing, since it is one way of raising body
+	  awareness.  This is especially true since the innumerable
+	  negative experiences with “ergonomic” equipment go
+	  unreported.  Whether it be a speech recognition program or
+	  an especially “ergonomic” mouse design, the technology is
+	  usually disappointing. The defeat is not broadcast to
+	  colleagues and friends.
+	</p>
+          <p>Why do keyboards and mice hurt people?  Nobody seems to
+	  really know.  At a cellular level, the processes behind CTD
+	  remain a mystery, although it is believed that inflammation
+	  is not a necessary component, see <a href='http://www.tendinosis.org'>tendinosis.org</a> for
+	  pointers to medical literature.  At the functional level, it
+	  remains unproven that repetitive motion is to blame.  For
+	  example, another functional culprit could be the constant
+	  stress the body is experiencing when near the devices.</p>
+          <p>To understand this, think about replacing each key on the
+	  keyboard and each button on the mouse with a little hot
+	  plate glowing red.  If you were working next to such a
+	  monstrous instrument, then you would condition your limbs to
+	  be constantly adjusting themselves so as not to touch any of
+	  more than one hundred hot plates.  The point is, of course,
+	  that even when keyboard and mouse do not posses thermal
+	  properties, your body must be conditioned exactly the same
+	  way.</p>
+          <p>The mouse is particularly bad, since the hand tends to ride
+	  it.  Consequently, fingers must be forced upwards to not
+	  press the hot plates.<img align='right' src='../gifs/hand-on-mouse.gif' alt='Arrow showing static    stress force when using mouse'> Extensor muscles, the arms'
+	  weakest ones, are continuously struggling to keep this
+	  unnatural balance even if the brain thinks that the hand is
+	  at rest.  Interestingly, preschool kids struggle quite a bit
+	  with this likely injurious principle.  Whereas they may
+	  easily learn to type out their own name on the keyboard, it
+	  may take several more months for them to learn to hold the
+	  mouse without pressing the buttons—an indication that the
+	  mouse is anything but natural.</p>
+          <p>In my judgement, there are three areas where new thinking
+	  may lead to less pain when using a computer.  For the
+	  keyboard, there is only little room for improvement—still
+	  I have some modest ideas, see <a href='index_keyboard.html'>keyboard</a>.  In contrast,
+	  the mouse may be an essentially harmful device that cannot
+	  be improved within its traditional design constraints—see
+	  my proposal in <a href='index_mouse.html'>mouse</a> for a
+	  different concept.  Finally, I suggest how foot pedals can
+	  very effectively complement a keyboard or speech recognition
+	  for repetitive tasks in <a href='index_footpedals.html'>foot pedals</a>.</p>
+          <p>My opinions and proposals are the result of a decade of
+	  personal experimentation and observation.  That's why I call
+	  this overview a "usage-driven approach".  The information I
+	  offer here should not be construed as advice.  I do not know
+	  whether my observations are generally applicable.  If you
+	  have pain, then go see a doctor.  The only recommendation I
+	  offer to others with typing or mouse injuries is to look in
+	  the excellent book <em>Repetitive strain injury</em> by Emil
+	  Pascarelli and Deborah Quilter (John Wiley and Sons, 1994).
+	</p>
+        </td>
+      </tr>
+    </table>
+    <div class='footer'>
+      <hr>
+      <br>
+      <table width='100%'>
+        <tr>
+          <td>
+            <a href='index_print.html'><img align='top' src='../photos/printsymbol.gif' alt='printer           symbol'>printer-friendly version</a><a href='mailto:klarlund@research.att.com'><img align='top' src='../photos/mailsymbol.gif' alt='mail         symbol'>e-mail Klarlund</a>
+          </td><td class='prevnext' align='left'>
+            <span class='inactive' style='width: 10ex;'>previous</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='mylink' href='index_mouse.html'>next</a>
+          </td><td align='right'>
+            <a href='http://www.research.att.com/~klarlund'><img align='top' src='../photos/homesymbol.gif' alt='home symbol'>Nils
+		  Klarlund home</a>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <hr>
+      <table>
+        <tr>
+          <td width='70%' align='left'>
+	By Nils Klarlund.
+      
+	Copyright &copy;Nils Klarlund, 2002.
+       
+	Netscape 4 will work, but is not recommended for these pages. Please use a
+modern browser, like Netscape 6, Mozilla, Opera 5, IE 5,...</td>
+          <td valign='top' width='30%' align='right'>
+            <a href='http://www.w3.org/Style/XSL' style='font-family:  sans-serif; font-size: 12pt; font-weight: bold; color:  black; text-decoration: none;'>XSLT &amp;</a>
+            <a href='http://www.python.org'><img vspace='10' border='0' alt='PythonPowered' src='../gifs/PythonPowered.gif' align='right'></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

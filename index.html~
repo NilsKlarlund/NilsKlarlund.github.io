@@ -1,0 +1,191 @@
+<html xml:lang='en' lang='en'>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <title>Nils Klarlund home page</title>
+    <meta name='author' content='Nils Klarlund'>
+    <meta name='copyright' content='Nils Klarlund, 2002'>
+    <meta name='description' content='Nils Klarlund home Page'>
+    <meta name='keywords' content='Nils Klarlund, home page, Mona, DSD,    XML, dictation system, speech, user interfaces, ShortTalk'>
+    <link type='text/css' rel='stylesheet' href='klarlund-netscape4.css'>
+    <style type='text/css'> 
+@import url(klarlund.css); /*IE and NN6x styles*/
+</style>
+    
+    
+  </head>
+  <body>
+    <div class='tabs'>
+      <span class='tabselected' title='Research themes'>Themes</span>
+	    |
+	  <a class='tabnotselected' title='Publications' href='index_papers.html'>Papers</a>
+	    |
+	  <a class='tabnotselected' title='User interface summary' href='index_uisummary.html'>UI Summary</a>
+	    |
+	  <a class='tabnotselected' title='Cumulative Trauma Disorder (a.k.a. RSI)' href='index_ctd-rsi.html'>CTD-RSI</a>
+	    |
+	  <a class='tabnotselected' title='Curriculum Vitae' href='index_cv.html'>CV</a>
+    </div>
+    <div style='text-align: center;'>
+      <table cellspacing='5' cellpadding='5' align='center'>
+        <tr>
+          <td style='text-align: left;'>
+            <h1 style='margin-bottom: .3ex; margin-right: 3ex;    text-align:center;'>Nils Klarlund</h1>
+	    Principal Technical Staff Member<br>
+	    PhD, <a href='http://www.cs.cornell.edu'>Cornell University</a>, 1990
+	    <br>
+            <address>
+              <a href='http://www.research.att.com'>AT&amp;T Labs--Research</a>
+              <br>
+	      Shannon Labs<br>
+	      180 Park Ave.<br>
+	      Florham Park, NJ 07932<br>
+            </address>
+	    Phone: +1-973-360-8707<br>
+	    Fax: +1-973-360-8050<br>
+	    E-mail: <a href='mailto:klarlund@research.att.com'>klarlund@research.att.com</a>
+          </td>
+          <td>
+            <img src='photos/nils-2001-whiteboard.jpg' width='340' alt='Nils Klarlund in front of whiteboard.'>
+            </td>
+        </tr>
+      </table>
+    </div>
+    <div></div>
+    <table class='center' cellspacing='5' cellpadding='5'>
+	  [- Execute ('/home/klarlund/wwwfiles/internal.htmlstub') -] 
+	  <tr>
+        <td align='center'>
+          <a href='../projects/DSD'><img src='gifs/DSD.gif' alt='DSD'>
+            </a>
+        </td>
+        <td>
+          <strong>The essentials of XML</strong> Clogged by
+	      contradictory and complex specifications, XML at heart
+	      is a welcome practical manifestation of tested ideas in
+	      computer science.  With the DSD work, we try to
+	      influence the XML community through proposals rooted in
+	      programming language and automata theory.
+	    </td>
+      </tr>
+      <tr>
+        <td align='center'>
+          <a href='http://www.brics.dk/mona'><img src='gifs/mona.gif' alt='Mona'>
+            </a>
+        </td>
+        <td>
+          <strong>Making decades-old theory linking automata and
+		logic work in practice.</strong> The concept of BDD for
+	      encoding Boolean functions plays an important role in
+	      verification.  Mona is a tool based on a more general
+	      theory related to decidable fragments of arithmetic.
+	      Applications of Mona include hardware verification,
+	      protocol configuration, pointer analysis, parsing,
+	      theorem proving, etc.
+	    </td>
+      </tr>
+      <tr>
+        <td align='center'>
+          <a href='ReX.html'><img src='gifs/rex.gif' alt='ReX'>
+            </a>
+        </td>
+        <td>
+          <strong>Towards a foundation for multimodal, multimedia
+		content definition.</strong> Multimedia content—where
+	      audio, video, and graphics—are synchronized in
+	      sophisticated ways is already common on the Web.
+	      Multimodal interfaces extend usability by integrating
+	      speech recognition, gestures, etc.  A foundation for
+	      such work must be based on a programming language that
+	      includes concurrency, timing constraints, and built-in
+	      undo support.
+	    </td>
+      </tr>
+      <tr>
+        <td align='center'>
+          <a href='ShortTalk/index.html'><img src='gifs/short-animated.gif' alt='ShortTalk'>
+            </a>
+        </td>
+        <td>
+          <strong>Editing talk so enticingly efficient it is a
+		pleasure to learn.</strong>
+
+	      Speech recognition as a way of getting your thoughts
+	      across the human-machine interface remains an elusive
+	      technology.  ShortTalk solves the problem in the domain
+	      of text composition though an artificial editing
+	      language developed over a period of six years.
+	    </td>
+      </tr>
+      <tr>
+        <td align='center'>
+          <a href='input_devices/index.html'><img src='gifs/inputdevices.gif' alt='Input devices'>
+            </a>
+        </td>
+        <td>
+          <strong>Usage-driven design.</strong> Since overuse
+	      injury is a long-term result, most "ergonomic" design
+	      remains unproven—despite claims of positive results in
+	      trials.  I have experimented with input device concepts
+	      for over 10 years on my own body.  It is my hope that
+	      the couple of surviving ideas, even if also clinically
+	      unproven, may help other people suffering from
+	      computer-induced pain.
+	    </td>
+      </tr>
+      <tr>
+        <td align='center'>
+          <a href='progress.html'><img src='gifs/progress.gif' alt='Progress measures'>
+            </a>
+        </td>
+        <td>
+          <strong>Understanding infinite computations in terms of
+		finite ones.</strong> In my Ph.D. thesis, I argued
+		that infinite computations that involve liveness are
+		best understood as limits of finite ones.  The finite
+		approximations are characterized by a progress value.
+		For various levels of topological complexity, it is
+		possible to formulate such measures of progress.
+		Applications include reasoning about fairness and
+		analyses of automata on infinite objects.
+	    </td>
+      </tr>
+    </table>
+    <div class='footer'>
+      <hr>
+      <br>
+      <table width='100%'>
+        <tr>
+          <td>
+            <a href='index_print.html'><img align='top' style='margin: 3;' src='./photos/printsymbol.gif' alt='printer           symbol'>printer-friendly version</a><a href='mailto:klarlund@research.att.com'><img align='top' style='margin: 3;' src='./photos/mailsymbol.gif' alt='mail         symbol'>e-mail Klarlund</a>
+          </td><td class='prevnext' align='left'>
+            <span class='inactive' style='width: 10ex;'>previous</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='mylink' href='index_papers.html'>next</a>
+          </td><td align='right'>
+            <a href='http://www.research.att.com/~klarlund'><img align='top' style='margin: 3;' src='./photos/homesymbol.gif' alt='home symbol'>Nils
+		  Klarlund home</a>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <hr>
+      <table>
+        <tr>
+          <td width='70%' align='left'>
+	By Nils Klarlund.
+      
+	Copyright &copy;Nils Klarlund, 2002.
+       
+	This Web page should not be viewed with Netscape 4. Please use
+        a modern browser, like Netscape 6, Mozilla,
+Opera 5, or IE
+	5.</td>
+          <td valign='top' width='30%' align='right'>
+            <a href='http://www.w3.org/Style/XSL' style='font-family:  sans-serif; font-size: 12pt; font-weight: bold; color:  black; text-decoration: none;'>XSLT &amp;</a>
+            <a href='http://www.python.org'><img vspace='10' border='0' alt='PythonPowered' src='./gifs/PythonPowered.gif' align='right'></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

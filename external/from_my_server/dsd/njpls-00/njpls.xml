@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<?xml-stylesheet type="text/xsl" href="index.xsl"?>
+
+<myhtml xmlns:myxml="xxx" xmlns:DSD="yyy">
+<head></head> 
+  
+  <body>
+    <slide>
+      <sub>DSD (Document Structure Description)</sub>
+	<subsub>An extensible framework for describing tree languages</subsub>
+      <br/> <br/>
+      <subsub>Nils Klarlund <a style="font-size:70%;" href="http://www.research.att.com/~klarlund">http://www.research.att.com/~klarlund</a>
+      </subsub>
+       <br/> <br/>
+      
+      <subsub>Joint work with Anders Moeller and Michael
+	I. Schwartzbach of the University of Aarhus
+      </subsub>
+      <subsubsub>These slides don't work under Netscape 4</subsubsub>
+  
+    </slide>
+    
+
+    <slide>
+      <sub>"Theoretical" motivation</sub>
+      How to come up with formalism that:
+      <ul>
+	<li>describes extensible and modifiable tree languages</li>
+	<li>requires only top-down parsing</li>
+	<li>defines a subclass of all regular tree languages</li>
+	<li>be completely self-describable</li>
+      </ul>
+      That's not very precise! 
+    </slide>
+    
+    <slide>
+      <sub>"Practical" (real) motivation</sub>
+      The PML idea, conceived before the AT<![CDATA[&]]>T/Lucent split,
+      is about an HTML-like language for defining
+      interactive voice response (IVR) systems.
+      Advantages
+      <ul>
+	<li>familiar notation</li>
+	<li>easy to extend HTML with parameters corresponding to
+	  various abstractions and parameterizations</li>
+	<li>transformations explain default insertion and abstractions</li>
+      </ul>
+      We'll look at an XMLized version, called XPML.  Then, we'll see how
+      the application programmer may take advantage of DSD descriptions of XPML.
+    </slide>
+
+    <slide>
+      <sub>XML, a P.S.?</sub>
+
+      That's the hype.
+
+      <p>And, really, a world where labeled trees are understood by
+	everybody doing programming would be quite a revolution.</p>
+
+      Great opportunity for 
+      <ul><li>rigorous description of domain specific languages</li>
+	<li>use of transformational techniques to define semantics</li>
+      </ul>
+
+      <p>Larger question: Is the W3C helpful or the contrary?</p>
+ 
+      W3C's current take on <ul><li>descriptions is XML Schema, currently
+      under development (a <em>schema</em> is a tree grammar)</li>
+      <li>transformations is XSLT (eXtensible Stylesheet Language
+      Transformations) </li>
+      </ul>
+        
+      
+    </slide>
+
+    <slide>
+      <sub>DSDs in swing, from the application programmer's view</sub>
+      <p>
+	A first attempt at a mood-probing XPML program is:
+      </p>
+      <example>
+	<myxml>
+	  <?dsd URI="xpml-att.dsd"?>
+
+	  <XPML>
+	    <head>
+
+	      <application name="HELLOWORLD"/>
+	      
+	      <maintainer address="karam@research.att.com" loglevel="2"/>
+
+	      <title myxml:il="yes">The Greeting Application</title>
+
+	    </head>
+
+	    <body>
+
+	      Welcome to greetings are us.
+	      <span nointerrupt="y" myxml:il="yes"> <audio url="/audioclips/greeting.vox"/></span>
+
+	      <a name="repeat"/> 
+
+	      <menu name="feelings">
+		<option dtmf="0" myxml:il="yes">To end</option>
+		<do myxml:il="yes"><a href="#endit"/><comment>go to end point</comment></do>
+
+		<option myxml:il="yes"> If you are feeling like a cowboy. </option>
+		<do myxml:il="yes"> Howdy world! </do> 
+
+		<option myxml:il="yes"> If you are feeling like a Canadian. </option>
+		<do myxml:il="yes"> Gid'day world, how's it going eh? </do> 
+
+	      </menu>
+	      
+	      <a href="#repeat"/> 
+	      
+	      <a name="endit"/> 
+	      
+	    </body>
+
+	  </XPML>
+	</myxml>
+      </example>
+    </slide>
+
+    <slide>
+      <sub>The DSD processor passes judgment</sub>
+      <p>
+	The <tt><![CDATA[<]]>?dsd URI="xpml-att.dsd"?&gt;</tt>
+	processing instruction indicates that the document must conform to the
+	DSD named <tt>xpml-att.dsd</tt>.  </p> 
+
+      <p>The DSD processor complains!</p>
+
+<p>
+<pre style="color:red;">
+Error in 'greetings-first-attempt.pml' 
+line 10: attribute 'nointerrupt' has illegal value 'y'
+while checking attribute in constraint 
+"message-attributes", 'xpml-core.dsd' line 377
+</pre>
+    </p>
+<p>
+The DSD describes this constraint as follows:
+</p>
+<example class="dsdpretty">
+<div style="margin-bottom:2ex; margin-top:1ex;">
+<div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1379542679" class="user-bold">message-attributes</a><span>: </span><span><span></span><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+	      <span class="concrete">nointerrupt=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1379542679">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div></span></div></div>
+   </example>
+The constraint declares the attribute
+    <tt>nointerrupt</tt>  with a string type <tt>YesOrNo</tt>.
+In turn, the DSD details that
+<example class="dsdpretty">
+      <div style="margin-bottom:2ex; margin-top:1ex; ">
+	<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span
+class="special-key">ID=</span><a Name="N-1388455575"
+class="user-bold">YesOrNo</a><span>: </span><span><span></span><div
+style=" font-family: Courier; font-weight:bold; margin-left: 2.7ex;
+text-indent: -2.7ex; "> <span><span>(</span><span>"</span><span
+class="tt">yes</span><span>"</span> | </span><span><span>"</span><span
+class="tt">Yes</span><span>"</span> | </span><span><span>"</span><span
+class="tt">no</span><span>"</span> | </span><span><span>"</span><span
+class="tt">No</span><span>"</span>)</span></div></span></div></div></example>
+So, the programmer must write <tt>"yes"</tt>, not <tt>"y"</tt>.  
+
+      <p>All modern schema notations will do this kind of analysis for you!</p>
+    </slide>
+
+    <slide>  
+    <sub>Let's look at a DSD</sub>
+<p>
+	The DSD definition of the element <tt>XPML</tt> is shown below
+    (left) in a way that strongly suggests the concrete syntax of an
+    application document; the original DSD definition (right) will not
+    be shown to the application programmer:
+    </p>
+<p>
+<table>
+<tr valign="top">
+<td>
+<example>
+<div class="dsdpretty">
+    <div style="margin-bottom:2ex; margin-top:1ex;  ">
+      <div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+	<span class="concrete"><![CDATA[<]]>XPML&gt;</span><span class="special-key">ID=</span><a Name="N1398659446" class="user-bold">XPML</a><span>: </span><span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+	    <span title="The head element may be omitted."><span>( </span>
+<span class="concrete"><![CDATA[<]]>head&gt;</span><span><div style=" font-family: Courier; font-weight:bold;   margin-left: 5.4ex;  text-indent: -2.7ex; ">
+		  <span class="key">Constraint</span><span> </span><a class="user" href="#N1398659446">head-constraint</a></div></span><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+		<span class="concrete"><![CDATA[<]]>/head&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>, </div></span><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="The body element is mandatory.">
+	      <span class="concrete"><![CDATA[<]]>body&gt;</span><span><div style="font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+		  <span class="key">Constraint</span><span> </span><a class="user" href="#N1398659446">body-constraint</a></div></span><div style="font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+		<span class="concrete"><![CDATA[<]]>/body&gt;</span>)</div></div></div></span><div style="font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+	  <span class="concrete"><![CDATA[<]]>/XPML&gt;</span>
+	</div>
+      </div>
+    </div>
+</div>
+</example>
+</td>
+<td>
+<example>
+<myxml>
+  <ElementDef ID="XPML">
+    <Sequence>
+      <BriefDoc myxml:bil="yes">The head element may be omitted.</BriefDoc>
+      <Element Name="head" Defaultable="yes" myxml:bil="yes">
+	<Constraint IDRef="head-constraint"/>
+      </Element>
+      <BriefDoc myxml:bil="yes">The body element is mandatory.</BriefDoc>
+      <Element Name="body" myxml:bil="yes"> 
+	<Constraint IDRef="body-constraint"/>
+      </Element>
+    </Sequence>
+  </ElementDef>
+</myxml>
+</example>
+</td>
+</tr>
+</table>
+</p>
+
+<p>The <tt>BriefDoc</tt> documentation
+      strings (right) are used as HTML <tt>title</tt> attributes (left).</p>
+    <p></p>
+ This  DSD specifies
+that the <tt>XPML</tt> element consists of a <tt>head</tt> element
+followed by a <tt>body</tt> element.  The <tt>head</tt> is defaultable
+(which means that it may be omitted if a default for it has been
+specified) and its attributes and content are specified by the
+constraint named <tt>head-constraint</tt>.  Similarly, the
+<tt>body</tt> element is specified by the constraint
+<tt>body-constraint</tt>.
+    </slide>
+
+    <slide>
+      
+      <sub>DSDs for myriads of defaults</sub> 
+
+      The DSD processor inserts defaults during parsing.  The resulting
+      document is
+      <example>
+	<myxml>
+	  <?dsd URI="xpml-att.dsd"?>
+	  <XPML>
+	    <head>
+
+
+	      <application name="HELLOWORLD"/>
+	      
+	      <maintainer address="karam@research.att.com" loglevel="2"/>
+
+	      <title>The Greeting Application</title>
+
+	    </head>
+
+	    <body>
+
+	      Welcome to greetings are us.
+	      <span nointerrupt="yes" myxml:il="yes"> <audio url="/audioclips/greeting.vox"/></span>
+
+	      <a name="repeat"/> 
+
+	      <menu asrmode="none" endchars="#" finaltimeout="5000ms" 
+		    interaction="basic" interdigittimeout="4000ms" 
+		    maxmisselected="3" maxtimeout="2" maxtterrs="3" 
+		    name="feelings" timeout="0ms">
+		<option dtmf="0">To end</option>
+		<do myxml:il="yes"><a href="#endit"/><comment>go to end point</comment></do>
+
+      <option myxml:il="yes"> If you are feeling like a cowboy. </option>
+      <do myxml:il="yes"> Howdy world! </do> 
+
+      <option myxml:il="yes"> If you are feeling like a canadian. </option>
+      <do> Gid'day world, how's it going eh? </do> 
+
+      <help myxml:il="yes">No help is available.</help>
+      <initial myxml:il="yes"> <enumerate><option/> Press <emph><dtmf/></emph>.</enumerate>
+      </initial>
+      <timeout myxml:il="yes">You have exceeded the time limit.</timeout>
+      <toomanyerrors myxml:il="yes">Sorry, too many errors.</toomanyerrors>
+      <counttimeout myxml:il="yes">Sorry, too many timeouts.</counttimeout>
+      <pause myxml:il="yes"> Pausing.  Press pound sign to continue.
+      </pause>
+   
+    </menu>
+  	  
+    <a href="#repeat"/> 
+	  
+    <a name="endit"/> 
+    
+  </body>
+
+</XPML>
+	</myxml>
+      </example>
+      <p>
+	
+	It is similar to the original document except that a variety
+	of timing and counting parameters, like
+	<tt>interdigittimeout="4000ms"</tt> have been inserted.  Also,
+	various default messages used in error and help situations,
+	like <myxml><help>No help is available.</help></myxml> have
+	been inserted.  
+      </p>
+    </slide>
+    
+    <slide>
+    <sub>DSD defaults for customization</sub>
+
+    The XPML programmer may easily override defaults.
+      A DSD default declaration  like:
+
+    <example>
+      <myxml>
+	<DSD:Default>
+	  <DefaultAttribute Name="interdigittimeout" Value="1000ms"/>
+	</DSD:Default>
+      </myxml>
+      </example>
+      can be embedded in the application document.  Its scope consists
+      of all its siblings and their descendants.  So in this case, the
+      programmer may insert the DSD default declaration as a child of
+      the <tt>body</tt> element.
+    </slide>
+      
+    <slide>
+	<sub>Why is this good?</sub>
+
+	The DSD default mechanism is derived from CSS (Cascading Style
+	Sheets), a technology found in all one Web browsers.  CSS
+	modifies layout properties according to very simple regular
+	expressions that characterize the path from the root to the
+	element affected.
+	
+	<p>That's tree technology in use in your browser today.</p>
+	
+      </slide>
+
+      <slide>
+
+	<sub>DSD stylesheets</sub>
+      
+	The DSD defaults may be gathered in XML external parsed entities
+(don't ask). 
+
+	Override the default <tt>help</tt> element for the <tt>menu</tt>
+	construct in two ways: for a <tt>menu</tt> without a <tt>class</tt>
+	attribute, the message "We're sorry, can't help you more right now,
+	but please call us at 1-800-greetings" is specified; for a
+	<tt>menu</tt> with a <tt>class</tt> attribute of value <tt>moody</tt>,
+	the default content of <tt>help</tt> becomes "How are you feeling,
+	dud? press 1 to get relief":
+
+	<example>
+	  <myxml>
+	    <DSD:Default>
+	      <Context>
+		<Element Name="menu"/>
+	      </Context>
+	      <DefaultContent>
+		<help>We're sorry, can't help you more right now, but please
+		  call us at 1-800-greetings</help>
+	      </DefaultContent>
+	    </DSD:Default>
+
+	    <DSD:Default>
+	      <Context>
+		<Element Name="menu">
+		  <Attribute Name="class" Value="moody"/>
+		</Element>
+	      </Context>
+	      <DefaultContent>
+		<help>How are you feeling, dud? press 1 to get relief</help>
+	      </DefaultContent>
+	    </DSD:Default>
+
+	  </myxml>
+	</example>
+	
+      </slide>
+ 
+     <slide>
+	<sub>Let's go through DSD concepts by example</sub>
+
+      Essential XML glossary:
+      <ul><li> The <em>tree</em> denoted by a document consisting of nodes that
+	  correspond to an element, an attribute, or text occurrence.</li>
+	<li> The
+	  <em>attribute nodes</em> are leaves and are unordered offspring of their
+	  parent.</li>
+	<li>An <em>element node</em> has ordered <em>children</em>, known as
+	  <em>content</em> that are text and element
+	  nodes.</li>
+	<li>A <em>text node</em> is a leaf.</li>
+	<li>The <em>root node</em> is an element node.</li>
+      </ul>
+
+      XPML in essence is described in <a
+      href="xpml-core.html">xpml-core.dsd</a>.  (Explain
+      body-constraint, statements-in-context, statement, menu,
+      menu-constraint.)
+
+      <p>This example takes us through main DSD concepts:</p>
+      <ul>
+	<li><em>element declaration</em>: an element "type"; </li>
+	<li><em>constraint</em>: a nonterminal 
+	  that characterizes content and attributes of an element---several
+	  may be applied to the same element node
+	</li>
+	 <li><em>attribute declaration</em></li>
+	<li><em>content description</em>: a regular expression characterizing content</li>
+	<li><em>Boolean expression</em></li>
+	<li><em>CSS-like context expression</em></li>
+	<li><em>string types</em></li>
+      </ul> 
+      All of these can be named by an identifier.
+    </slide>
+    
+
+
+
+    <slide>
+      <sub>Adding speech markup to XPML</sub>
+
+
+Separately, in <a href="xpml-speech.html">speech recognition
+extensions</a>, it is described how the high-level construct
+<tt>menu</tt> may be further refined by speech recognition parameters.
+      Specifically, the constraint that describes <tt>menu</tt> attributes
+and content is extended with a declaration of an attribute
+<tt>asrmode</tt> that has the value '<tt>none</tt>', '<tt>only</tt>', or
+'<tt>plus</tt>':
+    <example class="dsdpretty">
+      <div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+	<span class="concrete">asrmode=</span><span class="concrete">"</span><span><span></span><span><span>(</span><span>'</span><span class="concrete">none</span><span>'</span> | </span><span><span>'</span><span class="concrete">only</span><span>'</span> | </span><span><span>'</span><span class="concrete">plus</span><span>'</span>)<span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></span></div>
+    </example>
+Also,  if the <tt>asrmode</tt> is
+different from <tt>none</tt>, then the constraint
+<tt>menu-asr-constraint</tt> applies:
+<example  class="dsdpretty">
+      <div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+	<span class="key">If </span><span><span></span><span><span>{</span><span class="key">Attribute</span><span> </span><span class="tt">asrmode</span><span>=</span><span>"only"</span><span class="key"> Or</span> </span><span><span class="key">Attribute</span><span> </span><span class="tt">asrmode</span><span>=</span><span>"plus"</span>} </span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+	  <span class="key">Then</span><span> </span>{<span><span></span><span class="key">Constraint</span><span> </span><a class="user" href="#N-1167094805">menu-asr-constraint</a>}</span></div></div>
+    </example>
+The <tt>menu-asr-constraint</tt> declares various other attributes
+such as <tt>asrengine</tt>, <tt>asrurl</tt>, etc.: 
+<example  class="dsdpretty"><div style=" font-family: Courier; font-weight:bold;
+margin-left: 2.7ex; text-indent: -2.7ex; "> <span
+class="key">ConstraintDef </span><span
+class="special-key">ID=</span><a Name="N-1167094805"
+class="user-bold">menu-asr-constraint</a><span>:
+</span><span><span></span><div style=" font-family: Courier;
+font-weight:bold; margin-left: 2.7ex; text-indent: -2.7ex; "> <span
+class="concrete">asrengine=</span><span
+class="concrete">"</span><span><span></span><a class="user"
+href="#N-1168143381">Asr-engine-types</a><span
+class="concrete">"</span><span> </span><span class="key">[<span
+class="special-key">Optional</span>]</span>; </span></div></span><div
+style=" font-family: Courier; font-weight:bold; margin-left: 2.7ex;
+text-indent: -2.7ex; "> <span class="concrete">asrurl=</span><span
+class="concrete">"</span><span><span></span><a class="user"
+href="#">Url</a><span class="concrete">"</span><span> </span><span
+class="key">[<span class="special-key">Optional</span>]</span>;
+</span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asrspotting=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">bargein=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+	  <span class="concrete">asrgrammarlib=</span><span class="concrete">"</span><span><span></span><a class="user" href="#">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div></div></example>
+    </slide>
+
+
+
+<slide>
+    <sub>Adding interaction types to XPML</sub> In <a
+    href="xpml-menu-interaction.html">interaction extensions</a>, a
+    variety of additional ways of interpreting the <tt>menu</tt>
+    element is provided.  Each way is known as an
+    <em>interaction</em>.  The <tt>interaction</tt> attribute is
+    declared below along with a conditional constraint that declares
+    additional elements when the <tt>attribute</tt> has value
+    <tt>basic</tt> or <tt>optional</tt>:
+<example class="dsdpretty">
+      <div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">If </span><span><span></span><span><span>{</span><span class="key">Attribute</span><span> </span><span class="tt">interaction</span><span>=</span><span>"basic"</span><span class="key"> Or</span> </span><span><span class="key">Attribute</span><span> </span><span class="tt">interaction</span><span>=</span><span>"optional"</span>} </span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Then</span><span> </span>{<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete"><![CDATA[<]]>counttimeout&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete"><![CDATA[<]]>/counttimeout&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>; </div></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete"><![CDATA[<]]>pause&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#">menu-message-content</a></div>
+	    <div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete"><![CDATA[<]]>/pause&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>}</div></div></div></div></example>
+These declarations are part of a redefinition of a constraint
+    <tt>menu-constraint</tt> that governs the attributes and content
+    of <tt>menu</tt>s. 
+    </slide>
+
+    <slide>
+      
+      <sub>Combining it all</sub>
+      DSDs may include other DSDs, so XPML is put together from 
+      the three parts just described in
+      <a href="xpml.html">xpml.dsd</a>. 
+
+      <sub>Extending XPML with AT&amp;T specific additions</sub> 
+
+      It's now possible to round off the description of XPML with
+      properties, like metrics, that are specific to the AT&amp;T platform.
+      That's done by further extending the XPML DSD, see 
+      <a href="xpml-att.html">xpml-att.dsd</a>.
+
+    </slide>
+
+
+
+    <slide>
+      <sub>How does the ID mechanism work?</sub>
+      
+      <ul>
+	<li>an <tt>ID</tt> introduces
+	  the first definition of an identifier
+	</li>
+	<li>a <tt>RenewID</tt> 
+	  redefines an identifier
+	</li>
+	<li>
+	  an <tt>IDRef</tt> 
+	  points to the very last definition
+	</li>
+	<li>
+	  a <tt>CurrIDRef</tt> points
+	  to the lastest, complete definition
+	</li>
+      </ul>
+    </slide>
+
+    <slide>
+      <sub>How does the ID mechanism work II?</sub>
+      
+        In a picture:<br/>
+      <img src="id-explanation.gif"/>
+
+    </slide>
+
+
+    <slide>
+      <sub>Coping with semi-structured data</sub>
+
+      Remember, DSDs are self-describable.  So, the requirement that,
+      say, element reference really refers to a description of an
+      element is expressible in the DSD notation.
+
+
+      <p>The mechanism is simple: for example, an attribute declaration
+      for an ID reference may be associated with a Boolean
+      expression.</p>
+
+      <p>That expression is evaluated at the node in the application document
+	denoted by the reference.</p>
+      
+    </slide>
+
+    <slide>
+      <sub>Semi-structured data: meta-DSD example</sub> 
+
+      The definition of what the <tt>Element</tt> element is
+      from the meta-DSD says among other things:
+      <ul>
+	<li>the <tt>IDRef</tt> attribute is declared to be one that points
+      to an element of name <tt>ElementDef</tt> and</li>
+	<li>the <tt>IDRef</tt> and  <tt>Name</tt> attributes are
+	  mutually exclusive</li>
+      </ul>
+<example class="dsdpretty">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete"><![CDATA[<]]>Element&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N1398495117" class="user-bold">elementdescr</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">IDRef=</span><span>?</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span><span> </span><span><span></span><span class="key">PointsTo</span><span> </span><span><span></span><span><span></span><span class="tt">ElementDef</span>; </span></span></span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">Name</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">OneOf</span><span> </span>{<span><span></span><span class="key">Attribute</span><span> </span><span class="tt">IDRef</span>, </span><span><span class="key">Attribute</span><span> </span><span class="tt">Name</span>}; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">If </span><span><span></span><span class="key">Attribute</span><span> </span><span class="tt">Name</span> </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Then</span><span> </span>{<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">Defaultable=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1376823406">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N1403213709">constraintexp</a>}</div></div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete"><![CDATA[<]]>/Element&gt;</span></div></div>
+      </example>
+    </slide>
+
+    <slide>
+      <sub>DSDs for simplifying semantic processing</sub>
+
+      With DSDs, an XML document can be <em>normalized</em>
+      by default insertion.
+
+      <p>
+	Since defaults cannot be removed by defaults in an application
+	document, only overridden, the defaults given with the DSD
+	itself provide a strong set of assumptions about the shape of
+	the document.
+      </p>
+
+      <p>
+	The current PML interpreter can be drastically simplified
+	under the assumptions made by a DSD description.
+      </p>
+
+      <p>The principle has already been proven for a non-trivial
+	application: the description of DSDs by a <a
+	href="dsd.html">meta-DSD</a>.  Virtually no error messages are
+	generated by the DSD processor itself.  DSDs are
+	self-describable.
+	<p>
+	  (We even provide "Segmentation error" if file not found.)
+	</p>
+      </p>
+    </slide>
+
+    <slide>
+      <sub>Other schema languages</sub>
+
+      <ul>
+	<li>DDML</li>
+	<li>DCD</li>
+	<li>BizTalk (Microsoft)</li>
+	<li>SOX 2.0</li>
+      </ul>
+      The latter is based on an object-oriented approach.
+
+      Besides, Dave Raggett has proposed <em>Assertion Grammars</em>
+      that also in essence is based on modifying the meaning of
+      nonterminals.  Rick Jeliffe has proposed <em>Schematron,</em>
+      which is based on XSLT. Also, RELAX has been announced.
+    </slide>
+
+    <slide>
+<sub>Example from SOX 2.0</sub>
+      This example is from <a href="http://www.w3.org/TR/NOTE-SOX/">http://www.w3.org/TR/NOTE-SOX/</a>.
+<P>The element type
+<EM CLASS="Display">datednote</EM> has the content model of the
+element type it extends (<EM CLASS="Display"> note</EM> ) with
+an appended date (using the intrinsic date datatype). The
+<EM CLASS="Display">multinote</EM> element type polymorphyically
+can use either.</P>
+<PRE><![CDATA[<]]>elementtype name=&quot;note&quot;&gt;
+   <![CDATA[<]]>model&gt;<![CDATA[<]]>element type=&quot;p&quot; occurs=&quot;+&quot;&gt;<![CDATA[<]]>/model&gt;
+<![CDATA[<]]>/elementtype&gt;
+
+<![CDATA[<]]>elementtype name=&quot;datednote&quot;&gt;
+     <![CDATA[<]]>extends type=&quot;note&quot;&gt;
+         <![CDATA[<]]>append&gt;
+             <![CDATA[<]]>element type=&quot;date&quot; name=&quot;adate&quot;&gt;
+             <![CDATA[<]]>element type=&quot;time&quot; name=&quot;atime&quot; occurs=&quot;?&quot;/&gt;
+           <![CDATA[<]]>/append&gt;
+     <![CDATA[<]]>/extends&gt;
+<![CDATA[<]]>/elementtype&gt;
+
+<![CDATA[<]]>elementtype name=&quot;multinote&quot;&gt;
+    <![CDATA[<]]>element type=&quot;note&quot; occurs=&quot;+&quot;/&gt;
+<![CDATA[<]]>/elementtype&gt;</PRE>
+
+<P>The following is a valid instance of <EM
+CLASS="Display">multinote:</EM> </P>
+<PRE>
+<![CDATA[<]]>multinote&gt;
+    <![CDATA[<]]>note&gt;<![CDATA[<]]>p&gt;This is a plain note<![CDATA[<]]>/p&gt;<![CDATA[<]]>/note&gt;
+    <![CDATA[<]]>datednote&gt;
+        <![CDATA[<]]>p&gt;This is a dated note<![CDATA[<]]>/p&gt;
+        <![CDATA[<]]>adate&gt;19981209<![CDATA[<]]>/adate&gt;
+        <![CDATA[<]]>atime&gt;10:23:32<![CDATA[<]]>/atime&gt;
+    <![CDATA[<]]>/datednote&gt;
+<![CDATA[<]]>/multinote&gt;</PRE>
+
+    </slide>
+    
+    <slide>
+    <sub>XML Schema</sub>
+
+      <p>Incorporates ideas from the above mentioned schema proposals
+      (minus Assertion Grammar, Schematron, and DSD).</p>
+
+      <p>Is "ready" according to TBL.</p>
+
+
+      <p>
+	But, rough comments from the public: "reject it", "too
+	complicated", "emperor's new clothes", "write it in English",
+	"intimidatingly complex",
+	"no one should be forced to write like that"...  (only the
+	last comment by the undersigned)
+      </p>
+
+      <p>A couple of outside people seem to understand it and
+	contribute constructive critism.</p>
+
+      <p>Microsoft support: "enthusiastic about it"</p>
+    </slide>
+
+    <slide>
+      <sub>DSD highlights</sub>
+      <ul>
+	<li>large class of tree languages, handling almost all
+	  syntactic constraints of Boolean or regular nature</li>
+	<li>grammar modification: abstraction, restriction, extension</li>
+	<li>CSS notation for context dependencies, semi-structured
+	  data description, and defaults</li>
+	<li>tools: DSD processor available for free,  
+	  pretty-printing XSLT style sheets, specification,
+	  overview article, and industrial case report.</li>
+      </ul>
+    </slide>
+
+    <slide>
+
+      <sub>The future</sub>
+      
+      <subsub>W3C-wise</subsub>
+      Complicated!
+
+      <subsub>Other bodies, perhaps even informal</subsub>
+      Anyone wants to join?
+
+      <subsub>Lots of interesting questions left</subsub>
+
+      <subsub>For more information, <a href="http://www.brics.dk/DSD">http://www.brics.dk/DSD</a>
+      </subsub>
+    </slide>
+    
+
+</body>
+</myhtml>
+

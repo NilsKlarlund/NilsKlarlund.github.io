@@ -1,0 +1,97 @@
+<!-- @(#)  SID: 1.9;  module: model.html;  last changed: 06/25/97  19:20:42 -->
+
+<html>
+<head>
+<TITLE>Recent Papers</TITLE>
+<BASE href="http://www.research.att.com/~klarlund/external/">
+
+<H1>Recent Papers</H1>
+
+
+
+</head>
+
+<body bgcolor="#ffffff" background="/backgrounds/wm5b.gif" 
+link="#ff0000" vlink="#820594" alink="#111111">
+
+
+<h1 align=center>
+XXX
+</h1>
+
+
+</A> <IMG SRC="images/space.xbm"> An n log n algorithm for online BDD refinement (<A HREF="articles/BDD-automaton/abstract.html">abstract</A>)<BR><BR>
+<A HREF="articles/rabinverification/journal.ps"><IMG ALIGN=MIDDLE SRC="images/paper.xbm"></A> <IMG SRC="images/space.xbm"> Rabin measures (<A HREF="articles/rabinverification/abstract.html">abstract</A>)<BR><BR>
+<A HREF="arch.ps"><IMG ALIGN=MIDDLE SRC="images/paper.xbm"></A> <IMG SRC="images/space.xbm"> Design Architectures through Category Constraints (<A HREF="arch.html">abstract</A>)<BR><BR>
+<A HREF="articles/m2l-parameter/2e/article.ps"><IMG ALIGN=MIDDLE SRC="images/paper.xbm"></A> <IMG SRC="images/space.xbm">Mona: Monadic Second-Order Logic in Practice (<A HREF="articles/m2l-parameter/new/article.html">abstract</A>)<BR><BR>
+<A HREF="articles/hardware-m2l/new/r.ps"><IMG ALIGN=MIDDLE SRC="images/paper.xbm"></A> <IMG SRC="images/space.xbm"> Hardware Verification using Monadic Second-Order Logic (<A HREF="articles/hardware-m2l/new/r.html">abstract</A>)<BR><BR>
+abstract</A>)<BR><BR>
+<A HREF="articles/borelcmeasures/concur94.ps"><IMG ALIGN=MIDDLE SRC="images/paper.xbm"></A> <IMG SRC="images/space.xbm">The Limit View of Infinite Computations (<A HREF="articles/borelcmeasures/abstract.html">abstract</A>)<BR><BR>
+
+
+<table border=5 cellspacing=5 cellpadding=5 align=center>
+<tr>
+<td colspan=3 align=center><A HREF="http://www.brics.dk/~mona/papers.html#mona-fido-logic-aut-practice"">
+<IMG ALIGN=MIDDLE SRC="images/mona.gif"></a>
+</td>
+<td>
+Overview paper discussing BDDs
+and the automaton-logic connection in practice (invited talk)
+</td>
+<td>
+CSL '97.
+</td>
+</tr>
+
+<tr><td>
+<A HREF="articles/homomorphism-for-omega/csl94.ps"><IMG ALIGN=MIDDLE SRC="images/paper.gif"></A> 
+</td>
+<td>
+<A HREF="articles/homomorphism-for-omega/abstract.text"><IMG ALIGN=MIDDLE SRC="images/abs.gif"></A> 
+</td>
+<td>
+<A HREF="articles/homomorphism-for-omega/selfref.bib"><IMG ALIGN=MIDDLE SRC="images/ref.gif"></A> 
+</td>
+<td>
+A Homomorphism Concept for omega-Regularity
+</td>
+<td>
+CSL '94
+</td>
+</table>
+
+
+<p align=center>
+<a href="/maps/ToolBarA.map">
+<img SRC="/banners/ToolBarA.gif" border=0 width=489 height=69
+ismap></a>
+<br>
+[ <a href="/">Home</a>
+| <a href="/info/">Our People</a>
+| <a href="/work/">Our Work</a>
+| <a href="/history/">History</a>
+| <a href="/TOC/find.html">Find</a>
+]
+</p>
+
+<table border=0 width=100%>
+
+<tr>
+
+<td width=50% align=left>
+<p>
+<a href="/maps/CopyrightNotice.map"><img
+SRC="/banners/CopyrightNotice.gif" alt="Copyright Statement" border=0
+width=205 height=90 ismap></a>
+</p>
+</td>
+
+
+</tr>
+
+</table>
+
+</body>
+</html>
+
+

@@ -1,0 +1,125 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head xmlns="">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        
+    <title>Nils Klarlund -- ReX, towards a foundation for multimodal,
+          multimedia applications
+    </title>
+        
+    <meta content="Nils Klarlund" name="author">
+        
+    <meta content="multimedia, SMIL, IVR-system,     VoiceXML, multimodal, speech recognition, error correction" name="keywords">
+        
+    <link href="klarlund.css" type="text/css" rel="stylesheet">
+      
+  </head>
+  <body xmlns="">
+    <table class="columntwo">
+      <tr>
+        <td class="firstcolumn" valign="top"></td>
+        <td class="secondcolumn" valign="top">
+
+              <h1 xmlns="http://www.w3.org/1999/xhtml">ReaX—towards a foundation for multimodal,
+    multimedia applications</h1>
+
+
+              
+          <div xmlns="http://www.w3.org/1999/xhtml" class="abstract">
+      <p>Solving a universal user interface problem, the ReaX
+	programming language forces the buttons <div style="text-align: center; margin:2ex;"><button>|&lt;</button><span>
+	</span><button>&lt;&lt;</button><span>
+	</span><button>&gt;&gt;</button><span>
+	</span><button>&gt;|</button><span>
+	</span><button>pause/play</button></div> to always work. (The
+	button marked "|&lt;" is the undo function, the button marked
+	"&lt;&lt;" is the rewind function, the button "&gt;&gt;" is
+	the forward function, and the button "&gt;|" is the redo
+	function.)  
+      </p>
+      <p>Modern user interfaces are often needlessly irking to use,
+	simply because the prosaic problem of providing consistent and
+	workable undo and seek mechanisms have been ignored by
+	programmers.  Speech enabling applications not already
+	designed with undo leads to offensive designs.  Moreover,
+	small buttons on new devices and generally difficult-to-use
+	applications make the lack of a general undo mechanism a basic
+	problem that we show is readily solvable.  Our main
+	technical contribution is a new technique for tying declarative
+	reasoning about time and synchronicity  to the basic
+	notion of event.
+      </p>
+    </div>
+
+
+          <p xmlns="http://www.w3.org/1999/xhtml">The simpleness of HTML contributed to the explosive growth of the
+Internet.  But what is the content format that will do the same for
+multimedia content?  The format must combine temporal notions for
+media coordination, such as SMIL (a W3C recommendation), and a
+reactive programming language, such as Statecharts or a multithreaded
+version of Ecmascript.</p>
+
+
+          <p xmlns="http://www.w3.org/1999/xhtml">
+However, a well-known and fundamental semantic conflict exist between
+a declarative style of specifying temporal relationships and the
+programming that addresses user and system events.  We propose a new
+multi-threaded, XML-based scripting language—ReaX—that introduces
+a notion of <em>reaction tree</em> for capturing causality among
+events.  We show how the explicitly tree-oriented semantics of ReaX
+overcome semantic problems in reactive languages and SMIL.
+    </p>
+
+          	
+          <p xmlns="http://www.w3.org/1999/xhtml">Our initial work with <a href="http://www.cs.wisc.edu/~jbeckham/">Jennifer Beckham</a>
+      and Giuseppe di Fabbrizio outlined how a SMIL-like notation,
+      then called ReX, would form a basis for a reactive language with
+      declarative, temporal features.  You can see our ideas in <a href="papers/Rex-Eurospeech01.pdf">our paper</a>.
+    </p>
+
+              
+          <p xmlns="http://www.w3.org/1999/xhtml">The document <img src="gifs/new.gif" alt="new"/>“<a href="papers/ReaX-language-draft.html">ReaX: an
+      undoable, timed synchronization language</a>” presents <ul>
+	<li>a concrete design of a reactive core language,</li>
+	<li> a
+      concrete event semantics of “synchronous” broadcast, and
+	</li>
+	<li>an explanation of how undo and real time seek mechanisms
+	are uniformly treated in the reactive core language
+      </li>
+      </ul>
+    </p>
+                
+          <p xmlns="http://www.w3.org/1999/xhtml">
+      The <img src="gifs/new.gif" alt="new"/><a href="talks/ReaX.htm">survey talk</a> (html) [<a href="talks/ReaX.ppt">Powerpoint</a>] explains my general
+     interests in user interface technology and how they lead to
+     fundamental questions about events and synchronicity.</p>
+            
+        </td>
+      </tr>
+    </table>
+    <div class="footer">
+      <hr>
+      <br>
+      <table width="100%">
+        <tr>
+          <td><a href="ReaX_print.html"><img src="./photos/printsymbol.gif" align="top" alt="printer           symbol">printer-friendly version</a><a href="."><img src="./photos/mailsymbol.gif" align="top" alt="mail         symbol">e-mail Klarlund</a></td>
+          <td align="left" class="prevnext"><span style="width: 10ex;" class="inactive">previous</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="width:      10ex;" class="inactive">next</span></td>
+          <td align="right"><a href="http://www.clairgrove.com"><img src="./photos/homesymbol.gif" align="top" alt="home symbol">Nils
+              		  Klarlund home</a></td>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <hr>
+      <table>
+        <tr>
+          <td width="70%" align="left">
+            	By Nils Klarlund.
+                  <hr></td>
+          <td width="30%" align="right" valign="top"><a style="font-family:       sans-serif; font-size: 12pt; font-weight: bold; color:       black; text-decoration: none;" href="http://www.w3.org/Style/XSL">XSLT &amp;</a><a href="http://www.python.org"><img src="./gifs/PythonPowered.gif" align="right" border="0" vspace="10" alt="PythonPowered"></a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

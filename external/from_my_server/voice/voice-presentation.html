@@ -1,0 +1,191 @@
+<html>
+  <head>
+    <style>
+      h1 {color:brown;}
+      h2 {color:brown;}
+      tt {color:purple;}
+    </style>
+  </head>
+<body>
+    <h1>EmacsListen</h1>
+
+    <h2>Nils Klarlund (<tt>klarlund@research.att.com</tt>)<br/> AT&amp;T Labs
+    </h2>
+    <h2>Presentation Voice Coder Workshop March, 2000</h2>
+    <h2>Background</h2>
+    <ul>
+      <li>I injured myself late 1992</li>
+      <li>Started using DragonDictate in 1995</li>
+      <li>Have poured tons and tons of time into developing
+	<ul>
+	  <li>keyboards</li>
+	  <li>pointing devices</li>
+	  <li>foot pedals</li>
+	  <li>Emacs voice user interface</li>
+	</ul>
+      </li>
+    </ul>
+
+    <h2>Goal</h2>
+    <ul>
+      <li>significantly reduce typing and mousing</li>
+      <li>no decrease in performance</li>
+      <li>assumption: occasional keyboard use unavoidable</li>
+      <li>assumption: speech recognition by itself a no go</li>
+      <li>assumption: pointing a must</li>
+      <li>assumption: foot pedals a must</li>
+    </ul>
+
+   
+    <h2>Failures</h2>
+    <ul>
+      <li>all keyboards</li>
+      <li>most pointing devices</li>
+      <li>most foot pedals</li>
+    </ul>
+
+    <h2>Non-failures</h2>
+    <ul>
+      <li>mouse: small and remove buttons</li>
+      <li>foot pedals: very important</li>
+      <li>EmacsListen: a spoken interface to DragonDictate</li> 
+    </ul>
+
+    <h2>Requirements for workable editing-by-speech interface</h2>
+
+    <ul>
+      <li>must be much, much better than what's commercially offered</li>
+      <li>in particular,
+	<ul>
+	  <li>no modal distinctions</li>
+	  <li>effects of  errors automatically
+	    undone</li> 
+	  <li>mouse and cursor position as
+	    references in spoken commands</li>
+	  <li>the meaning of commands, even words, must be
+	    context dependent</li> 
+	  <li>sophisticated, automatic spacing</li>
+	  <li>repeat of last voice command</li>
+	  <li>recognition history permanently visible &amp; accesible</li>
+	  <li>continuous recognition</li>
+	</ul>
+      </li>
+    </ul>
+
+    <h2>No modal distinctions, either by command or by timing</h2>
+    <ul>
+      <li>
+	pause before or after "escape-key", "line-end", etc.
+	unacceptable
+      </li>
+      <li>"command-mode", "dictation-mode" unacceptable</li>
+    </ul>
+  
+    <h2>Effects of speech recognition errors automatically undone</h2>
+    <ul>
+      <li>if the third last utterance is corrected, then the
+	effect of this one and the two subsequent ones should
+	be undone, the correct effect of the third utterance
+	executed and the two subsequent ones should be
+	reexecuted
+      </li>
+    </ul>
+
+    <h2>Use mouse and cursor position simultanously as
+      references in spoken commands</h2>
+    <ul>
+      <li>Generalize mouse buttons to thousands</li>
+      <li>Indent what's between cursor and mouse, move
+	word at mouse to cursor, etc.</li>
+    </ul>
+
+    <h2>The meaning of commands, even words, must be context dependent</h2>
+    <ul>
+      <li>"copy-term" is dependent on programming language</li>
+      <li>"house" means either</li>
+      <ul><li>insert the word "house" (in usual mode) </li>
+	<li>look for the word "house" (in directory listing)</li>
+	<li>type individual letters in incremental search mode</li>
+      </ul>
+    </ul>
+
+    <h2>Spacing around parentheses, brackets, quotation marks,
+	    must be automatically updated</h2>
+    <ul>
+      <li>Consider
+	<ul><li><tt>He was "befuddled" (to say the least)</tt></li>
+	  <li><tt>&lt;li&gt;This function is &lt;c&gt;int 
+	      sqrt(int x)&lt;/c&gt;</tt></li>
+	</ul>
+      </li>
+    </ul>
+    
+    <h2>Recognition history must be permanently visible</h2>
+    <ul>
+      <li>example: second-choice of last word immediately
+	accessible by a voice command or a button press </li>
+    </ul>
+
+    <h2>How does Emacslisten work?</h2>
+    <ul>
+      <li>new kind of event: voice</li>
+      <li>characters coming fast are captured by Emacs, converted
+        into voice events, and neutralized (by dynamic keyboard mapping changes) [wildly complicated, redefine several Emacs primitives]
+      </li>
+      <li>undo mechanism extended with records of what happened and
+	what undoes it</li>
+    </ul>
+    
+    <h2>Status</h2>
+    <ul>
+      <li>EmacsListen solves most requirements</li>
+      <li>but time has run from DragonDictate</li>
+      <li>time to migrate!</li>
+      <li>Barry Jaspan's work essential for such a project</li>
+      <li>also, integrate with VoiceGrip</li>
+    </ul>
+    
+    <h2>Conclusion</h2>
+    <ul>
+      <li>What can be done with voice within Emacs far surpasses any
+	commercial system</li>
+
+      <li>That's sad: why spent time on doing what speech system
+	vendors should have done?</li>
+
+      <li>In 10 years,
+	<ul>
+	  <li>
+	    promises made by gurus will appear naive,
+	  </li>
+	  <li> 
+	    speech systems for computers will be much more effective, and
+	  </li>
+	  <li>they'll still be just as hard to learn.</li>
+	</ul>
+      </li>
+      <li>Thanks, and profoundly so, to gurus for getting us a long
+	way.  Speech recognition (DragonDictate) is
+	playing a huge role in letting me doing my work.</li>
+    </ul>
+
+    <h2>Thanks to Eric, Alain, and Jonathan for organizing this event!</h2>
+  </body>
+</html>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-general-insert-case:lower
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:2
+sgml-indent-data:t
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

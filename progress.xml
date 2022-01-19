@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Nils Klarlund -- Progress measures</title>
+    <meta name="keywords" content="Nils Klarlund, progress measures"/>
+    <link rel="stylesheet" type="text/css" href="klarlund.css"/>
+  </head>
+
+  <body>
+
+    <h1>Progress measures</h1>
+
+
+     
+	<p>How can one prove properties about infinite limitations by
+	looking at the finite ones?  To study this question, I
+	formulated in my thesis (<span class="papertitle">Progress
+	measures and finite arguments for infinite
+	computations</span>, Cornell University, 1990) ways of viewing
+	infinite limitations as limits of finite ones.  In particular,
+	I showed how one can directly quantify progress towards
+	membership in various sets of the Borel hierarchy through
+	<em>progress measures</em>, which are arrangements of
+	ordinals.  After my thesis, I applied these techniques to show
+	that certain tree automata can be complemented in exponential
+	space, instead of doubly-exponential space; this result means
+	that the lower bound, established by Meyer, for the logic S2S
+	of an one exponential increase in complexity per quantifer
+	alternation is also an upper bound.  The progress measures
+	also summarize in one mathematical entity earlier program
+	transformation techniques for reasoning about termination
+	under fairness conditions.
+	</p>
+    <p>For some publications in this area, see <a
+    href="index_papers.html#progress_measures">progress measure publications</a>.
+    </p>
+
+  </body>
+</html>
+

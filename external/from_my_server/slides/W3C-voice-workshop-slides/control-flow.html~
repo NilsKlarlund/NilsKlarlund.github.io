@@ -1,0 +1,34 @@
+
+<html>
+<head>
+<title> Requirements for a markup language--control-flow
+</title>
+<link href="nils.css" rel=stylesheet type="text/css">
+</head>
+<body>
+
+<h1>
+Control flow
+</h1>
+<hr class=top>
+
+In IVR, control flow--at the highest level--is affected both by
+<ul>
+<li> previous input,
+<li> dialog events, and
+<li> by important asynchronous events
+</ul>
+
+<br>
+
+VXML must clearly express
+high-level  control flow 
+<br>
+<br>
+
+<hr class=bottom>
+<a href="overview.html">Index</a>
+<a href="abstraction.html">Previous slide </a>
+<a href="html-reuse.html">Next slide</a>
+</body>
+</html>

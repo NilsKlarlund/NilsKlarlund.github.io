@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="0" http-equiv="Expires">
+<title>XPML</title>
+<style type="text/css">
+	  div {margin-bottom:0em; margin-top:0em; margin-left:0em;
+	       font-weight:bold; font-family:  Courier; }
+	  span {color: black;}
+	  div.rootchild {margin-bottom:2ex; margin-top:.8ex; 
+              border-style: solid; border-width: 2px;  border-color:pink; }
+	  .key, .special-key {font-weight:bold; color: purple;}
+	  .doc {font-family: Arial, Helvetica, Sans-serif; font-style:normal; font-weight: normal; color: brown;}
+	  .user {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .user-bold {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black; font-weight:bold;}
+	  .user:link {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .user:visited {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: black;}
+	  .concrete, .string {font-family: Courier; color: blue; font-weight:bold; }
+	  .tt {font-family: Courier; color: blue; font-weight:bold; }
+	  .comment {font-family: Arial, Helvetica, Sans-serif; font-style:normal;
+	  font-weight:normal; color: brown;}
+	  h1.header {font-size:18pt;  color: purple; font-family: Arial, Helvetica, Sans-serif;}
+	  body {font-size:10pt; background-color:beige;}
+	</style></head>
+<body>
+<h1 class="header">XPML<div style="font-weight:bold; font-size:14pt">Root Element: 
+	      <span style="font-size:12pt;"><a class="user" href="#N-1222216199">XPML</a><br></span>
+	    
+	       
+	    DSD version: 
+	    <span style="font-size:12pt;">1.0</span></div></h1>
+<table style="border-width:0pt;">
+<tr>
+<th align="left">
+<span style="width:8em;height:1.5ex;" class="special-key">Title:</span></th><td><span style="font-weight:bold;height:1.5ex;" class="user;">XPML</span></td></tr>
+<tr>
+<th align="left">
+<span style="width:8em;height:1.5ex;" class="special-key">Version:</span></th><td><span style="font-weight:bold;height:1.5ex;" class="user;">.001</span></td></tr></table><hr><br>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> This document describes the tentative syntax of XPML,
+       the XMLized version of AT&amp;T's PML language.  The specification
+       is not yet complete. </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;" title="An XPML program consists of a head and a body section.">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;XPML&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1222216199" class="user-bold">XPML</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span title="The head element may be omitted."><span>(</span><span> </span><span class="concrete">&lt;head&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 5.4ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1223264775">head-constraint</a></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/head&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>, </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="The body element is mandatory.">
+<span class="concrete">&lt;body&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1210681863">body-constraint</a></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/body&gt;</span>)</div></div></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/XPML&gt;</span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> HEAD CONSTRAINT </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1223264775" class="user-bold">head-constraint</a><span>: </span><span title="The title element is a string with no markup."><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="concrete">&lt;title&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">StringType </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/title&gt;</span><span>?</span>; </div></span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span title="A meta element is used as in HTML 4.0, for example, for indexing purposes."><span></span><span class="concrete">&lt;meta&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">name</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">content</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/meta&gt;</span><span>*</span>; </div></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="key">Content</span><span> </span><a class="user" href="#N-1224313351">pragma</a><span>*</span></span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> PRAGMAS </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ContentDef </span><span class="special-key">ID=</span><a Name="N-1224313351" class="user-bold">pragma</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span> </span><span class="key">Element </span><a class="user" href="#N-1208584711">timeout</a> | </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1208060423">version</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1209633287">maintainer</a>)</div></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;" title="The timeout element specifies an upper bound on the amount of time that may be spent on the document.">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;timeout&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1208584711" class="user-bold">timeout</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">time=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1238206983">Interval</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="When the time limit is reached, this URL is retrieved and interpreted.">
+<span class="concrete">href=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1235585543">Url</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="This optional attribute specifies how long to wait for the URL to be retrieved.">
+<span class="concrete">urltimeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1238206983">Interval</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/timeout&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;version&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1208060423" class="user-bold">version</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">number=</span><span class="concrete">"</span><span><span></span><span class="concrete">1.0</span><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span></span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/version&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;maintainer&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1209633287" class="user-bold">maintainer</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">address</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">loglevel=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1236634119">Digits</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/maintainer&gt;</span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> MAIN CONTENT TYPES </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1210681863" class="user-bold">body-constraint</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1210157575">statements-in-context</a></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ContentDef </span><span class="special-key">ID=</span><a Name="N-1210157575" class="user-bold">statements-in-context</a><span>: </span><DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> This context sensitivity is not expressible in most schema proposals </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span title="A statement or either an inside-form-statement (if inside a form) or a form element (if not already inside a form)"><span></span><span><span>(</span><span> </span><span class="key">Content</span><span> </span><a class="user" href="#N-1211730439">statement</a> | </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">If </span><span><span></span><span><span></span><span class="tt">form</span> </span><span><span>*</span> </span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Then</span><span> </span>{<span><span></span><span class="key">Content</span><span> </span><a class="user" href="#N-1211206151">inside-form-statement</a>} </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Else</span><span> </span>{<span><span></span><span class="key">Element </span><a class="user" href="#N-1224837639">form</a>})<span>*</span></span></div></div></span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ContentDef </span><span class="special-key">ID=</span><a Name="N-1211730439" class="user-bold">statement</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span> </span><span class="key">Element </span><a class="user" href="#N-1240566279">select</a> | </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1227983367">a</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1229031943">menu</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1313704455">if</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1314228743">transfer</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1316850183">hangup</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1235061255">inline</a>)</div></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ContentDef </span><span class="special-key">ID=</span><a Name="N-1211206151" class="user-bold">inside-form-statement</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span> </span><span class="key">Element </span><a class="user" href="#N-1226934791">input</a> | </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1226410503">submit</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1225886215">reset</a>)</div></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1239517703" class="user-bold">Expression</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">StringType </span></div></span></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> SELECT </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;select&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1240566279" class="user-bold">select</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="key">Element </span><a class="user" href="#N-1230604807">menu-option</a><span>+</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1231653383">menu-constraint</a>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1231129095">menu-dtmf-constraint</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/select&gt;</span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> FORM </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;form&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1224837639" class="user-bold">form</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">action=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1235585543">Url</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1210157575">statements-in-context</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/form&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;submit&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1226410503" class="user-bold">submit</a><span>: </span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;reset&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1225886215" class="user-bold">reset</a><span>: </span></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> INPUT </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;input&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1226934791" class="user-bold">input</a><span>: </span><DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> As in HTML, the type attribute determines what the input element really is  </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">type=</span><span class="concrete">"</span><span><span></span><span><span>(</span><span>'</span><span class="concrete">submit</span><span>'</span> | </span><span><span>'</span><span class="concrete">text</span><span>'</span> | </span><span><span>'</span><span class="concrete">hidden</span><span>'</span>)<span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">If </span><span><span></span><span class="key">Attribute</span><span> </span><span class="tt">type</span><span>=</span><span>"submit"</span> </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Then</span><span> </span>{<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">name=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1237158407">Name</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">value</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="A value attribute must occur only if a name attribute also occurs.">
+<span class="key">Imply</span><span> </span>{<span><span></span><span class="key">Attribute</span><span> </span><span class="tt">value</span>; </span><span><span class="key">Attribute</span><span> </span><span class="tt">name</span>}}; </span></div></div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">If </span><span><span></span><span class="key">Attribute</span><span> </span><span class="tt">type</span><span>=</span><span>"text"</span> </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Then</span><span> </span>{<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">name=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1237158407">Name</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">size=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1236634119">Digits</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">maxlength=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1236634119">Digits</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">interdigittimeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1238206983">Interval</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">finaltimeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1238206983">Interval</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">timeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1238206983">Interval</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;help&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1216973319">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1216449031">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/help&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>; </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;initial&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1216973319">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1216449031">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/initial&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>; </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;timeout&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1216973319">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1216449031">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/timeout&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>; </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;toomanyerrors&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1216973319">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1216449031">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/toomanyerrors&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>}; </div></div></div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">If </span><span><span></span><span class="key">Attribute</span><span> </span><span class="tt">type</span><span>=</span><span>"hidden"</span> </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Then</span><span> </span>{<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">name=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1237158407">Name</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">value</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>}</div></div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/input&gt;</span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> A </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;a&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1227983367" class="user-bold">a</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">name</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">href</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> This constraint is not describable by other schema mechanisms,
+    but it's an important one </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="One (and only one) of name and href attributes must be present">
+<span class="key">OneOf</span><span> </span>{<span><span></span><span class="key">Attribute</span><span> </span><span class="tt">name</span>, </span><span><span class="key">Attribute</span><span> </span><span class="tt">href</span>}</span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/a&gt;</span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> MENU </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;menu&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1229031943" class="user-bold">menu</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span><span>(</span><span> </span><span class="key">Element </span><a class="user" href="#N-1230604807">menu-option</a>, </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="key">Element </span><a class="user" href="#N-1230080519">menu-do</a><span>?</span>)<span>+</span>; </span></div></span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1231653383">menu-constraint</a>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1231129095">menu-dtmf-constraint</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/menu&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;option&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1230604807" class="user-bold">menu-option</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">value</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">dtmf=</span><span class="concrete">"</span><span><span></span><span><span></span><a class="user" href="#N-1317898759">Touchtone</a><span>+</span><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">asr</span><span>=?</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">url=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1235585543">Url</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="The quiet attribute specifies that the option is not advertised.">
+<span class="concrete">quiet=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1317374471">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1235061255">inline</a>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1232701959">menu-option-constraint</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/option&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;do&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1230080519" class="user-bold">menu-do</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1210157575">statements-in-context</a></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/do&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1231653383" class="user-bold">menu-constraint</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">name=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1237158407">Name</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">class=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1237158407">Name</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">maxmisselected=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1236634119">Digits</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">maxtimeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1236634119">Digits</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">finaltimeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1238206983">Interval</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">timeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1238206983">Interval</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;help&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1216973319">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1216449031">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/help&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>; </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;initial&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1216973319">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1216449031">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/initial&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>; </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;timeout&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1216973319">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1216449031">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/timeout&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span>; </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;toomanyerrors&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Constraint</span><span> </span><a class="user" href="#N-1216973319">message-attributes</a>; </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1216449031">menu-message-content</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/toomanyerrors&gt;</span><span class="key">[<span class="special-key">Defaultable</span>]</span></div></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1231129095" class="user-bold">menu-dtmf-constraint</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">termname=</span><span class="concrete">"</span><span><span></span><span><span></span><a class="user" href="#N-1317898759">Touchtone</a><span>*</span><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">endchars=</span><span class="concrete">"</span><span><span></span><span><span></span><a class="user" href="#N-1317898759">Touchtone</a><span>*</span><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">maxtterrs=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1236634119">Digits</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">interdigittimeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1237682695">TimeBetweenDigits</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span></span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1232701959" class="user-bold">menu-option-constraint</a><span>: </span></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> MESSAGE ATTRIBUTES </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ConstraintDef </span><span class="special-key">ID=</span><a Name="N-1216973319" class="user-bold">message-attributes</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">nointerrupt=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1317374471">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ContentDef </span><span class="special-key">ID=</span><a Name="N-1216449031" class="user-bold">menu-message-content</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span><span>(</span><span> </span><span class="key">Content</span><span> </span><a class="user" href="#N-1235061255">inline</a> | </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;enumerate&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span><span>(</span><span class="key">Content</span><span> </span><a class="user" href="#N-1312655879">inline-with-option-dtmf</a>)<span>*</span></span></span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/enumerate&gt;</span>)<span>*</span></div></div></span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ContentDef </span><span class="special-key">ID=</span><a Name="N-1312655879" class="user-bold">inline-with-option-dtmf</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span> </span><span class="concrete">&lt;option/&gt;</span> | </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;dtmf/&gt;</span> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;emph&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1312655879">inline-with-option-dtmf</a></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/emph&gt;</span> | </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1235061255">inline</a>)</div></div></span></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> IF </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;if&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1313704455" class="user-bold">if</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">Expr=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1239517703">Expression</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1210157575">statements-in-context</a>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span><span>(</span><span> </span><span class="concrete">&lt;else/&gt;</span>, </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1210157575">statements-in-context</a>)<span>?</span></div></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/if&gt;</span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> TRANSFER </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> not included </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;transfer&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1314228743" class="user-bold">transfer</a><span>: </span></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> HANGUP </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> not included </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;hangup&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1316850183" class="user-bold">hangup</a><span>: </span></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> COMMENT </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;comment&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1234012679" class="user-bold">comment</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">StringType </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/comment&gt;</span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> INLINE </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">ContentDef </span><span class="special-key">ID=</span><a Name="N-1235061255" class="user-bold">inline</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span> </span><span class="key">StringType </span> | </span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;emph&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1235061255">inline</a></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/emph&gt;</span> | </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1234012679">comment</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1234536967">audio</a> | </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Element </span><a class="user" href="#N-1236109831">span</a>)</div></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;audio&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1234536967" class="user-bold">audio</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">url=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1235585543">Url</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Required</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; " title="This optional attribute specifies how long to wait for the URL to be retrieved.">
+<span class="concrete">urltimeout=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1238206983">Interval</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">volume=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1239255559">Vol</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">cache=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1317374471">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/audio&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="concrete">&lt;span&gt;</span><span> </span><span class="special-key">ID=</span><a Name="N-1236109831" class="user-bold">span</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">silent=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1317374471">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">nointerrupt=</span><span class="concrete">"</span><span><span></span><a class="user" href="#N-1317374471">YesOrNo</a><span class="concrete">"</span><span> </span><span class="key">[<span class="special-key">Optional</span>]</span>; </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="key">Content</span><span> </span><a class="user" href="#N-1235061255">inline</a></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/span&gt;</span></div></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1235585543" class="user-bold">Url</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span><span>(</span><span>[</span><span class="string">a</span><span>-</span><span class="string">z</span><span>]</span> | </span><span><span>[</span><span class="string">A</span><span>-</span><span class="string">Z</span><span>]</span> | </span><span><span>[</span><span class="string">0</span><span>-</span><span class="string">9</span><span>]</span> | </span><span><span>[</span><span class="string">_:/~.-</span><span>]</span>)<span>*</span></span></span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1237158407" class="user-bold">Name</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span>[</span><span class="string">a</span><span>-</span><span class="string">z</span><span>]</span> | </span><span><span>[</span><span class="string">A</span><span>-</span><span class="string">Z</span><span>]</span> | </span><span><span>[</span><span class="string">0</span><span>-</span><span class="string">9</span><span>]</span>) </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span><span>(</span><span>[</span><span class="string">a</span><span>-</span><span class="string">z</span><span>]</span> | </span><span><span>[</span><span class="string">A</span><span>-</span><span class="string">Z</span><span>]</span> | </span><span><span>[</span><span class="string">0</span><span>-</span><span class="string">9</span><span>]</span> | </span><span><span>[</span><span class="string">_-:</span><span>]</span>)<span>*</span></span></span></div></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1236634119" class="user-bold">Digits</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span>[</span><span class="string">0</span><span>-</span><span class="string">9</span><span>]</span><span>*</span></span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1238206983" class="user-bold">Interval</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><a class="user" href="#N-1236634119">Digits</a> </span><span><span><span></span><span>"</span><span class="tt"> </span><span>"</span><span>*</span> </span></span><span><span><span>(</span><span>"</span><span class="tt">s</span><span>"</span> | </span><span><span>"</span><span class="tt">ms</span><span>"</span>)</span></span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1237682695" class="user-bold">TimeBetweenDigits</a><span>: </span><span title="Unknown"><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><a class="user" href="#N-1236634119">Digits</a> </span><span><span><span></span><span>"</span><span class="tt"> </span><span>"</span><span>*</span> </span></span><span><span><span>(</span><span>"</span><span class="tt">s</span><span>"</span> | </span><span><span>"</span><span class="tt">ms</span><span>"</span>)</span></span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1239255559" class="user-bold">Vol</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span><span>(</span><span>"</span><span class="tt">+</span><span>"</span> | </span><span><span>"</span><span class="tt">-</span><span>"</span>)<span>?</span> </span></span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span>[</span><span class="string">0</span><span>-</span><span class="string">9</span><span>]</span> | </span><span><span>"</span><span class="tt">10</span><span>"</span>)</span></div></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1317898759" class="user-bold">Touchtone</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span><span>(</span><span>[</span><span class="string">0</span><span>-</span><span class="string">9</span><span>]</span> | </span><span><span>[</span><span class="string">*#</span><span>]</span>)</span></span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1317374471" class="user-bold">YesOrNo</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span>(</span><span>"</span><span class="tt">yes</span><span>"</span> | </span><span><span>"</span><span class="tt">Yes</span><span>"</span> | </span><span><span>"</span><span class="tt">no</span><span>"</span> | </span><span><span>"</span><span class="tt">No</span><span>"</span>)</span></div></span></div></div>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">StringTypeDef </span><span class="special-key">ID=</span><a Name="N-1318947335" class="user-bold">NorthAmericanPhoneNumber</a><span>: </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span>[</span><span class="string">0</span><span>-</span><span class="string">9</span><span>]</span><span><sup>3</sup></span> </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span>"</span><span class="tt">-</span><span>"</span> </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span>[</span><span class="string">0</span><span>-</span><span class="string">9</span><span>]</span><span><sup>7</sup></span></span></div></div></span></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> DEFAULTS </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> Make head element optional </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">Default </span><span><span></span><span class="tt">XPML</span><span> {</span></span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="concrete">&lt;head&gt;</span><span><span></span><span class="concrete">
+	</span> </span><span><span class="concrete">&lt;title&gt;</span><span><span></span><span class="concrete">no title</span><span class="concrete">&lt;/title&gt;</span> </span></span><span><span class="concrete">
+      </span><span class="concrete">&lt;/head&gt;</span>}</span></span></div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> For select, menu, and input elements, always
+  fill in lots of attributes with default UI decisions </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">Default </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="tt">select</span>, </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="tt">menu</span>, </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="tt">input</span><span> {</span></span></div>
+<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">maxtterrs</span><span>:"</span><span class="concrete">3"</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">maxmisselected</span><span>:"</span><span class="concrete">3"</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">maxtimeout</span><span>:"</span><span class="concrete">2"</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">endchars</span><span>:"</span><span class="concrete">#"</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">interdigittimeout</span><span>:"</span><span class="concrete">4000ms"</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">finaltimeout</span><span>:"</span><span class="concrete">5000ms"</span>; </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">timeout</span><span>:"</span><span class="concrete">0ms"</span>}</div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> Modify the default value for interdigittimeout in input elements
+  of type text </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">Default </span><span><span></span><span class="tt">input</span>[<span><span></span><span class="tt">type</span><span>=</span><span>"text"</span>]<span> {</span></span></span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">interdigittimeout</span><span>:"</span><span class="concrete">2s"</span>}</div></div></div>
+<DIV style="margin-top:.8ex; margin-bottom:.8ex" class="comment">
+<SPAN>&lt;!--</SPAN><SPAN> Here are the defaults messages for select, menu, and input elements </SPAN><SPAN></SPAN><SPAN>--&gt;</SPAN></DIV>
+<div style="margin-bottom:2ex; margin-top:.8ex;        border-style: solid; border-width: 2px;  border-color:pink;">
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;                 text-indent: -2.7ex; ">
+<span class="key">Default </span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="tt">select</span>, </span></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="tt">menu</span>, </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="tt">input</span><span> {</span></span></div>
+<span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; "></div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="concrete">&lt;help&gt;</span><span><span></span><span class="concrete">No help is available.</span><span class="concrete">&lt;/help&gt;</span>; </span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="concrete">&lt;initial&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete"> </span> </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;enumerate&gt;</span><span><span></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;option/&gt;</span> </div></span><div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete"> Press </span> </div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;emph&gt;</span><span><span></span><span class="concrete">&lt;dtmf/&gt;</span><span class="concrete">&lt;/emph&gt;</span> </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">.</span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/enumerate&gt;</span> </div></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span class="concrete">
+      </span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 0ex;  text-indent: -2.7ex; ">
+<span class="concrete">&lt;/initial&gt;</span>; </div></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="concrete">&lt;toomanyerrors&gt;</span><span><span></span><span class="concrete">Sorry, too many errors.</span><span class="concrete">&lt;/toomanyerrors&gt;</span>; </span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="concrete">&lt;timeout&gt;</span><span><span></span><span class="concrete">You have exceeded the time limit.</span><span class="concrete">&lt;/timeout&gt;</span>; </span></span></div>
+<div style=" font-family: Courier; font-weight:bold;   margin-left: 2.7ex;  text-indent: -2.7ex; ">
+<span><span></span><span class="concrete">&lt;toomanyerrors&gt;</span><span><span></span><span class="concrete">Sorry, too many errors.</span><span class="concrete">&lt;/toomanyerrors&gt;</span>}</span></span></div></div></div></body></html>
